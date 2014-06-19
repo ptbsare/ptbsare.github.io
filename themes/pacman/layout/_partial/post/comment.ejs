@@ -1,7 +1,10 @@
 <% if (config.disqus_shortname && page.comments){ %>
 <section id="comment">
-	  <h1 class="title"><%= __('comment') %></h1>
+    <h1 class="title"><%= __('comment') %></h1>
     <div id="disqus_thread"></div>
+    <style type="text/css">
+    #disqus_thread { padding: 20px 35px 5px 35px; }
+    </style>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'ptbsare'; // required: replace example with your forum shortname
