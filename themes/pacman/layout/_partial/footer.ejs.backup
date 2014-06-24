@@ -24,21 +24,6 @@
 		<% if(theme.author.facebook){ %>
 		<a href="https://www.facebook.com/<%=theme.author.facebook %>" target="_blank" title="facebook"></a>
 		<% } %>
-		<% if(theme.author.google_plus){ %>
-		<a href="https://plus.google.com/<%=theme.author.google_plus %>?rel=author" target="_blank" title="Google+"></a>
-		<% } %>
-		<% if(theme.author.stackoverflow){ %>
-		<a href="http://stackoverflow.com/users/<%=theme.author.stackoverflow %>" target="_blank" title="stackoverflow"></a>
-		<% } %>
-		<% if(theme.author.douban){ %>
-		<a href="https://www.douban.com/people/<%=theme.author.douban %>" target="_blank" title="Douban"></a>
-		<% } %>
-		<% if(theme.author.zhihu){ %>
-		<a href="https://www.zhihu.com/people/<%=theme.author.zhihu %>" title="zhihu"></a>
-		<% } %>
-		<% if(theme.author.renren){ %>
-		<a href="https://www.renren.com/people/<%=theme.author.renren %>" title="renren"></a>
-		<% } %>
 	</div>
 		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © <%= new Date().getFullYear() %> 
 		<% if (config.author) { %>

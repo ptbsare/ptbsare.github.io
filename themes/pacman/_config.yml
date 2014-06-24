@@ -64,6 +64,10 @@ author:
   github: ptbsare     ## e.g. A-limon for https://github.com/A-limon
   facebook: ptbsare   ## e.g. yangjian for https://favebook.com/yangjian
   tsina:      ## e.g. 1664838973  Your weibo ID,It will be used in share button.
+  stackoverflow: 3769631   ##e.g. 3222790 for http://stackoverflow.com/users/3222790/jark
+  douban:   ##ptbsare    ##e.g. wuchong1014 or your id for https://www.douban.com/people/wuchong1014
+  zhihu:    ##ptbsare
+	renren:   ##467369931
 
 #### Comment
 duoshuo: 

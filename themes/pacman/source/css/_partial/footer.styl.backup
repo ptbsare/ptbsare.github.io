@@ -4,7 +4,7 @@ footer
   padding 0 2% 0.5em
 
 #footer
-  width 98%
+  width 95%
   margin 0 auto
   overflow hidden
   position relative
@@ -72,7 +72,7 @@ footer
   @media mini
     width 18em 
     position absolute  
-    right -1.1em
+    right -3em
     top 3em
   a
     float left
@@ -85,7 +85,7 @@ footer
       padding 0.3em
     &:hover:before
       color color-blue
-    &[title="weibo"]::before,&[title="twitter"]::before,&[title="github"]::before,&[title="facebook"]::before,&[title="Google+"]::before,&[title="stackoverflow"]::before,&[title="Douban"]::before,&[title="zhihu"]::before,&[title="renren"]::before
+    &[title="weibo"]::before,&[title="twitter"]::before,&[title="github"]::before,&[title="facebook"]::before
       font-family font-icon-family
       font-smoothing()
     &[title="weibo"]::before
@@ -96,22 +96,6 @@ footer
       content "\f09b"
     &[title="facebook"]::before
       content "\f09a"
-    &[title="Google+"]::before
-      content "\f0d5"
-    &[title="stackoverflow"]::before
-      content "\f16c"
-    &[title="Douban"]::before
-      font-family font-icon-diao
-      font-smoothing()
-      content "\f111"
-    &[title="zhihu"]::before
-      font-family font-icon-diao
-      font-smoothing()
-      content "\f142"
-    &[title="renren"]::before
-      font-family font-icon-diao
-      font-smoothing()
-      content "\f128"
  
 .copyright
   if ShowCustomFont
