@@ -8,7 +8,7 @@ date: 2014-6-24 15:05:05+00:00
 
 ###爱好:
 
-**互联网 开源 Github TED Linux Yanni音乐 Design 当代小说 智能硬件 Mac**
+**互联网 开源 Github TED Linux Yanni音乐 Design 当代小说 Minecraft 智能硬件 Mac**
 
 ###社交网站:
 **VJianKe:**　[http://www.vjianke.com/digest/e5de3f6524f24209979051e23d109731.clip]
