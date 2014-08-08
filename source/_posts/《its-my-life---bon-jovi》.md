@@ -8,9 +8,12 @@ Bon Jovi-是当代美国摇滚乐队，少年时期即开始接触摇滚乐。19
 It's My Life 出自其2000年的专辑《Crush》，这部专辑被誉为让新一代美国人重新燃起象他们的长辈一样热爱摇滚的火炬之作。
 ![](/img/《its-my-life---bon-jovi》/itismylife.jpg)
 这首歌曲有两个版本，分别为慢节奏版和快节奏版。
-慢节奏版:
-<audio controls="controls" src="/img/《its-my-life---bon-jovi》/manban.mp3" />
+
+<div>慢节奏版:
+<audio controls="controls" src="/img/《its-my-life---bon-jovi》/manban.mp3" /></div>
+
 歌词及翻译：
+
     歌名：It's my life
     歌手：Bon Jovi
     专辑：<Crush>
