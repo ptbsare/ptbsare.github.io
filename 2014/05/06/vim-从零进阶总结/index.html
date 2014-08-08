@@ -1,0 +1,649 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Vim 从零进阶总结 | Ptbsare&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="ptbsare">
+    
+    <meta name="description" content="Vim 安装
+以Ubuntu下为例:
+1
+sudo apt-get install vim
+
+
+For GUI
+1
+sudo apt-get install gvim
+
+
+第一阶：三种模式
++ normal模式（默认模式）
++ insert模式（在默认模式下按i进入插入模式）
++ command模式">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="ptbsare" />
+    <meta name="twitter:title" content="Vim 从零进阶总结 | Ptbsare&#39;s Blog" />
+      
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Ptbsare&#39;s Blog" title="Ptbsare&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Ptbsare&#39;s Blog">Ptbsare&#39;s Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:ptbsare.org">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/05/06/vim-从零进阶总结/" title="Vim 从零进阶总结" itemprop="url">Vim 从零进阶总结</a>
+  </h1>
+  <p class="article-author">By
+  <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
+  <p class="article-time">
+    <time datetime="2014-05-06T15:01:49.000Z" itemprop="datePublished">5月 6 2014</time>
+    更新日期:<time datetime="2014-06-24T06:39:10.000Z" itemprop="dateModified">6月 24 2014</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim_安装"><span class="toc-number">1.</span> <span class="toc-text">Vim 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一阶：三种模式"><span class="toc-number">2.</span> <span class="toc-text">第一阶：三种模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二阶：简单使用"><span class="toc-number">3.</span> <span class="toc-text">第二阶：简单使用</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_简单的光标移动"><span class="toc-number">3.1.</span> <span class="toc-text">1. 简单的光标移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_各种插入编辑方式"><span class="toc-number">3.2.</span> <span class="toc-text">2. 各种插入编辑方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_拷贝/粘贴/删除"><span class="toc-number">3.3.</span> <span class="toc-text">3. 拷贝/粘贴/删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_Redo/Undo"><span class="toc-number">3.4.</span> <span class="toc-text">4. Redo/Undo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-_打开/保存/退出/改变文件(Buffer)"><span class="toc-number">3.5.</span> <span class="toc-text">5. 打开/保存/退出/改变文件(Buffer)</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#第二阶：提高效率"><span class="toc-number">4.</span> <span class="toc-text">第二阶：提高效率</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-重复"><span class="toc-number">4.1.</span> <span class="toc-text">1.重复</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#(1)_-_：_(小数点)_可以重复上一次的命令"><span class="toc-number">4.1.1.</span> <span class="toc-text">(1) . ： (小数点) 可以重复上一次的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(2)_N_：_重复某个命令N次"><span class="toc-number">4.1.2.</span> <span class="toc-text"> ： 重复某个命令N次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(3)_示例"><span class="toc-number">4.1.3.</span> <span class="toc-text">(3) 示例</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#2-快速移动"><span class="toc-number">4.2.</span> <span class="toc-text">2.快速移动</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#(1)NG：到第N行"><span class="toc-number">4.2.1.</span> <span class="toc-text">(1)NG：到第N行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(2)gg：到第一行"><span class="toc-number">4.2.2.</span> <span class="toc-text">(2)gg：到第一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(3)G：到最后一行"><span class="toc-number">4.2.3.</span> <span class="toc-text">(3)G：到最后一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(4)单词移动"><span class="toc-number">4.2.4.</span> <span class="toc-text">(4)单词移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(5)单词匹配"><span class="toc-number">4.2.5.</span> <span class="toc-text">(5)单词匹配</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#3-组合命令"><span class="toc-number">4.3.</span> <span class="toc-text">3.组合命令</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#第三阶：杀手级功能"><span class="toc-number">5.</span> <span class="toc-text">第三阶：杀手级功能</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在当前行上移动光标:_0_^_$_f_F_t_T_,_;"><span class="toc-number">5.1.</span> <span class="toc-text">在当前行上移动光标: 0 ^ $ f F t T , ;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区域选择_&lt;action&gt;a&lt;object&gt;_或_&lt;action&gt;i&lt;object&gt;"><span class="toc-number">5.2.</span> <span class="toc-text">&lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块操作:_&lt;C-v&gt;"><span class="toc-number">5.3.</span> <span class="toc-text">&lt;C-v&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动提示：_&lt;C-n&gt;_和_&lt;C-p&gt;"><span class="toc-number">5.4.</span> <span class="toc-text">&lt;C-n&gt; 和 &lt;C-p&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#宏录制：_qa_操作序列_q,_@a,_@@"><span class="toc-number">5.5.</span> <span class="toc-text">宏录制： qa 操作序列 q, @a, @@</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可视化选择：_v,V,&lt;C-v&gt;"><span class="toc-number">5.6.</span> <span class="toc-text">v,V,&lt;C-v&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分屏:_:split_和_vsplit-"><span class="toc-number">5.7.</span> <span class="toc-text">分屏: :split 和 vsplit.</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">6.</span> <span class="toc-text">Tips</span></a></li></ol>
+		</div>
+		
+		<h2 id="Vim_安装">Vim 安装</h2>
+<p>以Ubuntu下为例:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install vim
+</pre></td></tr></table></figure>
+
+<p>For GUI</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install gvim
+</pre></td></tr></table></figure>
+
+<h2 id="第一阶：三种模式">第一阶：三种模式</h2>
+<pre><code><span class="addition">+ normal模式（默认模式）</span>
+<span class="addition">+ insert模式（在默认模式下按i进入插入模式）</span>
+<span class="addition">+ command模式（按ESC与:输入命令）</span>
+</code></pre><h2 id="第二阶：简单使用">第二阶：简单使用</h2>
+<h3 id="1-_简单的光标移动">1. 简单的光标移动</h3>
+<pre><code><span class="number">0</span>：到本行行头
+<span class="label">$:</span> 到本行行尾
+^: 到本行第一个不是blank字符的位置（空格 tab 换行 回车 等）
+<span class="label">g_:</span>到本行最后一个不是blank的位置
+<span class="label">jkhl:</span>分别为上下左右移动
+/pattern:搜索pattern的字符串跳到相应位置 按n到下一个
+</code></pre><h3 id="2-_各种插入编辑方式">2. 各种插入编辑方式</h3>
+<pre><code><span class="label">a:</span>在光标后插入
+<span class="label">o:</span>在当前行后插入一个新行
+O：在当前行插入一个新行
+<span class="label">cw:</span>替换从当前位置到最后一个单词结尾的字符
+</code></pre><h3 id="3-_拷贝/粘贴/删除">3. 拷贝/粘贴/删除</h3>
+<pre><code><span class="label">dd:</span>删除当前行并将当前行放入剪切板
+<span class="label">p:</span>粘贴（在当前位置之后开始）（P为在当前位置之前开始）
+<span class="label">yy:</span>拷贝当前行相当于ddP
+</code></pre><h3 id="4-_Redo/Undo">4. Redo/Undo</h3>
+<pre><code>u：<span class="keyword">undo</span>
+&lt;C-r&gt;:<span class="keyword">redo</span>
+</code></pre><h3 id="5-_打开/保存/退出/改变文件(Buffer)">5. 打开/保存/退出/改变文件(Buffer)</h3>
+<pre><code>:e &lt;path/to/file&gt; → 打开一个文件
+:w → 存盘
+:saveas &lt;path/to/file&gt; → 另存为&lt;path/to/file&gt;
+<span class="attribute">:x， ZZ 或 :wq</span> → 保存并退出 (:x 表示仅在需要时保存，ZZ不需要输入冒号并回车)
+<span class="attribute">:q! → 退出不保存 :qa!</span> 强行退出所有的正在编辑的文件，就算别的文件有更改。
+<span class="attribute">:bn 和 :bp</span> → 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。
+</code></pre><h2 id="第二阶：提高效率">第二阶：提高效率</h2>
+<h3 id="1-重复">1.重复</h3>
+<h4 id="(1)_-_：_(小数点)_可以重复上一次的命令">(1) . ： (小数点) 可以重复上一次的命令</h4>
+<h4 id="(2)_N_：_重复某个命令N次">(2) N<command> ： 重复某个命令N次</h4>
+<h4 id="(3)_示例">(3) 示例</h4>
+<pre><code>-<span class="ruby"> <span class="number">2</span>dd <span class="symbol">:</span>删除两行
+</span>-<span class="ruby"> <span class="number">3</span>p：粘贴三次
+</span>-<span class="ruby"> <span class="number">100</span>hehe[<span class="constant">ESC</span>]：写下一百个“hehe”
+</span>-<span class="ruby">.：重复上面的命令 写一百个“hehe”
+</span>-<span class="ruby"><span class="number">3</span>.：重复写三个“hehe”（不是三百个）</span>
+</code></pre><h3 id="2-快速移动">2.快速移动</h3>
+<h4 id="(1)NG：到第N行">(1)NG：到第N行</h4>
+<h4 id="(2)gg：到第一行">(2)gg：到第一行</h4>
+<h4 id="(3)G：到最后一行">(3)G：到最后一行</h4>
+<h4 id="(4)单词移动">(4)单词移动</h4>
+<pre><code>1.w：到下一个单词开头
+2.e：到下一个单词结尾
+</code></pre><p><img src="/img/vim-从零进阶总结/1.jpg" alt=""></p>
+<h4 id="(5)单词匹配">(5)单词匹配</h4>
+<pre><code><span class="number">1</span>.%：匹配括号
+<span class="number">2</span>.×与<span class="comment">#匹配上一个（下一个单词）</span>
+</code></pre><h3 id="3-组合命令">3.组合命令</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre>&lt;start position&gt;&lt;command&gt;&lt;<span class="keyword">end</span> position&gt;
+
+例如 <span class="number">0</span>y$ 命令意味着：
+
+<span class="number">0</span> → 先到行头
+y → 从这里开始拷贝
+$ → 拷贝到本行最后一个字符
+你可可以输入 ye，从当前位置拷贝到本单词的最后一个字符。
+
+你也可以输入 y2/foo 来拷贝<span class="number">2</span>个 “foo” 之间的字符串。
+
+还有很多时间并不一定你就一定要按y才会拷贝，下面的命令也会被拷贝：
+
+<span class="function"><span class="title">d</span> <span class="params">(删除 )</span>
+<span class="title">v</span> <span class="params">(可视化的选择)</span>
+<span class="title">gU</span> <span class="params">(变大写)</span>
+<span class="title">gu</span> <span class="params">(变小写)</span>
+等等</span>
+</pre></td></tr></table></figure>
+
+<h2 id="第三阶：杀手级功能">第三阶：杀手级功能</h2>
+<h3 id="在当前行上移动光标:_0_^_$_f_F_t_T_,_;">在当前行上移动光标: 0 ^ $ f F t T , ;</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="number">0</span> → 到行头
+^ → 到本行的第一个非blank字符
+$ → 到行尾
+g_ → 到本行最后一个不是blank字符的位置。
+fa → 到下一个为<span class="operator">a</span>的字符处，你也可以fs到下一个为s的字符。
+t, → 到逗号前的第一个字符。逗号可以变成其它字符。
+<span class="number">3</span>fa → 在当前行查找第三个出现的<span class="operator">a</span>。
+F 和 T → 和 f 和 t 一样，只不过是相反方向。
+dt<span class="string">" → 删除所有的内容，直到遇到双引号—— "</span>。
+</pre></td></tr></table></figure>
+
+<p><img src="/img/vim-从零进阶总结/2.jpg" alt=""></p>
+<h3 id="区域选择_&lt;action&gt;a&lt;object&gt;_或_&lt;action&gt;i&lt;object&gt;">区域选择 <code>&lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;</code></h3>
+<pre><code>action可以是任何的命令，如 d (删除), y (拷贝), v (可以视模式选择)。
+<span class="class"><span class="keyword">object</span> 可能是： <span class="title">w</span> 一个单词， <span class="title">W</span> 一个以空格为分隔的单词， <span class="title">s</span> 一个句字， <span class="title">p</span> 一个段落。也可以是一个特别的字符："、 '、 )、 }、 ]。</span>
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>假设你有一个字符串 (<span class="keyword">map</span> (+) (<span class="string">"foo"</span>)).而光标键在第一个 o 的位置。
+
+vi<span class="string">" → 会选择 foo.
+va"</span> → 会选择 <span class="string">"foo"</span>.
+vi) → 会选择 <span class="string">"foo"</span>.
+va) → 会选择(<span class="string">"foo"</span>).
+v2i) → 会选择 <span class="keyword">map</span> (+) (<span class="string">"foo"</span>)
+v2a) → 会选择 (<span class="keyword">map</span> (+) (<span class="string">"foo"</span>))
+</pre></td></tr></table></figure>
+
+<p><img src="/img/vim-从零进阶总结/3.png" alt=""></p>
+<h3 id="块操作:_&lt;C-v&gt;">块操作: <code>&lt;C-v&gt;</code></h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>^ → 到行头
+&lt;<span class="keyword">C</span>-v&gt; → 开始块操作
+&lt;<span class="keyword">C</span>-d&gt; → 向下移动 (你也可以使用hjkl来移动光标，或是使用%，或是别的)
+<span class="keyword">I</span>-- [ESC] → <span class="keyword">I</span>是插入，插入“--”，按ESC键来为每一行生效。
+</pre></td></tr></table></figure>
+
+<p><img src="/img/vim-从零进阶总结/4.gif" alt=""></p>
+<h3 id="自动提示：_&lt;C-n&gt;_和_&lt;C-p&gt;">自动提示： <code>&lt;C-n&gt; 和 &lt;C-p&gt;</code></h3>
+<p>在 Insert 模式下，你可以输入一个词的开头，然后按 <C-p>或是<C-n>，自动补齐功能就出现了……<br><img src="/img/vim-从零进阶总结/5.gif" alt=""></p>
+<h3 id="宏录制：_qa_操作序列_q,_@a,_@@">宏录制： qa 操作序列 q, @a, @@</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>qa 把你的操作记录在寄存器 a。
+于是 <span class="decorator">@a 会replay被录制的宏。</span>
+<span class="decorator">@@ 是一个快捷键用来replay最新录制的宏。</span>
+</pre></td></tr></table></figure>
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>示例
+
+在一个只有一行且这一行只有“<span class="number">1</span>”的文本中，键入如下命令：
+
+qaYp&lt;C-a&gt;q→
+qa 开始录制
+Yp 复制行.
+&lt;C-a&gt; 增加<span class="number">1.</span>
+q 停止录制.
+<span class="decorator">@a → 在1下面写下 2</span>
+<span class="decorator">@@ → 在2 正面写下3</span>
+现在做 <span class="number">100</span><span class="decorator">@@ 会创建新的100行，并把数据增加到 103.</span>
+</pre></td></tr></table></figure>
+
+<p><img src="/img/vim-从零进阶总结/6.gif" alt=""></p>
+<h3 id="可视化选择：_v,V,&lt;C-v&gt;">可视化选择： <code>v,V,&lt;C-v&gt;</code></h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>前面，我们看到了 &lt;C-v&gt;的示例 （在Windows下应该是&lt;C-q&gt;），我们可以使用 v 和 V。一但被选好了，你可以做下面的事：
+
+J → 把所有的行连接起来（变成一行）
+&lt; 或 &gt; → 左右缩进
+<span class="header">= → 自动给缩进</span>
+</pre></td></tr></table></figure>
+
+<p><img src="/img/vim-从零进阶总结/7.gif" alt=""></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>在所有被选择的行后加上点东西：
+
+<span class="tag">&lt;<span class="title">C-v</span>&gt;</span>
+选中相关的行 (可使用 j 或 <span class="tag">&lt;<span class="title">C-d</span>&gt;</span> 或是 /pattern 或是 % 等……)
+$ 到行最后
+A, 输入字符串，按 ESC。
+</pre></td></tr></table></figure>
+
+<p><img src="/img/vim-从零进阶总结/8.gif" alt=""></p>
+<h3 id="分屏:_:split_和_vsplit-">分屏: :split 和 vsplit.</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>下面是主要的命令，你可以使用VIM的帮助 :help split.
+
+<span class="attribute">:split → 创建分屏 (:vsplit创建垂直分屏)</span>
+&lt;C-w&gt;&lt;dir&gt; : dir就是方向，可以是 hjkl 或是 ←↓↑→ 中的一个，其用来切换分屏。
+&lt;C-w&gt;_ (或 &lt;C-w&gt;|) : 最大化尺寸 (&lt;C-w&gt;| 垂直分屏)
+&lt;C-w&gt;+ (或 &lt;C-w&gt;-) : 增加尺寸
+</pre></td></tr></table></figure>
+
+<p><img src="/img/vim-从零进阶总结/9.gif" alt=""></p>
+<h2 id="Tips">Tips</h2>
+<ul>
+<li>上面是最常用的90%的命令。</li>
+<li>其在线帮助文档中你应该要仔细阅读的是 :help usr_02.txt.</li>
+<li>学习vim就像学弹钢琴一样，一旦学会，受益无穷。</li>
+</ul>
+<p>英文原文:<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank">http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/</a><br>转载整理自:<a href="http://blog.csdn.net/niushuai666/article/details/7275406" target="_blank">http://blog.csdn.net/niushuai666/article/details/7275406</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/GNU Tools/">GNU Tools</a><a href="/tags/Linux/">Linux</a><a href="/tags/Ubuntu/">Ubuntu</a><a href="/tags/Vim/">Vim</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://ptbsare.org/2014/05/06/vim-从零进阶总结/" data-title="Vim 从零进阶总结 | Ptbsare&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/05/12/ubuntu下部署latex编译环境/" title="Ubuntu下部署Latex编译环境">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Ubuntu下部署Latex编译环境</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+<section id="comment">
+    <h1 class="title">文章评论</h1>
+    <div id="disqus_thread"></div>
+    <style type="text/css">
+    #disqus_thread { padding: 20px 35px 5px 35px; }
+    </style>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ptbsare'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim_安装"><span class="toc-number">1.</span> <span class="toc-text">Vim 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一阶：三种模式"><span class="toc-number">2.</span> <span class="toc-text">第一阶：三种模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二阶：简单使用"><span class="toc-number">3.</span> <span class="toc-text">第二阶：简单使用</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_简单的光标移动"><span class="toc-number">3.1.</span> <span class="toc-text">1. 简单的光标移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_各种插入编辑方式"><span class="toc-number">3.2.</span> <span class="toc-text">2. 各种插入编辑方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_拷贝/粘贴/删除"><span class="toc-number">3.3.</span> <span class="toc-text">3. 拷贝/粘贴/删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_Redo/Undo"><span class="toc-number">3.4.</span> <span class="toc-text">4. Redo/Undo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-_打开/保存/退出/改变文件(Buffer)"><span class="toc-number">3.5.</span> <span class="toc-text">5. 打开/保存/退出/改变文件(Buffer)</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#第二阶：提高效率"><span class="toc-number">4.</span> <span class="toc-text">第二阶：提高效率</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-重复"><span class="toc-number">4.1.</span> <span class="toc-text">1.重复</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#(1)_-_：_(小数点)_可以重复上一次的命令"><span class="toc-number">4.1.1.</span> <span class="toc-text">(1) . ： (小数点) 可以重复上一次的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(2)_N_：_重复某个命令N次"><span class="toc-number">4.1.2.</span> <span class="toc-text"> ： 重复某个命令N次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(3)_示例"><span class="toc-number">4.1.3.</span> <span class="toc-text">(3) 示例</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#2-快速移动"><span class="toc-number">4.2.</span> <span class="toc-text">2.快速移动</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#(1)NG：到第N行"><span class="toc-number">4.2.1.</span> <span class="toc-text">(1)NG：到第N行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(2)gg：到第一行"><span class="toc-number">4.2.2.</span> <span class="toc-text">(2)gg：到第一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(3)G：到最后一行"><span class="toc-number">4.2.3.</span> <span class="toc-text">(3)G：到最后一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(4)单词移动"><span class="toc-number">4.2.4.</span> <span class="toc-text">(4)单词移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(5)单词匹配"><span class="toc-number">4.2.5.</span> <span class="toc-text">(5)单词匹配</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#3-组合命令"><span class="toc-number">4.3.</span> <span class="toc-text">3.组合命令</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#第三阶：杀手级功能"><span class="toc-number">5.</span> <span class="toc-text">第三阶：杀手级功能</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在当前行上移动光标:_0_^_$_f_F_t_T_,_;"><span class="toc-number">5.1.</span> <span class="toc-text">在当前行上移动光标: 0 ^ $ f F t T , ;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区域选择_&lt;action&gt;a&lt;object&gt;_或_&lt;action&gt;i&lt;object&gt;"><span class="toc-number">5.2.</span> <span class="toc-text">&lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块操作:_&lt;C-v&gt;"><span class="toc-number">5.3.</span> <span class="toc-text">&lt;C-v&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动提示：_&lt;C-n&gt;_和_&lt;C-p&gt;"><span class="toc-number">5.4.</span> <span class="toc-text">&lt;C-n&gt; 和 &lt;C-p&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#宏录制：_qa_操作序列_q,_@a,_@@"><span class="toc-number">5.5.</span> <span class="toc-text">宏录制： qa 操作序列 q, @a, @@</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可视化选择：_v,V,&lt;C-v&gt;"><span class="toc-number">5.6.</span> <span class="toc-text">v,V,&lt;C-v&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分屏:_:split_和_vsplit-"><span class="toc-number">5.7.</span> <span class="toc-text">分屏: :split 和 vsplit.</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">6.</span> <span class="toc-text">Tips</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Feeling/" title="Feeling">Feeling<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GNU Tools/" title="GNU Tools">GNU Tools<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Latex/" title="Latex">Latex<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+		
+			<li><a href="/tags/OpenGL/" title="OpenGL">OpenGL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Pieces/" title="Pieces">Pieces<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Reprint/" title="Reprint">Reprint<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Ptbsare. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://twitter.com/ptbsare" target="_blank" title="twitter"></a>
+		
+		
+		<a href="https://github.com/ptbsare" target="_blank" title="github"></a>
+		
+		
+		<a href="https://www.facebook.com/ptbsare" target="_blank" title="facebook"></a>
+		
+		
+		<a href="https://plus.google.com/100168399125398465924?rel=author" target="_blank" title="Google+"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/3769631" target="_blank" title="stackoverflow"></a>
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://ptbsare.org" target="_blank" title="ptbsare">ptbsare</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+			    tex2jax: {
+					      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+								      processEscapes: true
+											    }
+													  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+				      tex2jax: {
+							        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+											      }
+														    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+				        var all = MathJax.Hub.getAllJax(), i;
+								        for(i=0; i < all.length; i += 1) {
+												            all[i].SourceElement().parentNode.className += ' has-jax';
+																		        }
+																						    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </body>
+</html>
