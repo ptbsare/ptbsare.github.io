@@ -131,3 +131,7 @@ It's My Life 出自其2000年的专辑《Crush》，这部专辑被誉为让新�
 MV:
 <video controls="controls" src="/img/《its-my-life---bon-jovi》/4.mp4" />
 </div>
+
+参考：
+(http://baike.baidu.com/link?url=_eHe_hM-M71_d4EQqMpQtUINhpWq0v04qDpczMXldDzG8uJweYIj2YSZRkLsnLSSGHbAbqOyMZP83Ab6ql5Bl_)
+注：本页音频和视频均采用html5技术呈现。
