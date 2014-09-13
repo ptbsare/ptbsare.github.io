@@ -15,3 +15,6 @@ date: 2014-6-24 15:05:05+00:00
 **RenRen:**　 [http://www.renren.com/467369931]
 **Sina:**　　  [http://weibo.com/2168291303]
 **Qzone:**　  [http://user.qzone.qq.com/496725701]
+
+###友情链接
+[Blanboom](http://blanboom.org)
