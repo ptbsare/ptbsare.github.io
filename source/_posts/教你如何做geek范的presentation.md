@@ -83,7 +83,7 @@ mdpress first.md
 ### balabalabala...
 
 ---
-= data-x="1000" = data-y="1000"
+= data-x="1000" data-y="1000"
 # 第三张
 - 列表1
 - 列表2
@@ -103,19 +103,19 @@ mdpress first.md
 ### balabalabala...
 
 ---
-= data-x="1000" = data-y="1000" = data-scale="2"
+= data-x="1000" data-y="1000" data-scale="2"
 # 第三张
 - 列表1
 - 列表2
 
 ---
-= data-x="5000" = data-y="5000" = data-scale="5"
+= data-x="5000" data-y="5000" data-scale="5"
 # 第四张
 ## 副标题
 ###  三级标题
 
 ---
-= data-x="1000" = data-y="3000" = data-scale="1"
+= data-x="1000" data-y="3000" data-scale="1"
 # 嘿嘿
 ```
 
@@ -126,23 +126,26 @@ mdpress first.md
 ## By Chicken
 
 ---
-= data-x="1000" = data-rotate="60"
+= data-x="1000" data-rotate="60"
 # 第二张
 ## 副标题
 ### balabalabala...
 
 ---
-= data-x="1000" = data-y="1000" = data-scale="2" = data-rotate="90"
+= data-x="1000" data-y="1000" data-scale="2" data-rotate="90"
 # 第三张
 - 列表1
 - 列表2
 
 ---
-= data-x="5000" = data-y="5000" = data-scale="5" =data-rotate="90"
+= data-x="5000" data-y="5000" data-scale="5" data-rotate="90"
 # 第四张
 ## 副标题
 ###  三级标题
 ```
+([Final Demo Here](/lab))
+
+
 **可以使用的属性有：**
 * data-x, data-y, data-z: positioning
 * data-rotate-x, data-rotate-y, data-rotate-z, data-rotate: rotation (data-rotate and data-rotate-z are exactly the same)
