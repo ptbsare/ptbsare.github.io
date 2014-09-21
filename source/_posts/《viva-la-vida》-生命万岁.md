@@ -114,7 +114,7 @@ toc: false
 　　Viva La Vida，生命万岁。
 
 ##MV
-<video controls="controls" src="/img/《viva-la-vida》-生命万岁/a.mp4" />
+<video controls="controls" src="/img/《viva-la-vida》-生命万岁/a.mp4" ></video>
 
 
 **参考**
