@@ -105,6 +105,27 @@ toc: false
     我亦知天堂之门不会为我敞开  
     不再有逆耳忠言存在  
     但这却是我统治的时代
+    
+    (Oh...Oh...Oh...)
+    
+    I hear Jerusalem bells a ringing  
+    Roman Cavalry choirs are singing  
+    Be my mirror my sword and shield  
+    My missionaries in a foreign field  
+    听那耶路撒冷钟声传来  
+    罗马骑兵歌声震彻山海  
+    担当我的明镜，利剑和盾牌  
+    我的传教士屹立边疆之外  
+    
+    For some reason I can't explain  
+    I know Saint Peter won't call my name  
+    Never an honest word  
+    But that was when I ruled the world  
+    只因一些缘由我无法释怀  
+    我亦知天堂之门不会为我敞开  
+    不再有逆耳忠言存在  
+    但这却是我统治的时代
+		　　　
 
 ##作者翻译心得
 
