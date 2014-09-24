@@ -1,0 +1,451 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>谈谈网页设计中的字体设定 | Ptbsare&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="ptbsare">
+    
+    <meta name="description" content="引言
+　　对于网页设计中的字体设置，显然指定不同字体所排版出来的效果是不同的，而且对于不同的平台（Windows，Mac OS，Linux），操作系统所预装的字体也是各不相同，因此同一网页在不同平台上显示出来的效果也是不一样的。然而，这一问题的核心问题无非也就在于如何确定CSS中font-famil">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="ptbsare" />
+    <meta name="twitter:title" content="谈谈网页设计中的字体设定 | Ptbsare&#39;s Blog" />
+      
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Ptbsare&#39;s Blog" title="Ptbsare&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Ptbsare&#39;s Blog">Ptbsare&#39;s Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/lab">Lab</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:ptbsare.org">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/09/24/谈谈网页设计中的字体设定/" title="谈谈网页设计中的字体设定" itemprop="url">谈谈网页设计中的字体设定</a>
+  </h1>
+  <p class="article-author">By
+  <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
+  <p class="article-time">
+    <time datetime="2014-09-24T04:20:04.000Z" itemprop="datePublished">9月 24 2014</time>
+    更新日期:<time datetime="2014-09-24T07:08:52.000Z" itemprop="dateModified">9月 24 2014</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#现状"><span class="toc-number">2.</span> <span class="toc-text">现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#考虑理想的写法"><span class="toc-number">3.</span> <span class="toc-text">考虑理想的写法</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-default"><span class="toc-number">3.1.</span> <span class="toc-text">Font-default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-mono"><span class="toc-number">3.2.</span> <span class="toc-text">Font-mono</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#测试效果"><span class="toc-number">4.</span> <span class="toc-text">测试效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">5.</span> <span class="toc-text">最后</span></a></li></ol>
+		</div>
+		
+		<h2 id="引言">引言</h2>
+<p>　　对于网页设计中的字体设置，显然指定不同字体所排版出来的效果是不同的，而且对于不同的平台（Windows，Mac OS，Linux），操作系统所预装的字体也是各不相同，因此同一网页在不同平台上显示出来的效果也是不一样的。然而，这一问题的核心问题无非也就在于如何确定CSS中<code>font-family</code>的写法，因为浏览器就是依据<code>font-family</code>的值来确定所要使用的字体，从而使网页在不同平台上都能达到最好的显示效果。</p>
+<h2 id="现状">现状</h2>
+<ul>
+<li>第一种写法就是很通用和常见的写法：</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">font-family</span><span class="pseudo">:sans-serif</span>;
+</pre></td></tr></table></figure>
+
+<p><code>sans-serif</code>这种字体写法，就是让浏览器和操作系统自行选择该平台下所使用的字体。其实若采用这种写法，在多数平台上都能达到比较好的效果，而且写法简单，比较省心，比如在Mac OS下会自动采用<code>华文细黑(10.6以下)</code>或<code>黑体-简(10.7以上)</code>来显示中文字符，效果都很不错，在Linux下会采用<code>文泉驿微米黑</code>来显示，然而，我们有一个“猪一样的队友”—微软，在Windows下的浏览器则会采用<code>中易宋体</code>来显示中文字符，会让网页看着非常别扭，和你设计初衷相差比较大。因此，以至于我们接下来所有所作的努力都是为了照顾这位“猪一样的队友”。</p>
+<ul>
+<li>第二种写法</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">font-family</span><span class="pseudo">:SimSun</span>;
+</pre></td></tr></table></figure>
+
+<p>国内许多网站由于种种原因（比如规避浏览器bug或前端设计师脑残加之许多开发者根本就不了解Windows以外的世界，不知道他们随手写上的<code>SimSun</code>会让OSX以及Linux用户感到多么地“不适”）而必须在CSS中写上<code>SimSun</code>（中易宋体，在Vista之前所有Windows的默认中文字体，俗称<code>宋体</code>），如果OSX用户里恰好又因为安装Office之类的原因安装了<code>中易宋体</code>，这个糟糕的字体就被显示出来了（这样的中文网站很多，许多开发者根本不知道font-family属性该怎么写，而有少数开发者确实是为了规避IE浏览器的弱智bug）。</p>
+<ul>
+<li>第三种写法<br>用极其细致的列表来给不同操作系统指定不同的字体，以使尽量用上操作系统里可用的最佳字体。比如：</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">font-family</span><span class="pseudo">:"Helvetica</span> <span class="tag">Neue</span>", "<span class="tag">Helvetica</span>","<span class="tag">Hiragino</span> <span class="tag">Sans</span> <span class="tag">GB</span>","<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "<span class="tag">WenQuanYi</span> <span class="tag">Micro</span> <span class="tag">Hei</span>",<span class="tag">Arial</span>, <span class="tag">sans-serif</span>;
+</pre></td></tr></table></figure>
+
+<p>对于这种写法，在OSX中则采用显示效果比较好的<code>Hiragino Sans GB(苹果冬青黑)</code>来显示中文字符，在Linux中采用<code>WenQuanYi Micro Hei(文泉驿微米黑)</code>来显示，在Windows中则采用效果较好的<code>Microsoft YaHei(微软雅黑)</code>来显示中文字符。</p>
+<h2 id="考虑理想的写法">考虑理想的写法</h2>
+<p>对于上述三种写法，要想达到最佳效果，显然我们要采用第三种写法，因此我们下面对第三种写法进行改进。<br>对于一个网页，我们显然要让中文字符和英文字符的显示都能达到最佳效果。同时，一个网页的字体通常要分为两种样式—普通通用样式所用的字体（用于文章内容样式等普通样式）以及等宽样式字体（用于粘贴代码的样式以及其他要求整齐等宽的样式）。此处，我们将前者设定为<code>font-default</code>，后者设定为<code>font-mono</code>，两者分开来考虑写法。</p>
+<h3 id="Font-default">Font-default</h3>
+<p>对于<code>font-default</code>，经过总结，我们采用如上写法即可：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">font-default</span><span class="pseudo">:"Helvetica</span> <span class="tag">Neue</span>", "<span class="tag">Helvetica</span>","<span class="tag">Hiragino</span> <span class="tag">Sans</span> <span class="tag">GB</span>","<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "<span class="tag">WenQuanYi</span> <span class="tag">Micro</span> <span class="tag">Hei</span>",<span class="tag">Arial</span>, <span class="tag">sans-serif</span>;
+</pre></td></tr></table></figure>
+
+<p>这样英文字符和中文字符都有合适的字体匹配，因为多数英文字体中都不包含中文字符，所以英文字体在前，这样的话英文字符可以匹配到前面的英文字体，而中文字体就会按照顺序fallback到后面所选定的中文字体上，中英文都能达到很好的效果。<br>然而经网友反映，假若有部分在Windows平台上自行安装了苹果的<code>Hiragino Sans GB</code>字体，则按照上述配置就会把中文字符匹配到<code>Hiragino Sans GB</code>来显示而没有匹配到<code>微软雅黑</code>字体来显示。由于<code>Hiragino Sans GB</code>在Windows平台下的渲染效果并不是很理想，所以为了保险起见，去掉<code>Hiragino Sans GB</code>，即采用如下写法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">font-default</span><span class="pseudo">:"Helvetica</span> <span class="tag">Neue</span>","<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "<span class="tag">WenQuanYi</span> <span class="tag">Micro</span> <span class="tag">Hei</span>",<span class="tag">Arial</span>, <span class="tag">sans-serif</span>;
+</pre></td></tr></table></figure>
+
+<p>这样的话，对于OSX平台，中文字符则直接fallback到<code>sans-serif</code>上由操作系统所选择的<code>华文细黑(10.6以下)</code>或<code>黑体-简(10.7以上)</code>来显示，效果也比较好。<br>同时，此种写法在Android上被fallback为默认的中文字体<code>Droid Sans Fallback</code>，在Windows Phone上被fallback为默认的中文字体<code>方正等线</code>，在iOS上则被fallback为<code>华文洗黑</code>，显示效果都比较不错。</p>
+<h3 id="Font-mono">Font-mono</h3>
+<p>对于等宽指定字体<code>font-mono</code>，考虑到等宽字体多用到粘贴代码的场合，并且现如今的程序代码还没有说遇到使用中文作为编程语言的，中文在代码中多用于程序注释，因此，等宽字体对英文字符的字体选定要求比较高，要求英文字符的宽度一致。<br>现有的英文等宽字体有这么几个评价普遍比较高：</p>
+<ul>
+<li>Windows:<code>Consolas</code> ,<code>Courier New</code></li>
+<li>OSX:<code>Consolas</code>,<code>Courier New</code><br>同时对于中文字体，考虑到在Windows平台上能拿得出手的也就<code>微软雅黑</code>字体了，而且微软雅黑的中文字符看起来比较整齐，比较美观同时OSX平台下让其直接fallback到<code>monospace</code>让操作系统和浏览器自行选择中文字符的等宽字体，但是又考虑到一些OSX用户也由于安装Office等原因安装了<code>微软雅黑</code>字体，但是微软雅黑在OSX下又实在不如自带的字体美观，因此不得不把OSX的monospace的fallback默认字体<code>Heiti SC(黑体-简)</code>提到<code>微软雅黑</code>前面，综上，我们可以写成如下形式：</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">font-mono</span><span class="pseudo">:Monaco</span>, <span class="tag">Menlo</span>, <span class="tag">Consolas</span>, <span class="tag">Courier</span> <span class="tag">New</span>, "<span class="tag">Heiti</span> <span class="tag">SC</span>", <span class="tag">STHeiti</span>, "<span class="tag">Microsoft</span> <span class="tag">Yahei</span>", <span class="tag">monospace</span>;
+</pre></td></tr></table></figure>
+
+<p>这样对于移动平台iOS,Android和Windows Phone上,倘若有相关字体则使用相关字体来显示等宽字符，倘若没有则都fallback到monospace让操作系统和浏览器自行选择等宽字体。</p>
+<h2 id="测试效果">测试效果</h2>
+<p><img src="/img/谈谈网页设计中的字体设定/linux.png" alt=""><br>Ubuntu 13.04 With Chrome 31.0.1650.57<br><img src="/img/谈谈网页设计中的字体设定/windows.png" alt=""><br>Windows 8 With IE 10.0.9200<br><img src="/img/谈谈网页设计中的字体设定/android.jpg" alt=""><br>Android 4.1 With Chrome 37.0.2062.117</p>
+<h2 id="最后">最后</h2>
+<p>通过测试我们可以看到所选用的字体设置基本均发挥出了各个平台的最佳字体效果，同时也保证了同一网页在各个平台上所呈现出的效果和网页风格的一致性。<br><strong>注意</strong>：在较低版本的IE中（如IE8）存在只要font-family中某个字体存在，就会完全无视掉它之后的字体，缺字用默认字体显示（也就是宋体）的BUG（著名的IE font-family fallback bug）,因此请Web前端开发者注意此点。</p>
+<p><strong>参考:</strong><br>(<a href="http://www.zhihu.com/question/19911793" target="_blank">http://www.zhihu.com/question/19911793</a>)</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Web/">Web</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://ptbsare.org/2014/09/24/谈谈网页设计中的字体设定/" data-title="谈谈网页设计中的字体设定 | Ptbsare&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2014/09/21/《viva-la-vida》-生命万岁/"  title="《Viva La Vida》-生命万岁">
+ <strong>NEXT:</strong><br/> 
+ <span>《Viva La Vida》-生命万岁
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comment">
+    <h1 class="title">文章评论</h1>
+    <div id="disqus_thread"></div>
+    <style type="text/css">
+    #disqus_thread { padding: 20px 35px 5px 35px; }
+    </style>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ptbsare'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#现状"><span class="toc-number">2.</span> <span class="toc-text">现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#考虑理想的写法"><span class="toc-number">3.</span> <span class="toc-text">考虑理想的写法</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-default"><span class="toc-number">3.1.</span> <span class="toc-text">Font-default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-mono"><span class="toc-number">3.2.</span> <span class="toc-text">Font-mono</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#测试效果"><span class="toc-number">4.</span> <span class="toc-text">测试效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">5.</span> <span class="toc-text">最后</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Feeling/" title="Feeling">Feeling<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GNU Tools/" title="GNU Tools">GNU Tools<sup>4</sup></a></li>
+		
+			<li><a href="/tags/Latex/" title="Latex">Latex<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Movie/" title="Movie">Movie<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Music/" title="Music">Music<sup>2</sup></a></li>
+		
+			<li><a href="/tags/OpenGL/" title="OpenGL">OpenGL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Pieces/" title="Pieces">Pieces<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Reprint/" title="Reprint">Reprint<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Web/" title="Web">Web<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Ptbsare. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://twitter.com/ptbsare" target="_blank" title="twitter"></a>
+		
+		
+		<a href="https://github.com/ptbsare" target="_blank" title="github"></a>
+		
+		
+		<a href="https://www.facebook.com/ptbsare" target="_blank" title="facebook"></a>
+		
+		
+		<a href="https://plus.google.com/100168399125398465924?rel=author" target="_blank" title="Google+"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/3769631" target="_blank" title="stackoverflow"></a>
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://ptbsare.org" target="_blank" title="ptbsare">ptbsare</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+			    tex2jax: {
+					      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+								      processEscapes: true
+											    }
+													  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+				      tex2jax: {
+							        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+											      }
+														    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+				        var all = MathJax.Hub.getAllJax(), i;
+								        for(i=0; i < all.length; i += 1) {
+												            all[i].SourceElement().parentNode.className += ' has-jax';
+																		        }
+																						    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </body>
+</html>
