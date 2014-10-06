@@ -80,7 +80,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2014-09-24T04:20:04.000Z" itemprop="datePublished">9月 24 2014</time>
-    更新日期:<time datetime="2014-10-06T11:52:07.000Z" itemprop="dateModified">10月 6 2014</time>
+    更新日期:<time datetime="2014-10-06T11:53:44.000Z" itemprop="dateModified">10月 6 2014</time>
     
   </p>
 </header>
@@ -123,9 +123,10 @@
 <h2 id="考虑理想的写法">考虑理想的写法</h2>
 <ul>
 <li>对于上述三种写法，要想达到最佳效果，显然我们要采用第三种写法，因此我们下面对第三种写法进行改进。</li>
-<li>对于一个网页，我们显然要让中文字符和英文字符的显示都能达到最佳效果。同时，一个网页的字体通常要分为两种样式：普通通用样式所用的字体（用于文章内容样式等普通样式）以及等宽样式字体（用于粘贴代码的样式以及其他要求整齐等宽的样式）。此处，我们将前者设定为<code>font-default</code>，后者设定为<code>font-mono</code>，两者分开来考虑写法。<h3 id="Font-default">Font-default</h3>
-对于<code>font-default</code>，经过总结，我们采用如上写法即可：</li>
+<li>对于一个网页，我们显然要让中文字符和英文字符的显示都能达到最佳效果。同时，一个网页的字体通常要分为两种样式：普通通用样式所用的字体（用于文章内容样式等普通样式）以及等宽样式字体（用于粘贴代码的样式以及其他要求整齐等宽的样式）。此处，我们将前者设定为<code>font-default</code>，后者设定为<code>font-mono</code>，两者分开来考虑写法。</li>
 </ul>
+<h3 id="Font-default">Font-default</h3>
+<p>对于<code>font-default</code>，经过总结，我们采用如上写法即可：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre><span class="tag">font-default</span><span class="pseudo">:"Helvetica</span> <span class="tag">Neue</span>", "<span class="tag">Helvetica</span>","<span class="tag">Hiragino</span> <span class="tag">Sans</span> <span class="tag">GB</span>","<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "<span class="tag">WenQuanYi</span> <span class="tag">Micro</span> <span class="tag">Hei</span>",<span class="tag">Arial</span>, <span class="tag">sans-serif</span>;
 </pre></td></tr></table></figure>
