@@ -80,7 +80,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2014-09-24T04:20:04.000Z" itemprop="datePublished">9月 24 2014</time>
-    更新日期:<time datetime="2014-10-06T11:53:44.000Z" itemprop="dateModified">10月 6 2014</time>
+    更新日期:<time datetime="2014-10-06T11:55:30.000Z" itemprop="dateModified">10月 6 2014</time>
     
   </p>
 </header>
@@ -141,8 +141,9 @@
 <p>对于等宽指定字体<code>font-mono</code>，考虑到等宽字体多用到粘贴代码的场合，并且现如今的程序代码还没有说遇到使用中文作为编程语言的，中文在代码中多用于程序注释，因此，等宽字体对英文字符的字体选定要求比较高，要求英文字符的宽度一致。<br>现有的英文等宽字体有这么几个评价普遍比较高：</p>
 <ul>
 <li>Windows:<code>Consolas</code> ,<code>Courier New</code></li>
-<li>OSX:<code>Consolas</code>,<code>Courier New</code><br>同时对于中文字体，考虑到在Windows平台上能拿得出手的也就<code>微软雅黑</code>字体了，而且微软雅黑的中文字符看起来比较整齐，比较美观同时OSX平台下让其直接fallback到<code>monospace</code>让操作系统和浏览器自行选择中文字符的等宽字体，但是又考虑到一些OSX用户也由于安装Office等原因安装了<code>微软雅黑</code>字体，但是微软雅黑在OSX下又实在不如自带的字体美观，因此不得不把OSX的monospace的fallback默认字体<code>Heiti SC(黑体-简)</code>提到<code>微软雅黑</code>前面，综上，我们可以写成如下形式：</li>
+<li>OSX:<code>Consolas</code>,<code>Courier New</code></li>
 </ul>
+<p>同时对于中文字体，考虑到在Windows平台上能拿得出手的也就<code>微软雅黑</code>字体了，而且微软雅黑的中文字符看起来比较整齐，比较美观同时OSX平台下让其直接fallback到<code>monospace</code>让操作系统和浏览器自行选择中文字符的等宽字体，但是又考虑到一些OSX用户也由于安装Office等原因安装了<code>微软雅黑</code>字体，但是微软雅黑在OSX下又实在不如自带的字体美观，因此不得不把OSX的monospace的fallback默认字体<code>Heiti SC(黑体-简)</code>提到<code>微软雅黑</code>前面，综上，我们可以写成如下形式：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre><span class="tag">font-mono</span><span class="pseudo">:Monaco</span>, <span class="tag">Menlo</span>, <span class="tag">Consolas</span>, <span class="tag">Courier</span> <span class="tag">New</span>, "<span class="tag">Heiti</span> <span class="tag">SC</span>", <span class="tag">STHeiti</span>, "<span class="tag">Microsoft</span> <span class="tag">Yahei</span>", <span class="tag">monospace</span>;
 </pre></td></tr></table></figure>
