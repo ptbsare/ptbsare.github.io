@@ -1,0 +1,1513 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Linux下的thunder实现-折腾手记 | Ptbsare&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="ptbsare">
+    
+    <meta name="description" content="引言
+鉴于国内如此比较恶劣的p2p下载环境，Linux下还没有一款”像样”的p2p下载软件，由于许多网站仅仅给出了迅雷下载链接或者ed2k，磁力链接，于是寻求一个Linux下的p2p下载软件替代。前两天听闻迅雷推出了一个远程下载功能，所谓远程下载即在路由器上运行迅雷下载资源，并在论坛里面提供了各个处">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="ptbsare" />
+    <meta name="twitter:title" content="Linux下的thunder实现-折腾手记 | Ptbsare&#39;s Blog" />
+      
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman1.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman1.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Ptbsare&#39;s Blog" title="Ptbsare&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Ptbsare&#39;s Blog">Ptbsare&#39;s Blog</a></h1>
+				<h2 class="blog-motto">And Ideas Are Bulletproof.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/lab">Lab</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:ptbsare.org">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/10/25/linux下的thunder实现-折腾手记/" title="Linux下的thunder实现-折腾手记" itemprop="url">Linux下的thunder实现-折腾手记</a>
+  </h1>
+  <p class="article-author">By
+  <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
+  <p class="article-time">
+    <time datetime="2014-10-25T14:51:00.000Z" itemprop="datePublished">10月 25 2014</time>
+    更新日期:<time datetime="2014-10-26T04:29:14.000Z" itemprop="dateModified">10月 26 2014</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">3.</span> <span class="toc-text">分析</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#portal"><span class="toc-number">3.1.</span> <span class="toc-text">portal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ETMDaemon"><span class="toc-number">3.2.</span> <span class="toc-text">ETMDaemon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vod_httpserver"><span class="toc-number">3.3.</span> <span class="toc-text">vod_httpserver</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#远程下载"><span class="toc-number">4.</span> <span class="toc-text">远程下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动化脚本实现"><span class="toc-number">5.</span> <span class="toc-text">自动化脚本实现</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Thunder_Service"><span class="toc-number">5.1.</span> <span class="toc-text">Thunder Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限用户thunder"><span class="toc-number">5.2.</span> <span class="toc-text">权限用户thunder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#储存设备检查"><span class="toc-number">5.3.</span> <span class="toc-text">储存设备检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GUI套壳"><span class="toc-number">5.4.</span> <span class="toc-text">GUI套壳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程图分析"><span class="toc-number">5.5.</span> <span class="toc-text">流程图分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整脚本"><span class="toc-number">5.6.</span> <span class="toc-text">完整脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动器及图标"><span class="toc-number">5.7.</span> <span class="toc-text">启动器及图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行效果"><span class="toc-number">5.8.</span> <span class="toc-text">运行效果</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#deb打包"><span class="toc-number">6.</span> <span class="toc-text">deb打包</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#control_File"><span class="toc-number">6.1.</span> <span class="toc-text">control File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#postinst_File"><span class="toc-number">6.2.</span> <span class="toc-text">postinst File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改脚本并打包"><span class="toc-number">6.3.</span> <span class="toc-text">修改脚本并打包</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#ppa发布"><span class="toc-number">7.</span> <span class="toc-text">ppa发布</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册账户并创建ppa"><span class="toc-number">7.1.</span> <span class="toc-text">注册账户并创建ppa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建并导入openPGP_密钥"><span class="toc-number">7.2.</span> <span class="toc-text">创建并导入openPGP 密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传sshkey"><span class="toc-number">7.3.</span> <span class="toc-text">上传sshkey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建源码包并上传"><span class="toc-number">7.4.</span> <span class="toc-text">创建源码包并上传</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#org-tar-gz"><span class="toc-number">7.4.1.</span> <span class="toc-text">org.tar.gz</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#debian化"><span class="toc-number">7.4.2.</span> <span class="toc-text">debian化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录结构放好"><span class="toc-number">7.4.3.</span> <span class="toc-text">目录结构放好</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#打包"><span class="toc-number">7.4.4.</span> <span class="toc-text">打包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#上传"><span class="toc-number">7.4.5.</span> <span class="toc-text">上传</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#ppa安装"><span class="toc-number">7.5.</span> <span class="toc-text">ppa安装</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol>
+		</div>
+		
+		<h2 id="引言">引言</h2>
+<p>鉴于国内如此比较恶劣的p2p下载环境，Linux下还没有一款”像样”的p2p下载软件，由于许多网站仅仅给出了迅雷下载链接或者ed2k，磁力链接，于是寻求一个Linux下的p2p下载软件替代。<br>前两天听闻迅雷推出了一个远程下载功能，所谓远程下载即在路由器上运行迅雷下载资源，并在论坛里面提供了各个处理器平台的二进制文件，鉴于目前路由器上面跑的操作系统多数是Linux，值得注意的是，此次发布的路由器二进制文件其中包含了基于X86及glibc的构建版本，这就意味着它可以运行在桌面Linux上，于是萌生了让thunder跑在原生桌面Linux的想法。<br><img src="/img/linux下的thunder实现-折腾手记/1.ico" alt=""></p>
+<h2 id="简介">简介</h2>
+<p>thunder的此路由器二进制构建项目名称为Xware(<a href="http://g.xunlei.com/forum-51-1.html" target="_blank">论坛地址</a>)，发布的固件中包含了如下四个文件：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>Xware1<span class="number">.0</span><span class="number">.31</span>_x86_32_glibc<span class="subst">/</span>
+├── EmbedThunderManager
+├── ETMDaemon
+├── <span class="keyword">portal</span>
+└── vod_httpserver
+</pre></td></tr></table></figure>
+
+<h2 id="分析">分析</h2>
+<h3 id="portal">portal</h3>
+<p>经过测试发现，其中portal是入口文件，其它三个二进制文件由portal调用，portal运行后会产生两个进程<code>EmbedThunderManager</code>和<code>ETMDaemon</code>，其中<code>ETMDaemon</code>负责储存设备探测，它会自动扫描当前机器已经挂载的可写的储存设备并在其下面建立ThunderDB文件夹并在其中标记了改储存设备的uuid，并将储存设备依次标记为<code>C：，D：，E：</code>盘，并在/tmp下建立<code>thunder/volumes/C:</code>等符号链接依次链接到各个设备。</p>
+<h3 id="ETMDaemon">ETMDaemon</h3>
+<p>通过进一步测试我们发现要想被<code>ETMDaemon</code>捕获识别为可以存放下载文件的储存设备必须满足这么几个条件：</p>
+<ul>
+<li>它是一个单独的被挂载的磁盘分区</li>
+<li>该用户对该分区/目录有绝对的777权限</li>
+</ul>
+<p>是的，听起来有点流氓，的确它就是这么流氓，不过在后面我们可以采取一些措施来欺骗此检查。</p>
+<h3 id="vod_httpserver">vod_httpserver</h3>
+<p><code>vod_httpserver</code>负责在127.0.0.1:9000上面运行一个server，用浏览器打开loaclhost:9000/getinfo可以得到一串字符串，当然我们关心的就只有其中一段由大写字幕组成的字符串，待会儿我们要用到。当然loaclhost:9000/getinfo这个地址是由Xware-desktop的项目作者对Xware二进制文件进行逆向工程得到的，开源社区的力量还真是强大，在此表示致敬。</p>
+<h2 id="远程下载">远程下载</h2>
+<p>好了经过如上面的分析，下面来介绍一下迅雷的远程下载：<br>迅雷的远程下载大体经过一下几个步骤<br><img src="/img/linux下的thunder实现-折腾手记/2.png" alt=""></p>
+<ul>
+<li>其中绑定那步所用到的激活码也就是在上面分析中提到的那一串大写字母。</li>
+<li>我们要做的工作就是让这一连串全自动化执行，以使得只用轻轻点一下鼠标就能进行添加任务下载。</li>
+</ul>
+<h2 id="自动化脚本实现">自动化脚本实现</h2>
+<h3 id="Thunder_Service">Thunder Service</h3>
+<p>由于<code>portal</code>是以建立daemon的形式运行，因此最适合以服务的方式运行和调用，即用<code>sudo service thunder start</code>以及<code>sudo thunder stop</code>就可以启动和终止服务，好在thunder远程下载论坛的一位老鸟已经做出了此thunder service脚本，在这里我们拿来用即可，脚本内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+</pre></td><td class="code"><pre>ptbsare@ptbsare-PC70:~$ cat /etc/init.d/thunder 
+<span class="shebang">#! /bin/sh</span>
+<span class="comment">### BEGIN INIT INFO</span>
+<span class="comment"># Provides:          thunder</span>
+<span class="comment"># Required-Start:    $local_fs $network</span>
+<span class="comment"># Required-Stop:     $local_fs $network</span>
+<span class="comment"># Default-Start:     2 3 4 5</span>
+<span class="comment"># Default-Stop:      0 1 6</span>
+<span class="comment"># Short-Description: Start/stop embed thunder manager</span>
+<span class="comment">#</span>
+<span class="comment"># Chkconfig: 2345 91 9</span>
+<span class="comment"># Description: Start/stop embed thunder manager</span>
+<span class="comment">### END INIT INFO</span>
+<span class="comment">#</span>
+<span class="comment"># Author: Pengxuan Men &lt;pengxuan.men@gmail.com&gt;</span>
+<span class="comment">#</span>
+
+USER=bai
+XWAREPATH=/opt/Xware
+RUN=<span class="variable">$XWAREPATH</span>/portal
+LOG=<span class="variable">$XWAREPATH</span>/message.log
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+DESC=<span class="string">"Embed Thunder Manager"</span>
+NAME=thunder
+DAEMON=<span class="variable">$XWAREPATH</span>/lib/ETMDaemon
+DNAME=ETMDaemon
+PIDFILE=/var/run/<span class="variable">$NAME</span>/<span class="variable">$NAME</span>.pid
+SCRIPTNAME=/etc/init.d/<span class="variable">$NAME</span>
+
+<span class="comment"># Exit if the package is not installed</span>
+[ -x <span class="string">"<span class="variable">$RUN</span>"</span> ] || <span class="keyword">exit</span> <span class="number">5</span>
+
+<span class="comment"># Read configuration variable file if it is present</span>
+<span class="comment">#[ -r /etc/default/$NAME ] && . /etc/default/$NAME</span>
+
+<span class="comment"># Define LSB log_* functions. Depend on lsb-base (&gt;= 3.0-6)</span>
+. /lib/lsb/init-functions
+
+<span class="comment"># start the daemon/service</span>
+
+<span class="function"><span class="title">do_start</span></span>()
+{
+    <span class="comment"># Return</span>
+    <span class="comment">#   0 if daemon has been started</span>
+    <span class="comment">#   1 if daemon was already running</span>
+    <span class="comment">#   2 if daemon could not be started</span>
+
+    <span class="comment"># start_daemon -p $PIDFILE $DAEMON</span>
+
+    <span class="comment"># Check if running</span>
+    <span class="keyword">if</span> pidofproc -p <span class="variable">$PIDFILE</span> <span class="string">"<span class="variable">$DAEMON</span>"</span> &gt; /dev/null <span class="number">2</span>&gt;&<span class="number">1</span> ; <span class="keyword">then</span>
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">fi</span>
+
+    <span class="comment"># Mount</span>
+    umount <span class="operator">-l</span> /media/thunder <span class="number">2</span>&gt;/dev/null
+    mount -B /home/ptbsare/Download/TDDownload /media/thunder
+
+    <span class="comment"># Run</span>
+    su <span class="variable">$USER</span> -c <span class="string">"<span class="variable">$RUN</span>"</span> &gt; <span class="variable">$LOG</span> <span class="number">2</span>&gt;/dev/null
+
+    <span class="comment"># Check result</span>
+    local LAST=`cat <span class="variable">$LOG</span> | tail -n <span class="number">1</span>`
+    [ <span class="string">"<span class="variable">$LAST</span>"</span> = <span class="string">"finished."</span> ] || <span class="keyword">return</span> <span class="number">2</span>
+
+    <span class="comment"># Check if fail</span>
+    FAIL=`cat <span class="variable">$LOG</span> | tail -n <span class="number">4</span> | grep fail`
+    [ <span class="string">"<span class="variable">$FAIL</span>"</span> != <span class="string">""</span> ] && <span class="keyword">return</span> <span class="number">2</span>
+
+
+    <span class="comment"># Check ACTIVE CODE</span>
+    local MSG=<span class="string">""</span>
+    MSG=`cat <span class="variable">$LOG</span> | tail -n <span class="number">4</span> | grep <span class="string">"ACTIVE CODE"</span>`
+    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$MSG</span>"</span> != <span class="string">""</span> ] ; <span class="keyword">then</span>
+        cat <span class="variable">$LOG</span> | tail -n <span class="number">5</span> | head -n <span class="number">4</span> | <span class="keyword">while</span> <span class="built_in">read</span> l; <span class="keyword">do</span> log_warning_msg <span class="variable">$l</span>; <span class="keyword">done</span>
+        <span class="keyword">return</span> <span class="number">2</span>
+    <span class="keyword">fi</span>
+
+    <span class="comment"># Check if bound</span>
+    MSG=`cat <span class="variable">$LOG</span> | tail -n <span class="number">4</span> | grep <span class="string">"BOUND TO USER"</span>`
+    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$MSG</span>"</span> != <span class="string">""</span> ] ; <span class="keyword">then</span>
+        cat <span class="variable">$LOG</span> | tail -n <span class="number">4</span> | head -n <span class="number">3</span> | <span class="keyword">while</span> <span class="built_in">read</span> l; <span class="keyword">do</span> log_warning_msg <span class="variable">$l</span>; <span class="keyword">done</span>
+        [ <span class="operator">-e</span> /var/run/<span class="variable">$NAME</span> ] || mkdir /var/run/<span class="variable">$NAME</span>
+        ps aux | grep <span class="variable">$DAEMON</span> | grep -v grep | awk <span class="string">'{print $2}'</span> &gt; <span class="variable">$PIDFILE</span>
+        <span class="keyword">return</span> <span class="number">0</span>
+    <span class="keyword">fi</span>
+
+    <span class="keyword">return</span> <span class="number">2</span>
+}
+
+<span class="comment"># stop the daemon/service</span>
+
+<span class="function"><span class="title">do_stop</span></span>()
+{
+    <span class="comment"># Return</span>
+    <span class="comment">#   0 if daemon has been stopped</span>
+    <span class="comment">#   1 if daemon was already stopped</span>
+    <span class="comment">#   2 if daemon could not be stopped</span>
+    <span class="comment">#   other if a failure occurred</span>
+
+    <span class="comment"># killproc -p $PIDFILE $DAEMON</span>
+
+    local RET=<span class="number">0</span>
+
+    <span class="keyword">if</span> pidof <span class="variable">$DAEMON</span> &gt; /dev/null <span class="number">2</span>&gt;&<span class="number">1</span> ; <span class="keyword">then</span>
+        <span class="keyword">if</span> [ <span class="operator">-e</span> <span class="variable">$PIDFILE</span> ] && pidof <span class="variable">$DAEMON</span> | tr <span class="string">' '</span> <span class="string">'\n'</span> | grep -w $(cat <span class="variable">$PIDFILE</span>) &gt; /dev/null <span class="number">2</span>&gt;&<span class="number">1</span> ; <span class="keyword">then</span>
+            RET=<span class="number">2</span>
+        <span class="keyword">else</span>
+            RET=<span class="number">1</span>
+        <span class="keyword">fi</span>
+    <span class="keyword">else</span>
+        RET=<span class="number">0</span>
+    <span class="keyword">fi</span>
+
+    <span class="comment"># RET is:</span>
+    <span class="comment"># 0 if Deamon (whichever) is not running</span>
+    <span class="comment"># 1 if Deamon (whichever) is running</span>
+    <span class="comment"># 2 if Deamon from the PIDFILE is running</span>
+
+    <span class="keyword">if</span> [ <span class="variable">$RET</span> = <span class="number">0</span> ] ; <span class="keyword">then</span>
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">elif</span> [ <span class="variable">$RET</span> = <span class="number">2</span> ] ; <span class="keyword">then</span>
+        su <span class="variable">$USER</span> -c <span class="string">"<span class="variable">$RUN</span> -s"</span> &gt; <span class="variable">$LOG</span> <span class="number">2</span>&gt;/dev/null
+        local COUNT=`cat <span class="variable">$LOG</span> | grep -c stopped`
+        <span class="keyword">if</span> [ <span class="variable">$COUNT</span> &gt; <span class="number">0</span> ] ; <span class="keyword">then</span>
+            <span class="comment"># remove pidfile if daemon could not delete on exit.</span>
+            rm <span class="operator">-f</span> <span class="variable">$PIDFILE</span>
+            <span class="keyword">return</span> <span class="number">0</span>
+        <span class="keyword">else</span>
+            FAIL=`cat <span class="variable">$LOG</span> | tail -n <span class="number">1</span>`
+            <span class="keyword">return</span> <span class="number">2</span>
+        <span class="keyword">fi</span>
+    <span class="keyword">elif</span> [ <span class="variable">$RET</span> = <span class="number">1</span> ] ; <span class="keyword">then</span>
+        FAIL=<span class="string">"There are processes named '<span class="variable">$DNAME</span>' running which do not match your pid file which are left untouched in the name of safety, Please review the situation by hand."</span>
+        <span class="keyword">return</span> <span class="number">2</span>
+    <span class="keyword">fi</span>
+
+    <span class="keyword">return</span> <span class="number">2</span>
+}
+
+<span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span>
+  start)
+    log_daemon_msg <span class="string">"Starting <span class="variable">$DESC</span> <span class="variable">$NAME</span>"</span>
+
+    <span class="keyword">do</span>_start
+
+    <span class="keyword">case</span> <span class="string">"$?"</span> <span class="keyword">in</span>
+        <span class="number">0</span>|<span class="number">1</span>) log_success_msg ;;
+        *)   log_failure_msg <span class="string">"<span class="variable">$FAIL</span>"</span> ;;
+    <span class="keyword">esac</span>
+    ;;
+  stop)
+    log_daemon_msg <span class="string">"Stopping <span class="variable">$DESC</span> <span class="variable">$NAME</span>"</span>
+
+    <span class="keyword">do</span>_stop
+
+    <span class="keyword">case</span> <span class="string">"$?"</span> <span class="keyword">in</span>
+        <span class="number">0</span>|<span class="number">1</span>) log_success_msg ;;
+        <span class="number">2</span>)   log_failure_msg ;;
+    <span class="keyword">esac</span>
+    ;;
+  restart|force-reload)
+    log_daemon_msg <span class="string">"Restarting <span class="variable">$DESC</span> <span class="variable">$NAME</span>"</span>
+
+
+    <span class="keyword">do</span>_stop
+    <span class="keyword">case</span> <span class="string">"$?"</span> <span class="keyword">in</span>
+      <span class="number">0</span>|<span class="number">1</span>)
+        sleep <span class="number">1</span>
+        <span class="keyword">do</span>_start
+
+        <span class="keyword">case</span> <span class="string">"$?"</span> <span class="keyword">in</span>
+            <span class="number">0</span>) log_success_msg ;;
+            <span class="number">1</span>) log_failure_msg ;; <span class="comment"># Old process is still running</span>
+            *) log_failure_msg ;; <span class="comment"># Failed to start</span>
+        <span class="keyword">esac</span>
+        ;;
+      *)
+          <span class="comment"># Failed to stop</span>
+        log_failure_msg
+        ;;
+    <span class="keyword">esac</span>
+    ;;
+  status)
+    status_of_proc -p <span class="variable">$PIDFILE</span> <span class="variable">$DAEMON</span> <span class="variable">$DNAME</span> && <span class="keyword">exit</span> <span class="number">0</span> || <span class="keyword">exit</span> $?
+    ;;
+  *)
+
+    log_warning_msg <span class="string">"Usage: <span class="variable">$SCRIPTNAME</span> {start|stop|restart|force-reload|status}"</span> &gt;&<span class="number">2</span>
+    <span class="keyword">exit</span> <span class="number">3</span>
+    ;;
+<span class="keyword">esac</span>
+
+:
+</pre></td></tr></table></figure>
+
+<p>正常情况下<code>sudo service thunder start</code>会有这么几种输出：</p>
+<ul>
+<li>倘若该下载器已经绑定，则输出会类似于:</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre> * Starting Embed Thunder Manager thunder
+ * 
+ * THIS DEVICE <span class="keyword">HAS</span> BOUND <span class="keyword">TO</span> USER: ptbsare.
+ * 
+ *
+</pre></td></tr></table></figure>
+
+<ul>
+<li>若下载器尚未被绑定，则输出类似于：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre> * Starting Embed Thunder Manager thunder
+ *
+ * THE ACTIVE CODE IS: BXZAMY
+ *
+ * go <span class="built_in">to</span> <span class="keyword">http</span>://yuancheng.xunlei.com, bind your device <span class="operator">with</span> <span class="operator">the</span> active code.
+ *
+</pre></td></tr></table></figure>
+
+<ul>
+<li>若服务启动失败，则输出类似于：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre> * Starting Embed Thunder Manager thunder
+ * <span class="keyword">fail</span> to start XXXX
+</pre></td></tr></table></figure>
+
+<h3 id="权限用户thunder">权限用户thunder</h3>
+<ul>
+<li>细心的读者会注意到上述service文件中是以thunder这个用户运行的，事实上由于Xware比较流氓，原则上Xware只能以root用户运行，采用service的方式对权限问题进行了一定的优化，因此不得不新建立一个系统用户thunder以避免portal启动失败,在下面你也可以看到，权限问题至关重要，同时下载设备也要对thunder用户是777权限。</li>
+<li>倘若我们就使用原来的用户来运行的话，你会发现在linux下挂载的Windows分区由于对当前系统是777权限，它都会被识别成下载储存设备，这显然不是我们需要的，因此有必要新建立一个thunder用户。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">#新建系统用户thunder</span>
+<span class="built_in">sudo</span> useradd -r thunder
+</pre></td></tr></table></figure>
+
+<h3 id="储存设备检查">储存设备检查</h3>
+<ul>
+<li>如前分析所述，Xware本事是比较流氓的，对于很多用户就只有一个根分区/，故不能开放777权限啊，我们可以采取一些措施来欺骗<code>ETMDaemon</code>的检查。</li>
+<li>经过测试我们发现<code>ETMDaemon</code>识别的是设备，其实我们可以在/media下面挂载一些假的”设备”,它都会被识别成储存设备，因此可以吧要存放下载文件夹挂载到/media下面就可以，不过要保证下载目的地文件夹为777权限，命令如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>mkdir <span class="variable">$HOME</span>/Download/TDDownload
+<span class="built_in">sudo</span> mkdir /media/thunder
+<span class="built_in">sudo</span> chmod -R <span class="number">777</span> <span class="variable">$HOME</span>/Download/TDDownload
+<span class="built_in">sudo</span> chown -R thunder:thunder <span class="variable">$HOME</span>/Download/TDDownload
+<span class="built_in">sudo</span> mount -B <span class="variable">$HOME</span>/Download/TDDownload /media/thunder
+</pre></td></tr></table></figure>
+
+<p>事实证明此方法可行。</p>
+<h3 id="GUI套壳">GUI套壳</h3>
+<p>由于提交下载任务等交互都是在网页中执行，可以给Xware套个壳子，chrome可以以app模式运行且可以指定窗口位置，大小，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>google-chrome --user-data-dir=<span class="variable">$HOME</span>/.thunder-x/chrome --window-size=<span class="number">1064</span>,<span class="number">570</span> --window-position=<span class="number">100</span>,<span class="number">100</span> --app=http://yuancheng.xunlei.com
+</pre></td></tr></table></figure>
+
+<h3 id="流程图分析">流程图分析</h3>
+<p>要建立一个自动化的脚本，根据不同情况完成相应的动作，经过分析可以得到如下的程序流程图：<br><img src="/img/linux下的thunder实现-折腾手记/3.png" alt=""></p>
+<h3 id="完整脚本">完整脚本</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="code"><pre>ptbsare@ptbsare-PC70:~$ cat /opt/Xware/start-thunder 
+<span class="shebang">#!/bin/bash</span>
+<span class="keyword">if</span> [ <span class="variable">$USER</span> == <span class="string">"thunder"</span> ];<span class="keyword">then</span>
+<span class="built_in">echo</span> <span class="string">"Please change current user."</span>
+notify-send <span class="string">"Please change current user."</span> -i /opt/Xware/icon/before.ico
+<span class="keyword">exit</span> <span class="number">1</span>;
+<span class="keyword">fi</span>
+SER=`service thunder status |awk <span class="string">'{print $4}'</span>`
+<span class="keyword">if</span> [ <span class="string">"<span class="variable">$SER</span>"</span> == <span class="string">"not"</span> ];<span class="keyword">then</span>
+notify-send <span class="string">"Thunder Service is Starting..."</span> -i /opt/Xware/icon/before.ico ;
+gksudo -S -k /opt/Xware/mount&&
+MSG=`cat /tmp/._code_|grep ACTIVE|awk -F <span class="string">' '</span> <span class="string">'{print $6}'</span>`
+<span class="built_in">echo</span> <span class="variable">$MSG</span>
+<span class="comment">#MSG=sudo service thunder start;</span>
+<span class="keyword">if</span> [ <span class="string">"<span class="variable">$MSG</span>"</span> != <span class="string">""</span> ];<span class="keyword">then</span>
+notify-send <span class="string">"Please login and Active Your Device then Restart.  Active Code: <span class="variable">$MSG</span>"</span> -i /opt/Xware/icon/code.ico
+notify-send <span class="string">"Please login and Active Your Device then Restart.  Active Code: <span class="variable">$MSG</span>"</span> -i /opt/Xware/icon/code.ico
+notify-send <span class="string">"Please login and Active Your Device then Restart.  Active Code: <span class="variable">$MSG</span>"</span> -i /opt/Xware/icon/code.ico
+notify-send <span class="string">"Please login and Active Your Device then Restart.  Active Code: <span class="variable">$MSG</span>"</span> -i /opt/Xware/icon/code.ico
+notify-send <span class="string">"Please login and Active Your Device then Restart.  Active Code: <span class="variable">$MSG</span>"</span> -i /opt/Xware/icon/code.ico
+notify-send <span class="string">"Please Restart After Activing."</span> -i /opt/Xware/icon/restart.ico
+notify-send <span class="string">"Please Restart After Activing."</span> -i /opt/Xware/icon/restart.ico
+<span class="keyword">fi</span>
+SER=`service thunder status |awk <span class="string">'{print $4}'</span>`
+<span class="keyword">if</span> [ <span class="string">"<span class="variable">$SER</span>"</span> == <span class="string">"running"</span> ];<span class="keyword">then</span>
+notify-send <span class="string">"Thunder Service has Started Successfully!"</span> -i /opt/Xware/icon/after.ico;
+<span class="keyword">elif</span> [ <span class="string">"<span class="variable">$MSG</span>"</span> == <span class="string">""</span> ];<span class="keyword">then</span>
+notify-send <span class="string">"Thunder Service Fail to Start :   ETMDaemon is not running "</span> -i /opt/Xware/icon/fail.ico ;
+<span class="keyword">fi</span>
+<span class="keyword">fi</span>
+<span class="keyword">if</span> [ <span class="operator">-e</span> /usr/bin/google-chrome ];<span class="keyword">then</span>
+<span class="keyword">if</span> [ ! <span class="operator">-d</span> <span class="variable">$HOME</span>/.thunder-x/chrome ];<span class="keyword">then</span>
+mkdir -p <span class="variable">$HOME</span>/.thunder-x/chrome;
+touch <span class="variable">$HOME</span>/.thunder-x/chrome/<span class="string">'First Run'</span>;
+<span class="keyword">fi</span>
+google-chrome --user-data-dir=<span class="variable">$HOME</span>/.thunder-x/chrome --window-size=<span class="number">1064</span>,<span class="number">570</span> --window-position=<span class="number">100</span>,<span class="number">100</span> --app=http://yuancheng.xunlei.com; 
+<span class="keyword">elif</span> [ <span class="operator">-e</span> /usr/bin/google-chrome-unstable ];<span class="keyword">then</span>
+<span class="keyword">if</span> [ ! <span class="operator">-d</span> <span class="variable">$HOME</span>/.thunder-x/chrome-un ];<span class="keyword">then</span>
+mkdir -p <span class="variable">$HOME</span>/.thunder-x/chrome-un
+touch <span class="variable">$HOME</span>/.thunder-x/chrome-un/<span class="string">'First Run'</span>;
+<span class="keyword">fi</span>
+/usr/bin/google-chrome-unstable --user-data-dir=<span class="variable">$HOME</span>/.thunder-x/chrome-un --window-size=<span class="number">1064</span>,<span class="number">570</span> --window-position=<span class="number">100</span>,<span class="number">100</span> --app=http://yuancheng.xunlei.com
+<span class="keyword">elif</span> [ <span class="operator">-e</span> /usr/bin/google-chrome-beta ];<span class="keyword">then</span>
+<span class="keyword">if</span> [ ! <span class="operator">-d</span> <span class="variable">$HOME</span>/.thunder-x/chrome-be ];<span class="keyword">then</span>
+mkdir -p <span class="variable">$HOME</span>/.thunder-x/chrome-be
+touch <span class="variable">$HOME</span>/.thunder-x/chrome-be/<span class="string">'First Run'</span>;
+<span class="keyword">fi</span>
+/usr/bin/google-chrome-beta --user-data-dir=<span class="variable">$HOME</span>/.thunder-x/chrome-be --window-size=<span class="number">1064</span>,<span class="number">570</span> --window-position=<span class="number">100</span>,<span class="number">100</span> --app=http://yuancheng.xunlei.com
+<span class="keyword">elif</span> [ <span class="operator">-e</span> /usr/bin/chromium-browser ];<span class="keyword">then</span>
+<span class="keyword">if</span> [ ! <span class="operator">-d</span> <span class="variable">$HOME</span>/.thunder-x/chromium ];<span class="keyword">then</span>
+mkdir -p <span class="variable">$HOME</span>/.thunder-x/chromium
+touch <span class="variable">$HOME</span>/.thunder-x/chromium/<span class="string">'First Run'</span>;
+<span class="keyword">fi</span>
+/usr/bin/chromium-browser --user-data-dir=<span class="variable">$HOME</span>/.thunder-x/chromium-browser --window-size=<span class="number">1064</span>,<span class="number">570</span> --window-position=<span class="number">100</span>,<span class="number">100</span> --app=http://yuancheng.xunlei.com
+<span class="keyword">fi</span>
+<span class="built_in">echo</span> <span class="string">"Done"</span>
+</pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="comment">#mount挂载假设备</span>
+ptbsare@ptbsare-PC70:~$ cat /opt/Xware/start-thunder 
+<span class="shebang">#!/bin/bash</span>
+service thunder start &gt;/tmp/._code_&&
+umount <span class="operator">-l</span> /media/thunder <span class="number">2</span>&gt;/dev/null;
+mount -B <span class="variable">$HOME</span>/Download/TDDownload /media/thunder
+</pre></td></tr></table></figure>
+
+<h3 id="启动器及图标">启动器及图标</h3>
+<ul>
+<li>启动器文件</li>
+</ul>
+<p>使用<code>StartupWMClass</code>来匹配窗口启动器</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>ptbsare@ptbsare-PC70:~$ cat /usr/share/applications/thunder.desktop 
+[Desktop Entry]
+<span class="constant">Name</span>=Thunder
+<span class="constant">Comment</span>=Open Thunder
+<span class="constant">Exec</span>=/opt/Xware/start-thunder
+<span class="constant">Icon</span>=/usr/share/icons/thunder.png
+<span class="constant">Terminal</span>=false
+<span class="constant">Type</span>=Application
+<span class="constant">StartupNotify</span>=true
+<span class="constant">Categories</span>=Network;FileTransfer;P2P;
+<span class="constant">OnlyShowIn</span>=GNOME;Unity;
+<span class="constant">StartupWMClass</span>=yuancheng.xunlei.com
+</pre></td></tr></table></figure>
+
+<ul>
+<li>考虑到友好的用户交互体验,在<code>notify-send</code>提示时总得弄几个好看的图标吧<br><img src="/img/linux下的thunder实现-折腾手记/4.png" alt=""></li>
+</ul>
+<h3 id="运行效果">运行效果</h3>
+<p><strong>下面发几张运行效果图</strong><br><strong>启动</strong><br><img src="/img/linux下的thunder实现-折腾手记/5.png" alt=""><br><strong>绑定</strong><br><img src="/img/linux下的thunder实现-折腾手记/6.png" alt=""><br><img src="/img/linux下的thunder实现-折腾手记/7.png" alt=""><br><strong>运行</strong><br><img src="/img/linux下的thunder实现-折腾手记/8.png" alt=""><br><img src="/img/linux下的thunder实现-折腾手记/9.png" alt=""></p>
+<h2 id="deb打包">deb打包</h2>
+<ul>
+<li>上面只是在本地弄好启动，下面考虑将程序打包成<code>.deb</code>包。</li>
+<li>将该程序项目起一个名字，命名为thunder-x项目。</li>
+</ul>
+<h3 id="control_File">control File</h3>
+<p>首先<code>.deb</code>包必要一个<code>control</code>文件用来添加软件依赖等等，此处<code>control</code>文件的 写法如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>Package: thunder<span class="attribute">-x</span>
+Architecture: <span class="literal">all</span>
+Version: <span class="number">0.1</span><span class="number">.0</span>
+Maintainer: ptbsare <span class="subst">&lt;</span>ptbsare@gmail<span class="built_in">.</span>com<span class="subst">&gt;</span>
+Depends: gksu, libnotify<span class="attribute">-bin</span>, google<span class="attribute">-chrome</span><span class="attribute">-stable</span> <span class="subst">|</span> goolge<span class="attribute">-chrome</span><span class="attribute">-beta</span> <span class="subst">|</span> google<span class="attribute">-chrome</span><span class="attribute">-unstable</span> <span class="subst">|</span> chromium<span class="attribute">-browser</span>
+Priority: optional
+Description: p2sp thunder client<span class="built_in">.</span>
+ Thunder running <span class="keyword">on</span> linux using Xware<span class="built_in">.</span>
+</pre></td></tr></table></figure>
+
+<h3 id="postinst_File">postinst File</h3>
+<p><code>postinst</code> 是在安装时所执行的设置脚本，参考<a href="https://wiki.debian.org/MaintainerScripts" target="_blank">Debian Wiki</a>，软件在安装设置时<code>postinst configure</code>会被调用，此处我们需要一个<code>postinst</code>来建立thunder这个user等一系列工作，其写法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="shebang">#!/bin/sh</span>
+<span class="keyword">if</span> cat /etc/passwd | awk -F : <span class="string">'{print $1}'</span> | grep <span class="variable">$name</span> &gt;/dev/null <span class="number">2</span>&gt;&<span class="number">1</span>
+<span class="keyword">then</span>
+<span class="built_in">echo</span> <span class="string">"User thunder already exists"</span>
+<span class="keyword">else</span>
+useradd -r thunder
+<span class="keyword">fi</span>
+<span class="keyword">if</span> [ ! <span class="operator">-d</span> /media/thunder ];<span class="keyword">then</span>
+mkdir -p /media/thunder
+<span class="keyword">fi</span>
+chmod -R <span class="number">777</span> /usr/share/thunder-x/Xware
+chmod <span class="number">0755</span> /etc/init.d/thunder
+</pre></td></tr></table></figure>
+
+<h3 id="修改脚本并打包">修改脚本并打包</h3>
+<ul>
+<li>由于打包成<code>.deb</code>后可供安装就要考虑适应很多中情况，所以就要对脚本进行修改，增添一些判断情况。</li>
+<li>一切就绪后将文件夹命名为<code>程序名-版本号</code>的方式并按照以下目录组织放好就可以用dpkg打包了:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="code"><pre>ptbsare@ptbsare-PC70:/tmp/dpkg-b$ tree thunder-x-<span class="number">0.1</span>.<span class="number">0</span>
+thunder-x-<span class="number">0.1</span>.<span class="number">0</span>
+├── DEBIAN
+│   ├── control
+│   └── postinst
+├── etc
+│   └── init.d
+│       └── thunder
+└── usr
+    └── share
+        ├── applications
+        │   └── thunder.desktop
+        └── thunder-x
+            └── Xware
+                ├── cfg
+                │   ├── download.cfg
+                │   └── etm.cfg
+                ├── icon
+                │   ├── after.ico
+                │   ├── before.ico
+                │   ├── code.ico
+                │   ├── fail.ico
+                │   ├── restart.ico
+                │   ├── thunder.png
+                │   └── user.ico
+                ├── lib
+                │   ├── EmbedThunderManager
+                │   ├── ETMDaemon
+                │   └── vod_httpserver
+                ├── message.log
+                ├── mount
+                ├── online.html
+                ├── portal
+                └── start-thunder
+
+<span class="number">11</span> directories, <span class="number">21</span> files
+</pre></td></tr></table></figure>
+
+<p>可以看出来目录存放顺序完全是按照文件在目标机器上面的安装位置来的。<br>打包命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>dpkg -b thunder-x-<span class="number">0.1</span>.<span class="number">0</span>/
+</pre></td></tr></table></figure>
+
+<p>这样就生成了一个thunder-x-0.1.0.deb的安装包可供安装。</p>
+<h2 id="ppa发布">ppa发布</h2>
+<p>要想更方便地发布安装软件包，我们可以建立一个ppa来发布该软件包。</p>
+<h3 id="注册账户并创建ppa">注册账户并创建ppa</h3>
+<p>到launchpad注册一个账户并创建一个ppa，ppa命名为thunder-x，如下图所示：<br><img src="/img/linux下的thunder实现-折腾手记/10.png" alt=""><br><img src="/img/linux下的thunder实现-折腾手记/11.png" alt=""></p>
+<h3 id="创建并导入openPGP_密钥">创建并导入openPGP 密钥</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>gpg –gen-key
+gpg --send-keys --keyserver keyserver.ubuntu.com <span class="number">12345678</span> 
+<span class="comment">#12345678为你生成密钥中pub后的八位数字字母</span>
+</pre></td></tr></table></figure>
+
+<p>登陆launchpad导入密钥指纹（fingerprint）<br><img src="/img/linux下的thunder实现-折腾手记/12.jpeg" alt=""><br>然后官方会给你发一封邮件，按照其中的指示，将邮件中的那部分不可读内容复制粘贴到例如file.txt中，然后：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>gpg --decrypt file.txt
+</pre></td></tr></table></figure>
+
+<p>并照输出中的指示做。</p>
+<h3 id="上传sshkey">上传sshkey</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>ssh-keygen -t rsa
+</pre></td></tr></table></figure>
+
+<p>登陆网站导入sshkey并粘贴<code>~/.ssh/id_rsa.pub</code>的内容。</p>
+<h3 id="创建源码包并上传">创建源码包并上传</h3>
+<p>launchpad 只接受源码包并由它编译，因此我们需要另外创建一个可维护的debian源码包。</p>
+<h4 id="org-tar-gz">org.tar.gz</h4>
+<ul>
+<li>顾名思义，为上游源代码文件，在这里我们将所需的文件摆好并压缩成一个<code>org.tar.gz</code>包。</li>
+<li>将上面的文件夹改名为<code>thunder-x_0.1.0.orig</code>,所需的文件按照下面的目录摆好并压缩成<code>thunder-x_0.1.0.orig.tar.gz</code>。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="code"><pre>ptbsare@ptbsare-PC70:/tmp$ tree thunder-x_0.<span class="number">1.0</span>.orig/
+thunder-x_0.<span class="number">1.0</span>.orig/
+├── thunder
+├── thunder.desktop
+└── thunder-x
+    └── Xware
+        ├── icon
+        │   ├── after.ico
+        │   ├── before.ico
+        │   ├── code.ico
+        │   ├── fail.ico
+        │   ├── restart.ico
+        │   ├── thunder.png
+        │   └── user.ico
+        ├── lib
+        │   ├── EmbedThunderManager
+        │   ├── ETMDaemon
+        │   └── vod_httpserver
+        ├── message.log
+        ├── mount
+        ├── online.html
+        ├── portal
+        └── start-thunder
+
+<span class="number">4</span> directories, <span class="number">17</span> files
+</pre></td></tr></table></figure>
+
+<h4 id="debian化">debian化</h4>
+<p>我们需要对上游的源码包进行debian化，新建一个<code>thunder-x-0.1.0</code>文件夹，里面新建debian文件夹，debian文件夹下应该有这么几个文件：</p>
+<ul>
+<li>changelog</li>
+</ul>
+<p>指定相对于org所做出的更改以及编译ubuntu发行分支和维护者署名。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>thunder-x (0.1.0) trusty; urgency=low
+
+  * Initial release.
+
+ -<span class="ruby">- ptbsare &lt;ptbsare<span class="variable">@gmail</span>.com&gt;  <span class="constant">Mon</span>, <span class="number">26</span> <span class="constant">Oct</span> <span class="number">2014</span> <span class="number">10</span><span class="symbol">:</span><span class="number">57</span><span class="symbol">:</span><span class="number">43</span> +080<span class="number">0</span></span>
+</pre></td></tr></table></figure>
+
+<ul>
+<li>control</li>
+</ul>
+<p>指定编译所需依赖以及编译出的二进制包的依赖另外还有版本维护者等信息。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="attribute">Source</span>: <span class="string">thunder-x</span>
+<span class="attribute">Section</span>: <span class="string">net</span>
+<span class="attribute">Priority</span>: <span class="string">extra</span>
+<span class="attribute">Maintainer</span>: <span class="string">ptbsare &lt;ptbsare@gmail.com&gt;</span>
+<span class="attribute">Build-Depends</span>: <span class="string">debhelper (&gt;= 8.0.0)</span>
+<span class="attribute">Standards-Version</span>: <span class="string">0.1.0</span>
+
+<span class="lasso">Package: thunder<span class="attribute">-x</span>
+Architecture: <span class="literal">all</span>
+Depends: gksu, libnotify<span class="attribute">-bin</span>, google<span class="attribute">-chrome</span><span class="attribute">-stable</span> <span class="subst">|</span> goolge<span class="attribute">-chrome</span><span class="attribute">-beta</span> <span class="subst">|</span> google<span class="attribute">-chrome</span><span class="attribute">-unstable</span> <span class="subst">|</span> chromium<span class="attribute">-browser</span>
+Priority: optional
+Description: p2sp thunder client<span class="built_in">.</span>
+ Thunder running <span class="keyword">on</span> linux using Xware<span class="built_in">.</span></span>
+</pre></td></tr></table></figure>
+
+<ul>
+<li>dirs</li>
+</ul>
+<p>安装后文件存放目录。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>/usr/share
+/usr/share/applications
+/etc/init<span class="preprocessor">.d</span>
+</pre></td></tr></table></figure>
+
+<ul>
+<li>copyright</li>
+</ul>
+<p>版权声明等信息，重要。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="code"><pre><span class="attribute">Format</span>: <span class="string">http://dep.debian.net/deps/dep5</span>
+<span class="attribute">Upstream-Name</span>: <span class="string">thunder-x</span>
+<span class="attribute">Source</span>: <span class="string"> http://xunlei.com/</span>
+
+<span class="http"><span class="attribute">Files</span>: <span class="string">*</span>
+<span class="attribute">Copyright</span>: <span class="string">2005-2014 Xunlei</span>
+<span class="attribute">License</span>: <span class="string">Non-free</span>
+
+<span class="coffeescript"><span class="attribute">Files</span>: debian/*
+<span class="attribute">Copyright</span>: <span class="number">2014</span> ptbsare &lt;ptbsare<span class="property">@gmail</span>.com&gt;
+<span class="attribute">License</span>: GPL-<span class="number">2</span>+
+ This package <span class="keyword">is</span> free software; you can redistribute it <span class="keyword">and</span>/<span class="keyword">or</span> modify
+ it under the terms <span class="keyword">of</span> the GNU General Public License as published <span class="keyword">by</span>
+ the Free Software Foundation; either version <span class="number">2</span> <span class="keyword">of</span> the License, <span class="keyword">or</span>
+ (at your option) any later version.
+ .
+ This package <span class="keyword">is</span> distributed <span class="keyword">in</span> the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty <span class="keyword">of</span>
+ MERCHANTABILITY <span class="keyword">or</span> FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License <span class="keyword">for</span> more details.
+ .
+ You should have received a copy <span class="keyword">of</span> the GNU General Public License
+ along <span class="reserved">with</span> <span class="keyword">this</span> program. If <span class="keyword">not</span>, see &lt;<span class="attribute">http</span>:<span class="regexp">//</span>www.gnu.org<span class="regexp">/licenses/</span>&gt;
+ .
+ On Debian systems, the complete text <span class="keyword">of</span> the GNU General
+ Public License version <span class="number">2</span> can be found <span class="keyword">in</span> <span class="string">"/usr/share/common-licenses/GPL-2"</span>.
+
+<span class="comment"># Please also look if there are files or directories which have a</span>
+<span class="comment"># different copyright/license attached and list them here.</span></span></span>
+</pre></td></tr></table></figure>
+
+<ul>
+<li>install</li>
+</ul>
+<p>文件的摆放对应位置，编译时依据此确定deb包中的文件目录结构摆放。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>thunder /etc/init<span class="preprocessor">.d</span>
+thunder-<span class="built_in">x</span> /usr/share
+thunder<span class="preprocessor">.desktop</span> /usr/share/applications
+</pre></td></tr></table></figure>
+
+<ul>
+<li>rules</li>
+</ul>
+<p>编译命令，相当于一个makefile，由于在这里不需要编译什么东西，我们保持默认。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="shebang">#!/usr/bin/make -f</span>
+# -*- makefile -*-
+
+%:
+	dh $@
+</pre></td></tr></table></figure>
+
+<ul>
+<li>md5sums</li>
+</ul>
+<p>md5信息。</p>
+<ul>
+<li>postinst</li>
+</ul>
+<p>同上，不再赘述。</p>
+<h4 id="目录结构放好">目录结构放好</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre>thunder-x-<span class="number">0.1</span><span class="number">.0</span>/
+└── debian
+    ├── changelog
+    ├── compat
+    ├── <span class="keyword">control</span>
+    ├── copyright
+    ├── dirs
+    ├── install
+    ├── md5sums
+    ├── postinst
+    ├── rules
+    └── <span class="keyword">source</span>
+        └── <span class="keyword">format</span>
+</pre></td></tr></table></figure>
+
+<h4 id="打包">打包</h4>
+<p>在thunder-x-0.1.0目录下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>debuild -S -sa
+</pre></td></tr></table></figure>
+
+<p>执行此步后会生成下面几个文件:<br><code>thunder-x_0.1.0.debian.tar.gz</code>，<code>thunder-x_0.1.0_source.build</code>，<code>thunder-x_0.1.0_source.changes</code></p>
+<h4 id="上传">上传</h4>
+<p>使用dput上传：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>dput ppa:ptbsare/thunder-x thunder-x_0.<span class="number">1.0</span>_source.changes
+</pre></td></tr></table></figure>
+
+<p>然后launchpad会在虚拟机里面给你编译，如果编译成功则就生成了二进制的deb包：<br><img src="/img/linux下的thunder实现-折腾手记/13.png" alt=""></p>
+<h3 id="ppa安装">ppa安装</h3>
+<p>最后，我们可以通过ppa进行安装：<br><strong>注：暂时只有14.04的i386构建版本，其他版本ubuntu请自行修改ppa的sourcelist为trusty。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-add-repository ppa: ptbsare/thunder-x
+<span class="built_in">sudo</span> apt-get update
+<span class="built_in">sudo</span> apt-get install thunder-x
+</pre></td></tr></table></figure>
+
+<p><strong>Enjoy!</strong></p>
+<h2 id="总结">总结</h2>
+<p>经过以上步骤，我们就完成了折腾之旅，可以直接在不同的机器上用ppa安装使用的包，非常方便。在这期间也经过了无数次的失败和调试以及重新打包，深感开发者开发软件以及打包的不易，在此向那些默默无闻的开源社区开发者表示致敬。<br>以上也算是经过了完整的在ubuntu下的下开发-&gt;打包-&gt;发布的整个过程，因此本文也可以作为在ubuntu下开发软件以及打包发布的一个模版和例子。</p>
+<p><!-- Xware介绍，论坛地址，debian wiki，ppa打包介绍教程--><br><strong>参考</strong>：<br>(<a href="http://my.oschina.net/u/1382972/blog/285129" target="_blank">http://my.oschina.net/u/1382972/blog/285129</a>)<br>(<a href="http://g.xunlei.com/thread-3290-1-1.html" target="_blank">http://g.xunlei.com/thread-3290-1-1.html</a>)<br>(<a href="https://wiki.debian.org/MaintainerScripts" target="_blank">https://wiki.debian.org/MaintainerScripts</a>)<br>(<a href="http://blog.csdn.net/expleeve/article/details/5982170" target="_blank">http://blog.csdn.net/expleeve/article/details/5982170</a>)<br>(<a href="http://www.liangsuilong.info/?p=1019" target="_blank">http://www.liangsuilong.info/?p=1019</a>)<br>(<a href="http://openyoudao.org/%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%88%B6%E4%BD%9C%E8%87%AA%E5%B7%B1%E7%9A%84ppa%E5%AE%89%E8%A3%85%E5%8C%85" target="_blank">http://openyoudao.org/</a>)</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Ubuntu/">Ubuntu</a><a href="/tags/Linux/">Linux</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://ptbsare.org/2014/10/25/linux下的thunder实现-折腾手记/" data-title="Linux下的thunder实现-折腾手记 | Ptbsare&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2014/10/17/随拍/"  title="随拍">
+ <strong>NEXT:</strong><br/> 
+ <span>随拍
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comment">
+    <h1 class="title">文章评论</h1>
+    <div id="disqus_thread"></div>
+    <style type="text/css">
+    #disqus_thread { padding: 20px 35px 5px 35px; }
+    </style>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ptbsare'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">3.</span> <span class="toc-text">分析</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#portal"><span class="toc-number">3.1.</span> <span class="toc-text">portal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ETMDaemon"><span class="toc-number">3.2.</span> <span class="toc-text">ETMDaemon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vod_httpserver"><span class="toc-number">3.3.</span> <span class="toc-text">vod_httpserver</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#远程下载"><span class="toc-number">4.</span> <span class="toc-text">远程下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动化脚本实现"><span class="toc-number">5.</span> <span class="toc-text">自动化脚本实现</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Thunder_Service"><span class="toc-number">5.1.</span> <span class="toc-text">Thunder Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限用户thunder"><span class="toc-number">5.2.</span> <span class="toc-text">权限用户thunder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#储存设备检查"><span class="toc-number">5.3.</span> <span class="toc-text">储存设备检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GUI套壳"><span class="toc-number">5.4.</span> <span class="toc-text">GUI套壳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程图分析"><span class="toc-number">5.5.</span> <span class="toc-text">流程图分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整脚本"><span class="toc-number">5.6.</span> <span class="toc-text">完整脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动器及图标"><span class="toc-number">5.7.</span> <span class="toc-text">启动器及图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行效果"><span class="toc-number">5.8.</span> <span class="toc-text">运行效果</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#deb打包"><span class="toc-number">6.</span> <span class="toc-text">deb打包</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#control_File"><span class="toc-number">6.1.</span> <span class="toc-text">control File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#postinst_File"><span class="toc-number">6.2.</span> <span class="toc-text">postinst File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改脚本并打包"><span class="toc-number">6.3.</span> <span class="toc-text">修改脚本并打包</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#ppa发布"><span class="toc-number">7.</span> <span class="toc-text">ppa发布</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册账户并创建ppa"><span class="toc-number">7.1.</span> <span class="toc-text">注册账户并创建ppa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建并导入openPGP_密钥"><span class="toc-number">7.2.</span> <span class="toc-text">创建并导入openPGP 密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传sshkey"><span class="toc-number">7.3.</span> <span class="toc-text">上传sshkey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建源码包并上传"><span class="toc-number">7.4.</span> <span class="toc-text">创建源码包并上传</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#org-tar-gz"><span class="toc-number">7.4.1.</span> <span class="toc-text">org.tar.gz</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#debian化"><span class="toc-number">7.4.2.</span> <span class="toc-text">debian化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录结构放好"><span class="toc-number">7.4.3.</span> <span class="toc-text">目录结构放好</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#打包"><span class="toc-number">7.4.4.</span> <span class="toc-text">打包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#上传"><span class="toc-number">7.4.5.</span> <span class="toc-text">上传</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#ppa安装"><span class="toc-number">7.5.</span> <span class="toc-text">ppa安装</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Feeling/" title="Feeling">Feeling<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GNU Tools/" title="GNU Tools">GNU Tools<sup>4</sup></a></li>
+		
+			<li><a href="/tags/Latex/" title="Latex">Latex<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>4</sup></a></li>
+		
+			<li><a href="/tags/Movie/" title="Movie">Movie<sup>5</sup></a></li>
+		
+			<li><a href="/tags/Music/" title="Music">Music<sup>2</sup></a></li>
+		
+			<li><a href="/tags/OpenGL/" title="OpenGL">OpenGL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Photograph/" title="Photograph">Photograph<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Pieces/" title="Pieces">Pieces<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Reprint/" title="Reprint">Reprint<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Show/" title="Show">Show<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>4</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Web/" title="Web">Web<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Ptbsare. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://twitter.com/ptbsare" target="_blank" title="twitter"></a>
+		
+		
+		<a href="https://github.com/ptbsare" target="_blank" title="github"></a>
+		
+		
+		<a href="https://www.facebook.com/ptbsare" target="_blank" title="facebook"></a>
+		
+		
+		<a href="https://plus.google.com/100168399125398465924?rel=author" target="_blank" title="Google+"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/3769631" target="_blank" title="stackoverflow"></a>
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://ptbsare.org" target="_blank" title="ptbsare">ptbsare</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+			    tex2jax: {
+					      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+								      processEscapes: true
+											    }
+													  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+				      tex2jax: {
+							        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+											      }
+														    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+				        var all = MathJax.Hub.getAllJax(), i;
+								        for(i=0; i < all.length; i += 1) {
+												            all[i].SourceElement().parentNode.className += ' has-jax';
+																		        }
+																						    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </body>
+</html>
