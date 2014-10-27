@@ -10,7 +10,8 @@
     <meta name="author" content="ptbsare">
     
     <meta name="description" content="引言
-鉴于国内如此比较恶劣的p2p下载环境，Linux下还没有一款”像样”的p2p下载软件，由于许多网站仅仅给出了迅雷下载链接或者ed2k，磁力链接，于是寻求一个Linux下的p2p下载软件替代。前两天听闻迅雷推出了一个远程下载功能，所谓远程下载即在路由器上运行迅雷下载资源，并在论坛里面提供了各个处">
+鉴于国内如此比较恶劣的p2p下载环境，Linux下还没有一款”像样”的p2p下载软件，由于许多网站仅仅给出了迅雷下载链接或者ed2k，磁力链接，于是寻求一个Linux下的p2p下载软件替代。
+前两天听闻迅雷推出了一个远程下载功能，所谓远程下载即在路由器上运行迅雷下载资源。并且迅雷在论坛里面提供">
     
     
     
@@ -80,7 +81,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2014-10-25T14:51:00.000Z" itemprop="datePublished">10月 25 2014</time>
-    更新日期:<time datetime="2014-10-26T04:29:14.000Z" itemprop="dateModified">10月 26 2014</time>
+    更新日期:<time datetime="2014-10-27T02:32:41.000Z" itemprop="dateModified">10月 27 2014</time>
     
   </p>
 </header>
@@ -94,7 +95,8 @@
 		</div>
 		
 		<h2 id="引言">引言</h2>
-<p>鉴于国内如此比较恶劣的p2p下载环境，Linux下还没有一款”像样”的p2p下载软件，由于许多网站仅仅给出了迅雷下载链接或者ed2k，磁力链接，于是寻求一个Linux下的p2p下载软件替代。<br>前两天听闻迅雷推出了一个远程下载功能，所谓远程下载即在路由器上运行迅雷下载资源，并在论坛里面提供了各个处理器平台的二进制文件，鉴于目前路由器上面跑的操作系统多数是Linux，值得注意的是，此次发布的路由器二进制文件其中包含了基于X86及glibc的构建版本，这就意味着它可以运行在桌面Linux上，于是萌生了让thunder跑在原生桌面Linux的想法。<br><img src="/img/linux下的thunder实现-折腾手记/1.ico" alt=""></p>
+<p>鉴于国内如此比较恶劣的p2p下载环境，Linux下还没有一款”像样”的p2p下载软件，由于许多网站仅仅给出了迅雷下载链接或者ed2k，磁力链接，于是寻求一个Linux下的p2p下载软件替代。</p>
+<p>前两天听闻迅雷推出了一个远程下载功能，所谓远程下载即在路由器上运行迅雷下载资源。并且迅雷在论坛里面提供了各个处理器平台的二进制文件，鉴于目前路由器上面跑的操作系统多数是Linux，值得注意的是，此次发布的路由器二进制文件其中包含了基于X86及glibc的构建版本，这就意味着它可以运行在桌面Linux上，于是萌生了让thunder跑在原生桌面Linux的想法。<br><img src="/img/linux下的thunder实现-折腾手记/1.ico" alt=""></p>
 <h2 id="简介">简介</h2>
 <p>thunder的此路由器二进制构建项目名称为Xware(<a href="http://g.xunlei.com/forum-51-1.html" target="_blank">论坛地址</a>)，发布的固件中包含了如下四个文件：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -111,16 +113,16 @@
 
 <h2 id="分析">分析</h2>
 <h3 id="portal">portal</h3>
-<p>经过测试发现，其中portal是入口文件，其它三个二进制文件由portal调用，portal运行后会产生两个进程<code>EmbedThunderManager</code>和<code>ETMDaemon</code>，其中<code>ETMDaemon</code>负责储存设备探测，它会自动扫描当前机器已经挂载的可写的储存设备并在其下面建立ThunderDB文件夹并在其中标记了改储存设备的uuid，并将储存设备依次标记为<code>C：，D：，E：</code>盘，并在/tmp下建立<code>thunder/volumes/C:</code>等符号链接依次链接到各个设备。</p>
+<p>经过测试发现，其中portal是入口文件，其它三个二进制文件由portal调用，portal运行后会产生两个进程<code>EmbedThunderManager</code>和<code>ETMDaemon</code>，其中<code>ETMDaemon</code>负责储存设备探测，它会自动扫描当前机器已经挂载的可写的储存设备并在其下面建立ThunderDB文件夹，同时在其中标记了该储存设备的uuid，然后将储存设备依次标记为<code>C：，D：，E：</code>盘，而且会在<code>/tmp</code>下建立<code>thunder/volumes/C:</code>等符号链接依次链接到各个设备。</p>
 <h3 id="ETMDaemon">ETMDaemon</h3>
 <p>通过进一步测试我们发现要想被<code>ETMDaemon</code>捕获识别为可以存放下载文件的储存设备必须满足这么几个条件：</p>
 <ul>
 <li>它是一个单独的被挂载的磁盘分区</li>
 <li>该用户对该分区/目录有绝对的777权限</li>
 </ul>
-<p>是的，听起来有点流氓，的确它就是这么流氓，不过在后面我们可以采取一些措施来欺骗此检查。</p>
+<p>是的，听起来有点流氓，的确它就是这样，不过在后面我们可以采取一些措施来欺骗此检查。</p>
 <h3 id="vod_httpserver">vod_httpserver</h3>
-<p><code>vod_httpserver</code>负责在127.0.0.1:9000上面运行一个server，用浏览器打开loaclhost:9000/getinfo可以得到一串字符串，当然我们关心的就只有其中一段由大写字幕组成的字符串，待会儿我们要用到。当然loaclhost:9000/getinfo这个地址是由Xware-desktop的项目作者对Xware二进制文件进行逆向工程得到的，开源社区的力量还真是强大，在此表示致敬。</p>
+<p><code>vod_httpserver</code>负责在<code>127.0.0.1:9000</code>上面运行一个server，用浏览器打开<code>loaclhost:9000/getinfo</code>可以得到一串字符串，当然我们关心的就只有其中一段由大写字母组成的字符串，待会儿我们要用到。当然<code>loaclhost:9000/getinfo</code>这个地址是由<code>Xware-desktop</code>的项目作者对Xware二进制文件进行逆向工程得到的，开源社区的力量还真是强大，在此表示致敬。</p>
 <h2 id="远程下载">远程下载</h2>
 <p>好了经过如上面的分析，下面来介绍一下迅雷的远程下载：<br>迅雷的远程下载大体经过一下几个步骤<br><img src="/img/linux下的thunder实现-折腾手记/2.png" alt=""></p>
 <ul>
@@ -129,7 +131,7 @@
 </ul>
 <h2 id="自动化脚本实现">自动化脚本实现</h2>
 <h3 id="Thunder_Service">Thunder Service</h3>
-<p>由于<code>portal</code>是以建立daemon的形式运行，因此最适合以服务的方式运行和调用，即用<code>sudo service thunder start</code>以及<code>sudo thunder stop</code>就可以启动和终止服务，好在thunder远程下载论坛的一位老鸟已经做出了此thunder service脚本，在这里我们拿来用即可，脚本内容如下：</p>
+<p>由于<code>portal</code>是以建立daemon的形式运行，因此最适合以服务的方式运行和调用，即用<code>sudo service thunder start</code>以及<code>sudo service thunder stop</code>就可以启动和终止服务，好在thunder远程下载论坛的一位老鸟已经做出了此<code>thunder service</code>脚本，在这里我们拿来用即可，脚本内容如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -342,7 +344,7 @@
 <span class="comment"># Author: Pengxuan Men &lt;pengxuan.men@gmail.com&gt;</span>
 <span class="comment">#</span>
 
-USER=bai
+USER=thunder
 XWAREPATH=/opt/Xware
 RUN=<span class="variable">$XWAREPATH</span>/portal
 LOG=<span class="variable">$XWAREPATH</span>/message.log
@@ -381,8 +383,8 @@ SCRIPTNAME=/etc/init.d/<span class="variable">$NAME</span>
     <span class="keyword">fi</span>
 
     <span class="comment"># Mount</span>
-    umount <span class="operator">-l</span> /media/thunder <span class="number">2</span>&gt;/dev/null
-    mount -B /home/ptbsare/Download/TDDownload /media/thunder
+    <span class="comment">#umount -l /media/thunder 2&gt;/dev/null</span>
+    <span class="comment">#mount -B /home/ptbsare/Download/TDDownload /media/thunder</span>
 
     <span class="comment"># Run</span>
     su <span class="variable">$USER</span> -c <span class="string">"<span class="variable">$RUN</span>"</span> &gt; <span class="variable">$LOG</span> <span class="number">2</span>&gt;/dev/null
@@ -522,6 +524,15 @@ SCRIPTNAME=/etc/init.d/<span class="variable">$NAME</span>
 :
 </pre></td></tr></table></figure>
 
+<p>将其放到<code>/etc/init.d/</code>下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="built_in">sudo</span> mv thunder /etc/init.d/
+<span class="built_in">sudo</span> chown root:root /etc/init.d/thunder
+<span class="built_in">sudo</span> chmod <span class="number">0755</span> /etc/init.d/thunder
+</pre></td></tr></table></figure>
+
 <p>正常情况下<code>sudo service thunder start</code>会有这么几种输出：</p>
 <ul>
 <li>倘若该下载器已经绑定，则输出会类似于:</li>
@@ -577,8 +588,8 @@ SCRIPTNAME=/etc/init.d/<span class="variable">$NAME</span>
 
 <h3 id="储存设备检查">储存设备检查</h3>
 <ul>
-<li>如前分析所述，Xware本事是比较流氓的，对于很多用户就只有一个根分区/，故不能开放777权限啊，我们可以采取一些措施来欺骗<code>ETMDaemon</code>的检查。</li>
-<li>经过测试我们发现<code>ETMDaemon</code>识别的是设备，其实我们可以在/media下面挂载一些假的”设备”,它都会被识别成储存设备，因此可以吧要存放下载文件夹挂载到/media下面就可以，不过要保证下载目的地文件夹为777权限，命令如下：</li>
+<li>如前分析所述，Xware本身是要求<code>/</code>分区是777权限的，对于很多用户就只有一个根分区<code>/</code>，故不能开放777权限啊，所以我们可以采取一些措施来欺骗<code>ETMDaemon</code>的检查。</li>
+<li>经过测试我们发现<code>ETMDaemon</code>识别的是设备，其实我们可以在<code>/media</code>下面挂载一些假的”设备”,它都会被识别成储存设备，因此可以吧要存放下载文件夹挂载到/media下面就可以，不过要保证下载目的地文件夹为777权限，命令如下：</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre>1
 2
@@ -723,9 +734,51 @@ touch <span class="variable">$HOME</span>/.thunder-x/chromium/<span class="strin
 4
 5
 6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 </pre></td><td class="code"><pre><span class="comment">#mount挂载假设备</span>
-ptbsare@ptbsare-PC70:~$ cat /opt/Xware/start-thunder 
+ptbsare@ptbsare-PC70:~$ cat /opt/Xware/mount 
 <span class="shebang">#!/bin/bash</span>
+<span class="keyword">if</span> [ <span class="operator">-d</span> <span class="variable">$HOME</span>/下载 ];<span class="keyword">then</span>
+mkdir -p <span class="variable">$HOME</span>/下载/TDDownload
+<span class="keyword">if</span> [ ! <span class="operator">-e</span> <span class="variable">$HOME</span>/下载/TDDownload/TDDOWNLOAD ];<span class="keyword">then</span>
+ln <span class="operator">-s</span> <span class="variable">$HOME</span>/下载/TDDownload <span class="variable">$HOME</span>/下载/TDDownload/TDDOWNLOAD
+chmod -R <span class="number">777</span> <span class="variable">$HOME</span>/下载/TDDownload
+chown -R thunder:thunder <span class="variable">$HOME</span>/下载/TDDownload
+<span class="keyword">fi</span>
+<span class="keyword">elif</span> [ ! <span class="operator">-d</span> <span class="variable">$HOME</span>/Download ];<span class="keyword">then</span>
+mkdir -p <span class="variable">$HOME</span>/Download
+chown <span class="variable">$SUDO_USER</span>:<span class="variable">$SUDO_USER</span> <span class="variable">$HOME</span>/Download
+chmod <span class="number">755</span> <span class="variable">$HOME</span>/Download
+mkdir -p <span class="variable">$HOME</span>/Download/TDDownload
+ln <span class="operator">-s</span> <span class="variable">$HOME</span>/Download/TDDownload <span class="variable">$HOME</span>/Download/TDDownload/TDDOWNLOAD
+chmod -R <span class="number">777</span> <span class="variable">$HOME</span>/Download/TDDownload
+chown -R thunder <span class="variable">$HOME</span>/Download/TDDownload
+<span class="keyword">else</span>
+mkdir -p <span class="variable">$HOME</span>/Download/TDDownload
+ln <span class="operator">-s</span> <span class="variable">$HOME</span>/Download/TDDownload <span class="variable">$HOME</span>/Download/TDDownload/TDDOWNLOAD
+chmod -R <span class="number">777</span> <span class="variable">$HOME</span>/Download/TDDownload
+chown -R thunder <span class="variable">$HOME</span>/Download/TDDownload
+<span class="keyword">fi</span>
 service thunder start &gt;/tmp/._code_&&
 umount <span class="operator">-l</span> /media/thunder <span class="number">2</span>&gt;/dev/null;
 mount -B <span class="variable">$HOME</span>/Download/TDDownload /media/thunder
@@ -1186,7 +1239,7 @@ thunder<span class="preprocessor">.desktop</span> /usr/share/applications
 </pre></td><td class="code"><pre>debuild -S -sa
 </pre></td></tr></table></figure>
 
-<p>执行此步后会生成下面几个文件:<br><code>thunder-x_0.1.0.debian.tar.gz</code>，<code>thunder-x_0.1.0_source.build</code>，<code>thunder-x_0.1.0_source.changes</code></p>
+<p>执行此步后会生成下面几个文件:<br><code>thunder-x_0.1.0.debian.tar.gz</code><br><code>thunder-x_0.1.0_source.build</code><br><code>thunder-x_0.1.0_source.changes</code></p>
 <h4 id="上传">上传</h4>
 <p>使用dput上传：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre>1
