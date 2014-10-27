@@ -5,7 +5,8 @@ tags: [Ubuntu,Linux]
 
 ##引言
 鉴于国内如此比较恶劣的p2p下载环境，Linux下还没有一款"像样"的p2p下载软件，由于许多网站仅仅给出了迅雷下载链接或者ed2k，磁力链接，于是寻求一个Linux下的p2p下载软件替代。
-前两天听闻迅雷推出了一个远程下载功能，所谓远程下载即在路由器上运行迅雷下载资源，并在论坛里面提供了各个处理器平台的二进制文件，鉴于目前路由器上面跑的操作系统多数是Linux，值得注意的是，此次发布的路由器二进制文件其中包含了基于X86及glibc的构建版本，这就意味着它可以运行在桌面Linux上，于是萌生了让thunder跑在原生桌面Linux的想法。
+
+前两天听闻迅雷推出了一个远程下载功能，所谓远程下载即在路由器上运行迅雷下载资源。并且迅雷在论坛里面提供了各个处理器平台的二进制文件，鉴于目前路由器上面跑的操作系统多数是Linux，值得注意的是，此次发布的路由器二进制文件其中包含了基于X86及glibc的构建版本，这就意味着它可以运行在桌面Linux上，于是萌生了让thunder跑在原生桌面Linux的想法。
 ![](/img/linux下的thunder实现-折腾手记/1.ico)
 ##简介
 thunder的此路由器二进制构建项目名称为Xware([论坛地址](http://g.xunlei.com/forum-51-1.html))，发布的固件中包含了如下四个文件：
@@ -19,15 +20,15 @@ Xware1.0.31_x86_32_glibc/
 ```
 ##分析
 ###portal
-经过测试发现，其中portal是入口文件，其它三个二进制文件由portal调用，portal运行后会产生两个进程`EmbedThunderManager`和`ETMDaemon`，其中`ETMDaemon`负责储存设备探测，它会自动扫描当前机器已经挂载的可写的储存设备并在其下面建立ThunderDB文件夹并在其中标记了改储存设备的uuid，并将储存设备依次标记为`C：，D：，E：`盘，并在/tmp下建立`thunder/volumes/C:`等符号链接依次链接到各个设备。
+经过测试发现，其中portal是入口文件，其它三个二进制文件由portal调用，portal运行后会产生两个进程`EmbedThunderManager`和`ETMDaemon`，其中`ETMDaemon`负责储存设备探测，它会自动扫描当前机器已经挂载的可写的储存设备并在其下面建立ThunderDB文件夹，同时在其中标记了该储存设备的uuid，然后将储存设备依次标记为`C：，D：，E：`盘，而且会在`/tmp`下建立`thunder/volumes/C:`等符号链接依次链接到各个设备。
 ###ETMDaemon
 通过进一步测试我们发现要想被`ETMDaemon`捕获识别为可以存放下载文件的储存设备必须满足这么几个条件：
 * 它是一个单独的被挂载的磁盘分区
 * 该用户对该分区/目录有绝对的777权限
 
-是的，听起来有点流氓，的确它就是这么流氓，不过在后面我们可以采取一些措施来欺骗此检查。
+是的，听起来有点流氓，的确它就是这样，不过在后面我们可以采取一些措施来欺骗此检查。
 ###vod_httpserver
-`vod_httpserver`负责在127.0.0.1:9000上面运行一个server，用浏览器打开loaclhost:9000/getinfo可以得到一串字符串，当然我们关心的就只有其中一段由大写字幕组成的字符串，待会儿我们要用到。当然loaclhost:9000/getinfo这个地址是由Xware-desktop的项目作者对Xware二进制文件进行逆向工程得到的，开源社区的力量还真是强大，在此表示致敬。
+`vod_httpserver`负责在`127.0.0.1:9000`上面运行一个server，用浏览器打开`loaclhost:9000/getinfo`可以得到一串字符串，当然我们关心的就只有其中一段由大写字母组成的字符串，待会儿我们要用到。当然`loaclhost:9000/getinfo`这个地址是由`Xware-desktop`的项目作者对Xware二进制文件进行逆向工程得到的，开源社区的力量还真是强大，在此表示致敬。
 
 ##远程下载
 好了经过如上面的分析，下面来介绍一下迅雷的远程下载：
@@ -38,7 +39,7 @@ Xware1.0.31_x86_32_glibc/
 
 ##自动化脚本实现
 ###Thunder Service
-由于`portal`是以建立daemon的形式运行，因此最适合以服务的方式运行和调用，即用`sudo service thunder start`以及`sudo thunder stop`就可以启动和终止服务，好在thunder远程下载论坛的一位老鸟已经做出了此thunder service脚本，在这里我们拿来用即可，脚本内容如下：
+由于`portal`是以建立daemon的形式运行，因此最适合以服务的方式运行和调用，即用`sudo service thunder start`以及`sudo service thunder stop`就可以启动和终止服务，好在thunder远程下载论坛的一位老鸟已经做出了此`thunder service`脚本，在这里我们拿来用即可，脚本内容如下：
 ```bash
 ptbsare@ptbsare-PC70:~$ cat /etc/init.d/thunder 
 #! /bin/sh
@@ -57,7 +58,7 @@ ptbsare@ptbsare-PC70:~$ cat /etc/init.d/thunder
 # Author: Pengxuan Men <pengxuan.men@gmail.com>
 #
 
-USER=bai
+USER=thunder
 XWAREPATH=/opt/Xware
 RUN=$XWAREPATH/portal
 LOG=$XWAREPATH/message.log
@@ -96,8 +97,8 @@ do_start()
     fi
 
     # Mount
-    umount -l /media/thunder 2>/dev/null
-    mount -B /home/ptbsare/Download/TDDownload /media/thunder
+    #umount -l /media/thunder 2>/dev/null
+    #mount -B /home/ptbsare/Download/TDDownload /media/thunder
 
     # Run
     su $USER -c "$RUN" > $LOG 2>/dev/null
@@ -237,6 +238,12 @@ esac
 :
 
 ```
+将其放到`/etc/init.d/`下：
+```bash
+sudo mv thunder /etc/init.d/
+sudo chown root:root /etc/init.d/thunder
+sudo chmod 0755 /etc/init.d/thunder
+```
 正常情况下`sudo service thunder start`会有这么几种输出：
 * 倘若该下载器已经绑定，则输出会类似于:
 ```
@@ -268,8 +275,8 @@ esac
 sudo useradd -r thunder
 ```
 ###储存设备检查
-* 如前分析所述，Xware本事是比较流氓的，对于很多用户就只有一个根分区/，故不能开放777权限啊，我们可以采取一些措施来欺骗`ETMDaemon`的检查。
-* 经过测试我们发现`ETMDaemon`识别的是设备，其实我们可以在/media下面挂载一些假的"设备",它都会被识别成储存设备，因此可以吧要存放下载文件夹挂载到/media下面就可以，不过要保证下载目的地文件夹为777权限，命令如下：
+* 如前分析所述，Xware本身是要求`/`分区是777权限的，对于很多用户就只有一个根分区`/`，故不能开放777权限啊，所以我们可以采取一些措施来欺骗`ETMDaemon`的检查。
+* 经过测试我们发现`ETMDaemon`识别的是设备，其实我们可以在`/media`下面挂载一些假的"设备",它都会被识别成储存设备，因此可以吧要存放下载文件夹挂载到/media下面就可以，不过要保证下载目的地文件夹为777权限，命令如下：
 ```bash
 mkdir $HOME/Download/TDDownload
 sudo mkdir /media/thunder
@@ -345,11 +352,31 @@ fi
 fi
 echo "Done"
 ```
-
 ```bash
 #mount挂载假设备
-ptbsare@ptbsare-PC70:~$ cat /opt/Xware/start-thunder 
+ptbsare@ptbsare-PC70:~$ cat /opt/Xware/mount 
 #!/bin/bash
+if [ -d $HOME/下载 ];then
+mkdir -p $HOME/下载/TDDownload
+if [ ! -e $HOME/下载/TDDownload/TDDOWNLOAD ];then
+ln -s $HOME/下载/TDDownload $HOME/下载/TDDownload/TDDOWNLOAD
+chmod -R 777 $HOME/下载/TDDownload
+chown -R thunder:thunder $HOME/下载/TDDownload
+fi
+elif [ ! -d $HOME/Download ];then
+mkdir -p $HOME/Download
+chown $SUDO_USER:$SUDO_USER $HOME/Download
+chmod 755 $HOME/Download
+mkdir -p $HOME/Download/TDDownload
+ln -s $HOME/Download/TDDownload $HOME/Download/TDDownload/TDDOWNLOAD
+chmod -R 777 $HOME/Download/TDDownload
+chown -R thunder $HOME/Download/TDDownload
+else
+mkdir -p $HOME/Download/TDDownload
+ln -s $HOME/Download/TDDownload $HOME/Download/TDDownload/TDDOWNLOAD
+chmod -R 777 $HOME/Download/TDDownload
+chown -R thunder $HOME/Download/TDDownload
+fi
 service thunder start >/tmp/._code_&&
 umount -l /media/thunder 2>/dev/null;
 mount -B $HOME/Download/TDDownload /media/thunder
@@ -646,7 +673,9 @@ thunder-x-0.1.0/
 debuild -S -sa
 ```
 执行此步后会生成下面几个文件:
-`thunder-x_0.1.0.debian.tar.gz`，`thunder-x_0.1.0_source.build`，`thunder-x_0.1.0_source.changes`
+`thunder-x_0.1.0.debian.tar.gz`
+`thunder-x_0.1.0_source.build`
+`thunder-x_0.1.0_source.changes`
 ####上传
 使用dput上传：
 ```bash
