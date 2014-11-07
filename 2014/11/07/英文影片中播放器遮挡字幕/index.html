@@ -80,7 +80,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2014-11-07T07:29:12.000Z" itemprop="datePublished">11月 7 2014</time>
-    更新日期:<time datetime="2014-11-07T15:17:05.000Z" itemprop="dateModified">11月 7 2014</time>
+    更新日期:<time datetime="2014-11-07T15:33:06.000Z" itemprop="dateModified">11月 7 2014</time>
     
   </p>
 </header>
@@ -103,8 +103,10 @@
 <ul>
 <li>毕竟Windows平台并不是本文的重点，下面谈一谈Linux下什么播放器可以实现该功能。</li>
 <li>Linux下有名的播放器<code>mplayer</code>，<code>VLC</code>等等播放器，但是可能是因为老外们母语就是英文吧，不需要在看视频时去除什么字幕，在Google上面这么一搜索还真不好找到什么有用的信息，后来发现<code>mplayer</code>有一个<code>vf=×××</code>的视频滤镜参数，事实上这个选项类似于ffmpeag的<code>-vf</code>视频滤镜选项，在<code>-vf=</code>后面可以自定义一个视频滤镜,其中可以有这么一个选项<code>delogo=××:××:××:××:××</code>。</li>
-<li><code>delogo</code>笔者从字面意思上理解认为应该是<code>delete logo</code>的意思，就是在播放时去除视频上面的图标比如说一些视频播放网站上右上角的那个水印图标以及电视中左上角的那个电视台标志。<code>delogo</code>可以指定一块矩形区域把它模糊化，本来是为了去除标志的，在这里我们同样可以拿它来去除中文字幕，由于字幕在视频中的位置比较固定，就是把中文字幕那片弄一个矩形模糊化就行了。<h4 id="mplayer">mplayer</h4>
-</li>
+<li><code>delogo</code>笔者从字面意思上理解认为应该是<code>delete logo</code>的意思，就是在播放时去除视频上面的图标比如说一些视频播放网站上右上角的那个水印图标以及电视中左上角的那个电视台标志。<code>delogo</code>可以指定一块矩形区域把它模糊化，本来是为了去除标志的，在这里我们同样可以拿它来去除中文字幕，由于字幕在视频中的位置比较固定，就是把中文字幕那片弄一个矩形模糊化就行了。</li>
+</ul>
+<h4 id="mplayer">mplayer</h4>
+<ul>
 <li>Ubuntu安装<code>mplayer</code></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre>1
