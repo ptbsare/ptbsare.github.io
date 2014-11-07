@@ -80,7 +80,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2014-11-07T07:29:12.000Z" itemprop="datePublished">11月 7 2014</time>
-    更新日期:<time datetime="2014-11-07T15:35:43.000Z" itemprop="dateModified">11月 7 2014</time>
+    更新日期:<time datetime="2014-11-07T15:43:13.000Z" itemprop="dateModified">11月 7 2014</time>
     
   </p>
 </header>
@@ -124,7 +124,7 @@
 <h4 id="SMplayer">SMplayer</h4>
 <p>考虑到命令行操作还是有些不大方便，并且<code>mplayer</code>有很多优秀的图形前端，在这里我们可以使用<code>SMplayer</code>，并且令人高兴的是<code>SMplayer</code>可以在设置选项中选择给<code>mplayer</code>传参数，甚至单列出了视频滤镜的参数，我们可以达到相同的效果。<br>我们按照如下图进行设置<br><img src="/img/英文影片中播放器遮挡字幕/8.png" alt=""><br><strong>点按首选项</strong><br><img src="/img/英文影片中播放器遮挡字幕/9.png" alt=""><br><strong>高级-&gt;MPlayer选项-&gt;在视频滤镜输入<code>delogo</code>参数</strong><br><img src="/img/英文影片中播放器遮挡字幕/11.png" alt=""><br><strong>过滤后</strong><br><img src="/img/英文影片中播放器遮挡字幕/10.png" alt=""><br><strong>过滤前</strong></p>
 <p><strong>说明</strong>：参数应该是<code>delogo=x:y:w:h:s</code>的形式，其中<code>x</code>和<code>y</code>为矩形区域左上角的坐标值，<code>w</code>和<code>h</code>分别为矩形区域的宽和高，这几个参数需要根据实际情况不断调整，以确定矩形区域的位置和大小，不过一般字幕的位置还是比较固定，下面笔者总结出了几种常见大小格式视频的四个参数位置，可适用于大多数人人影视压制的英文视频影片;<code>s</code>则用于显示矩形边框，<code>s</code>为-1可以显示出矩形区域的边框方便调整。</p>
-<pre><code><span class="attribute">视频大小       命令行滤镜参数
+<pre><code><span class="attribute">视频大小         命令行滤镜参数
 480X272        delogo</span>=<span class="string">100:230:320:24:1
 624X352        delogo=155:300:350:29:1
 720x396(400)   delogo=175:335:350:40:1</span>
