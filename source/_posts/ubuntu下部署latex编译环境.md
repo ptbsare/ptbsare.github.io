@@ -135,10 +135,11 @@ sudo gedit ctex-xecjk-winfonts.def
 sudo apt-get install texlive-latex-base texlive-latex-extra latex-cjk-all
 sudo apt-get install texlive-lang-cjk #此一步安装了ctex宏包
 sudo apt-get install texlive-xetex #此一步安装xelatex排版
+sudo apt-get install latexmk #此一步安装latexmk构建引擎
 cd /tmp
 svn checkout http://ctex-kit.googlecode.com/svn/trunk/CJKpunct
 cd /tmp/CJKpunct/tex/latex/CJK
-sudo cp ./CJKpunct /usr/share/texmf/tex/latex/CJK/
+sudo cp -r ./CJKpunct /usr/share/texmf/tex/latex/CJK/
 sudo texhash #安装CJKpunct宏包 
 ```
 ####2 .解决中文字体问题
@@ -235,6 +236,11 @@ sudo gedit ctex-xecjk-engine.def
 ```
 d.
 将这三个文件都保存好，然后在tex文件中，添加documentclass的选项[unixfonts]，用xelatex编译，就可以了。
+e.
+最后，刷新Texlive文件数据库：
+```
+sudo texhash
+```
 至此问题彻底解决。
 ##安装后的测试
 
@@ -304,6 +310,16 @@ sudo apt-get install sublime-text-dev
 }
 ```
 保存即可，这样在sublime text 2中写后可Ctrl+B一键编译。
+* Sublime Text 3 (推荐)
+```
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+sudo apt-get update
+sudo apt-get install sublime-text-installer
+```
+然后安装`Package Control`，同时推荐安装下面两个插件：`Latexing`和`Latex Tools` 这样的话，自动补全将会非常给力。当然，由于默认情况下`Latex Tools`是用`latexmk`来进行构建的,因此，倘若用此法，需要在每个文件的第一行写上这么一句来指定用`xelatex`来作为我们的排版引擎而不是默认的`pdflatex`:
+```tex
+%!TEX program = xelatex
+```
 * Vim+xelatex命令行模式（以下以此种方法为例）
 ```bash
 sudo apt-get install vim
