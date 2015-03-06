@@ -17,4 +17,4 @@ date: 2014-6-24 15:05:05+00:00
 **Qzone:**　  [http://user.qzone.qq.com/496725701]
 
 ###友情链接
-[Blanboom](http://blanboom.org)
+[Blanboom](http://blanboom.org)　　　[Skybabi](http://skybabi.github.io)
