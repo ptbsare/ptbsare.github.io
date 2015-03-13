@@ -135,7 +135,7 @@ toc: false
 　　Viva La Vida，生命万岁。
 
 ##MV
-<video controls="controls" src="/img/《viva-la-vida》-生命万岁/a.mp4" ></video>
+<video controls="controls" preload="auto" src="/img/《viva-la-vida》-生命万岁/a.mp4" ></video>
 
 ##后记
 * 后经查阅资料得知Coldplay的主唱（包括键盘，吉他）Chris Martin 曾取得的学位是伦敦大学学院古代文字研究的第一级学位;其能创作出如此磅礴的作品也就不难理解。

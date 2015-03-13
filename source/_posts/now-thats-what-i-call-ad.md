@@ -6,33 +6,33 @@ toc: false
 
 **本篇选取几个有创意特色的广告来展示什么是广告以及什么是广告的艺术。**
 
-<video controls="controls" src="/img/now-thats-what-i-call-ad/e.mp4" ></video>
+<video controls="controls" preload="auto" src="/img/now-thats-what-i-call-ad/e.mp4" ></video>
 
 **Honda "Hands"--本田之手**
 
 **概要**：本田的这支宣传广告 Honda Hands（本田之手）可以说是病毒式营销的缩影，广告传播速度极快，传播范围极广，7 月 3 日公布至今，该广告在视频网站 Youtube 上的点击量已经达到将近 700000 次，公布的 24 小时就达到了 350000 次点击率。作为一支企业宣传广告，它已算出众。这支广告并不是重点宣传本田的哪款新车，而是重点讲述了本田多年以来的创造力，65 年来，本田用自己灵巧的双手创造了无数产品，比如摩托车、汽车、超级跑车、机器人甚至飞机。视频最后打出了一行经典励志的广告词：梦想的力量。正是这梦想 的力量让本田制作出一款款让用户满意的摩托车、汽车和飞机。向工程师的想象力和好奇心致敬。
 
-<video controls="controls" src="/img/now-thats-what-i-call-ad/d.mp4" ></video>
+<video controls="controls" preload="auto" src="/img/now-thats-what-i-call-ad/d.mp4" ></video>
 
 **"十年了，还是那盏灯"--东芝LED广告**
 
 **概要**：一盏LED灯从开始发光发亮到走向生命尽头，一共能持续多长时间？东芝用一则感人至深的广告告诉我们：10年。东芝这则名为“10年日历”的广告引起了大量共鸣，它描绘了从房间照明更换为LED灯泡的那一天起，到再次更换LED灯泡为止的10年时光。一盏不起眼的LED灯泡，见证了一个家庭的10年。人生是一天天累积而成，与家人平凡的生活中随处可见小小的幸福——这则广告自然地令人们回想起了太过普通、往往遗忘的那些小事。“10年日历”的成功似乎在向我们述说着这样一个事实：那些看起来高深莫测的技术革新背后，体现的无一不是最卑微平常的人性。
 
-<video controls="controls" src="/img/now-thats-what-i-call-ad/b.mp4" ></video>
+<video controls="controls" preload="auto" src="/img/now-thats-what-i-call-ad/b.mp4" ></video>
 
 **"科技永远无法取代爱"--泰国电信广告**
 
 **概要**：科技进步没有让人与人之间更亲近，反而让人与人之间更疏远，更冷漠，放下手机，放开智能设备，释放你的双手，去拥抱别人，去关心你身边的人，科技永远无法替代爱。
 
 
-<video controls="controls" src="/img/now-thats-what-i-call-ad/c.mp4" ></video>
+<video controls="controls" preload="auto" src="/img/now-thats-what-i-call-ad/c.mp4" ></video>
 
 **"Giving is The Best Communication（给予是最好的沟通）"--泰国行动通信广告**
 
 **概要**：一个餐馆老板在年轻时好心帮助了一个为生病的母亲偷药的小男孩。30年后，男孩成为医生，用一大笔医药费答谢了当年的恩情。`值得注意的是，这是一个在泰国真实的故事。`给予是最好的沟通，每一桩善举都能决定着我们的重生。
 
 
-<video controls="controls" src="/img/now-thats-what-i-call-ad/a.mp4" ></video>
+<video controls="controls" preload="auto" src="/img/now-thats-what-i-call-ad/a.mp4" ></video>
 
 **"You can shine."--泰国Pantene(潘婷)广告**
 
