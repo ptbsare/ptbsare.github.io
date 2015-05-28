@@ -1,7 +1,9 @@
 title: X光下
 date: 2015-05-17 16:16:56
 tags: [Pieces]
+toc: false
 ---
+<div id="board"></div>
 
 ![](/img/x光下/1.jpg)
 
@@ -58,10 +60,56 @@ tags: [Pieces]
 
 
 
-<audio controls="controls" autoplay>
+<audio controls="controls" autoplay >
   <source src="/img/x光下/a.mp3" type="audio/mpeg">
   <source src="/img/x光下/b.mp3" type="audio/mpeg">
 </audio>
+
+<script type="text/javascript">
+var sUserAgent = navigator.userAgent.toLowerCase();
+var bIsIpad = sUserAgent.match(/ipad/i) =="ipad";
+var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+var bIsAndroid = sUserAgent.match(/android/i) == "android";
+if(bIsIpad){
+  var board = document.getElementById("board");
+  var e = document.createElement("audio");
+  var sourcea= document.createElement("sourcea");
+  sourcea.src = "/img/x光下/a.mp3";
+  var sourceb= document.createElement("sourceb");
+  sourceb.src = "/img/x光下/b.mp3";
+  audio.appendChild(sourcea);
+  audio.appendChild(sourceb);
+  e.controls = "controls";
+  board.innerHTML ="<strong>iPad启用背景音乐：　</strong>";
+  var object = board.appendChild(e);
+}
+if(bIsIphoneOs){
+  var board = document.getElementById("board");
+  var e = document.createElement("audio");
+  var sourcea= document.createElement("sourcea");
+  sourcea.src = "/img/x光下/a.mp3";
+  var sourceb= document.createElement("sourceb");
+  sourceb.src = "/img/x光下/b.mp3";
+  audio.appendChild(sourcea);
+  audio.appendChild(sourceb);
+  e.controls = "controls";
+  board.innerHTML ="<strong>iPhone启用背景音乐：　</strong>";
+  var object = board.appendChild(e);
+}
+if(bIsAndroid){
+  var board = document.getElementById("board");
+  var e = document.createElement("audio");
+  var sourcea= document.createElement("sourcea");
+  sourcea.src = "/img/x光下/a.mp3";
+  var sourceb= document.createElement("sourceb");
+  sourceb.src = "/img/x光下/b.mp3";
+  audio.appendChild(sourcea);
+  audio.appendChild(sourceb);
+  e.controls = "controls";
+  board.innerHTML ="<strong>Android启用背景音乐：　</strong>";
+  var object = board.appendChild(e);
+}
+</script>
 
 <!-- 参考: -->
 <!-- http://jandan.net/2015/05/09/fascinating-x-rays.html -->
