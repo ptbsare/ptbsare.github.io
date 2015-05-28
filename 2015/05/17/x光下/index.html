@@ -85,7 +85,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2015-05-17T08:16:56.000Z" itemprop="datePublished">5月 17 2015</time>
-    更新日期:<time datetime="2015-05-27T15:46:33.000Z" itemprop="dateModified">5月 27 2015</time>
+    更新日期:<time datetime="2015-05-28T03:34:39.000Z" itemprop="dateModified">5月 28 2015</time>
     
   </p>
 </header>
@@ -93,12 +93,9 @@
 	<div class="article-content">
 		
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"></ol>
-		</div>
-		
-		<p><img src="/img/x光下/1.jpg" alt=""></p>
+		<div id="board"></div>
+
+<p><img src="/img/x光下/1.jpg" alt=""></p>
 <p><strong>那些高科技手机看起来就像是空的，而与它们相比，我们的身体却又是那么错综复杂。</strong></p>
 <p><img src="/img/x光下/2.jpg" alt=""></p>
 <p><strong>但花儿依旧美艳惊人。</strong></p>
@@ -164,6 +161,52 @@
 <p>　　最后，再欣赏一幅图片 ：）<br><img src="/img/x光下/4.jpg" alt="斯蒂芬五重星系。图片来源：NASA"><br><strong>图片注：斯蒂芬五重星系。图片来源：NASA 由哈勃空间望远镜拍摄</strong><br>斯蒂芬五重星系，是5个看起来似乎挤成一团的大星系，不过其中有一个星系是打酱油的，跟其他4个星系相距甚远，只是刚好出现在同一个方向上。在哈勃拍摄的这张照片里，很容易把两者分开。那个偏蓝的星系，距离地球仅4000万光年，而其他偏红的星系，距离地球约有2.9亿光年。</p>
 <audio controls="controls" autoplay><br>  <source src="/img/x光下/a.mp3" type="audio/mpeg"><br>  <source src="/img/x光下/b.mp3" type="audio/mpeg"><br></audio>
 
+<script type="text/javascript">
+var sUserAgent = navigator.userAgent.toLowerCase();
+var bIsIpad = sUserAgent.match(/ipad/i) =="ipad";
+var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+var bIsAndroid = sUserAgent.match(/android/i) == "android";
+if(bIsIpad){
+  var board = document.getElementById("board");
+  var e = document.createElement("audio");
+  var sourcea= document.createElement("sourcea");
+  sourcea.src = "/img/x光下/a.mp3";
+  var sourceb= document.createElement("sourceb");
+  sourceb.src = "/img/x光下/b.mp3";
+  audio.appendChild(sourcea);
+  audio.appendChild(sourceb);
+  e.controls = "controls";
+  board.innerHTML ="<strong>iPad启用背景音乐：　</strong>";
+  var object = board.appendChild(e);
+}
+if(bIsIphoneOs){
+  var board = document.getElementById("board");
+  var e = document.createElement("audio");
+  var sourcea= document.createElement("sourcea");
+  sourcea.src = "/img/x光下/a.mp3";
+  var sourceb= document.createElement("sourceb");
+  sourceb.src = "/img/x光下/b.mp3";
+  audio.appendChild(sourcea);
+  audio.appendChild(sourceb);
+  e.controls = "controls";
+  board.innerHTML ="<strong>iPhone启用背景音乐：　</strong>";
+  var object = board.appendChild(e);
+}
+if(bIsAndroid){
+  var board = document.getElementById("board");
+  var e = document.createElement("audio");
+  var sourcea= document.createElement("sourcea");
+  sourcea.src = "/img/x光下/a.mp3";
+  var sourceb= document.createElement("sourceb");
+  sourceb.src = "/img/x光下/b.mp3";
+  audio.appendChild(sourcea);
+  audio.appendChild(sourceb);
+  e.controls = "controls";
+  board.innerHTML ="<strong>Android启用背景音乐：　</strong>";
+  var object = board.appendChild(e);
+}
+</script>
+
 <!-- 参考: --><br><!-- http://jandan.net/2015/05/09/fascinating-x-rays.html -->
   
 	</div>
@@ -224,11 +267,6 @@
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
-  <ol class="toc"></ol>
-  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -352,8 +390,6 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
