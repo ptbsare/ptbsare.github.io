@@ -59,9 +59,7 @@ toc: false
 
 
 
-<audio controls="controls" autoplay >
-  <source src="/img/x光下/c.mp3" type="audio/mpeg">
-</audio>
+<audio src="/img/x光下/e.mp3" controls="controls" autoplay />
 
 <script type="text/javascript">
 var sUserAgent = navigator.userAgent.toLowerCase();
@@ -71,7 +69,7 @@ var bIsAndroid = sUserAgent.match(/android/i) == "android";
 if(bIsIpad){
   var board = document.getElementById("board");
   var e = document.createElement("audio");
-  e.src = "/img/x光下/c.mp3";
+  e.src = "/img/x光下/e.mp3";
   e.controls = "controls";
   board.innerHTML ="<strong>iPad启用背景音乐：　</strong>";
   var object = board.appendChild(e);
@@ -79,7 +77,7 @@ if(bIsIpad){
 if(bIsIphoneOs){
   var board = document.getElementById("board");
   var e = document.createElement("audio");
-  e.src = "/img/x光下/c.mp3";
+  e.src = "/img/x光下/e.mp3";
   e.controls = "controls";
   board.innerHTML ="<strong>iPhone启用背景音乐：　</strong>";
   var object = board.appendChild(e);
@@ -87,7 +85,7 @@ if(bIsIphoneOs){
 if(bIsAndroid){
   var board = document.getElementById("board");
   var e = document.createElement("audio");
-  e.src = "/img/x光下/c.mp3";
+  e.src = "/img/x光下/e.mp3";
   e.controls = "controls";
   board.innerHTML ="<strong>Android启用背景音乐：　</strong>";
   var object = board.appendChild(e);
