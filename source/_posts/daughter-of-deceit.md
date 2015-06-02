@@ -90,4 +90,4 @@ grunt v.哼 overdose n.过量  inquest n.验尸 elated adj.喜气洋洋的
 －就当这婚还没结。同样的，如何才能读进去原版书？不要把这当成是在学英语。
 　　结尾附一张Kindle的照片：
 
-![](/img/daughter-of-deceit/4.jpg)
+![](/img/daughter-of-deceit/5.jpg)
