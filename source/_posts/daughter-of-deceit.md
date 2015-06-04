@@ -90,3 +90,5 @@ grunt v.哼 overdose n.过量  inquest n.验尸 elated adj.喜气洋洋的
 　　结尾附一张Kindle的照片：)
 
 ![](/img/daughter-of-deceit/5.jpg)
+
+<audio src="/img/daughter-of-deceit/a.mp3" controls="controls" autoplay />
