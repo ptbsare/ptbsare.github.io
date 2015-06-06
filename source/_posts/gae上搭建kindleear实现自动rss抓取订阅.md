@@ -5,7 +5,7 @@ tags: [Web]
 
 ##引言
 
-使用Kindle订阅RSS新闻，目前有一下这几个网站可供选择。
+　　Kindle的邮件推送服务是这个产品很重要的一环，或者说一个功能。作为Kindle的使用者,我们需要用好这个邮件推送服务。在很多场合下，我们更希望用Kindle看或者订阅一些具有时效性的内容，于是笔者想到了RSS，能不能将RSS和Kindle结合，定期地将网页内容自动同步推送到Kindle设备上，从而订阅多个网站的内容呢？答案是可以的。使用Kindle订阅RSS新闻，目前笔者找到了有一下这几个网站或者方法可供选择。
 
 ---
 
@@ -428,3 +428,8 @@ solemn     solemn
 hermit     hermit
 seer       seer
 ```
+
+<div>
+<audio src="/img/gae上搭建kindleear实现自动rss抓取订阅/a.mp3" controls="controls" autoplay /></audio></div>
+
+**本篇配乐为笔者随机自选，乐文无关。**
