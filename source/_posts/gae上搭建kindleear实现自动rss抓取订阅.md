@@ -416,7 +416,7 @@ python appcfg.py --skip_sdk_update_check update kindleear/app.yaml kindleear/mod
 
 ##应用地址
 
-* 笔者自己搭建的`KindleEar`地址为：（http://kindleear.ptbsare.org/）
+* 笔者自己搭建的`KindleEar`地址为：(http://kindleear.ptbsare.org/)
 * 由于`GAE`免费应用的默认配额很有限，笔者发现抓取一次`Tech News`大概需要消耗1～2 个`Backend Instance Hours`，而`Google`提供的免费配额大概是每日9个`Backend Instance Hours`，用完则本日不能再抓取和投递新邮件。
 * 笔者提供如下几个账号可供使用，如需额外更多的账号，请留言索取。
 
