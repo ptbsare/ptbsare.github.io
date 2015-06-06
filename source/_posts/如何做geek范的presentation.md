@@ -143,7 +143,7 @@ mdpress first.md
 ## 副标题
 ###  三级标题
 ```
-([Final Demo Here](/lab))
+([Final Demo Here](/lab/mdpress))
 
 
 **可以使用的属性有：**
