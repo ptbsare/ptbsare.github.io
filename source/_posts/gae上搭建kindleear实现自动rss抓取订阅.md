@@ -318,7 +318,7 @@ class tech(BaseFeedBook):
         (u'科学松鼠会', 'http://songshuhui.net/feed'),
         (u'泛科学', 'http://pansci.tw/feed'),
         (u'果壳网', 'http://www.guokr.com/rss/'),
-        (u'果壳网科学人', 'http://kforwarder.herokuapp.com/?k=xzSlE&t=60&u=http://feed43.com/8781486786220071.xml'),
+        (u'果壳网科学人', 'http://feed43.com/8781486786220071.xml'),
         (u'简书推荐', 'http://jianshu.milkythinking.com/feeds/recommendations/notes'),
         ('Quora', 'http://www.quora.com/rss', True),
         ('The Economist: China', 'http://www.economist.com/feeds/print-sections/77729/china.xml'),
@@ -327,7 +327,7 @@ class tech(BaseFeedBook):
         (u'知乎日报', 'http://zhihurss.miantiao.me/dailyrss'),
         (u'知乎精选', 'http://www.zhihu.com/rss'),
         (u'深夜食堂', 'http://zhihurss.miantiao.me/section/id/1'),
-        (u'果壳网天文', 'http://forward-ptbsare.rhcloud.com/?k=xzSlE&t=60&u=http://feed43.com/3144628515834775.xml'),
+        (u'果壳网天文', 'http://feed43.com/3144628515834775.xml'),
         ('Matrix67', 'http://www.matrix67.com/blog/feed'),
         ]
 
@@ -429,7 +429,27 @@ hermit     hermit
 seer       seer
 ```
 
-<div>
+---
+
+##更新
+
+* 上面的**Tech News**仅仅在每周五推送，笔者将几个每日更新的RSS，另做了一个每天都投递的杂志，命名为**Daily Digest**，欢迎订阅，推荐在11点投递，目前包含如下几个RSS:
+
+```
+瞎扯 http://zhihurss.miantiao.me/section/id/2
+豆瓣一刻 http://yikerss.miantiao.me/rss
+知乎日报 http://zhihurss.miantiao.me/dailyrss
+知乎精选 http://www.zhihu.com/rss
+深夜食堂 http://zhihurss.miantiao.me/section/id/1
+Quora   http://www.quora.com/rss
+MIT科技评论 http://www.technologyreview.com/topnews.rss
+```
+
+* 另外感谢`Life Memory`的博主**不给力的面条**自制提供的知乎各个栏目的RSS地址。
+
+![](/img/gae上搭建kindleear实现自动rss抓取订阅/15.png)
+
+<!--<div>
 <audio src="/img/gae上搭建kindleear实现自动rss抓取订阅/b.mp3" controls="controls" autoplay /></audio></div>
 
-**本篇配乐为笔者随机自选，乐文无关。**
+**本篇配乐为笔者随机自选，乐文无关。**-->
