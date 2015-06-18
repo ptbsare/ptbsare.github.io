@@ -205,7 +205,7 @@ warfalcon: http://ys.8wss.com/rss/oIWsFtxo3oqejVy4KaJ4RDMVIrE0/
 科学松鼠会: http://songshuhui.net/feed
 泛科学: http://pansci.tw/feed
 果壳网: http://www.guokr.com/rss/
-果壳网科学人: http://kforwarder.herokuapp.com/?k=xzSlE&t=60&u=http://feed43.com/8781486786220071.xml
+果壳网科学人: http://feed43.com/8781486786220071.xml
 简书推荐: http://jianshu.milkythinking.com/feeds/recommendations/notes
 Quora: http://www.quora.com/rss: True
 The Economist: China: http://www.economist.com/feeds/print-sections/77729/china.xml
@@ -214,7 +214,7 @@ The Economist: Asia: http://www.economist.com/feeds/print-sections/73/asia.xml
 知乎日报: http://zhihurss.miantiao.me/dailyrss
 知乎精选: http://www.zhihu.com/rss
 深夜食堂: http://zhihurss.miantiao.me/section/id/1
-果壳网天文: http://forward-ptbsare.rhcloud.com/?k=xzSlE&t=60&u=http://feed43.com/3144628515834775.xml
+果壳网天文: http://feed43.com/3144628515834775.xml
 Matrix67: http://www.matrix67.com/blog/feed
 ```
 
