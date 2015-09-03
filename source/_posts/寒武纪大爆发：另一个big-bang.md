@@ -74,7 +74,7 @@ toc: false
 ---
 
 <div>
-<audio src="/img/individual/a.mp3" controls="controls" autoplay /></div>**本篇所选取的背景音乐是一个悲伤的故事**
+<audio src="/img/individual/a.mp3" controls="controls" autoplay /></div>**本篇所选取的背景音乐讲的是一个悲伤的故事**
 **歌名为：“暗恋过，结局呢”。出自新街口组合的专辑《国王》，算是一首中国式的嘻哈Hip Hop。**
 
 <script type="text/javascript">
