@@ -81,37 +81,5 @@ toc: false
 
 ---
 
-<div>
-<audio src="/img/individual/a.mp3" controls="controls" autoplay /></div>**本篇所选取的背景音乐讲的是一个悲伤的故事**
-**歌名为：“暗恋过，结局呢”。出自新街口组合的专辑《国王》，算是一首中国式的嘻哈Hip Hop。**
+<p><embed src="http://www.xiami.com/widget/61309602_1772130321,1772130320,_235_135_d90000_333333_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="140" wmode="opaque"></embed></p>
 
-<script type="text/javascript">
-var sUserAgent = navigator.userAgent.toLowerCase();
-var bIsIpad = sUserAgent.match(/ipad/i) =="ipad";
-var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-var bIsAndroid = sUserAgent.match(/android/i) == "android";
-if(bIsIpad){
-  var board = document.getElementById("board");
-  var e = document.createElement("audio");
-  e.src = "/img/individual/a.mp3";
-  e.controls = "controls";
-  board.innerHTML ="<strong>iPad启用背景音乐：　</strong>";
-  var object = board.appendChild(e);
-}
-if(bIsIphoneOs){
-  var board = document.getElementById("board");
-  var e = document.createElement("audio");
-  e.src = "/img/individual/a.mp3";
-  e.controls = "controls";
-  board.innerHTML ="<strong>iPhone启用背景音乐：　</strong>";
-  var object = board.appendChild(e);
-}
-if(bIsAndroid){
-  var board = document.getElementById("board");
-  var e = document.createElement("audio");
-  e.src = "/img/individual/a.mp3";
-  e.controls = "controls";
-  board.innerHTML ="<strong>Android启用背景音乐：　</strong>";
-  var object = board.appendChild(e);
-}
-</script>
