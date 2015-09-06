@@ -84,45 +84,49 @@ toc: false
 <p><embed id="xiami" src="http://www.xiami.com/widget/61309602_1772130321,1772130320,_235_135_d90000_333333_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="140" wmode="opaque"></embed></p>
 
 <script type="text/javascript">
+var mp3List = [
+                'http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3',
+                'http://sc.111ttt.com/up/mp3/209592/3E15B39BFF6F39032D872229874142C2.mp3',
+                
+              ];
+function getMusic(list,src) {             
+var len = list.length;
+for(var i=0;i<list.length,src != list[i];i++){
+}
+if (i==(len - 1)){
+return list[0];
+}else{
+return list[i+1];
+}
+}
 var sUserAgent = navigator.userAgent.toLowerCase();
 var bIsIpad = sUserAgent.match(/ipad/i) =="ipad";
 var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
 var bIsAndroid = sUserAgent.match(/android/i) == "android";
-if(bIsIpad){
-  var board = document.getElementById("board");
-  var e = document.createElement("audio");
-  e.src = "http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3";
-  e.controls = "controls";
-  board.innerHTML ="<strong>iPad启用背景音乐：　</strong>";
-  var object = board.appendChild(e);
-  var xiami = document.getElementById("xiami");
-  xiami.parentNode.removeChild(xiami);
-  var hrline = document.getElementById("hrline");
-  hrline.parentNode.removeChild(hrline);
-}
-if(bIsIphoneOs){
-  var board = document.getElementById("board");
-  var e = document.createElement("audio");
-  e.src = "http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3";
-  e.controls = "controls";
-  board.innerHTML ="<strong>iPhone启用背景音乐：　</strong>";
-  var object = board.appendChild(e);
-  var xiami = document.getElementById("xiami");
-  xiami.parentNode.removeChild(xiami);
-  var hrline = document.getElementById("hrline");
-  hrline.parentNode.removeChild(hrline);
-}
+var board = document.getElementById("board");
+if(bIsAndroid || bIsIpad || bIsIphoneOs)
+{
+var xiami = document.getElementById("xiami");
+xiami.parentNode.removeChild(xiami);
+var hrline = document.getElementById("hrline");
+hrline.parentNode.removeChild(hrline);
+var e = document.createElement("audio");
+e.src = "http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3";
+e.controls = "controls";
 if(bIsAndroid){
-  var board = document.getElementById("board");
-  var e = document.createElement("audio");
-  e.src = "http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3";
-  e.controls = "controls";
-  board.innerHTML ="<strong>Android启用背景音乐：　</strong>";
-  var object = board.appendChild(e);
-  var xiami = document.getElementById("xiami");
-  xiami.parentNode.removeChild(xiami);
-  var hrline = document.getElementById("hrline");
-  hrline.parentNode.removeChild(hrline);
+board.innerHTML ="<strong>Android启用背景音乐：　</strong>";
+}else if(bIsIpad){
+board.innerHTML ="<strong>iPad启用背景音乐：　</strong>";
+}else if(bIsIphoneOs){
+board.innerHTML ="<strong>iPhone启用背景音乐：　</strong>";
+}else{
+board.innerHTML ="<strong>启用背景音乐：　</strong>";
+}
+var object = board.appendChild(e);
+e.play();
+e.onended = function() {
+   e.src = getMusic(mp3List,e.src);
+   e.play();
+   }
 }
 </script>
-
