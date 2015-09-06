@@ -79,7 +79,50 @@ toc: false
 * 下一期：Why does time pass?
 * 下下期：What is consciousness?
 
----
+<hr id="hrline">
 
-<p><embed src="http://www.xiami.com/widget/61309602_1772130321,1772130320,_235_135_d90000_333333_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="140" wmode="opaque"></embed></p>
+<p><embed id="xiami" src="http://www.xiami.com/widget/61309602_1772130321,1772130320,_235_135_d90000_333333_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="140" wmode="opaque"></embed></p>
+
+<script type="text/javascript">
+var sUserAgent = navigator.userAgent.toLowerCase();
+var bIsIpad = sUserAgent.match(/ipad/i) =="ipad";
+var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+var bIsAndroid = sUserAgent.match(/android/i) == "android";
+if(bIsIpad){
+  var board = document.getElementById("board");
+  var e = document.createElement("audio");
+  e.src = "http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3";
+  e.controls = "controls";
+  board.innerHTML ="<strong>iPad启用背景音乐：　</strong>";
+  var object = board.appendChild(e);
+  var xiami = document.getElementById("xiami");
+  xiami.parentNode.removeChild(xiami);
+  var hrline = document.getElementById("hrline");
+  hrline.parentNode.removeChild(hrline);
+}
+if(bIsIphoneOs){
+  var board = document.getElementById("board");
+  var e = document.createElement("audio");
+  e.src = "http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3";
+  e.controls = "controls";
+  board.innerHTML ="<strong>iPhone启用背景音乐：　</strong>";
+  var object = board.appendChild(e);
+  var xiami = document.getElementById("xiami");
+  xiami.parentNode.removeChild(xiami);
+  var hrline = document.getElementById("hrline");
+  hrline.parentNode.removeChild(hrline);
+}
+if(bIsAndroid){
+  var board = document.getElementById("board");
+  var e = document.createElement("audio");
+  e.src = "http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3";
+  e.controls = "controls";
+  board.innerHTML ="<strong>Android启用背景音乐：　</strong>";
+  var object = board.appendChild(e);
+  var xiami = document.getElementById("xiami");
+  xiami.parentNode.removeChild(xiami);
+  var hrline = document.getElementById("hrline");
+  hrline.parentNode.removeChild(hrline);
+}
+</script>
 
