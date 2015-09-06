@@ -103,8 +103,10 @@ var sUserAgent = navigator.userAgent.toLowerCase();
 var bIsIpad = sUserAgent.match(/ipad/i) =="ipad";
 var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
 var bIsAndroid = sUserAgent.match(/android/i) == "android";
+var cIsSafari = sUserAgent.match(/version\/([\d.]+).*safari/);
+var cIsChrome = sUserAgent.match(/chrome\/([\d.]+)/);
 var board = document.getElementById("board");
-if(bIsAndroid || bIsIpad || bIsIphoneOs)
+if(bIsAndroid || bIsIpad || bIsIphoneOs || cIsSafari || cIsChrome)
 {
 var xiami = document.getElementById("xiami");
 xiami.parentNode.removeChild(xiami);
@@ -112,7 +114,8 @@ var hrline = document.getElementById("hrline");
 hrline.parentNode.removeChild(hrline);
 var e = document.createElement("audio");
 e.src = "http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3";
-e.controls = "controls";
+e.setAttribute("controls", "controls");
+e.setAttribute("autoplay", "autoplay");
 if(bIsAndroid){
 board.innerHTML ="<strong>Android启用背景音乐：　</strong>";
 }else if(bIsIpad){
