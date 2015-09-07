@@ -99,14 +99,31 @@ return list[0];
 return list[i+1];
 }
 }
+function detectFlash() {
+        //navigator.mimeTypes是MIME类型，包含插件信息
+if(navigator.mimeTypes.length>0){
+    //application/x-shockwave-flash是flash插件的名字
+var flashAct = navigator.mimeTypes["application/x-shockwave-flash"];
+return flashAct != null ? flashAct.enabledPlugin!=null : false;
+} else if(self.ActiveXObject) {
+try {
+new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+return true;
+} catch (oError) {
+return false;
+}
+}
+}
+var dEnableFlash = detectFlash();
 var sUserAgent = navigator.userAgent.toLowerCase();
 var bIsIpad = sUserAgent.match(/ipad/i) =="ipad";
 var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
 var bIsAndroid = sUserAgent.match(/android/i) == "android";
 var cIsSafari = sUserAgent.match(/version\/([\d.]+).*safari/);
 var cIsChrome = sUserAgent.match(/chrome\/([\d.]+)/);
+var cIsIE = (sUserAgent.match(/rv:([\d.]+)\) like gecko/))||(sUserAgent.match(/msie ([\d.]+)/));
 var board = document.getElementById("board");
-if(bIsAndroid || bIsIpad || bIsIphoneOs || cIsSafari || cIsChrome)
+if(bIsAndroid || bIsIpad || bIsIphoneOs || (cIsSafari && (!dEnableFlash)) || (cIsChrome && (!dEnableFlash)) || (cIsIE && (!dEnableFlash)))
 {
 var xiami = document.getElementById("xiami");
 xiami.parentNode.removeChild(xiami);
