@@ -85,8 +85,8 @@ toc: false
 
 <script type="text/javascript">
 var mp3List = [
-                'http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3',
-                'http://sc.111ttt.com/up/mp3/209592/3E15B39BFF6F39032D872229874142C2.mp3',
+                'http://link.hhtjim.com/baidu/71266020.mp3',
+                'http://link.hhtjim.com/baidu/44897143.mp3',
                 
               ];
 function getMusic(list,src) {             
