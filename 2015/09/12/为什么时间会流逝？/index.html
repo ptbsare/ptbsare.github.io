@@ -81,7 +81,7 @@ The moving finger writesAnd having writ moves on.Not all your piety nor witShall
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2015-09-12T14:49:40.000Z" itemprop="datePublished">9月 12 2015</time>
-    更新日期:<time datetime="2015-09-12T16:18:02.000Z" itemprop="dateModified">9月 13 2015</time>
+    更新日期:<time datetime="2015-09-12T16:25:33.000Z" itemprop="dateModified">9月 13 2015</time>
     
   </p>
 </header>
@@ -141,6 +141,7 @@ var mp3List = [
               ];
 //http://k007.kiwi6.com/hotlink/87evh29myg/23_lafur_Arnalds_-_Gleypa_okkur.mp3
 //http://link.hhtjim.com/baidu/17703193.mp3
+//两处修改 chrome 和 on.end不再自动播放
 function getMusic(list,src) {             
 var len = list.length;
 for(var i=0;i<list.length,src != list[i];i++){
@@ -196,10 +197,6 @@ board.innerHTML ="<strong>启用背景音乐：　</strong>";
 }
 var object = board.appendChild(e);
 e.play();
-e.onended = function() {
-   e.src = getMusic(mp3List,e.src);
-   e.play();
-   }
 }
 </script>  
 	</div>
