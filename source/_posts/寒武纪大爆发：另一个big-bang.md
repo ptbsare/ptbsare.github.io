@@ -130,7 +130,7 @@ xiami.parentNode.removeChild(xiami);
 var hrline = document.getElementById("hrline");
 hrline.parentNode.removeChild(hrline);
 var e = document.createElement("audio");
-e.src = "http://sc.111ttt.com/up/mp3/224015/745C18477266BF8B89BDABE93A8CC451.mp3";
+e.src = "http://link.hhtjim.com/baidu/71266020.mp3";
 e.setAttribute("controls", "controls");
 e.setAttribute("autoplay", "autoplay");
 if(bIsAndroid){
