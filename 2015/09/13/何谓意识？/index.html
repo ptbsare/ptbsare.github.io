@@ -79,7 +79,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2015-09-13T11:32:35.000Z" itemprop="datePublished">9月 13 2015</time>
-    更新日期:<time datetime="2015-09-14T00:40:19.000Z" itemprop="dateModified">9月 14 2015</time>
+    更新日期:<time datetime="2015-09-14T00:46:30.000Z" itemprop="dateModified">9月 14 2015</time>
     
   </p>
 </header>
@@ -189,6 +189,10 @@ board.innerHTML ="<strong>启用背景音乐：　</strong>";
 }
 var object = board.appendChild(e);
 e.play();
+e.onended = function() {
+   e.src = getMusic(mp3List,e.src);
+   e.play();
+   }
 }
 </script>  
 	</div>
