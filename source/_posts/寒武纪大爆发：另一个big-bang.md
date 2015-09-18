@@ -79,11 +79,18 @@ toc: false
 * 下一期：Why does time pass?
 * 下下期：What is consciousness?
 
-<hr id="hrline">
+---
 
-<p><embed id="xiami" src="http://www.xiami.com/widget/61309602_1772130321,1772130320,_235_135_d90000_333333_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="140" wmode="opaque"></embed></p>
+**延伸阅读：经济学人原文附视频：**
+
+<p>
+<video controls="controls" preload="auto" src="http://uds.ak.o.brightcove.com/1153191510001/1153191510001_4449543397001_20150827-Cambrian-FINE-CUT-Copy-09.mp4" ></video></p>
 
 <script type="text/javascript">
+//<p><embed id="xiami" src="http://www.xiami.com/widget/61309602_1772130321,1772130320,_235_135_d90000_333333_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="140" wmode="opaque"></embed></p>
+</script>
+<script type="text/javascript">
+/* 修改了一处 chrome必须html5
 var mp3List = [
                 'http://link.hhtjim.com/baidu/71266020.mp3',
                 'http://link.hhtjim.com/baidu/44897143.mp3',
@@ -123,7 +130,7 @@ var cIsSafari = sUserAgent.match(/version\/([\d.]+).*safari/);
 var cIsChrome = sUserAgent.match(/chrome\/([\d.]+)/);
 var cIsIE = (sUserAgent.match(/rv:([\d.]+)\) like gecko/))||(sUserAgent.match(/msie ([\d.]+)/));
 var board = document.getElementById("board");
-if(bIsAndroid || bIsIpad || bIsIphoneOs || (cIsSafari && (!dEnableFlash)) || (cIsChrome && (!dEnableFlash)) || (cIsIE && (!dEnableFlash)))
+if(bIsAndroid || bIsIpad || bIsIphoneOs || (cIsSafari && (!dEnableFlash)) || (cIsChrome) || (cIsIE && (!dEnableFlash)))
 {
 var xiami = document.getElementById("xiami");
 xiami.parentNode.removeChild(xiami);
@@ -149,4 +156,5 @@ e.onended = function() {
    e.play();
    }
 }
+*/
 </script>
