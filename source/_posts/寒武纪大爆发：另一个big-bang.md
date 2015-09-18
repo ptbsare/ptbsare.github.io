@@ -6,7 +6,6 @@ toc: false
 <!--在我们科学之谜的第四集，我们来探寻为什么在大约5.42亿年以前，地球上的生物开始遍地开花。-->
 <div id="mp3"></div>
 ![](/img/寒武纪大爆发：另一个big-bang/1.jpg)
-<script type="text/javascript">//<!--在我们科学之谜的第三期，我们来探索一下到底是什么构成了我们迄今95%的宇宙。--></script>
 
 ---
 
@@ -27,6 +26,7 @@ toc: false
 ---
 
 ![](/img/寒武纪大爆发：另一个big-bang/2.png)
+<script type="text/javascript">/*在我们科学之谜的第三期，我们来探索一下到底是什么构成了我们迄今95%的宇宙。*/</script>
 
 ---
 
