@@ -114,7 +114,14 @@ var cIsChrome = sUserAgent.match(/chrome\/([\d.]+)/);
 var cIsIE = (sUserAgent.match(/rv:([\d.]+)\) like gecko/))||(sUserAgent.match(/msie ([\d.]+)/));
 var mp3 = document.getElementById("mp3");
 var e = document.createElement("audio");
-e.src = "http://link.hhtjim.com/xiami/1770540997.mp3";
+var source1 = document.createElement('source');
+source1.type= 'audio/mpeg';
+source1.src= 'http://link.hhtjim.com/xiami/1770540997.mp3';
+e.appendChild(source1);
+var source2= document.createElement('source');
+source2.type= 'audio/mpeg';
+source2.src= 'http://musicbox.coding.io/xiami/1770540997.mp3';
+e.appendChild(source2);
 e.setAttribute("controls", "controls");
 e.setAttribute("autoplay", "autoplay");
 if(bIsAndroid){
