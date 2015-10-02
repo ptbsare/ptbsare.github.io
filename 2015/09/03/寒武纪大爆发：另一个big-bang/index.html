@@ -79,7 +79,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2015-09-03T15:24:39.000Z" itemprop="datePublished">9月 3 2015</time>
-    更新日期:<time datetime="2015-09-18T16:33:39.000Z" itemprop="dateModified">9月 19 2015</time>
+    更新日期:<time datetime="2015-10-02T10:32:39.000Z" itemprop="dateModified">10月 2 2015</time>
     
   </p>
 </header>
@@ -157,7 +157,14 @@ var cIsChrome = sUserAgent.match(/chrome\/([\d.]+)/);
 var cIsIE = (sUserAgent.match(/rv:([\d.]+)\) like gecko/))||(sUserAgent.match(/msie ([\d.]+)/));
 var mp3 = document.getElementById("mp3");
 var e = document.createElement("audio");
-e.src = "http://link.hhtjim.com/xiami/1770540997.mp3";
+var source1 = document.createElement('source');
+source1.type= 'audio/mpeg';
+source1.src= 'http://link.hhtjim.com/xiami/1770540997.mp3';
+e.appendChild(source1);
+var source2= document.createElement('source');
+source2.type= 'audio/mpeg';
+source2.src= 'http://musicbox.coding.io/xiami/1770540997.mp3';
+e.appendChild(source2);
 e.setAttribute("controls", "controls");
 e.setAttribute("autoplay", "autoplay");
 if(bIsAndroid){

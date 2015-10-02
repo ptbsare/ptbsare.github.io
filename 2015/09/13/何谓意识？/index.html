@@ -79,7 +79,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2015-09-13T11:32:35.000Z" itemprop="datePublished">9月 13 2015</time>
-    更新日期:<time datetime="2015-09-21T03:03:46.000Z" itemprop="dateModified">9月 21 2015</time>
+    更新日期:<time datetime="2015-10-02T10:20:00.000Z" itemprop="dateModified">10月 2 2015</time>
     
   </p>
 </header>
@@ -175,7 +175,14 @@ xiami.parentNode.removeChild(xiami);
 var hrline = document.getElementById("hrline");
 hrline.parentNode.removeChild(hrline);
 var e = document.createElement("audio");
-e.src = "http://link.hhtjim.com/baidu/17704889.mp3";
+var source1 = document.createElement('source');
+source1.type= 'audio/mpeg';
+source1.src= 'http://link.hhtjim.com/baidu/17704889.mp3';
+e.appendChild(source1);
+var source2= document.createElement('source');
+source2.type= 'audio/mpeg';
+source2.src= 'http://musicdata.baidu.com/data2/music/17705305/17705305.mp3';
+e.appendChild(source2);
 e.setAttribute("controls", "controls");
 e.setAttribute("autoplay", "autoplay");
 if(bIsAndroid){
@@ -190,7 +197,6 @@ board.innerHTML ="<strong>启用背景音乐：　</strong>";
 var object = board.appendChild(e);
 e.play();
 e.onended = function() {
-   e.src = getMusic(mp3List,e.src);
    e.play();
    }
 }

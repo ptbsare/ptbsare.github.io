@@ -79,7 +79,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2015-08-18T15:30:06.000Z" itemprop="datePublished">8月 18 2015</time>
-    更新日期:<time datetime="2015-09-18T16:15:13.000Z" itemprop="dateModified">9月 19 2015</time>
+    更新日期:<time datetime="2015-10-02T10:37:31.000Z" itemprop="dateModified">10月 2 2015</time>
     
   </p>
 </header>
@@ -137,7 +137,14 @@ var cIsChrome = sUserAgent.match(/chrome\/([\d.]+)/);
 var cIsIE = (sUserAgent.match(/rv:([\d.]+)\) like gecko/))||(sUserAgent.match(/msie ([\d.]+)/));
 var mp3 = document.getElementById("mp3");
 var e = document.createElement("audio");
-e.src = "http://link.hhtjim.com/baidu/17701063.mp3";
+var source1 = document.createElement('source');
+source1.type= 'audio/mpeg';
+source1.src= 'http://link.hhtjim.com/baidu/17701063.mp3';
+e.appendChild(source1);
+var source2= document.createElement('source');
+source2.type= 'audio/mpeg';
+source2.src= 'http://musicdata.baidu.com/data2/music/17701618/17701618.mp3';
+e.appendChild(source2);
 e.setAttribute("controls", "controls");
 e.setAttribute("autoplay", "autoplay");
 if(bIsAndroid){
@@ -151,7 +158,6 @@ mp3.innerHTML ="<strong>启用背景音乐：　</strong>";
 }
 var object = mp3.appendChild(e);
 e.onended = function() {
-   e.src = getMp3(mp3List,e.src);
    e.play();
    }
 e.play();

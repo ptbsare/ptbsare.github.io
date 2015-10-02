@@ -79,7 +79,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2015-09-02T16:29:16.000Z" itemprop="datePublished">9月 3 2015</time>
-    更新日期:<time datetime="2015-09-24T13:00:12.000Z" itemprop="dateModified">9月 24 2015</time>
+    更新日期:<time datetime="2015-10-02T10:19:49.000Z" itemprop="dateModified">10月 2 2015</time>
     
   </p>
 </header>
@@ -118,7 +118,7 @@
 
 <p>原视频地址：(<a href="http://www.bilibili.com/video/av1925731/" target="_blank">http://www.bilibili.com/video/av1925731/</a>)<br>视频作者：(<a href="http://space.bilibili.com/4544431" target="_blank">GRB130427A</a>)<br>视频基于维基百科：(<a href="http://en.wikipedia.org/wiki/Timeline_of_the_far_future" target="_blank">http://en.wikipedia.org/wiki/Timeline_of_the_far_future</a>)</p>
 <hr>
-<p><strong>9.24更新：</strong><br>上面视频中第一段背景音乐出自歌手:<code>Hurts</code><br>音频：<audio src="http://link.hhtjim.com/baidu/35243519.mp3" controls="controls" preload /></p>
+<p><strong>9.24更新：</strong><br>上面视频中第一段背景音乐出自歌手:<code>Hurts</code><br>音频：<audio controls="controls" preload ><br>  <source src="http://link.hhtjim.com/baidu/35243519.mp3" type= 'audio/mpeg' ><br>  <source src="http://musicdata.baidu.com/data2/music/42683842/42683842.mp3" type= 'audio/mpeg' ><br></audio></p>
 <div>下面是歌词：</div><br><div id = "inner_center" style="width:100%;margin:0 auto;background:#fff;text-align:center;" ><br><strong>“Somebody To Die For”</strong><br><br>I could drag you from the ocean,<br>I could pull you from the fire<br>And when you’re standing in the shadows<br>I could open up the sky<br>And I could give you my devotion<br>Until the end of time<br>And you will never be forgotten<br>With me by your side<br><br>And I don’t need this life<br>I just need…<br><br>I’ve got nothing left to live for<br>Got no reason yet to die<br>But when I’m standing in the gallows<br>I’ll be staring at the sky<br>Because no matter where they take me<br>Death I will survive<br>And I will never be forgotten<br>With you by my side<br><br>Cause I don’t need this life<br>I just need…<br><br>Somebody to die for<br>Somebody to cry for<br>When I’m lonely<br><br>When I’m standing in the fire<br>I will look him in the eye<br>And I will let the devil know that<br>I was brave enough to die<br>And there’s no hell that he can show me<br>That’s deeper than my pride<br>Cause I will never be forgotten<br>Forever I’ll fight<br><br>And I don’t need this life<br>I just need…<br><br>Somebody to die for<br>Somebody to cry for<br>When I’m lonely<br><br>And I don’t need this life<br>I just need…<br><br>Somebody to die for<br>Somebody to cry for<br>When I’m lonely<br><br>Don’t go gentle into that good night<br>Rage on against the dying light<br><br></div>
 
 <script type="text/javascript">
@@ -176,7 +176,14 @@ var cIsChrome = sUserAgent.match(/chrome\/([\d.]+)/);
 var cIsIE = (sUserAgent.match(/rv:([\d.]+)\) like gecko/))||(sUserAgent.match(/msie ([\d.]+)/));
 var mp3 = document.getElementById("mp3");
 var e = document.createElement("audio");
-e.src = "http://link.hhtjim.com/baidu/18627772.mp3";
+var source1 = document.createElement('source');
+source1.type= 'audio/mpeg';
+source1.src= 'http://link.hhtjim.com/baidu/18627772.mp3';
+e.appendChild(source1);
+var source2= document.createElement('source');
+source2.type= 'audio/mpeg';
+source2.src= 'http://musicdata.baidu.com/data2/music/18628316/18628316.mp3';
+e.appendChild(source2);
 e.setAttribute("controls", "controls");
 e.setAttribute("autoplay", "autoplay");
 if(bIsAndroid){
@@ -190,7 +197,6 @@ mp3.innerHTML ="<strong>启用背景音乐：　</strong>";
 }
 var object = mp3.appendChild(e);
 e.onended = function() {
-   e.src = getMp3(mp3List,e.src);
    e.play();
    }
 e.play();
