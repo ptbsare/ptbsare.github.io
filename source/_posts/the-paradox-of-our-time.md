@@ -10,6 +10,8 @@ tags: [Reprint, Pieces]
 
 ![](/img/the-paradox-of-our-time/1.jpg)
 
+---
+
 <script type="text/javascript">
 /*
 <div id = "inner" style="width:100%;margin:0 auto;background:#fff;" >
@@ -44,11 +46,7 @@ tags: [Reprint, Pieces]
 <script type="text/javascript" src="/img/individual/amplitudejs/js/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/img/individual/amplitudejs/css/styles_backup.css"/>
 
-<script type="text/javascript">
-/*
-<div class="nav" style="width:300px;"><div id="top-header" class="hidden-on-collapse"><div id="top-header-toggle" class="small-player-toggle-contract"></div><div class="now-playing-title" amplitude-song-info="name"></div><div class="album-information"><span amplitude-song-info="artist"></span> - <span amplitude-song-info="album"></span></div></div><div id="top-large-album" class="hidden-on-collapse"><img id="large-album-art" amplitude-song-info="cover"/></div><div id="small-player"><div id="small-player-left" class="hidden-on-expanded"><div id="small-player-toggle" class="small-player-toggle-expand"></div></div><img id="small-player-album-art" class="hidden-on-expanded" amplitude-song-info="cover"/><div id="small-player-middle" class="hidden-on-expanded"><div id="small-player-middle-top"><div id="small-player-middle-controls"><div class="amplitude-prev" id="middle-top-previous"></div><div class="amplitude-play-pause amplitude-paused" amplitude-main-play-pause="true" id="middle-top-play-pause"></div><div class="amplitude-next" id="middle-top-next"></div></div><div id="small-player-middle-meta"><div class="now-playing-title" amplitude-song-info="name"></div><div class="album-information"><span amplitude-song-info="artist"></span> - <span amplitude-song-info="album"></span></div></div></div><div id="small-player-middle-bottom"><div class="amplitude-song-time-visualization" amplitude-single-song-time-visualization="true" id="song-time-visualization"></div></div></div><div id="small-player-right" class="hidden-on-expanded"><div id="toggle-playlist" class="playlist-toggle"></div><span class="current-time"><span class="amplitude-current-minutes" amplitude-single-current-minutes="true">0</span>:<span class="amplitude-current-seconds" amplitude-single-current-seconds="true">00</span></span></div><div id="small-player-full-bottom" class="hidden-on-collapse"><div id="toggle-playlist-full" class="playlist-toggle"></div><div id="small-player-full-bottom-controls"><div class="amplitude-prev" id="middle-bottom-previous"></div><div class="amplitude-play-pause amplitude-paused" amplitude-main-play-pause="true" id="small-player-bottom-play-pause"></div><div class="amplitude-next" id="middle-top-next"></div></div><div id="small-player-full-bottom-info"><span class="current-time"><span class="amplitude-current-minutes" amplitude-single-current-minutes="true">0</span>:<span class="amplitude-current-seconds" amplitude-single-current-seconds="true">00</span></span><div class="amplitude-song-time-visualization" amplitude-single-song-time-visualization="true" id="song-time-visualization-large"></div><span class="time-duration"><span class="amplitude-duration-minutes" amplitude-single-duration-minutes="true">0</span>:<span class="amplitude-duration-seconds" amplitude-single-duration-seconds="true">00</span></span></div></div></div><div id="small-player-playlist"> <div class="information"> Playlist <hr> </div> <div class="amplitude-song-container amplitude-play-pause playlist-item" amplitude-song-index="0"> <img src="/img/individual/amplitudejs/images/a1.jpg" class="album-art"/> <div class="playlist-meta"> <div class="now-playing-title">一直很安静</div> <div class="album-information">阿桑 － 寂寞在唱歌</span></div> </div> <div style="clear: both;"></div> </div> <div class="amplitude-song-container amplitude-play-pause playlist-item" amplitude-song-index="1"> <img src="/img/individual/amplitudejs/images/a2.jpg" class="album-art"/> <div class="playlist-meta"> <div class="now-playing-title">Living Proof</div> <div class="album-information">Gregory Alan Isakov - The Weatherman</span></div> </div> <div style="clear: both;"></div> </div></div></div><br>
-*/
-</script>
+<div class="nav" style="width:300px;"><div id="top-header" class="hidden-on-collapse"><div id="top-header-toggle" class="small-player-toggle-contract"></div><div class="now-playing-title" amplitude-song-info="name"></div><div class="album-information"><span amplitude-song-info="artist"></span> - <span amplitude-song-info="album"></span></div></div><div id="top-large-album" class="hidden-on-collapse"><img id="large-album-art" amplitude-song-info="cover"/></div><div id="small-player"><div id="small-player-left" class="hidden-on-expanded"><div id="small-player-toggle" class="small-player-toggle-expand"></div></div><img id="small-player-album-art" class="hidden-on-expanded" amplitude-song-info="cover"/><div id="small-player-middle" class="hidden-on-expanded"><div id="small-player-middle-top"><div id="small-player-middle-controls"><div class="amplitude-prev" id="middle-top-previous"></div><div class="amplitude-play-pause amplitude-paused" amplitude-main-play-pause="true" id="middle-top-play-pause"></div><div class="amplitude-next" id="middle-top-next"></div></div><div id="small-player-middle-meta"><div class="now-playing-title" amplitude-song-info="name"></div><div class="album-information"><span amplitude-song-info="artist"></span> - <span amplitude-song-info="album"></span></div></div></div><div id="small-player-middle-bottom"><div class="amplitude-song-time-visualization" amplitude-single-song-time-visualization="true" id="song-time-visualization"></div></div></div><div id="small-player-right" class="hidden-on-expanded"><div id="toggle-playlist" class="playlist-toggle"></div><span class="current-time"><span class="amplitude-current-minutes" amplitude-single-current-minutes="true">0</span>:<span class="amplitude-current-seconds" amplitude-single-current-seconds="true">00</span></span></div><div id="small-player-full-bottom" class="hidden-on-collapse"><div id="toggle-playlist-full" class="playlist-toggle"></div><div id="small-player-full-bottom-controls"><div class="amplitude-prev" id="middle-bottom-previous"></div><div class="amplitude-play-pause amplitude-paused" amplitude-main-play-pause="true" id="small-player-bottom-play-pause"></div><div class="amplitude-next" id="middle-top-next"></div></div><div id="small-player-full-bottom-info"><span class="current-time"><span class="amplitude-current-minutes" amplitude-single-current-minutes="true">0</span>:<span class="amplitude-current-seconds" amplitude-single-current-seconds="true">00</span></span><div class="amplitude-song-time-visualization" amplitude-single-song-time-visualization="true" id="song-time-visualization-large"></div><span class="time-duration"><span class="amplitude-duration-minutes" amplitude-single-duration-minutes="true">0</span>:<span class="amplitude-duration-seconds" amplitude-single-duration-seconds="true">00</span></span></div></div></div><div id="small-player-playlist"> <div class="information"> Playlist <hr> </div> <div class="amplitude-song-container amplitude-play-pause playlist-item" amplitude-song-index="0"> <img src="http://i.gtimg.cn/music/photo/mid_album_300/v/k/003WbcgG3K4Ivk.jpg" class="album-art"/> <div class="playlist-meta"> <div class="now-playing-title">Poland</div> <div class="album-information">Ólafur Arnalds － Another Happy Day</span></div> </div> <div style="clear: both;"></div> </div> </div></div><br>
 
 <script type="text/javascript">
 /*
@@ -60,25 +58,19 @@ tags: [Reprint, Pieces]
 	Amplitude.init({
 		"songs": [
 			{
-				"name": "一直很安静",
-				"artist": "阿桑",
-				"album": "寂寞在唱歌",
-				"url": "http://musicdata.baidu.com/data2/music/124636556/124636556.mp3",
+				"name": "Poland",
+				"artist": "Ólafur Arnalds",
+				"album": "Another Happy Day",
+				"url": "http://link.hhtjim.com/qq/002Rn0cM12jsZn.mp3",
 				"live": false,
-				"cover_art_url": "/img/individual/amplitudejs/images/a1.jpg"
-			},
-			{
-				"name": "Living Proof",
-				"artist": "Gregory Alan Isakov",
-				"album": "The Weatherman",
-				"url": "http://musicdata.baidu.com/data2/music/91519199/91519199.mp3",
-				"live": false,
-				"cover_art_url": "/img/individual/amplitudejs/images/a2.jpg"
+				"cover_art_url": "http://i.gtimg.cn/music/photo/mid_album_300/v/k/003WbcgG3K4Ivk.jpg",
 			}
 			
 		],
 		"default_album_art": "/img/individual/amplitudejs/images/no-cover-large.png",
-		"autoplay": false
+		"autoplay": true,
+		"volume": 1
+
 	});
 
 	var expanded = false;
