@@ -17,7 +17,7 @@ The first step is to consider whether, though there seems to be an enormous quan
 
 The second question considered is whether this costly laborious effort is worthy. It is easy to see that in most counties there exists a great discrepancy between money spent on making up for the productivity undermined by environmental destruction and its equivalent for environmental recovering. However, there are clearly confirmed evidences that the latter repays several times more than the former for the reason that some environmental problems, such as one that we call mass extinction involving various wild life progressively going vanished, still takes heavy human and economic toll. Thereby, contributing to protecting these animals produces decent return and hold out the hope of a huge distant pay-off to boost.
 
-To end with, we can never investigate too much money into animal and birds protection. Similarly, it is never too late to get down to the animal-saving enterprise, which we should have done a long time ago.
+To end with, we can never invest too much money into animal and birds protection. Similarly, it is never too late to get down to the animal-saving enterprise, which we should have done a long time ago.
 
 (334 words)
 By ptbsare.
