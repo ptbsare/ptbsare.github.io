@@ -136,24 +136,11 @@ sudo apt-get install texlive-latex-base texlive-latex-extra latex-cjk-all
 sudo apt-get install texlive-lang-cjk #此一步安装了ctex宏包
 sudo apt-get install texlive-xetex #此一步安装xelatex排版
 sudo apt-get install latexmk #此一步安装latexmk构建引擎
+
 cd /tmp
-
-svn checkout http://ctex-kit.googlecode.com/svn/trunk/CJKpunct
-cd /tmp/CJKpunct/tex/latex/CJK
-sudo cp -r ./CJKpunct /usr/share/texmf/tex/latex/CJK/
-
-2015年11月28日更新注：那个svn地址如果不能下载需要自备梯子，以使用某agent为梯子为例，需在执行上面三条命令之前在命令行下先执行以下两条命令：
-export http_proxy=http://127.0.0.1:8087
-export https_proxy=$http_proxy
-如果没有梯子，下面提供备选方案。
-
-备选方案：
-或：上面的从svn那步开始的几步可替换为：
 git clone https://github.com/CTeX-org/ctex-kit.git
 cd ctex-kit/CJKpunct/tex/latex/CJK
 sudo cp -r ./CJKpunct /usr/share/texmf/tex/latex/CJK/
-
-最后：
 sudo texhash #安装CJKpunct宏包 
 ```
 ####2 .解决中文字体问题
