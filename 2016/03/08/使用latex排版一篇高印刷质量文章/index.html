@@ -1,0 +1,860 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>使用Latex排版一篇高印刷质量文章 | 匆匆那年</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="ptbsare">
+    
+    <meta name="description" content="引言
+　　本篇作为一篇初学者的指南，高级用户则完全可以跳过。因为笔者本身也是一名新手。
+从模板说起
+　　Latex的模板让使用者无需考虑格式问题，从而将注意力更多地投入到内容而非形式上，这便是Latex的一大优势所在，对于不同的格式要求，排版者只需在文件头部修改所使用的模板即可（只需修改一行的内容）">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="ptbsare" />
+    <meta name="twitter:title" content="使用Latex排版一篇高印刷质量文章 | 匆匆那年" />
+      
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman1.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman1.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="匆匆那年" title="匆匆那年"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="匆匆那年">匆匆那年</a></h1>
+				<h2 class="blog-motto">Welcome to ptbsare&#39;s blog.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/lab">Lab</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:ptbsare.org">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/08/使用latex排版一篇高印刷质量文章/" title="使用Latex排版一篇高印刷质量文章" itemprop="url">使用Latex排版一篇高印刷质量文章</a>
+  </h1>
+  <p class="article-author">By
+  <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
+  <p class="article-time">
+    <time datetime="2016-03-08T15:53:11.000Z" itemprop="datePublished">3月 8 2016</time>
+    更新日期:<time datetime="2016-03-09T03:30:39.000Z" itemprop="dateModified">3月 9 2016</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从模板说起"><span class="toc-number">2.</span> <span class="toc-text">从模板说起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">3.</span> <span class="toc-text">开始</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板的指定"><span class="toc-number">3.1.</span> <span class="toc-text">模板的指定</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#此处可以使用的参数（方括号内的参数）"><span class="toc-number">3.1.1.</span> <span class="toc-text">此处可以使用的参数（方括号内的参数）</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#中文支持"><span class="toc-number">3.2.</span> <span class="toc-text">中文支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增强的数学公式输入"><span class="toc-number">3.3.</span> <span class="toc-text">增强的数学公式输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表支持"><span class="toc-number">3.4.</span> <span class="toc-text">列表支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并列插图支持"><span class="toc-number">3.5.</span> <span class="toc-text">并列插图支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档内链接跳转支持"><span class="toc-number">3.6.</span> <span class="toc-text">文档内链接跳转支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他杂项"><span class="toc-number">3.7.</span> <span class="toc-text">其他杂项</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#文档正文部分"><span class="toc-number">4.</span> <span class="toc-text">文档正文部分</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标题指定"><span class="toc-number">4.1.</span> <span class="toc-text">标题指定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作者信息"><span class="toc-number">4.2.</span> <span class="toc-text">作者信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#摘要"><span class="toc-number">4.3.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键词"><span class="toc-number">4.4.</span> <span class="toc-text">关键词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Section部分"><span class="toc-number">4.5.</span> <span class="toc-text">Section部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Paragraph段落"><span class="toc-number">4.6.</span> <span class="toc-text">Paragraph段落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Citation引用"><span class="toc-number">4.7.</span> <span class="toc-text">Citation引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片的插入"><span class="toc-number">4.8.</span> <span class="toc-text">图片的插入</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单一图片的插入"><span class="toc-number">4.8.1.</span> <span class="toc-text">单一图片的插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#并列子图的插入"><span class="toc-number">4.8.2.</span> <span class="toc-text">并列子图的插入</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#表格的插入"><span class="toc-number">4.9.</span> <span class="toc-text">表格的插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有序列表与无序列表"><span class="toc-number">4.10.</span> <span class="toc-text">有序列表与无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数学方程式的输入"><span class="toc-number">4.11.</span> <span class="toc-text">数学方程式的输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文献"><span class="toc-number">4.12.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束文档"><span class="toc-number">4.13.</span> <span class="toc-text">结束文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他杂项-1"><span class="toc-number">4.14.</span> <span class="toc-text">其他杂项</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-number">5.</span> <span class="toc-text">后记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些模板（持续更新）"><span class="toc-number">6.</span> <span class="toc-text">一些模板（持续更新）</span></a></li></ol>
+		</div>
+		
+		<h2 id="引言">引言</h2>
+<p>　　本篇作为一篇初学者的指南，高级用户则完全可以跳过。因为笔者本身也是一名新手。</p>
+<h2 id="从模板说起">从模板说起</h2>
+<p>　　<code>Latex</code>的模板让使用者无需考虑格式问题，从而将注意力更多地投入到内容而非形式上，这便是<code>Latex</code>的一大优势所在，对于不同的格式要求，排版者只需在文件头部修改所使用的模板即可（只需修改一行的内容），而剩下的文本则无需变动，非常方便。<br>　　本文以<code>IEEE</code>期刊官方所提供的模板作为示例。</p>
+<h2 id="开始">开始</h2>
+<p>　　下面笔者逐步介绍如何排版一篇符合<code>IEEE</code>标准规范的论文。</p>
+<h3 id="模板的指定">模板的指定</h3>
+<p>　　由于<code>IEEE</code>模板作为<code>Texlive</code>中的集成模板，在安装完成后就已经包含在发行版中，在新建的<code>.tex</code>空白文件的第一行，用以下语句指定即可：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="command">\documentclass</span><span class="special">[</span>conference<span class="special">]</span><span class="special">{</span>IEEEtran<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<h4 id="此处可以使用的参数（方括号内的参数）">此处可以使用的参数（方括号内的参数）</h4>
+<ul>
+<li>字号大小<br>　　有四种可能的字号，分别是9pt, <strong>10pt</strong>, 11pt, 12pt, 加粗的为默认值，默认值适用于大多数paper，无需修改。</li>
+<li>草稿模式<br>　　同样此处有四种可能的模式，分别是draft, draftcls, draftclsnofoot, <strong>final</strong>, 倘若使用draft模式则文章的行距被调整为二倍行距以方便加批注，默认为final即最终稿模式，此处也无需修改，保持默认即可。</li>
+<li>模板类型<br>　　此处有５种可能的类型，分别是conference, <strong>journal</strong>, technote, peerreview, peerreviewca。journal以及technote得到的论文会和大多数<code>IEEE TRANSACTIONS journals</code>的格式非常吻合。<code>peerreview</code>得到的论文与<code>journal</code>非常相近，唯一的不同是<code>peerreview</code>会多排版出来一个单栏的封面，专门展示标题，作者，摘要以及关键词，以方便同行的审查。在封皮页之后的正文还会有标题，但是正文不再有作者以及摘要等。<code>peerreviewca</code>与<code>peerreview</code>非常接近，不同的是其作者的格式与conference的（多栏分开多个作者）保持一致。此处我们先以conference为例子。</li>
+<li>纸张类型<br>　　此处有三个可选项：<strong>letterpaper</strong>, a4paper, cspaper，本文暂且以a4paper(A4纸张)为例。</li>
+<li>单双面<br>　　<strong>oneside</strong>, twoside，默认为单面，暂且保持默认即可。</li>
+<li>单双栏<br>　　onecolumn, <strong>twocolumn</strong>，默认为双栏，暂且保持默认即可。</li>
+<li>其他杂项暂不介绍<br>　　1）<code>romanappendices</code>，默认不启用，启用此项会使得Appendices的编号以罗马数字，而非大写的A.B.C等编号。<br>　　2）<code>captionsoff</code>，默认不启用，启用此项会使得图表等里面的标注文字首字母不再大写。<br>　　3）<code>nofonttune</code>，默认不启用，启用此项会禁用IEEEtran为改善阅读而做的字间距微调。<br>　　4）<code>comsoc</code>, <code>compsoc</code>, <code>transmag</code>，默认不启用，启用这些选项则也可以使用此<code>IEEEtran</code>模板排版符合<code>IEEE Communications Society</code>, <code>IEEE Computer Society</code>和<code>IEEE TRANSACTIONS ON MAGNETICS</code>等这些机构的格式的论文。</li>
+<li>一个基本示例</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\documentclass[<span class="number">10</span>pt,<span class="keyword">final</span>,conference,a4paper,oneside,twocolumn]{IEEEtran}
+</pre></td></tr></table></figure>
+
+<p>　　对于选项是默认值的也可略去不写，所以上述可简写为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\documentclass[conference,a4paper]<span class="list">{IEEEtran}</span>
+</pre></td></tr></table></figure>
+
+<h3 id="中文支持">中文支持</h3>
+<p>　　默认的<code>IEEEtran</code>是不支持中文的，此处使用<code>ctex</code>包提供中文支持。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="attribute">\usepackage[fontset</span>=<span class="string">mac,scheme=plain]{ctex}</span>
+</pre></td></tr></table></figure>
+
+<ul>
+<li><code>fontset</code>选项<br>　　依据你操作系统而定，此选项为了规避不同操作系统预装中文字体不一样导致的找不到字体的问题。<br>　　1）若你在使用<strong>Windows</strong>，则<code>fontset=windows</code>。<br>　　2）若你在使用<strong>Ubuntu</strong>，则<code>fontset=ubuntu</code>。<br>　　3）若你在使用<strong>Mac OS</strong>，则<code>fontset=mac</code>。<br>　　4）其他<code>fontset</code>选项详见<code>ctex</code>文档。</li>
+<li><code>scheme</code>选项<br>　　此处<code>scheme=plain</code>以使得<code>ctex</code>仅仅提供中文支持，而不改变文章的行距和缩进等。<br>　　此处只用到<code>ctex</code>这两个选项，更多选项强烈推荐参阅<code>ctex</code>官方文档：<br>在Mac OS或Linux中执行：<code>texdoc ctex</code>即可。Windows下有相应的<code>Texdoc</code>图形查找工具。<h3 id="增强的数学公式输入">增强的数学公式输入</h3>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\usepackage<span class="list">{amsmath}</span>
+</pre></td></tr></table></figure>
+
+<p><code>amsmath</code>由<code>American Mathematical Society</code>编写和维护，提供了更强大的数学公式排版。</p>
+<h3 id="列表支持">列表支持</h3>
+<p>　　形如下面的格式都被称作列表，此处为有序列表，可被自动编号，还有一种叫做无序列表，这两种环境都被<code>enumitem</code>这个包提供</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>1.xxxx
+2.xxxx
+3.xxxx
+</pre></td></tr></table></figure>
+
+<p>以下一行引入此包：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\usepackage<span class="list">{enumitem}</span>
+</pre></td></tr></table></figure>
+
+<h3 id="并列插图支持">并列插图支持</h3>
+<p>　　在一些论文中可能会用到子图，使用subfig包支持：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\usepackage<span class="list">{subfig}</span>
+</pre></td></tr></table></figure>
+
+<h3 id="文档内链接跳转支持">文档内链接跳转支持</h3>
+<p>　　引入此包以支持链接跳转，尤其是单击目录或者引用等元素则会直接跳转到相应目标或者出处。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\usepackage<span class="list">{hyperref}</span>
+</pre></td></tr></table></figure>
+
+<h3 id="其他杂项">其他杂项</h3>
+<p>　　修正连字符使用：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="subst">\</span>hyphenation{op<span class="attribute">-tical</span> net<span class="attribute">-works</span> semi<span class="attribute">-conduc</span><span class="attribute">-tor</span>}
+</pre></td></tr></table></figure>
+
+<h2 id="文档正文部分">文档正文部分</h2>
+<p>　　到此为止，以上<code>.tex</code>头部的指定语句结束，下面开始文档的正文部分，也即在<code>\begin{document}</code>之后的部分。</p>
+<h3 id="标题指定">标题指定</h3>
+<p>　　以下语句：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\<span class="tag">title</span><span class="rules">{<span class="rule">你的文章标题}</span></span>
+</pre></td></tr></table></figure>
+
+<h3 id="作者信息">作者信息</h3>
+<p>　　以下语句（示例）：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="command">\author</span><span class="special">{</span><span class="command">\IEEEauthorblockN</span><span class="special">{</span>韩小涛，徐 雁<span class="special">}</span>
+<span class="command">\IEEEauthorblockA</span><span class="special">{</span>电气与电子工程学院<span class="command">\\</span>
+华中科技大学<span class="command">\\</span>
+武汉, 中国<span class="command">\\</span>
+邮箱: xthan@mail.hust.edu.cn<span class="special">}</span><span class="command">\\</span>
+<span class="command">\and</span>
+<span class="command">\IEEEauthorblockN</span><span class="special">{</span>傅闯, 饶 宏<span class="special">}</span>
+<span class="command">\IEEEauthorblockA</span><span class="special">{</span>电科院<span class="command">\\</span>
+中国南方电网公司<span class="command">\\</span>
+广州, 中国<span class="command">\\</span>
+邮箱: fuchuang@csg.cn<span class="special">}</span>
+<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p>　　其中，一个<code>IEEEauthorblockN</code>代表一方作者。<br>　　在指定了<code>title</code>和<code>author</code>后，用<code>\maketitle</code>即可生成标题。</p>
+<h3 id="摘要">摘要</h3>
+<p>　　使用<code>Latex</code>的<code>abstract</code>环境即可：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>\<span class="keyword">begin</span>{<span class="keyword">abstract</span>}
+你的摘要
+\<span class="keyword">end</span>{<span class="keyword">abstract</span>}
+</pre></td></tr></table></figure>
+
+<h3 id="关键词">关键词</h3>
+<p>　　使用<code>IEEEkeywords</code>环境即可：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>\begin<span class="cell">{IEEEkeywords}</span>
+你的关键词
+\<span class="keyword">end</span><span class="cell">{IEEEkeywords}</span>
+</pre></td></tr></table></figure>
+
+<h3 id="Section部分">Section部分</h3>
+<p>　　使用<code>secttion</code>命令执行一级标题，其中一篇文章一般要分为好几个<code>section</code>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\section<span class="list">{该section的标题}</span>
+</pre></td></tr></table></figure>
+
+<p>　　如果有必要，还可以使用<code>subsection</code>以及<code>subsubsection</code>执行二级和三级标题。</p>
+<h3 id="Paragraph段落">Paragraph段落</h3>
+<p>　　使用<code>par</code>命令执行段落。每个段落首行均有缩进。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="command">\par</span> 这是第一段。
+<span class="command">\par</span> 这是第二段。
+</pre></td></tr></table></figure>
+
+<h3 id="Citation引用">Citation引用</h3>
+<p>　　使用<code>cite</code>命令来在引用处进行引用：<code>\cite{1}</code>代表此处引用参考文献的第一项。<br>　　此处以及以上各部分可以使用以下图片展示其对应关系：<br><img src="/img/使用latex排版一篇高印刷质量文章/1.png" alt=""><br><a href="/img/使用latex排版一篇高印刷质量文章/1.png" target="_blank">点击此处查看大图</a></p>
+<h3 id="图片的插入">图片的插入</h3>
+<h4 id="单一图片的插入">单一图片的插入</h4>
+<p>　　一个标准的插入图片的代码如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="command">\begin</span><span class="special">{</span>figure<span class="special">}</span><span class="special">[</span>!t<span class="special">]</span>
+  <span class="command">\includegraphics</span><span class="special">[</span>width=0.3<span class="command">\textwidth</span><span class="special">]</span><span class="special">{</span>fig1.png<span class="special">}</span>
+  <span class="command">\centering</span>
+  <span class="command">\caption</span><span class="special">{</span>直流电流测量系统内部原理图<span class="special">}</span>
+  <span class="command">\label</span><span class="special">{</span>fig1<span class="special">}</span>
+<span class="command">\end</span><span class="special">{</span>figure<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p>　　其效果如下：<br><img src="/img/使用latex排版一篇高印刷质量文章/14.png" alt=""></p>
+<h4 id="并列子图的插入">并列子图的插入</h4>
+<p>　　插入多个子图：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="command">\begin</span><span class="special">{</span>figure<span class="special">}</span><span class="special">[</span>!t<span class="special">]</span>
+<span class="command">\centering</span>
+<span class="command">\subfloat</span><span class="special">[</span>10A，8/20<span class="formula">$<span class="command">\mu</span> s$</span><span class="special">]</span><span class="special">{</span>
+<span class="command">\label</span><span class="special">{</span>fig:fig9-1<span class="special">}</span>
+<span class="command">\includegraphics</span><span class="special">[</span>width=0.43<span class="command">\columnwidth</span><span class="special">]</span><span class="special">{</span>fig9-1<span class="special">}</span><span class="comment">%</span>
+<span class="special">}</span>
+<span class="command">\subfloat</span><span class="special">[</span>17A，8/20<span class="formula">$<span class="command">\mu</span> s$</span><span class="special">]</span><span class="special">{</span>
+<span class="command">\label</span><span class="special">{</span>fig:fig9-2<span class="special">}</span>
+<span class="command">\includegraphics</span><span class="special">[</span>width=0.43<span class="command">\columnwidth</span><span class="special">]</span><span class="special">{</span>fig9-2<span class="special">}</span><span class="comment">%</span>
+<span class="special">}</span><span class="command">\\</span>
+<span class="command">\subfloat</span><span class="special">[</span>22A，8/20<span class="formula">$<span class="command">\mu</span> s$</span><span class="special">]</span><span class="special">{</span>
+<span class="command">\label</span><span class="special">{</span>fig:fig9-3<span class="special">}</span>
+<span class="command">\includegraphics</span><span class="special">[</span>width=0.43<span class="command">\columnwidth</span><span class="special">]</span><span class="special">{</span>fig9-3<span class="special">}</span><span class="comment">%</span>
+<span class="special">}</span>
+<span class="command">\subfloat</span><span class="special">[</span>35A，8/20<span class="formula">$<span class="command">\mu</span> s$</span><span class="special">]</span><span class="special">{</span>
+<span class="command">\label</span><span class="special">{</span>fig:fig9-4<span class="special">}</span>
+<span class="command">\includegraphics</span><span class="special">[</span>width=0.43<span class="command">\columnwidth</span><span class="special">]</span><span class="special">{</span>fig9-4<span class="special">}</span><span class="comment">%</span>
+<span class="special">}</span>
+<span class="command">\caption</span><span class="special">{</span>分流器的冲击电流时域响应<span class="special">}</span>
+<span class="command">\label</span><span class="special">{</span>fig9<span class="special">}</span>
+<span class="command">\end</span><span class="special">{</span>figure<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p>　　其效果如下：<br><img src="/img/使用latex排版一篇高印刷质量文章/2.png" alt=""></p>
+<h3 id="表格的插入">表格的插入</h3>
+<p>　　下面的代码可以插入一个简单的表格：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="command">\begin</span><span class="special">{</span>table<span class="special">}</span><span class="special">[</span>!t<span class="special">]</span>
+<span class="command">\renewcommand</span><span class="special">{</span><span class="command">\arraystretch</span><span class="special">}</span><span class="special">{</span>1.3<span class="special">}</span>
+<span class="command">\caption</span><span class="special">{</span>An Example of a Table<span class="special">}</span>
+<span class="command">\label</span><span class="special">{</span>table_example<span class="special">}</span>
+<span class="command">\centering</span>
+<span class="command">\begin</span><span class="special">{</span>tabular<span class="special">}</span><span class="special">{</span>|c||c|<span class="special">}</span>
+<span class="command">\hline</span>
+One <span class="special">&</span> Two<span class="command">\\</span>
+<span class="command">\hline</span>
+Three <span class="special">&</span> Four<span class="command">\\</span>
+<span class="command">\hline</span>
+<span class="command">\end</span><span class="special">{</span>tabular<span class="special">}</span>
+<span class="command">\end</span><span class="special">{</span>table<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<h3 id="有序列表与无序列表">有序列表与无序列表</h3>
+<ul>
+<li>有序列表示例：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="command">\begin</span><span class="special">{</span>enumerate<span class="special">}</span>
+<span class="command">\item</span> 分流器的电气参数
+<span class="command">\item</span> 分流器的物理结构参数
+<span class="command">\item</span> 子区间积分变量设定
+<span class="command">\end</span><span class="special">{</span>enumerate<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p><img src="/img/使用latex排版一篇高印刷质量文章/3.png" alt=""></p>
+<ul>
+<li>无序列表示例：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="command">\begin</span><span class="special">{</span>itemize<span class="special">}</span>
+<span class="command">\item</span> 一次侧电流：3KA
+<span class="command">\item</span> 阻抗：<span class="formula">$50<span class="command">\mu</span><span class="command">\Omega</span>$</span>
+<span class="command">\item</span> 额定电流时的输出电压信号：150mV
+<span class="command">\item</span> 带宽：65-3kHZ
+<span class="command">\item</span> 给定保护动作门槛值：7.5mV
+<span class="command">\end</span><span class="special">{</span>itemize<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p><img src="/img/使用latex排版一篇高印刷质量文章/4.png" alt=""></p>
+<ul>
+<li>值得注意的是，有序列表和无序列表可以互相嵌套，如下图所示：<br><img src="/img/使用latex排版一篇高印刷质量文章/5.png" alt=""><br><a href="/img/使用latex排版一篇高印刷质量文章/1.png" target="_blank">点击此处查看大图</a><h3 id="数学方程式的输入">数学方程式的输入</h3>
+　　此部分是可以讲很长都讲不完的，在此精简地介绍一下。</li>
+<li>基本的数学符号<br>　　参见此图，里面囊括了常用的所有符号对应的<code>Latex</code>代码：<br><img src="/img/使用latex排版一篇高印刷质量文章/6.jpeg" alt=""><br>牢记基本的：<br>上标：<code>^</code><br>下标：<code>_</code></li>
+<li>矩阵<br>　　参见此图，不同矩阵的写法：<br><img src="/img/使用latex排版一篇高印刷质量文章/7.jpg" alt=""></li>
+<li>分数<br>　　分数是最常用的，一定要牢记，例如：<br><img src="/img/使用latex排版一篇高印刷质量文章/8.png" alt=""></li>
+<li>方程及方程组（包括编号）<br>　　首先，对于此部分，<strong>非常强烈</strong>推荐先通读一遍<code>amsmath</code>的官方文档，里面对于每种方程的对齐方式都有详尽的描述。</li>
+</ul>
+<ol>
+<li>不参与编号的方程环境有<code>gather</code>,<code>flalign</code>,<code>multline</code>,<code>split</code></li>
+<li>参与编号的方程环境有：<br><code>equation</code>:单独方程（常用）。<br>示例：<br><img src="/img/使用latex排版一篇高印刷质量文章/9.png" alt=""><br><a href="/img/使用latex排版一篇高印刷质量文章/9.png" target="_blank">点击此处查看大图</a><br><code>align</code>:多个方程写在一起，有对齐，参与对齐的每个方程均有编号（非常常用）。<br>示例：<br><img src="/img/使用latex排版一篇高印刷质量文章/10.png" alt=""><br><a href="/img/使用latex排版一篇高印刷质量文章/10.png" target="_blank">点击此处查看大图</a><br><code>subequations</code>:同样编号下面分裂出来的子方程，其以3-a，3-b等编号。<br>示例：<br><img src="/img/使用latex排版一篇高印刷质量文章/11.png" alt=""><br><a href="/img/使用latex排版一篇高印刷质量文章/11.png" target="_blank">点击此处查看大图</a></li>
+<li>（较复杂，可略去不看，仅供参考）单独方程与分裂子方程对齐且连号。<br>　　首先在头部定义：</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="comment">% Tweak subequations</span>
+\usepackage<span class="cell">{etoolbox}</span>
+\AtBeginEnvironment<span class="cell">{align}</span><span class="cell">{\setcounter{subeqn}</span><span class="cell">{<span class="number">0</span>}</span>}
+\newcounter<span class="cell">{subeqn}</span> \renewcommand<span class="cell">{\thesubeqn}</span><span class="cell">{\theequation\alph{subeqn}</span>}<span class="comment">%</span>
+\newcommand<span class="cell">{\subeqn}</span><span class="cell">{%
+  \refstepcounter{subeqn}</span><span class="comment">% Step subequation number</span>
+  \tag<span class="cell">{\thesubeqn}</span><span class="comment">% Label equation</span>
+}
+</pre></td></tr></table></figure>
+
+<p>　　在正文处的写法：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre>\begin<span class="cell">{align}</span>
+E_x=<span class="cell">{}</span>&\begin<span class="cell">{bmatrix}</span><span class="number">1</span>&<span class="number">0</span>\<span class="keyword">end</span><span class="cell">{bmatrix}</span>^T,E_y=\begin<span class="cell">{bmatrix}</span><span class="number">0</span>&<span class="number">1</span>\<span class="keyword">end</span><span class="cell">{bmatrix}</span>^T\\
+M^f_<span class="cell">{\lambda/<span class="number">4</span>}</span>=<span class="cell">{}</span>&\frac<span class="cell">{<span class="number">1</span>}</span><span class="cell">{\sqrt{<span class="number">2</span>}</span>}\begin<span class="cell">{bmatrix}</span><span class="number">1</span>&-<span class="built_in">i</span>\\-<span class="built_in">i</span>&<span class="number">1</span>\<span class="keyword">end</span><span class="cell">{bmatrix}</span>e^<span class="cell">{i(\pi/<span class="number">2</span>)}</span>\refstepcounter<span class="cell">{equation}</span>\subeqn\\
+M^b_<span class="cell">{\lambda/<span class="number">4</span>}</span>=<span class="cell">{}</span>&\frac<span class="cell">{<span class="number">1</span>}</span><span class="cell">{\sqrt{<span class="number">2</span>}</span>}\begin<span class="cell">{bmatrix}</span><span class="number">1</span>&<span class="built_in">i</span>\\<span class="built_in">i</span>&<span class="number">1</span>\<span class="keyword">end</span><span class="cell">{bmatrix}</span>e^<span class="cell">{i(\pi/<span class="number">2</span>)}</span>\subeqn\\
+M_m=<span class="cell">{}</span>&\begin<span class="cell">{bmatrix}</span>-<span class="number">1</span>&<span class="number">0</span>\\<span class="number">0</span>&<span class="number">1</span>\<span class="keyword">end</span><span class="cell">{bmatrix}</span>\\
+M_p^x=<span class="cell">{}</span>&=\begin<span class="cell">{bmatrix}</span><span class="number">1</span>&<span class="number">0</span>\<span class="keyword">end</span><span class="cell">{bmatrix}</span>,M_p^y=\begin<span class="cell">{bmatrix}</span><span class="number">0</span>&<span class="number">1</span>\<span class="keyword">end</span><span class="cell">{bmatrix}</span>
+\<span class="keyword">end</span><span class="cell">{align}</span>
+</pre></td></tr></table></figure>
+
+<p>示例：<br><img src="/img/使用latex排版一篇高印刷质量文章/12.png" alt=""><br><a href="/img/使用latex排版一篇高印刷质量文章/12.png" target="_blank">点击此处查看大图</a></p>
+<h3 id="参考文献">参考文献</h3>
+<ul>
+<li><code>bib</code>文件的写法<br>　　首先，推荐先通读<code>bibtex</code>官方的文档。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>texdoc bibtex
+</pre></td></tr></table></figure>
+
+<p>下面是一个示例：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="code"><pre>@incollection<span class="special">{</span>1,
+  title=<span class="special">{</span>Fiber-optic current sensor for the electro-chemical in- dustry<span class="special">}</span>,
+  author=<span class="special">{</span>K.Bohnert,P.Gabus,H.Brandle,M.Brunzel,R.Bachle,M.Wendler, and S. Ebner<span class="special">}</span>,
+  booktitle=<span class="special">{</span>Tech. Dig. Sensoren Und Messysteme 2006 (ITG-/GMA- Fachtagung)<span class="special">}</span>,
+  volume = <span class="special">{</span>13-14<span class="special">}</span>,
+  pages = <span class="special">{</span>103-106<span class="special">}</span>,
+  year=<span class="special">{</span>2006<span class="special">}</span>,
+  month=<span class="special">{</span>Mar.<span class="special">}</span>,
+  publisher=<span class="special">{</span>Freiburg<span class="special">}</span>,
+  address=<span class="special">{</span>Germany<span class="special">}</span>
+<span class="special">}</span>
+@article<span class="special">{</span>2,
+  title=<span class="special">{</span>Fiber-optic current transducer optimized for power metering applications<span class="special">}</span>,
+  author=<span class="special">{</span>J. N. Blake and A. H. Rose<span class="special">}</span>,
+  journal=<span class="special">{</span>2003 IEEE PES Transmission Dis- tribution Conf. Exposition<span class="special">}</span>,
+  volume = <span class="special">{</span>Jan.<span class="special">}</span>,
+  pages = <span class="special">{</span>405-408<span class="special">}</span>,
+  year=<span class="special">{</span>2003<span class="special">}</span>,
+  month=<span class="special">{</span>12<span class="special">}</span>,
+  note=<span class="special">{</span>Dallas, TX<span class="special">}</span>
+<span class="special">}</span>
+@manual<span class="special">{</span>3,
+  title=<span class="special">{</span>Waveplate polarization rotator<span class="special">}</span>,
+  author=<span class="special">{</span>R. A. Reeder<span class="special">}</span>,
+  organization=<span class="special">{</span>U.S. Patent 6,437,904 B1<span class="special">}</span>,
+  year=<span class="special">{</span>2002<span class="special">}</span>,
+  month=<span class="special">{</span>Aug.<span class="special">}</span>,
+<span class="special">}</span>
+@manual<span class="special">{</span>4,
+  title=<span class="special">{</span>Elimina- tion of birefringence induced scale factor errors in the in-line sagnac interferometer current sensor<span class="special">}</span>,
+  author=<span class="special">{</span>S. X. Short, J. U. Arruda, A. A. Tselikov, and J. N. Blake<span class="special">}</span>,
+  journal=<span class="special">{</span>J. Lightw. Technol<span class="special">}</span>,
+  volume = <span class="special">{</span>16<span class="special">}</span>,
+  number = <span class="special">{</span>10<span class="special">}</span>,
+  pages = <span class="special">{</span>1844-1859<span class="special">}</span>,
+  year=<span class="special">{</span>1998<span class="special">}</span>,
+  month=<span class="special">{</span>Oct.<span class="special">}</span>
+  <span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p>　　将其保存为<code>bibfile.bib</code>后，在文章的tex文件中，最后引用：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="command">\bibliographystyle</span><span class="special">{</span>IEEEtran<span class="special">}</span>
+<span class="command">\bibliography</span><span class="special">{</span>IEEEabrv,bibfile<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p>　　即可在此处排版参考文献：<br><img src="/img/使用latex排版一篇高印刷质量文章/13.png" alt=""><br><a href="/img/使用latex排版一篇高印刷质量文章/13.png" target="_blank">点击此处查看大图</a></p>
+<h3 id="结束文档">结束文档</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\<span class="function"><span class="keyword">end</span>{<span class="title">document</span>}</span>
+</pre></td></tr></table></figure>
+
+<p>　　此处与开头的<code>\begin{document}</code>遥相呼应。</p>
+<h3 id="其他杂项-1">其他杂项</h3>
+<ul>
+<li>作者生平信息，尚未用到，暂不介绍。</li>
+</ul>
+<h2 id="后记">后记</h2>
+<p>　　本文初稿写于<code>2016</code>年<code>3</code>月，文中命令均依照此时的<code>Texlive</code>发行版以及参考文档，若后面有变动，则文中部分命令可能会失效。<br>　　本文力求以最通俗简单的方式阐述一篇论文的基本<code>Latex</code>排版方法，同时鉴于笔者水平极其有限，文中一些用词称呼可能并非准确。文中一些部分存在过于简略的问题，尤其是插入表格的部分也是可以深入挖掘的部分，因此，本文内容也会在不断修订和更新之中，后面希望加入编辑和排版页眉页脚的部分。</p>
+<h2 id="一些模板（持续更新）">一些模板（持续更新）</h2>
+<ul>
+<li>华中科技大学学位论文模板（第三方）：（<a href="http://hust-latex.github.io/download/" target="_blank">http://hust-latex.github.io/download/</a> ）</li>
+<li>华中科技大学本科毕业论文模板（第三方）：（<a href="https://github.com/Qinnn/LaTeX-ThesisTemplatesForHUSTer" target="_blank">https://github.com/Qinnn/LaTeX-ThesisTemplatesForHUSTer</a> ）</li>
+<li>高校<code>Latex</code>论文模板：（<a href="http://blog.sciencenet.cn/blog-287062-882353.html" target="_blank">http://blog.sciencenet.cn/blog-287062-882353.html</a> ）</li>
+<li>另一个合集：（<a href="http://www.xuebuyuan.com/2110936.html" target="_blank">http://www.xuebuyuan.com/2110936.html</a> ）</li>
+<li>访问此网站可以得到大量模板：（<a href="http://www.latexstudio.net/" target="_blank">http://www.latexstudio.net/</a> ）</li>
+</ul>
+<p>参考：<br>（<a href="http://omega.albany.edu:8008/Symbols.html" target="_blank">http://omega.albany.edu:8008/Symbols.html</a> ）<br>（<a href="http://jingyan.baidu.com/article/f3e34a128c53aef5ea653542.html" target="_blank">http://jingyan.baidu.com/article/f3e34a128c53aef5ea653542.html</a> ）<br>文中图中的文章为笔者的中文译稿，英文原文出自于：<br>（<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4303187）" target="_blank">http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4303187）</a><br>（<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4918651）" target="_blank">http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4918651）</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Latex/">Latex</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://ptbsare.org/2016/03/08/使用latex排版一篇高印刷质量文章/" data-title="使用Latex排版一篇高印刷质量文章 | 匆匆那年" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/10/26/雅思a类大作文/"  title="雅思A类大作文">
+ <strong>NEXT:</strong><br/> 
+ <span>雅思A类大作文
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comment">
+    <h1 class="title">文章评论</h1>
+    <div id="disqus_thread"></div>
+    <style type="text/css">
+    #disqus_thread { padding: 20px 35px 5px 35px; }
+    </style>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ptbsare'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从模板说起"><span class="toc-number">2.</span> <span class="toc-text">从模板说起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">3.</span> <span class="toc-text">开始</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板的指定"><span class="toc-number">3.1.</span> <span class="toc-text">模板的指定</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#此处可以使用的参数（方括号内的参数）"><span class="toc-number">3.1.1.</span> <span class="toc-text">此处可以使用的参数（方括号内的参数）</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#中文支持"><span class="toc-number">3.2.</span> <span class="toc-text">中文支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增强的数学公式输入"><span class="toc-number">3.3.</span> <span class="toc-text">增强的数学公式输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表支持"><span class="toc-number">3.4.</span> <span class="toc-text">列表支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并列插图支持"><span class="toc-number">3.5.</span> <span class="toc-text">并列插图支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档内链接跳转支持"><span class="toc-number">3.6.</span> <span class="toc-text">文档内链接跳转支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他杂项"><span class="toc-number">3.7.</span> <span class="toc-text">其他杂项</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#文档正文部分"><span class="toc-number">4.</span> <span class="toc-text">文档正文部分</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标题指定"><span class="toc-number">4.1.</span> <span class="toc-text">标题指定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作者信息"><span class="toc-number">4.2.</span> <span class="toc-text">作者信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#摘要"><span class="toc-number">4.3.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键词"><span class="toc-number">4.4.</span> <span class="toc-text">关键词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Section部分"><span class="toc-number">4.5.</span> <span class="toc-text">Section部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Paragraph段落"><span class="toc-number">4.6.</span> <span class="toc-text">Paragraph段落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Citation引用"><span class="toc-number">4.7.</span> <span class="toc-text">Citation引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片的插入"><span class="toc-number">4.8.</span> <span class="toc-text">图片的插入</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单一图片的插入"><span class="toc-number">4.8.1.</span> <span class="toc-text">单一图片的插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#并列子图的插入"><span class="toc-number">4.8.2.</span> <span class="toc-text">并列子图的插入</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#表格的插入"><span class="toc-number">4.9.</span> <span class="toc-text">表格的插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有序列表与无序列表"><span class="toc-number">4.10.</span> <span class="toc-text">有序列表与无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数学方程式的输入"><span class="toc-number">4.11.</span> <span class="toc-text">数学方程式的输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文献"><span class="toc-number">4.12.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束文档"><span class="toc-number">4.13.</span> <span class="toc-text">结束文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他杂项-1"><span class="toc-number">4.14.</span> <span class="toc-text">其他杂项</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-number">5.</span> <span class="toc-text">后记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些模板（持续更新）"><span class="toc-number">6.</span> <span class="toc-text">一些模板（持续更新）</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/English/" title="English">English<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Feeling/" title="Feeling">Feeling<sup>3</sup></a></li>
+		
+			<li><a href="/tags/GNU Tools/" title="GNU Tools">GNU Tools<sup>5</sup></a></li>
+		
+			<li><a href="/tags/Latex/" title="Latex">Latex<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>5</sup></a></li>
+		
+			<li><a href="/tags/Movie/" title="Movie">Movie<sup>5</sup></a></li>
+		
+			<li><a href="/tags/Music/" title="Music">Music<sup>2</sup></a></li>
+		
+			<li><a href="/tags/OpenGL/" title="OpenGL">OpenGL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Photograph/" title="Photograph">Photograph<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Pieces/" title="Pieces">Pieces<sup>8</sup></a></li>
+		
+			<li><a href="/tags/Reading/" title="Reading">Reading<sup>4</sup></a></li>
+		
+			<li><a href="/tags/Reprint/" title="Reprint">Reprint<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Show/" title="Show">Show<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Tips/" title="Tips">Tips<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Translated/" title="Translated">Translated<sup>5</sup></a></li>
+		
+			<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>4</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Web/" title="Web">Web<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Ptbsare. <br/>
+			I love astronomy and galaxies.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://twitter.com/ptbsare" target="_blank" title="twitter"></a>
+		
+		
+		<a href="https://github.com/ptbsare" target="_blank" title="github"></a>
+		
+		
+		<a href="https://www.facebook.com/ptbsare" target="_blank" title="facebook"></a>
+		
+		
+		<a href="https://plus.google.com/100168399125398465924?rel=author" target="_blank" title="Google+"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/3769631" target="_blank" title="stackoverflow"></a>
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://ptbsare.org" target="_blank" title="ptbsare">ptbsare</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+			    tex2jax: {
+					      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+								      processEscapes: true
+											    }
+													  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+				      tex2jax: {
+							        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+											      }
+														    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+				        var all = MathJax.Hub.getAllJax(), i;
+								        for(i=0; i < all.length; i += 1) {
+												            all[i].SourceElement().parentNode.className += ' has-jax';
+																		        }
+																						    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </body>
+</html>
