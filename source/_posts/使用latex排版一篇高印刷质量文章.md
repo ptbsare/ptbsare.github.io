@@ -56,6 +56,7 @@ tags: [Latex]
 　　此处`scheme=plain`以使得`ctex`仅仅提供中文支持，而不改变文章的行距和缩进等。
 　　此处只用到`ctex`这两个选项，更多选项强烈推荐参阅`ctex`官方文档：
 在Mac OS或Linux中执行：`texdoc ctex`即可。Windows下有相应的`Texdoc`图形查找工具。
+
 ###增强的数学公式输入
 ```
 \usepackage{amsmath}
