@@ -359,5 +359,5 @@ texdoc bibtex
 （http://omega.albany.edu:8008/Symbols.html ）
 （http://jingyan.baidu.com/article/f3e34a128c53aef5ea653542.html ）
 文中图中的文章为笔者的中文译稿，英文原文出自于：
-（http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4303187）
-（http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4918651）
+（http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4303187 ）
+（http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4918651 ）
