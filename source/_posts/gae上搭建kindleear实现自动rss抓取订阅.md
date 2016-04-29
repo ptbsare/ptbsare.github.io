@@ -427,6 +427,8 @@ twinkle    twinkle
 solemn     solemn
 hermit     hermit
 seer       seer
+zest       zest
+david      david
 ```
 
 ---
