@@ -80,7 +80,7 @@
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
     <time datetime="2014-11-07T07:29:12.000Z" itemprop="datePublished">11月 7 2014</time>
-    更新日期:<time datetime="2014-11-08T04:50:19.000Z" itemprop="dateModified">11月 8 2014</time>
+    更新日期:<time datetime="2016-10-11T05:48:35.000Z" itemprop="dateModified">10月 11 2016</time>
     
   </p>
 </header>
@@ -90,7 +90,7 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows平台"><span class="toc-number">2.1.</span> <span class="toc-text">Windows平台</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意"><span class="toc-number">2.1.1.</span> <span class="toc-text">注意</strong></span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux平台"><span class="toc-number">2.2.</span> <span class="toc-text">Linux平台</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mplayer"><span class="toc-number">2.2.1.</span> <span class="toc-text">mplayer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SMplayer"><span class="toc-number">2.2.2.</span> <span class="toc-text">SMplayer</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac_OS平台"><span class="toc-number">2.3.</span> <span class="toc-text">Mac OS平台</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows平台"><span class="toc-number">2.1.</span> <span class="toc-text">Windows平台</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意"><span class="toc-number">2.1.1.</span> <span class="toc-text">注意</strong></span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux平台"><span class="toc-number">2.2.</span> <span class="toc-text">Linux平台</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mplayer"><span class="toc-number">2.2.1.</span> <span class="toc-text">mplayer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SMplayer"><span class="toc-number">2.2.2.</span> <span class="toc-text">SMplayer</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac_OS平台"><span class="toc-number">2.3.</span> <span class="toc-text">Mac OS平台</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2016年10月11日更新"><span class="toc-number">3.1.</span> <span class="toc-text">2016年10月11日更新</span></a></li></ol>
 		</div>
 		
 		<h2 id="引言">引言</h2>
@@ -136,6 +136,37 @@
 <h2 id="总结">总结</h2>
 <p>本文介绍了在全平台下面播放器遮挡字幕对应的方法，算是一种比较通用的方法（Windows下也有<code>mplayer</code>，修改安装目录下的<code>smplayer.in</code>即可加入命令行参数<code>vf=xxx</code>）。<br>在没有中文字幕的情况下可反复观看英文，有助于帮助提高英文水平。</p>
 <p>参考：<br>(<a href="http://www.it.com.cn/edu/softhotnews/technews/2009/11/09/17/667304.html" target="_blank">http://www.it.com.cn/edu/softhotnews</a>)</p>
+<hr>
+<h3 id="2016年10月11日更新">2016年10月11日更新</h3>
+<ul>
+<li>由于最新版本的<code>mplayer</code>接口有变化，取消了<code>vf=xxx</code>这样的接口，取而代之的是<code>vf-add xxx</code>来添加一个滤镜，如果您使用的是较新版本的<code>mplayer</code>（包括其各个图形前端程序），本文中所有的命令行参数应有所变更，例如：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>mplayer -vf <span class="string">"delogo=175:335:350:40:1"</span> file.rmvb
+</pre></td></tr></table></figure>
+
+<p>应变更为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>mplayer -vf-add <span class="string">"delogo=175:335:350:40:1"</span> file.rmvb
+</pre></td></tr></table></figure>
+
+<p>例如XPlayerX中的传递给<code>mplayer</code>的选项那栏应由<code>-vf=&quot;delogo=155:300:350:29:1&quot;</code>变更为<code>-vf-add &quot;delogo=155:300:350:29:1&quot;</code></p>
+<ul>
+<li>Mac OS下最新版本的<code>MPlayerX</code>对<code>delogo</code>滤镜选项支持并不好，笔者没有测试成功（老版本是可以的），建议Mac OS用户直接用<code>Homebrew</code>安装<code>mplayer</code>命令行：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>brew install mplayer
+</pre></td></tr></table></figure>
+
+<p>然后直接用<code>mplayer</code>命令行播放：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>mplayer -vf-add <span class="string">"delogo=175:335:350:40:1"</span> file.rmvb
+</pre></td></tr></table></figure>
+
+<p>有关<code>Homebrew</code>的安装请参见其官网：<br>（<a href="http://brew.sh/）" target="_blank">http://brew.sh/）</a></p>
+<ul>
+<li>Mac OS 下的最新版<code>MPlayerX</code>现在可能安装一些附带软件，行为并不友好，建议用<code>mpv</code>（基于<code>mplayer</code>的增强版本）进行替代，并可使用其第三方的<code>delogo</code>插件实现该功能。<br>参见：<br>（<a href="https://mpv.io/）" target="_blank">https://mpv.io/）</a><br>（<a href="https://github.com/b4zz4/mpv-delogo）" target="_blank">https://github.com/b4zz4/mpv-delogo）</a></li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -206,7 +237,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows平台"><span class="toc-number">2.1.</span> <span class="toc-text">Windows平台</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意"><span class="toc-number">2.1.1.</span> <span class="toc-text">注意</strong></span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux平台"><span class="toc-number">2.2.</span> <span class="toc-text">Linux平台</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mplayer"><span class="toc-number">2.2.1.</span> <span class="toc-text">mplayer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SMplayer"><span class="toc-number">2.2.2.</span> <span class="toc-text">SMplayer</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac_OS平台"><span class="toc-number">2.3.</span> <span class="toc-text">Mac OS平台</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows平台"><span class="toc-number">2.1.</span> <span class="toc-text">Windows平台</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意"><span class="toc-number">2.1.1.</span> <span class="toc-text">注意</strong></span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux平台"><span class="toc-number">2.2.</span> <span class="toc-text">Linux平台</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mplayer"><span class="toc-number">2.2.1.</span> <span class="toc-text">mplayer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SMplayer"><span class="toc-number">2.2.2.</span> <span class="toc-text">SMplayer</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac_OS平台"><span class="toc-number">2.3.</span> <span class="toc-text">Mac OS平台</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2016年10月11日更新"><span class="toc-number">3.1.</span> <span class="toc-text">2016年10月11日更新</span></a></li></ol>
   </div>
 
 <div id="asidepart">
