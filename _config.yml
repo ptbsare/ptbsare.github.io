@@ -106,6 +106,6 @@ stylus:
 deploy:
   type: git
 	repo: 
-    gitcafe: git@gitcafe.com:ptbsare/ptbsare.git,gitcafe-pages
     github: git@github.com:ptbsare/ptbsare.github.io.git
+#   gitcafe: git@gitcafe.com:ptbsare/ptbsare.git,gitcafe-pages
 
