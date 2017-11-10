@@ -1,4 +1,4 @@
 #!/bin/sh
 #echo hello
-tar -xzvf source.tar.gz
+tar -xzf source.tar.gz echo -e "source.tar.gz extracted.\n"
 #git add .
