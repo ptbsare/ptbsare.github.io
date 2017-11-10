@@ -1,0 +1,4 @@
+#!/bin/sh
+#echo hello
+tar -xzvf source.tar.gz -C source
+#git add .

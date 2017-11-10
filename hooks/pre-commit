@@ -1,0 +1,4 @@
+#!/bin/sh
+#echo hello
+tar -czvf source.tar.gz --exclude=source/img --exclude=".DS_Store" source
+git add .
