@@ -1,4 +1,4 @@
 #!/bin/sh
 #echo hello
-tar -czf source.tar.gz --exclude=source/img --exclude=".DS_Store" --exclude="._*" source && echo -e "source.tar.gz created."
+tar -czf source.tar.gz --exclude=source/img --exclude=".DS_Store" --exclude="._*" source && echo "source.tar.gz created."
 git add .
