@@ -26,7 +26,7 @@ if [ ! -d "blog_hexo_source/.deploy/.git" ]; then
         echo -e  "Start Clone Source Git Repo... \n"
         git clone -o github git@github.com:ptbsare/ptbsare.github.io.git blog_hexo_source/.deploy &&echo -e  "Deploy Git Repo SUCCESS! \n"|| ( echo -e  "Deploy Git Repo Failed! \n"&&export SUC=0&&exit)
     else
-        cd blog_hexo_source/.deploy&&echo -e  "Pull Deploy Repo..."&& git  pull  github&&cd ../..&&echo -e  "Deploy Git Repo SUCCESS! \n"|| ( cd .. &&echo -e  "Deploy Git Repo Failed! \n"&&export SUC=0&&exit)
+        cd blog_hexo_source/.deploy&&echo -e  "Pull Deploy Repo..."&& git  pull  github master&&cd ../..&&echo -e  "Deploy Git Repo SUCCESS! \n"|| ( cd .. &&echo -e  "Deploy Git Repo Failed! \n"&&export SUC=0&&exit)
 fi
 CURRENT=`pwd`
 BASENAME=`basename "$CURRENT"`
