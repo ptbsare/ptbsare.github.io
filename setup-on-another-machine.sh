@@ -9,7 +9,7 @@ if [ "$BASENAME"x = "blog_hexo_source"x ];then
 fi
 if [ ! -d "blog_hexo_source/.git" ]; then
         echo -e  "Start Clone Source Git Repo... \n"
-        git clone git@github.com:ptbsare/blog_hexo_source.git &&echo -e  "Source Git Repo SUCCESS! \n"|| ( echo -e  "Source Git Repo Failed! \n"&&export SUC=0&&exit)
+        git clone https://github.com/ptbsare/blog_hexo_source.git &&echo -e  "Source Git Repo SUCCESS! \n"|| ( echo -e  "Source Git Repo Failed! \n"&&export SUC=0&&exit)
     else
         cd blog_hexo_source&&echo -e  "Pull Source Repo..."&& git  pull&&cd ..&&echo -e  "Source Git Repo SUCCESS! \n"|| ( cd ..&& echo -e  "Source Git Repo Failed! \n"&&export SUC=0&&exit)
 
@@ -24,7 +24,7 @@ fi
 
 if [ ! -d "blog_hexo_source/.deploy/.git" ]; then
         echo -e  "Start Clone Source Git Repo... \n"
-        git clone -o github git@github.com:ptbsare/ptbsare.github.io.git blog_hexo_source/.deploy &&echo -e  "Deploy Git Repo SUCCESS! \n"|| ( echo -e  "Deploy Git Repo Failed! \n"&&export SUC=0&&exit)
+        git clone https://github.com/ptbsare/ptbsare.github.io.git blog_hexo_source/.deploy &&echo -e  "Deploy Git Repo SUCCESS! \n"|| ( echo -e  "Deploy Git Repo Failed! \n"&&export SUC=0&&exit)
     else
         cd blog_hexo_source/.deploy&&echo -e  "Pull Deploy Repo..."&& git  pull  github master&&cd ../..&&echo -e  "Deploy Git Repo SUCCESS! \n"|| ( cd .. &&echo -e  "Deploy Git Repo Failed! \n"&&export SUC=0&&exit)
 fi
