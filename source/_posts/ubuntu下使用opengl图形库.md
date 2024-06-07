@@ -1,6 +1,12 @@
+---
 title: Ubuntu下使用OpenGL图形库
 date: 2014-05-17 16:14:33
-tags: [GNU Tools,Linux,Ubuntu,OpenGL]
+updated: 2014-06-24 14:39:10
+tags: 
+- "GNU Tools"
+- Linux
+- Ubuntu
+- OpenGL
 ---
 
 [c1]:(http://wiki.ubuntu-tw.org/index.php?title=Howto_Install_OpenGL_Development_Environment)
@@ -9,7 +15,7 @@ tags: [GNU Tools,Linux,Ubuntu,OpenGL]
 [c4]:(http://stackoverflow.com/questions/859501/learning-opengl-in-ubuntu)
 
 
-##Ubuntu下安装OpenGL图形库
+## Ubuntu下安装OpenGL图形库
 * 安装基本编译环境
 ```bash
 sudo apt-get install build-essential
@@ -91,7 +97,7 @@ glx是OpenGL Extension to the X Window System的缩写。它作为x的扩展，�
                     
 `"glos.h"`：不明，虽然这个也时常见到，可能是与系统相关的各种功能，也可能只是自己编写的一个文件。
 
-##测试文件
+## 测试文件
 
 ```c
 #include <GL/gl.h>
@@ -129,7 +135,7 @@ void display()
 }
 ```
 
-##编译命令
+## 编译命令
 
 
 * C

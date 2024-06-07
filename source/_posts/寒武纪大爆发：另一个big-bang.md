@@ -1,11 +1,14 @@
+---
 title: '寒武纪大爆发：另一个Big Bang'
 date: 2015-09-03 23:24:39
-tags: [Translated]
+updated: 2015-10-02 19:11:11
+tags: 
+- Translated
 toc: false
 ---
 <!--在我们科学之谜的第四集，我们来探寻为什么在大约5.42亿年以前，地球上的生物开始遍地开花。-->
-<div id="mp3"></div>
-![](/img/寒武纪大爆发：另一个big-bang/1.jpg)
+**启用背景音乐：**<audio controls="controls" autoplay src="e.mp3"  />
+![](寒武纪大爆发：另一个big-bang/1.jpg)
 
 ---
 
@@ -25,7 +28,7 @@ toc: false
 
 ---
 
-![](/img/寒武纪大爆发：另一个big-bang/2.png)
+![](寒武纪大爆发：另一个big-bang/2.png)
 <script type="text/javascript">/*在我们科学之谜的第三期，我们来探索一下到底是什么构成了我们迄今95%的宇宙。*/</script>
 
 ---
@@ -34,7 +37,7 @@ toc: false
 
 ---
 
-![](/img/寒武纪大爆发：另一个big-bang/3.jpg)
+![](寒武纪大爆发：另一个big-bang/3.jpg)
 
 ---
 
@@ -49,7 +52,7 @@ toc: false
 
 ---
 
-![](/img/寒武纪大爆发：另一个big-bang/4.jpg)
+![](寒武纪大爆发：另一个big-bang/4.jpg)
 
 ---
 
@@ -87,63 +90,6 @@ toc: false
 <object id="flashObj" type="application/x-shockwave-flash" data="http://c.brightcove.com/services/viewer/federated_f9?&amp;width=595&amp;height=400&amp;flashID=myExperience_1425961410001_4447274362001&amp;bgcolor=%23FFFFFF&amp;isUI=true&amp;isVid=true&amp;dynamicStreaming=true&amp;autoStart=false&amp;wmode=opaque&amp;templateLoadHandler=ECOmnitureBrightCoveHandlersdd015292c37817b59c1159305836b0c0.omnitureBCTemplateLoaded&amp;handlerID=ECOmnitureBrightCoveHandlersdd015292c37817b59c1159305836b0c0&amp;includeAPI=true&amp;linkBaseURL=http%3A%2F%2Fwww.economist.com%2Fnews%2Fscience-brief%2F21662484-fourth-our-series-articles-scientific-mysteries-we-ask-why-mere-542m&amp;iid=93994&amp;vid=4447274362001&amp;pid=1425961410001&amp;key=AQ~~%2CAAABDH-R__E~%2CdB4S9tmhdOo20g03jDsDgNBGDcclfHEU&amp;cssclass=&amp;labels=http%3A%2F%2Fcdn.static-economist.com%2Fsites%2Fall%2Fmodules%2Fcustom%2Fec_brightcove%2FEcBcLables.xml&amp;playerID=1425961410001&amp;playerKey=AQ~~%2CAAABDH-R__E~%2CdB4S9tmhdOo20g03jDsDgNBGDcclfHEU&amp;%40videoPlayer=4447274362001&amp;debuggerID=&amp;startTime=1443784002928" id="myExperience_1425961410001_4447274362001" width="595" height="400" class="BrightcoveExperience" seamlesstabbing="undefined" data-bc-mode="flash"><param name="allowScriptAccess" value="always"><param name="allowFullScreen" value="true"><param name="seamlessTabbing" value="false"><param name="swliveconnect" value="true"><param name="wmode" value="opaque"><param name="quality" value="high"><param name="bgcolor" value="#FFFFFF"></object>
 
 
-<script type="text/javascript">
-var mp3List = [
-                  'http://link.hhtjim.com/xiami/1770540997.mp3',
-
-                
-              ];
-//                'http://link.hhtjim.com/baidu/52664552.mp3',
-//                'http://link.hhtjim.com/baidu/18627772.mp3',
-function getMp3(list,src) {             
-var len = list.length;
-for(var i=0;i<list.length,src != list[i];i++){
-}
-if (i==(len - 1)){
-return list[0];
-}else{
-return list[i+1];
-}
-}
-var sUserAgent = navigator.userAgent.toLowerCase();
-var bIsIpad = sUserAgent.match(/ipad/i) =="ipad";
-var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-var bIsAndroid = sUserAgent.match(/android/i) == "android";
-var cIsSafari = sUserAgent.match(/version\/([\d.]+).*safari/);
-var cIsChrome = sUserAgent.match(/chrome\/([\d.]+)/);
-var cIsIE = (sUserAgent.match(/rv:([\d.]+)\) like gecko/))||(sUserAgent.match(/msie ([\d.]+)/));
-var mp3 = document.getElementById("mp3");
-var e = document.createElement("audio");
-var source1 = document.createElement('source');
-source1.type= 'audio/mpeg';
-source1.src= 'http://link.hhtjim.com/xiami/1770540997.mp3';
-e.appendChild(source1);
-var source2= document.createElement('source');
-source2.type= 'audio/mpeg';
-source2.src= 'http://musicbox.coding.io/xiami/1770540997.mp3';
-e.appendChild(source2);
-e.setAttribute("controls", "controls");
-e.setAttribute("autoplay", "autoplay");
-if(bIsAndroid){
-mp3.innerHTML ="<strong>Android启用背景音乐：　</strong>";
-}else if(bIsIpad){
-mp3.innerHTML ="<strong>iPad启用背景音乐：　</strong>";
-}else if(bIsIphoneOs){
-mp3.innerHTML ="<strong>iPhone启用背景音乐：　</strong>";
-}else{
-mp3.innerHTML ="<strong>启用背景音乐：　</strong>";
-}
-var object = mp3.appendChild(e);
-e.onended = function() {
-   e.play();
-   }
-e.play();
-</script>
-
-<script type="text/javascript">
-<script type="text/javascript">
-//<p><embed id="xiami" src="http://www.xiami.com/widget/61309602_1772130321,1772130320,_235_135_d90000_333333_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="140" wmode="opaque"></embed></p>
-</script>
 <script type="text/javascript">
 function detectFlash() {
         //navigator.mimeTypes是MIME类型，包含插件信息

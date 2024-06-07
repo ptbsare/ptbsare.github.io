@@ -1,6 +1,12 @@
+---
 title: Ubuntu下部署Latex编译环境
 date: 2014-05-12 22:54:33
-tags: [GNU Tools,Linux,Ubuntu,Latex]
+updated: 2015-11-28 17:56:16
+tags: 
+- "GNU Tools"
+- Linux
+- Ubuntu
+- Latex
 ---
 [1]: (http://mirrors.xmu.edu.cn/CTAN/systems/texlive/Images/)
 [2]: (http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)
@@ -14,14 +20,14 @@ tags: [GNU Tools,Linux,Ubuntu,Latex]
 
 <!--[todo]: (http://latex的入门1.快速2.ishort3.参考|latex在sublime text2 的配置)-->
 
-##Latex是什么
+## Latex是什么
 * Latex是一种基于TEX的排版系统，用于生成高印刷质量的文档。
 * Latex有很多发行版，Linux下推荐使用Texlive。
 
-##Latex在Ubuntu下的安装
-###安装方法一
+## Latex在Ubuntu下的安装
+### 安装方法一
 
-####1 .从站点下载ISO镜像安装
+#### 1 .从站点下载ISO镜像安装
 
 这样可以得到较新的发行版版本，同时有丰富的包支持及更新。
 ISO安装文件可以从下面几个开源镜像站点的CTAN同步镜像下载：
@@ -32,7 +38,7 @@ ISO安装文件可以从下面几个开源镜像站点的CTAN同步镜像下载�
 * 厦门大学开源镜像站
 (http://mirrors.xmu.edu.cn/CTAN/systems/texlive/Images/)
 
-####2 .挂载镜像并安装
+#### 2 .挂载镜像并安装
 
 ```bash
 sudo mount /path_to_iso/texlive20*.iso /mnt
@@ -40,7 +46,7 @@ cd /mnt
 sudo ./install-tl
 ```
 
-####3 .安装Windows的字体
+#### 3 .安装Windows的字体
 
 * 从Windows下拷贝这么几个字体（C:\Windows\fonts）（或从网上下载）
 
@@ -68,7 +74,7 @@ sudo chmod 644 /usr/share/fonts/WinFonts/*
 ```bash
 echo "PATH=/usr/local/texlive/2013/bin/i386-linux:$PATH; export PATH" >> ~/.bashrc
 ```
-####4 .使用xelatex中文方案
+#### 4 .使用xelatex中文方案
 修改ctex-xecjk-winfonts.def以解决找不到字库的问题（以texlive2013为例）
 原文件:ctex-xecjk-winfonts.def
 ```bash
@@ -127,8 +133,8 @@ sudo gedit ctex-xecjk-winfonts.def
  
 /endinput
 ```
-###安装方法二
-####1 .从源里面安装
+### 安装方法二
+#### 1 .从源里面安装
 
 （Ubuntu13.04源中texlive版本为2012 Ubuntu14.04源中texlive版本为2013）
 ```bash
@@ -143,7 +149,7 @@ cd ctex-kit/CJKpunct/tex/latex/CJK
 sudo cp -r ./CJKpunct /usr/share/texmf/tex/latex/CJK/
 sudo texhash #安装CJKpunct宏包 
 ```
-####2 .解决中文字体问题
+#### 2 .解决中文字体问题
 
 此处采用自行为tex增添设置unixfonts的选项(修改源代码)的方式。
 a.
@@ -243,14 +249,14 @@ e.
 sudo texhash
 ```
 至此问题彻底解决。
-##安装后的测试
+## 安装后的测试
 
-####1 .在/tmp下新建一个.tex文件
+#### 1 .在/tmp下新建一个.tex文件
 ```bash
 cd /tmp
 gedit test.tex
 ```
-####2 .粘贴如下测试代码
+#### 2 .粘贴如下测试代码
 a.
 安装方法一的测试代码
 ```tex
@@ -281,14 +287,14 @@ Welcome to the world of Tex!\\
 {\youyuan 这是幼圆}\\  
 \end{document}  
 ```
-####3 .编译，输出pdf
+#### 3 .编译，输出pdf
 ```bash
 xelatex test.tex
 ```
 这样在当前目录生成了一个test.pdf文件
 打开即可看到效果
 
-##配置Latex的编辑器
+## 配置Latex的编辑器
 
 现在我们已经有了Latex的基本编译环境，需要配置一个合适的编辑器，Ubuntu下，在这里提供下面几种方案可选
 
@@ -326,18 +332,18 @@ sudo apt-get install sublime-text-installer
 sudo apt-get install vim
 ```
 
-##Latex从零入门教程
+## Latex从零入门教程
 
 这里提供两套教程可选，一种为简明的快速入门，另一种为较全面的学习。
 
-###简明快速入门
+### 简明快速入门
 
-####首先是Latex的特点（了解即可初学者可以略过）
+#### 首先是Latex的特点（了解即可初学者可以略过）
 
 * LaTeX编辑和排版的核心思想在于，通过\section和\paragraph等语句，规定了每一句话在文章中所从属的层次，从而极大方便了对各个层次批量处理。
 * LaTeX具有方便美观的数学公式编辑、不会乱动的退格对齐的特性。
 
-####下面是教程正文
+#### 下面是教程正文
 
 1 .第一个文档（注意保存的编码格式应为UTF8格式）
 ```bash
@@ -590,7 +596,7 @@ C .参考文献和制作幻灯片
 做参考文献的时候，文章也已经快写到尾声了，而幻灯片更不是进阶一些的需求。对这两个功能有需求的LaTeX user，使用LaTeX也已经相当熟练了，自己去google一下或查阅其他厚教程是很理所当然的，一点也不冤枉。
 在此我就只提供两个搜索关键词，参考文献可以搜bibtex，制作幻灯片可以搜beamer。
 
-###较全面的学习
+### 较全面的学习
 下载参考lshort，Latex的较全面的官方文档。
 中文pdf下载（中科大镜像站）
 (http://mirrors.ustc.edu.cn/CTAN/info/lshort/chinese/)

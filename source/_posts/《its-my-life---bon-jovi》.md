@@ -1,16 +1,19 @@
+---
 title: '《It''s My Life - Bon Jovi》'
 date: 2014-08-08 14:10:39
-tags: [Music]
+updated: 2014-08-08 14:10:39
+tags: 
+- Music
 ---
 
 Bon Jovi-是当代美国摇滚乐队，少年时期即开始接触摇滚乐。1983年组建同名乐队，逐渐占据市场。以主流硬摇滚、金属摇滚见长。
-![](/img/《its-my-life---bon-jovi》/bonjovi.jpg)
+![](《its-my-life---bon-jovi》/bonjovi.jpg)
 It's My Life 出自其2000年的专辑《Crush》，这部专辑被誉为让新一代美国人重新燃起象他们的长辈一样热爱摇滚的火炬之作。
-![](/img/《its-my-life---bon-jovi》/itismylife.jpg)
+![](《its-my-life---bon-jovi》/itismylife.jpg)
 这首歌曲有两个版本，分别为慢节奏版和快节奏版。
 
 <div>慢节奏版:
-<audio controls="controls" src="/img/《its-my-life---bon-jovi》/manban.mp3" /></div>
+<audio controls="controls" src="manban.mp3" /></div>
 
 歌词及翻译：
 
@@ -124,12 +127,12 @@ It's My Life 出自其2000年的专辑《Crush》，这部专辑被誉为让新�
 
 <div>
 摇滚版本:
-<audio controls="controls" src="/img/《its-my-life---bon-jovi》/yaogunban.mp3" />
+<audio controls="controls" src="yaogunban.mp3" />
 </div>
-![](/img/《its-my-life---bon-jovi》/itismylife3.jpg)
+![](《its-my-life---bon-jovi》/itismylife3.jpg)
 <div>
 MV:
-<video controls="controls" src="/img/《its-my-life---bon-jovi》/4.mp4" />
+<video controls="controls" src="4.mp4" />
 </div>
 
 参考：

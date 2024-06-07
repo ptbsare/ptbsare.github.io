@@ -1,14 +1,18 @@
+---
 title: Linux下的thunder实现-折腾手记
 date: 2014-10-25 22:51:00
-tags: [Ubuntu,Linux]
+updated: 2014-10-27 10:32:41
+tags: 
+- Ubuntu
+- Linux
 ---
 
-##引言
+## 引言
 鉴于国内如此比较恶劣的p2p下载环境，Linux下还没有一款"像样"的p2p下载软件，由于许多网站仅仅给出了迅雷下载链接或者ed2k，磁力链接，于是寻求一个Linux下的p2p下载软件替代。
 
 前两天听闻迅雷推出了一个远程下载功能，所谓远程下载即在路由器上运行迅雷下载资源。并且迅雷在论坛里面提供了各个处理器平台的二进制文件，鉴于目前路由器上面跑的操作系统多数是Linux，值得注意的是，此次发布的路由器二进制文件其中包含了基于X86及glibc的构建版本，这就意味着它可以运行在桌面Linux上，于是萌生了让thunder跑在原生桌面Linux的想法。
-![](/img/linux下的thunder实现-折腾手记/1.ico)
-##简介
+![](linux下的thunder实现-折腾手记/1.ico)
+## 简介
 thunder的此路由器二进制构建项目名称为Xware([论坛地址](http://g.xunlei.com/forum-51-1.html))，发布的固件中包含了如下四个文件：
 
 ```
@@ -18,27 +22,27 @@ Xware1.0.31_x86_32_glibc/
 ├── portal
 └── vod_httpserver
 ```
-##分析
-###portal
+## 分析
+### portal
 经过测试发现，其中portal是入口文件，其它三个二进制文件由portal调用，portal运行后会产生两个进程`EmbedThunderManager`和`ETMDaemon`，其中`ETMDaemon`负责储存设备探测，它会自动扫描当前机器已经挂载的可写的储存设备并在其下面建立ThunderDB文件夹，同时在其中标记了该储存设备的uuid，然后将储存设备依次标记为`C：，D：，E：`盘，而且会在`/tmp`下建立`thunder/volumes/C:`等符号链接依次链接到各个设备。
-###ETMDaemon
+### ETMDaemon
 通过进一步测试我们发现要想被`ETMDaemon`捕获识别为可以存放下载文件的储存设备必须满足这么几个条件：
 * 它是一个单独的被挂载的磁盘分区
 * 该用户对该分区/目录有绝对的777权限
 
 是的，听起来有点流氓，的确它就是这样，不过在后面我们可以采取一些措施来欺骗此检查。
-###vod_httpserver
+### vod_httpserver
 `vod_httpserver`负责在`127.0.0.1:9000`上面运行一个server，用浏览器打开`loaclhost:9000/getinfo`可以得到一串字符串，当然我们关心的就只有其中一段由大写字母组成的字符串，待会儿我们要用到。当然`loaclhost:9000/getinfo`这个地址是由`Xware-desktop`的项目作者对Xware二进制文件进行逆向工程得到的，开源社区的力量还真是强大，在此表示致敬。
 
-##远程下载
+## 远程下载
 好了经过如上面的分析，下面来介绍一下迅雷的远程下载：
 迅雷的远程下载大体经过一下几个步骤
-![](/img/linux下的thunder实现-折腾手记/2.png)
+![](linux下的thunder实现-折腾手记/2.png)
 * 其中绑定那步所用到的激活码也就是在上面分析中提到的那一串大写字母。
 * 我们要做的工作就是让这一连串全自动化执行，以使得只用轻轻点一下鼠标就能进行添加任务下载。
 
-##自动化脚本实现
-###Thunder Service
+## 自动化脚本实现
+### Thunder Service
 由于`portal`是以建立daemon的形式运行，因此最适合以服务的方式运行和调用，即用`sudo service thunder start`以及`sudo service thunder stop`就可以启动和终止服务，好在thunder远程下载论坛的一位老鸟已经做出了此`thunder service`脚本，在这里我们拿来用即可，脚本内容如下：
 ```bash
 ptbsare@ptbsare-PC70:~$ cat /etc/init.d/thunder 
@@ -267,14 +271,14 @@ sudo chmod 0755 /etc/init.d/thunder
  * Starting Embed Thunder Manager thunder
  * fail to start XXXX
 ```
-###权限用户thunder
+### 权限用户thunder
 * 细心的读者会注意到上述service文件中是以thunder这个用户运行的，事实上由于Xware比较流氓，原则上Xware只能以root用户运行，采用service的方式对权限问题进行了一定的优化，因此不得不新建立一个系统用户thunder以避免portal启动失败,在下面你也可以看到，权限问题至关重要，同时下载设备也要对thunder用户是777权限。
 * 倘若我们就使用原来的用户来运行的话，你会发现在linux下挂载的Windows分区由于对当前系统是777权限，它都会被识别成下载储存设备，这显然不是我们需要的，因此有必要新建立一个thunder用户。
 ```bash
 #新建系统用户thunder
 sudo useradd -r thunder
 ```
-###储存设备检查
+### 储存设备检查
 * 如前分析所述，Xware本身是要求`/`分区是777权限的，对于很多用户就只有一个根分区`/`，故不能开放777权限啊，所以我们可以采取一些措施来欺骗`ETMDaemon`的检查。
 * 经过测试我们发现`ETMDaemon`识别的是设备，其实我们可以在`/media`下面挂载一些假的"设备",它都会被识别成储存设备，因此可以吧要存放下载文件夹挂载到/media下面就可以，不过要保证下载目的地文件夹为777权限，命令如下：
 ```bash
@@ -285,15 +289,15 @@ sudo chown -R thunder:thunder $HOME/Download/TDDownload
 sudo mount -B $HOME/Download/TDDownload /media/thunder
 ```
 事实证明此方法可行。
-###GUI套壳
+### GUI套壳
 由于提交下载任务等交互都是在网页中执行，可以给Xware套个壳子，chrome可以以app模式运行且可以指定窗口位置，大小，命令如下：
 ```bash
 google-chrome --user-data-dir=$HOME/.thunder-x/chrome --window-size=1064,570 --window-position=100,100 --app=http://yuancheng.xunlei.com
 ```
-###流程图分析
+### 流程图分析
 要建立一个自动化的脚本，根据不同情况完成相应的动作，经过分析可以得到如下的程序流程图：
-![](/img/linux下的thunder实现-折腾手记/3.png)
-###完整脚本
+![](linux下的thunder实现-折腾手记/3.png)
+### 完整脚本
 ```bash
 ptbsare@ptbsare-PC70:~$ cat /opt/Xware/start-thunder 
 #!/bin/bash
@@ -381,7 +385,7 @@ service thunder start >/tmp/._code_&&
 umount -l /media/thunder 2>/dev/null;
 mount -B $HOME/Download/TDDownload /media/thunder
 ```
-###启动器及图标
+### 启动器及图标
 * 启动器文件
 
 使用`StartupWMClass`来匹配窗口启动器
@@ -400,25 +404,25 @@ OnlyShowIn=GNOME;Unity;
 StartupWMClass=yuancheng.xunlei.com
 ```
 * 考虑到友好的用户交互体验,在`notify-send`提示时总得弄几个好看的图标吧
-![](/img/linux下的thunder实现-折腾手记/4.png)
+![](linux下的thunder实现-折腾手记/4.png)
 
-###运行效果
+### 运行效果
 **下面发几张运行效果图**
 **启动**
-![](/img/linux下的thunder实现-折腾手记/5.png)
+![](linux下的thunder实现-折腾手记/5.png)
 **绑定**
-![](/img/linux下的thunder实现-折腾手记/6.png)
-![](/img/linux下的thunder实现-折腾手记/7.png)
+![](linux下的thunder实现-折腾手记/6.png)
+![](linux下的thunder实现-折腾手记/7.png)
 **运行**
-![](/img/linux下的thunder实现-折腾手记/8.png)
-![](/img/linux下的thunder实现-折腾手记/9.png)
+![](linux下的thunder实现-折腾手记/8.png)
+![](linux下的thunder实现-折腾手记/9.png)
 
-##deb打包
+## deb打包
 
 * 上面只是在本地弄好启动，下面考虑将程序打包成`.deb`包。
 * 将该程序项目起一个名字，命名为thunder-x项目。
 
-###control File
+### control File
 首先`.deb`包必要一个`control`文件用来添加软件依赖等等，此处`control`文件的 写法如下：
 ```
 Package: thunder-x
@@ -430,7 +434,7 @@ Priority: optional
 Description: p2sp thunder client.
  Thunder running on linux using Xware.
 ```
-###postinst File
+### postinst File
 `postinst` 是在安装时所执行的设置脚本，参考[Debian Wiki](https://wiki.debian.org/MaintainerScripts)，软件在安装设置时`postinst configure`会被调用，此处我们需要一个`postinst`来建立thunder这个user等一系列工作，其写法如下：
 ```bash
 #!/bin/sh
@@ -446,7 +450,7 @@ fi
 chmod -R 777 /usr/share/thunder-x/Xware
 chmod 0755 /etc/init.d/thunder
 ```
-###修改脚本并打包
+### 修改脚本并打包
 * 由于打包成`.deb`后可供安装就要考虑适应很多中情况，所以就要对脚本进行修改，增添一些判断情况。
 * 一切就绪后将文件夹命名为`程序名-版本号`的方式并按照以下目录组织放好就可以用dpkg打包了:
 ```bash
@@ -494,31 +498,31 @@ dpkg -b thunder-x-0.1.0/
 ```
 这样就生成了一个thunder-x-0.1.0.deb的安装包可供安装。
 
-##ppa发布
+## ppa发布
 要想更方便地发布安装软件包，我们可以建立一个ppa来发布该软件包。
-###注册账户并创建ppa
+### 注册账户并创建ppa
 到launchpad注册一个账户并创建一个ppa，ppa命名为thunder-x，如下图所示：
-![](/img/linux下的thunder实现-折腾手记/10.png)
-![](/img/linux下的thunder实现-折腾手记/11.png)
-###创建并导入openPGP 密钥
+![](linux下的thunder实现-折腾手记/10.png)
+![](linux下的thunder实现-折腾手记/11.png)
+### 创建并导入openPGP 密钥
 ```bash
 gpg –gen-key
 gpg --send-keys --keyserver keyserver.ubuntu.com 12345678 
 #12345678为你生成密钥中pub后的八位数字字母
 ```
 登陆launchpad导入密钥指纹（fingerprint）
-![](/img/linux下的thunder实现-折腾手记/12.jpeg)
+![](linux下的thunder实现-折腾手记/12.jpeg)
 然后官方会给你发一封邮件，按照其中的指示，将邮件中的那部分不可读内容复制粘贴到例如file.txt中，然后：
 ```bash
 gpg --decrypt file.txt
 ```
 并照输出中的指示做。
-###上传sshkey
+### 上传sshkey
 ```bash
 ssh-keygen -t rsa
 ```
 登陆网站导入sshkey并粘贴`~/.ssh/id_rsa.pub`的内容。
-###创建源码包并上传
+### 创建源码包并上传
 launchpad 只接受源码包并由它编译，因此我们需要另外创建一个可维护的debian源码包。
 #### org.tar.gz
 * 顾名思义，为上游源代码文件，在这里我们将所需的文件摆好并压缩成一个`org.tar.gz`包。
@@ -650,7 +654,7 @@ md5信息。
 
 同上，不再赘述。
 
-####目录结构放好
+#### 目录结构放好
 ```
 thunder-x-0.1.0/
 └── debian
@@ -667,7 +671,7 @@ thunder-x-0.1.0/
         └── format
 
 ```
-####打包
+#### 打包
 在thunder-x-0.1.0目录下：
 ```bash
 debuild -S -sa
@@ -676,14 +680,14 @@ debuild -S -sa
 `thunder-x_0.1.0.debian.tar.gz`
 `thunder-x_0.1.0_source.build`
 `thunder-x_0.1.0_source.changes`
-####上传
+#### 上传
 使用dput上传：
 ```bash
 dput ppa:ptbsare/thunder-x thunder-x_0.1.0_source.changes
 ```
 然后launchpad会在虚拟机里面给你编译，如果编译成功则就生成了二进制的deb包：
-![](/img/linux下的thunder实现-折腾手记/13.png)
-###ppa安装
+![](linux下的thunder实现-折腾手记/13.png)
+### ppa安装
 最后，我们可以通过ppa进行安装：
 **注：暂时只有14.04的i386构建版本，其他版本ubuntu请自行修改ppa的sourcelist为trusty。**
 ```bash
@@ -692,7 +696,7 @@ sudo apt-get update
 sudo apt-get install thunder-x
 ```
 **Enjoy!**
-##总结
+## 总结
 经过以上步骤，我们就完成了折腾之旅，可以直接在不同的机器上用ppa安装使用的包，非常方便。在这期间也经过了无数次的失败和调试以及重新打包，深感开发者开发软件以及打包的不易，在此向那些默默无闻的开源社区开发者表示致敬。
 以上也算是经过了完整的在ubuntu下的下开发->打包->发布的整个过程，因此本文也可以作为在ubuntu下开发软件以及打包发布的一个模版和例子。
 

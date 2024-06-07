@@ -1,8 +1,14 @@
+---
 title: 记SSD挂掉后ESXI及DSM虚拟机的数据拯救
 date: 2018-04-17 11:23:31
-tags: [Linux,ESXI,DSM,GNU Tools]
+updated: 2018-04-17 06:15:02
+tags: 
+- Linux
+- ESXI
+- DSM
+- "GNU Tools"
 ---
-##情景
+## 情景
 　　2018年3月22日(星期四) 晚上11:05，收到跑在ESXI上的DSM虚拟机ptbsare-nas发来的邮件通知如下：
 ```
 亲爱的用户：
@@ -32,7 +38,7 @@ SSD:SANDISK Z400S 128GB
 PCIE-STORAGE-CONTROLLER:ASMEDIA 1062 SATA X2 (paththrough ptbsare-nas)
 ```
 　　`ESXI`上的一块`SANDISK SSD`做主存储池放置若干虚拟机的虚拟硬盘，机械硬盘全部通过`PCIE`扩展直通连接`DSM`虚拟机`ptbsare-nas`。
-##拆下磁盘
+## 拆下磁盘
 　　由于虚拟机的`RAID Group 2`是运行在`ESXI`上的虚拟硬盘而并非实际做备份数据主存储的机械硬盘，因此大概知道是`ESXI`的数据存储区介质`SSD`出了问题。果不其然，使用`Watchlist`登入`ESXI`在`EVENT`里面发现了这么一条：
 ```
 Device or filesystem with identifier device_ID has entered All Paths Down state.
@@ -44,8 +50,8 @@ sudo dd if=/dev/sdd of=esxi_123.img bs=8M
 ```
 　　那么就得到了一个大小为`120GB`的磁盘镜像`esxi_123.img`。（咦，为何是120GB，该磁盘标称128GB，当时觉得奇怪，疑似假盘。）
 　　然后就可以安心关机取下该硬盘放到一边了。
-##数据拯救
-###VMFS数据拯救
+## 数据拯救
+### VMFS数据拯救
 　　由于`ESXI`的存储池使用的是专有文件系统`VMFS`，在`Linux`下无法通过`mount`命令直接挂载：
 ```bash
 ~/下载 >>> fdisk -l -u esxi_123.img
@@ -86,8 +92,8 @@ sudo vmfs-fuse /dev/loop1 /mnt
  DSM	  Manjaro   ptbsare-nas    'Ubuntu Server'
 ```
 　　先将这些虚拟机目录及磁盘拷贝出来再做恢复吧。
-###虚拟磁盘数据拯救
-####打包服务器
+### 虚拟磁盘数据拯救
+#### 打包服务器
 　　由于拷贝出来的是若干个`vmdk`文件，因此还是一样的思路，首先用`fdisk`判断磁盘分区信息，然后计算偏移量挂载。这里以`ptbsare-manjs`为例，该虚拟机是一个用来做`Archlinux`编译打包服务器的虚拟机，主磁盘用的是`ext4`文件系统
 ```bash
 sudo umount /mnt
@@ -96,8 +102,8 @@ sudo mount -o rw,loop,offset=537919488 ptbsare-manjs_0-flat.vmdk /mnt
 sudo cp -a /mnt/* ptbsare-manjs_root/
 ```
 　　后来这个磁盘绝大多数数据都能拷贝出来，有几个无关紧要的系统文件提示丢失，算是万幸没有数据损失。
-####壁纸服务器BTRFS数据恢复
-#####DSM的RAID一致性检查
+#### 壁纸服务器BTRFS数据恢复
+##### DSM的RAID一致性检查
 　　另一个做`SMB`共享的壁纸服务器就不妙了，里面有若干千张壁纸，使用的文件系统是`BTRFS`，在拷贝的时候发现大量`Input/Output Error`，遂停止拷贝，先行恢复文件系统。首先做好原`vmdk`的备份，由于这个时候已经到货了一个新的固态硬盘，所以就新建虚拟机带着这个`vmdk`使用`Manjaro`的`LiveCD`启动做恢复了。
 　　倘若该`BTRFS`分区是阵列的一部分（例如`DSM`的默认行为），在系统启动后，倘若是比较新的内核可以用如下命令进行`RAID`一致性检查并修复错误：
 ```bash
@@ -107,7 +113,7 @@ sudo echo check > /sys/block/mdX/md/sync_action
 ```bash
 echo cat /sys/block/mdX/md/sync_completed
 ```
-#####BTRFS文件系统错误恢复
+##### BTRFS文件系统错误恢复
 　　如果直接挂载成功那么可以下一步了。如果默认挂载不成功的话，我们首先尝试recovery挂载：
 ```
 sudo mount -t btrfs -o recovery,ro /dev/<device_name> /<mount_point>
@@ -123,9 +129,9 @@ sudo btrfs scrub start -Bf /dev/<device_name>
 sudo btrfs rescue zero-log /dev/<device_name>
 ```
 　　最后觉得修复效果并不理想，索性放弃，该卷最终永久损失了`33`张壁纸。
-##题外后记
+## 题外后记
 　　后经查证发现售卖损坏`SSD`的淘宝店铺改为卖衣服的了，无任何售后，官网查证为假冒产品。
-##经验教训
+## 经验教训
 * 重要数据不能放到`SSD`里面，因为`SSD`在挂掉之前毫无征兆且挂掉之后很有可能即全盘皆丢失，难以恢复。放`SSD`的数据即做好随时丢失的心理准备。重要数据必须放`SSD`的觉得应该组建`RAID1`以保证可靠性。
 * 重要数据还是尽量不要用`BTRFS`文件系统，使用更成熟的`ext4`，实测相比之下`BTRFS`虽然有快照、子卷等花哨功能，但数据恢复难度极大，很容易丢数据，`ext4`就好许多。
 * 购买`SSD`还是要在官网真伪验证，购买联保品牌如`SanDisk`、`INTEL`等，店保一点不可靠。
