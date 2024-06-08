@@ -89,8 +89,9 @@ exclude_generator:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-	repo: 
-    github: git@github.com:ptbsare/ptbsare.github.io.git
+#repo: git@github.com:ptbsare/ptbsare.github.io.git
+  repo: $GIT_TOKEN_REPO
+  token: $GIT_TOKEN
 #   gitcafe: git@gitcafe.com:ptbsare/ptbsare.git,gitcafe-pages
 
 # Meta Generator
@@ -100,10 +101,10 @@ meta_generator: false
 ## Hexo uses Connect as a server
 ## You can customize the logger format as defined in
 ## http://www.senchalabs.org/connect/logger.html
-port: 6000
-server_ip: 0.0.0.0
-logger: false
-logger_format:
+#port: 6000
+#server_ip: 0.0.0.0
+#logger: false
+#logger_format:
 
 # Disqus
 disqus_shortname: ptbsare
