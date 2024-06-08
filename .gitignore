@@ -2,6 +2,7 @@
 node_modules
 db.json
 public/
+.deploy_git/
 .deploy/
 ._*
 Library/
