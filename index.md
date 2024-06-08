@@ -1,3 +1,3 @@
 ```template
-{{{page where title  }}}
+{{{page where title order by updated }}}
 ```
