@@ -1,7 +1,7 @@
 ---
 title: 'The Paradox of Our Time'
-date: 2015-10-16 14:08:44
-updated: 2015-10-19 18:24:39
+date: '2015-10-16 06:08:44'
+updated: '2015-10-19 10:24:39'
 tags: 
 - Reprint
 - Pieces

@@ -1,7 +1,7 @@
 ---
 title: '《It''s My Life - Bon Jovi》'
-date: 2014-08-08 14:10:39
-updated: 2014-08-08 14:10:39
+date: '2014-08-08 06:10:39'
+updated: '2014-08-08 06:10:39'
 tags: 
 - Music
 ---

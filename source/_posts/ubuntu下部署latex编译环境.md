@@ -1,7 +1,7 @@
 ---
 title: Ubuntu下部署Latex编译环境
-date: 2014-05-12 22:54:33
-updated: 2015-11-28 17:56:16
+date: '2014-05-12 14:54:33'
+updated: '2015-11-28 09:56:16'
 tags: 
 - "GNU Tools"
 - Linux

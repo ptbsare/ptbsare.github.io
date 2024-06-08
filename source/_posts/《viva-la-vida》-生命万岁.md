@@ -1,7 +1,7 @@
 ---
 title: '《Viva La Vida》-生命万岁'
-date: 2014-09-21 11:40:47
-updated: 2015-03-13 14:26:52
+date: '2014-09-21 03:40:47'
+updated: '2015-03-13 06:26:52'
 tags: 
 - Music
 toc: false

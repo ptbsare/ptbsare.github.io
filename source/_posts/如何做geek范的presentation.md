@@ -1,7 +1,7 @@
 ---
 title: 如何做Geek范的Presentation
-date: 2014-09-16 18:59:37
-updated: 2015-06-06 19:55:36
+date: '2014-09-16 10:59:37'
+updated: '2015-06-06 11:55:36'
 tags: 
 - "GNU Tools"
 ---
