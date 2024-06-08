@@ -9,8 +9,7 @@
     
     <meta name="author" content="ptbsare">
     
-    <meta name="description" content="引言
-　　对于网页设计中的字体设置，显然指定不同字体所排版出来的效果是不同的，而且对于不同的平台（Windows，Mac OS，Linux），操作系统所预装的字体也是各不相同，因此同一网页在不同平台上显示出来的效果也是不一样的。然而，这一问题的核心问题无非也就在于如何确定CSS中font-famil">
+    <meta name="description" content="引言　　对于网页设计中的字体设置，显然指定不同字体所排版出来的效果是不同的，而且对于不同的平台（Windows，Mac OS，Linux），操作系统所预装的字体也是各不相同，因此同一网页在不同平台上显示出来的效果也是不一样的。然而，这一问题的核心问题无非也就在于如何确定CSS中font-family">
     
     
     
@@ -24,10 +23,12 @@
     <link rel="icon" href="/img/favicon.ico">
     
     
-    <link rel="apple-touch-icon" href="/img/pacman1.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman1.jpg">
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
 </head>
 
   <body>
@@ -79,8 +80,8 @@
   <p class="article-author">By
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
-    <time datetime="2014-09-24T04:20:04.000Z" itemprop="datePublished">9月 24 2014</time>
-    更新日期:<time datetime="2014-11-05T12:55:27.000Z" itemprop="dateModified">11月 5 2014</time>
+    <time datetime="2014-09-23T20:20:04.000Z" itemprop="datePublished">2014年09月24日</time>
+    更新日期:<time datetime="2014-11-05T04:55:27.000Z" itemprop="dateModified">2014年11月05日</time>
     
   </p>
 </header>
@@ -90,73 +91,51 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#现状"><span class="toc-number">2.</span> <span class="toc-text">现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#考虑理想的写法"><span class="toc-number">3.</span> <span class="toc-text">考虑理想的写法</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-default"><span class="toc-number">3.1.</span> <span class="toc-text">Font-default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-mono"><span class="toc-number">3.2.</span> <span class="toc-text">Font-mono</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#测试效果"><span class="toc-number">4.</span> <span class="toc-text">测试效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">5.</span> <span class="toc-text">最后</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E7%8A%B6"><span class="toc-number">2.</span> <span class="toc-text">现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E8%99%91%E7%90%86%E6%83%B3%E7%9A%84%E5%86%99%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">考虑理想的写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-default"><span class="toc-number">3.1.</span> <span class="toc-text">Font-default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-mono"><span class="toc-number">3.2.</span> <span class="toc-text">Font-mono</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%95%88%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">测试效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">5.</span> <span class="toc-text">最后</span></a></li></ol>
 		</div>
 		
-		<h2 id="引言">引言</h2>
-<p>　　对于网页设计中的字体设置，显然指定不同字体所排版出来的效果是不同的，而且对于不同的平台（Windows，Mac OS，Linux），操作系统所预装的字体也是各不相同，因此同一网页在不同平台上显示出来的效果也是不一样的。然而，这一问题的核心问题无非也就在于如何确定CSS中<code>font-family</code>的写法，因为浏览器就是依据<code>font-family</code>的值来确定所要使用的字体，从而使网页在不同平台上都能达到最好的显示效果。</p>
-<h2 id="现状">现状</h2>
-<ul>
-<li>第一种写法就是很通用和常见的写法：</li>
+		<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>　　对于网页设计中的字体设置，显然指定不同字体所排版出来的效果是不同的，而且对于不同的平台（Windows，Mac OS，Linux），操作系统所预装的字体也是各不相同，因此同一网页在不同平台上显示出来的效果也是不一样的。然而，这一问题的核心问题无非也就在于如何确定CSS中<code>font-family</code>的写法，因为浏览器就是依据<code>font-family</code>的值来确定所要使用的字体，从而使网页在不同平台上都能达到最好的显示效果。</p>
+<h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><ul>
+<li>第一种写法就是很通用和常见的写法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>:sans-serif;</span><br></pre></td></tr></table></figure>
+<code>sans-serif</code>这种字体写法，就是让浏览器和操作系统自行选择该平台下所使用的字体。其实若采用这种写法，在多数平台上都能达到比较好的效果，而且写法简单，比较省心，比如在Mac OS下会自动采用<code>华文细黑(10.6以下)</code>或<code>黑体-简(10.7以上)</code>来显示中文字符，效果都很不错，在Linux下会采用<code>文泉驿微米黑</code>来显示，然而，我们有一个“猪一样的队友”–微软，在Windows下的浏览器则会采用<code>中易宋体</code>来显示中文字符，会让网页看着非常别扭，和你设计初衷相差比较大。因此，以至于我们接下来所有所作的努力都是为了照顾这位“猪一样的队友”。</li>
+<li>第二种写法<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>:SimSun;</span><br></pre></td></tr></table></figure>
+国内许多网站由于种种原因（比如规避浏览器bug或前端设计师脑残加之许多开发者根本就不了解Windows以外的世界，不知道他们随手写上的<code>SimSun</code>会让OSX以及Linux用户感到多么地“不适”）而必须在CSS中写上<code>SimSun</code>（中易宋体，在Vista之前所有Windows的默认中文字体，俗称<code>宋体</code>），如果OSX用户里恰好又因为安装Office之类的原因安装了<code>中易宋体</code>，这个糟糕的字体就被显示出来了（这样的中文网站很多，许多开发者根本不知道font-family属性该怎么写，而有少数开发者确实是为了规避IE浏览器的弱智bug）。</li>
+<li>第三种写法<br>用极其细致的列表来给不同操作系统指定不同的字体，以使尽量用上操作系统里可用的最佳字体。比如：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>:<span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>,<span class="string">&quot;Hiragino Sans GB&quot;</span>,<span class="string">&quot;Microsoft YaHei&quot;</span>, <span class="string">&quot;WenQuanYi Micro Hei&quot;</span>,Arial, sans-serif;</span><br></pre></td></tr></table></figure>
+对于这种写法，在OSX中则采用显示效果比较好的<code>Hiragino Sans GB(苹果冬青黑)</code>来显示中文字符，在Linux中采用<code>WenQuanYi Micro Hei(文泉驿微米黑)</code>来显示，在Windows中则采用效果较好的<code>Microsoft YaHei(微软雅黑)</code>来显示中文字符。</li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="tag">font-family</span><span class="pseudo">:sans-serif</span>;
-</pre></td></tr></table></figure>
-
-<p><code>sans-serif</code>这种字体写法，就是让浏览器和操作系统自行选择该平台下所使用的字体。其实若采用这种写法，在多数平台上都能达到比较好的效果，而且写法简单，比较省心，比如在Mac OS下会自动采用<code>华文细黑(10.6以下)</code>或<code>黑体-简(10.7以上)</code>来显示中文字符，效果都很不错，在Linux下会采用<code>文泉驿微米黑</code>来显示，然而，我们有一个“猪一样的队友”—微软，在Windows下的浏览器则会采用<code>中易宋体</code>来显示中文字符，会让网页看着非常别扭，和你设计初衷相差比较大。因此，以至于我们接下来所有所作的努力都是为了照顾这位“猪一样的队友”。</p>
-<ul>
-<li>第二种写法</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="tag">font-family</span><span class="pseudo">:SimSun</span>;
-</pre></td></tr></table></figure>
-
-<p>国内许多网站由于种种原因（比如规避浏览器bug或前端设计师脑残加之许多开发者根本就不了解Windows以外的世界，不知道他们随手写上的<code>SimSun</code>会让OSX以及Linux用户感到多么地“不适”）而必须在CSS中写上<code>SimSun</code>（中易宋体，在Vista之前所有Windows的默认中文字体，俗称<code>宋体</code>），如果OSX用户里恰好又因为安装Office之类的原因安装了<code>中易宋体</code>，这个糟糕的字体就被显示出来了（这样的中文网站很多，许多开发者根本不知道font-family属性该怎么写，而有少数开发者确实是为了规避IE浏览器的弱智bug）。</p>
-<ul>
-<li>第三种写法<br>用极其细致的列表来给不同操作系统指定不同的字体，以使尽量用上操作系统里可用的最佳字体。比如：</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="tag">font-family</span><span class="pseudo">:"Helvetica</span> <span class="tag">Neue</span>", "<span class="tag">Helvetica</span>","<span class="tag">Hiragino</span> <span class="tag">Sans</span> <span class="tag">GB</span>","<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "<span class="tag">WenQuanYi</span> <span class="tag">Micro</span> <span class="tag">Hei</span>",<span class="tag">Arial</span>, <span class="tag">sans-serif</span>;
-</pre></td></tr></table></figure>
-
-<p>对于这种写法，在OSX中则采用显示效果比较好的<code>Hiragino Sans GB(苹果冬青黑)</code>来显示中文字符，在Linux中采用<code>WenQuanYi Micro Hei(文泉驿微米黑)</code>来显示，在Windows中则采用效果较好的<code>Microsoft YaHei(微软雅黑)</code>来显示中文字符。</p>
-<h2 id="考虑理想的写法">考虑理想的写法</h2>
-<ul>
+<h2 id="考虑理想的写法"><a href="#考虑理想的写法" class="headerlink" title="考虑理想的写法"></a>考虑理想的写法</h2><ul>
 <li>对于上述三种写法，要想达到最佳效果，显然我们要采用第三种写法，因此我们下面对第三种写法进行改进。</li>
 <li>对于一个网页，我们显然要让中文字符和英文字符的显示都能达到最佳效果。同时，一个网页的字体通常要分为两种样式：普通通用样式所用的字体（用于文章内容样式等普通样式）以及等宽样式字体（用于粘贴代码的样式以及其他要求整齐等宽的样式）。此处，我们将前者设定为<code>font-default</code>，后者设定为<code>font-mono</code>，两者分开来考虑写法。</li>
 </ul>
-<h3 id="Font-default">Font-default</h3>
-<p>对于<code>font-default</code>，经过总结，我们采用如上写法即可：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="tag">font-default</span><span class="pseudo">:"Helvetica</span> <span class="tag">Neue</span>", "<span class="tag">Helvetica</span>","<span class="tag">Hiragino</span> <span class="tag">Sans</span> <span class="tag">GB</span>","<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "<span class="tag">WenQuanYi</span> <span class="tag">Micro</span> <span class="tag">Hei</span>",<span class="tag">Arial</span>, <span class="tag">sans-serif</span>;
-</pre></td></tr></table></figure>
-
+<h3 id="Font-default"><a href="#Font-default" class="headerlink" title="Font-default"></a>Font-default</h3><p>对于<code>font-default</code>，经过总结，我们采用如上写法即可：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font</span>-default:<span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>,<span class="string">&quot;Hiragino Sans GB&quot;</span>,<span class="string">&quot;Microsoft YaHei&quot;</span>, <span class="string">&quot;WenQuanYi Micro Hei&quot;</span>,Arial, sans-serif;</span><br></pre></td></tr></table></figure>
 <p>这样英文字符和中文字符都有合适的字体匹配，因为多数英文字体中都不包含中文字符，所以英文字体在前，这样的话英文字符可以匹配到前面的英文字体，而中文字体就会按照顺序fallback到后面所选定的中文字体上，中英文都能达到很好的效果。<br>然而经网友反映，假若有部分在Windows平台上自行安装了苹果的<code>Hiragino Sans GB</code>字体，则按照上述配置就会把中文字符匹配到<code>Hiragino Sans GB</code>来显示而没有匹配到<code>微软雅黑</code>字体来显示。由于<code>Hiragino Sans GB</code>在Windows平台下的渲染效果并不是很理想，所以为了保险起见，去掉<code>Hiragino Sans GB</code>，即采用如下写法：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="tag">font-default</span><span class="pseudo">:"Helvetica</span> <span class="tag">Neue</span>","<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "<span class="tag">WenQuanYi</span> <span class="tag">Micro</span> <span class="tag">Hei</span>",<span class="tag">Arial</span>, <span class="tag">sans-serif</span>;
-</pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font</span>-default:<span class="string">&quot;Helvetica Neue&quot;</span>,<span class="string">&quot;Microsoft YaHei&quot;</span>, <span class="string">&quot;WenQuanYi Micro Hei&quot;</span>,Arial, sans-serif;</span><br></pre></td></tr></table></figure>
 
 <p>这样的话，对于OSX平台，中文字符则直接fallback到<code>sans-serif</code>上由操作系统所选择的<code>华文细黑(10.6以下)</code>或<code>黑体-简(10.7以上)</code>来显示，效果也比较好。<br>同时，此种写法在Android上被fallback为默认的中文字体<code>Droid Sans Fallback</code>，在Windows Phone上被fallback为默认的中文字体<code>方正等线</code>，在iOS上则被fallback为<code>华文细黑</code>，显示效果都比较不错。</p>
-<h3 id="Font-mono">Font-mono</h3>
-<p>对于等宽指定字体<code>font-mono</code>，考虑到等宽字体多用到粘贴代码的场合，并且现如今的程序代码还没有说遇到使用中文作为编程语言的，中文在代码中多用于程序注释，因此，等宽字体对英文字符的字体选定要求比较高，要求英文字符的宽度一致。<br>现有的英文等宽字体有这么几个评价普遍比较高：</p>
+<h3 id="Font-mono"><a href="#Font-mono" class="headerlink" title="Font-mono"></a>Font-mono</h3><p>对于等宽指定字体<code>font-mono</code>，考虑到等宽字体多用到粘贴代码的场合，并且现如今的程序代码还没有说遇到使用中文作为编程语言的，中文在代码中多用于程序注释，因此，等宽字体对英文字符的字体选定要求比较高，要求英文字符的宽度一致。<br>现有的英文等宽字体有这么几个评价普遍比较高：</p>
 <ul>
 <li>Windows:<code>Consolas</code> ,<code>Courier New</code></li>
 <li>OSX:<code>Consolas</code>,<code>Courier New</code></li>
 </ul>
 <p>同时对于中文字体，考虑到在Windows平台上能拿得出手的也就<code>微软雅黑</code>字体了，而且微软雅黑的中文字符看起来比较整齐，比较美观同时OSX平台下让其直接fallback到<code>monospace</code>让操作系统和浏览器自行选择中文字符的等宽字体，但是又考虑到一些OSX用户也由于安装Office等原因安装了<code>微软雅黑</code>字体，但是微软雅黑在OSX下又实在不如自带的字体美观，因此不得不把OSX的monospace的fallback默认字体<code>Heiti SC(黑体-简)</code>提到<code>微软雅黑</code>前面，综上，我们可以写成如下形式：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="tag">font-mono</span><span class="pseudo">:Monaco</span>, <span class="tag">Menlo</span>, <span class="tag">Consolas</span>, <span class="tag">Courier</span> <span class="tag">New</span>, "<span class="tag">Heiti</span> <span class="tag">SC</span>", <span class="tag">STHeiti</span>, "<span class="tag">Microsoft</span> <span class="tag">Yahei</span>", <span class="tag">monospace</span>;
-</pre></td></tr></table></figure>
-
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font</span>-mono:Monaco, Menlo, Consolas, Courier New, <span class="string">&quot;Heiti SC&quot;</span>, STHeiti, <span class="string">&quot;Microsoft Yahei&quot;</span>, monospace;</span><br></pre></td></tr></table></figure>
 <p>这样对于移动平台iOS,Android和Windows Phone上,倘若有相关字体则使用相关字体来显示等宽字符，倘若没有则都fallback到monospace让操作系统和浏览器自行选择等宽字体。</p>
-<h2 id="测试效果">测试效果</h2>
-<p><img src="/img/谈谈网页设计中的字体设定/linux.png" alt=""><br><strong>Ubuntu 13.04 With Chrome 31.0.1650.57</strong><br><img src="/img/谈谈网页设计中的字体设定/windows.png" alt=""><br><strong>Windows 8 With IE 10.0.9200</strong><br><img src="/img/谈谈网页设计中的字体设定/android.jpg" alt=""><br><strong>Android 4.1 With Chrome 37.0.2062.117</strong><br><img src="/img/谈谈网页设计中的字体设定/macos.png" alt=""><br><strong>Mac OS X 10.8.2 With Safari 6.0.1.8536.26.14</strong><br><img src="/img/谈谈网页设计中的字体设定/ios.jpg" alt=""><br><strong>iOS 8.1 (12B410) With Safari (600.1.4)</strong></p>
+<h2 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h2><img src="/2014/09/24/%E8%B0%88%E8%B0%88%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E5%AE%9A/linux.png" class="">
+<p><strong>Ubuntu 13.04 With Chrome 31.0.1650.57</strong></p>
+<img src="/2014/09/24/%E8%B0%88%E8%B0%88%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E5%AE%9A/windows.png" class="">
+<p><strong>Windows 8 With IE 10.0.9200</strong></p>
+<img src="/2014/09/24/%E8%B0%88%E8%B0%88%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E5%AE%9A/android.jpg" class="">
+<p><strong>Android 4.1 With Chrome 37.0.2062.117</strong></p>
+<img src="/2014/09/24/%E8%B0%88%E8%B0%88%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E5%AE%9A/macos.png" class="">
+<p><strong>Mac OS X 10.8.2 With Safari 6.0.1.8536.26.14</strong></p>
+<img src="/2014/09/24/%E8%B0%88%E8%B0%88%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E5%AE%9A/ios.jpg" class="">
+<p><strong>iOS 8.1 (12B410) With Safari (600.1.4)</strong></p>
 <ul>
 <li>由于手边暂时没有Windows Phone设备，因此暂时无法测试Windows Phone下的呈现效果，稍后补上测试效果。</li>
 </ul>
-<h2 id="最后">最后</h2>
-<p>通过测试我们可以看到所选用的字体设置基本均发挥出了各个平台的最佳字体效果，同时也保证了同一网页在各个平台上所呈现出的效果和网页风格的一致性。<br><strong>注意</strong>：在较低版本的IE中（如IE8）存在只要font-family中某个字体存在，就会完全无视掉它之后的字体，缺字用默认字体显示（也就是宋体）的BUG（著名的IE font-family fallback bug）,因此请Web前端开发者注意此点。</p>
-<p><strong>参考:</strong><br>(<a href="http://www.zhihu.com/question/19911793" target="_blank">http://www.zhihu.com/question/19911793</a>)</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>通过测试我们可以看到所选用的字体设置基本均发挥出了各个平台的最佳字体效果，同时也保证了同一网页在各个平台上所呈现出的效果和网页风格的一致性。<br><strong>注意</strong>：在较低版本的IE中（如IE8）存在只要font-family中某个字体存在，就会完全无视掉它之后的字体，缺字用默认字体显示（也就是宋体）的BUG（著名的IE font-family fallback bug）,因此请Web前端开发者注意此点。</p>
+<p><strong>参考:</strong><br>(<a href="http://www.zhihu.com/question/19911793">http://www.zhihu.com/question/19911793</a>)</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -171,7 +150,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://ptbsare.org/2014/09/24/谈谈网页设计中的字体设定/" data-title="谈谈网页设计中的字体设定 | 匆匆那年" data-tsina="null" class="share clearfix">
+  <div data-url="http://ptbsare.org/2014/09/24/%E8%B0%88%E8%B0%88%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E5%AE%9A/" data-title="谈谈网页设计中的字体设定 | 匆匆那年" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -227,7 +206,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#现状"><span class="toc-number">2.</span> <span class="toc-text">现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#考虑理想的写法"><span class="toc-number">3.</span> <span class="toc-text">考虑理想的写法</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-default"><span class="toc-number">3.1.</span> <span class="toc-text">Font-default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-mono"><span class="toc-number">3.2.</span> <span class="toc-text">Font-mono</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#测试效果"><span class="toc-number">4.</span> <span class="toc-text">测试效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">5.</span> <span class="toc-text">最后</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E7%8A%B6"><span class="toc-number">2.</span> <span class="toc-text">现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E8%99%91%E7%90%86%E6%83%B3%E7%9A%84%E5%86%99%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">考虑理想的写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-default"><span class="toc-number">3.1.</span> <span class="toc-text">Font-default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Font-mono"><span class="toc-number">3.2.</span> <span class="toc-text">Font-mono</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%95%88%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">测试效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">5.</span> <span class="toc-text">最后</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -249,7 +228,7 @@
 		
 			<li><a href="/tags/Feeling/" title="Feeling">Feeling<sup>3</sup></a></li>
 		
-			<li><a href="/tags/GNU Tools/" title="GNU Tools">GNU Tools<sup>6</sup></a></li>
+			<li><a href="/tags/GNU-Tools/" title="GNU Tools">GNU Tools<sup>6</sup></a></li>
 		
 			<li><a href="/tags/Latex/" title="Latex">Latex<sup>2</sup></a></li>
 		
@@ -286,7 +265,7 @@
 
 
   <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -317,7 +296,7 @@
 		<a href="https://www.facebook.com/ptbsare" target="_blank" title="facebook"></a>
 		
 		
-		<a href="https://plus.google.com/100168399125398465924?rel=author" target="_blank" title="Google+"></a>
+		<a href="https://plus.google.com/100168399125398470000?rel=author" target="_blank" title="Google+"></a>
 		
 		
 		<a href="http://stackoverflow.com/users/3769631" target="_blank" title="stackoverflow"></a>
@@ -326,7 +305,7 @@
 		
 		
 	</div>
-		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2024 
 		
 		<a href="http://ptbsare.org" target="_blank" title="ptbsare">ptbsare</a>
 		

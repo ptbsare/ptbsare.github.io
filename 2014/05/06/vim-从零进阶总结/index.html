@@ -9,21 +9,13 @@
     
     <meta name="author" content="ptbsare">
     
-    <meta name="description" content="Vim 安装
-以Ubuntu下为例:
-1
-sudo apt-get install vim
-
-
+    <meta name="description" content="Vim 安装以Ubuntu下为例:
+1sudo apt-get install vim
 For GUI
-1
-sudo apt-get install gvim
-
-
-第一阶：三种模式
-+ normal模式（默认模式）
+1sudo apt-get install gvim
+第一阶：三种模式+ normal模式（默认模式）
 + insert模式（在默认模式下按i进入插入模式）
-+ command模式">
++ command模式（按ESC与:输">
     
     
     
@@ -37,10 +29,12 @@ sudo apt-get install gvim
     <link rel="icon" href="/img/favicon.ico">
     
     
-    <link rel="apple-touch-icon" href="/img/pacman1.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman1.jpg">
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
 </head>
 
   <body>
@@ -92,8 +86,8 @@ sudo apt-get install gvim
   <p class="article-author">By
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
-    <time datetime="2014-05-06T15:01:49.000Z" itemprop="datePublished">5月 6 2014</time>
-    更新日期:<time datetime="2014-06-24T06:39:10.000Z" itemprop="dateModified">6月 24 2014</time>
+    <time datetime="2014-05-06T07:01:49.000Z" itemprop="datePublished">2014年05月06日</time>
+    更新日期:<time datetime="2014-06-23T22:39:10.000Z" itemprop="dateModified">2014年06月24日</time>
     
   </p>
 </header>
@@ -103,266 +97,90 @@ sudo apt-get install gvim
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim_安装"><span class="toc-number">1.</span> <span class="toc-text">Vim 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一阶：三种模式"><span class="toc-number">2.</span> <span class="toc-text">第一阶：三种模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二阶：简单使用"><span class="toc-number">3.</span> <span class="toc-text">第二阶：简单使用</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_简单的光标移动"><span class="toc-number">3.1.</span> <span class="toc-text">1. 简单的光标移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_各种插入编辑方式"><span class="toc-number">3.2.</span> <span class="toc-text">2. 各种插入编辑方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_拷贝/粘贴/删除"><span class="toc-number">3.3.</span> <span class="toc-text">3. 拷贝/粘贴/删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_Redo/Undo"><span class="toc-number">3.4.</span> <span class="toc-text">4. Redo/Undo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-_打开/保存/退出/改变文件(Buffer)"><span class="toc-number">3.5.</span> <span class="toc-text">5. 打开/保存/退出/改变文件(Buffer)</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#第二阶：提高效率"><span class="toc-number">4.</span> <span class="toc-text">第二阶：提高效率</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-重复"><span class="toc-number">4.1.</span> <span class="toc-text">1.重复</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#(1)_-_：_(小数点)_可以重复上一次的命令"><span class="toc-number">4.1.1.</span> <span class="toc-text">(1) . ： (小数点) 可以重复上一次的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(2)_N_：_重复某个命令N次"><span class="toc-number">4.1.2.</span> <span class="toc-text"> ： 重复某个命令N次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(3)_示例"><span class="toc-number">4.1.3.</span> <span class="toc-text">(3) 示例</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#2-快速移动"><span class="toc-number">4.2.</span> <span class="toc-text">2.快速移动</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#(1)NG：到第N行"><span class="toc-number">4.2.1.</span> <span class="toc-text">(1)NG：到第N行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(2)gg：到第一行"><span class="toc-number">4.2.2.</span> <span class="toc-text">(2)gg：到第一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(3)G：到最后一行"><span class="toc-number">4.2.3.</span> <span class="toc-text">(3)G：到最后一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(4)单词移动"><span class="toc-number">4.2.4.</span> <span class="toc-text">(4)单词移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(5)单词匹配"><span class="toc-number">4.2.5.</span> <span class="toc-text">(5)单词匹配</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#3-组合命令"><span class="toc-number">4.3.</span> <span class="toc-text">3.组合命令</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#第三阶：杀手级功能"><span class="toc-number">5.</span> <span class="toc-text">第三阶：杀手级功能</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在当前行上移动光标:_0_^_$_f_F_t_T_,_;"><span class="toc-number">5.1.</span> <span class="toc-text">在当前行上移动光标: 0 ^ $ f F t T , ;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区域选择_&lt;action&gt;a&lt;object&gt;_或_&lt;action&gt;i&lt;object&gt;"><span class="toc-number">5.2.</span> <span class="toc-text">&lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块操作:_&lt;C-v&gt;"><span class="toc-number">5.3.</span> <span class="toc-text">&lt;C-v&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动提示：_&lt;C-n&gt;_和_&lt;C-p&gt;"><span class="toc-number">5.4.</span> <span class="toc-text">&lt;C-n&gt; 和 &lt;C-p&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#宏录制：_qa_操作序列_q,_@a,_@@"><span class="toc-number">5.5.</span> <span class="toc-text">宏录制： qa 操作序列 q, @a, @@</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可视化选择：_v,V,&lt;C-v&gt;"><span class="toc-number">5.6.</span> <span class="toc-text">v,V,&lt;C-v&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分屏:_:split_和_vsplit-"><span class="toc-number">5.7.</span> <span class="toc-text">分屏: :split 和 vsplit.</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">6.</span> <span class="toc-text">Tips</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim-%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">Vim 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%EF%BC%9A%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">第一阶：三种模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%EF%BC%9A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">第二阶：简单使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E7%9A%84%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8"><span class="toc-number">3.1.</span> <span class="toc-text">1. 简单的光标移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%84%E7%A7%8D%E6%8F%92%E5%85%A5%E7%BC%96%E8%BE%91%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">2. 各种插入编辑方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8B%B7%E8%B4%9D-%E7%B2%98%E8%B4%B4-%E5%88%A0%E9%99%A4"><span class="toc-number">3.3.</span> <span class="toc-text">3. 拷贝&#x2F;粘贴&#x2F;删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Redo-Undo"><span class="toc-number">3.4.</span> <span class="toc-text">4. Redo&#x2F;Undo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%89%93%E5%BC%80-%E4%BF%9D%E5%AD%98-%E9%80%80%E5%87%BA-%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6-Buffer"><span class="toc-number">3.5.</span> <span class="toc-text">5. 打开&#x2F;保存&#x2F;退出&#x2F;改变文件(Buffer)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%EF%BC%9A%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87"><span class="toc-number">4.</span> <span class="toc-text">第二阶：提高效率</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%87%8D%E5%A4%8D"><span class="toc-number">4.1.</span> <span class="toc-text">1.重复</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%EF%BC%9A-%E5%B0%8F%E6%95%B0%E7%82%B9-%E5%8F%AF%E4%BB%A5%E9%87%8D%E5%A4%8D%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">4.1.1.</span> <span class="toc-text">(1) . ： (小数点) 可以重复上一次的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-N-%EF%BC%9A-%E9%87%8D%E5%A4%8D%E6%9F%90%E4%B8%AA%E5%91%BD%E4%BB%A4N%E6%AC%A1"><span class="toc-number">4.1.2.</span> <span class="toc-text">(2) N ： 重复某个命令N次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.1.3.</span> <span class="toc-text">(3) 示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E7%A7%BB%E5%8A%A8"><span class="toc-number">4.2.</span> <span class="toc-text">2.快速移动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-NG%EF%BC%9A%E5%88%B0%E7%AC%ACN%E8%A1%8C"><span class="toc-number">4.2.1.</span> <span class="toc-text">(1)NG：到第N行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-gg%EF%BC%9A%E5%88%B0%E7%AC%AC%E4%B8%80%E8%A1%8C"><span class="toc-number">4.2.2.</span> <span class="toc-text">(2)gg：到第一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-G%EF%BC%9A%E5%88%B0%E6%9C%80%E5%90%8E%E4%B8%80%E8%A1%8C"><span class="toc-number">4.2.3.</span> <span class="toc-text">(3)G：到最后一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%8D%95%E8%AF%8D%E7%A7%BB%E5%8A%A8"><span class="toc-number">4.2.4.</span> <span class="toc-text">(4)单词移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%8D%95%E8%AF%8D%E5%8C%B9%E9%85%8D"><span class="toc-number">4.2.5.</span> <span class="toc-text">(5)单词匹配</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%84%E5%90%88%E5%91%BD%E4%BB%A4"><span class="toc-number">4.3.</span> <span class="toc-text">3.组合命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%EF%BC%9A%E6%9D%80%E6%89%8B%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="toc-number">5.</span> <span class="toc-text">第三阶：杀手级功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%BD%93%E5%89%8D%E8%A1%8C%E4%B8%8A%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87-0-f-F-t-T"><span class="toc-number">5.1.</span> <span class="toc-text">在当前行上移动光标: 0 ^ $ f F t T , ;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E9%80%89%E6%8B%A9-a-%E6%88%96-i"><span class="toc-number">5.2.</span> <span class="toc-text">区域选择 &lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%97%E6%93%8D%E4%BD%9C"><span class="toc-number">5.3.</span> <span class="toc-text">块操作: &lt;C-v&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA%EF%BC%9A-%E5%92%8C"><span class="toc-number">5.4.</span> <span class="toc-text">自动提示： &lt;C-n&gt; 和 &lt;C-p&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8F%E5%BD%95%E5%88%B6%EF%BC%9A-qa-%E6%93%8D%E4%BD%9C%E5%BA%8F%E5%88%97-q-a"><span class="toc-number">5.5.</span> <span class="toc-text">宏录制： qa 操作序列 q, @a, @@</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E9%80%89%E6%8B%A9%EF%BC%9A-v-V"><span class="toc-number">5.6.</span> <span class="toc-text">可视化选择： v,V,&lt;C-v&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B1%8F-split-%E5%92%8C-vsplit"><span class="toc-number">5.7.</span> <span class="toc-text">分屏: :split 和 vsplit.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">6.</span> <span class="toc-text">Tips</span></a></li></ol>
 		</div>
 		
-		<h2 id="Vim_安装">Vim 安装</h2>
-<p>以Ubuntu下为例:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install vim
-</pre></td></tr></table></figure>
-
+		<h2 id="Vim-安装"><a href="#Vim-安装" class="headerlink" title="Vim 安装"></a>Vim 安装</h2><p>以Ubuntu下为例:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install vim</span><br></pre></td></tr></table></figure>
 <p>For GUI</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install gvim
-</pre></td></tr></table></figure>
-
-<h2 id="第一阶：三种模式">第一阶：三种模式</h2>
-<pre><code><span class="addition">+ normal模式（默认模式）</span>
-<span class="addition">+ insert模式（在默认模式下按i进入插入模式）</span>
-<span class="addition">+ command模式（按ESC与:输入命令）</span>
-</code></pre><h2 id="第二阶：简单使用">第二阶：简单使用</h2>
-<h3 id="1-_简单的光标移动">1. 简单的光标移动</h3>
-<pre><code><span class="number">0</span>：到本行行头
-<span class="label">$:</span> 到本行行尾
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install gvim</span><br></pre></td></tr></table></figure>
+<h2 id="第一阶：三种模式"><a href="#第一阶：三种模式" class="headerlink" title="第一阶：三种模式"></a>第一阶：三种模式</h2><pre><code>+ normal模式（默认模式）
++ insert模式（在默认模式下按i进入插入模式）
++ command模式（按ESC与:输入命令）
+</code></pre>
+<h2 id="第二阶：简单使用"><a href="#第二阶：简单使用" class="headerlink" title="第二阶：简单使用"></a>第二阶：简单使用</h2><h3 id="1-简单的光标移动"><a href="#1-简单的光标移动" class="headerlink" title="1. 简单的光标移动"></a>1. 简单的光标移动</h3><pre><code>0：到本行行头
+$: 到本行行尾
 ^: 到本行第一个不是blank字符的位置（空格 tab 换行 回车 等）
-<span class="label">g_:</span>到本行最后一个不是blank的位置
-<span class="label">jkhl:</span>分别为上下左右移动
+g_:到本行最后一个不是blank的位置
+jkhl:分别为上下左右移动
 /pattern:搜索pattern的字符串跳到相应位置 按n到下一个
-</code></pre><h3 id="2-_各种插入编辑方式">2. 各种插入编辑方式</h3>
-<pre><code><span class="label">a:</span>在光标后插入
-<span class="label">o:</span>在当前行后插入一个新行
+</code></pre>
+<h3 id="2-各种插入编辑方式"><a href="#2-各种插入编辑方式" class="headerlink" title="2. 各种插入编辑方式"></a>2. 各种插入编辑方式</h3><pre><code>a:在光标后插入
+o:在当前行后插入一个新行
 O：在当前行插入一个新行
-<span class="label">cw:</span>替换从当前位置到最后一个单词结尾的字符
-</code></pre><h3 id="3-_拷贝/粘贴/删除">3. 拷贝/粘贴/删除</h3>
-<pre><code><span class="label">dd:</span>删除当前行并将当前行放入剪切板
-<span class="label">p:</span>粘贴（在当前位置之后开始）（P为在当前位置之前开始）
-<span class="label">yy:</span>拷贝当前行相当于ddP
-</code></pre><h3 id="4-_Redo/Undo">4. Redo/Undo</h3>
-<pre><code>u：<span class="keyword">undo</span>
-&lt;C-r&gt;:<span class="keyword">redo</span>
-</code></pre><h3 id="5-_打开/保存/退出/改变文件(Buffer)">5. 打开/保存/退出/改变文件(Buffer)</h3>
-<pre><code>:e &lt;path/to/file&gt; → 打开一个文件
+cw:替换从当前位置到最后一个单词结尾的字符
+</code></pre>
+<h3 id="3-拷贝-粘贴-删除"><a href="#3-拷贝-粘贴-删除" class="headerlink" title="3. 拷贝&#x2F;粘贴&#x2F;删除"></a>3. 拷贝&#x2F;粘贴&#x2F;删除</h3><pre><code>dd:删除当前行并将当前行放入剪切板
+p:粘贴（在当前位置之后开始）（P为在当前位置之前开始）
+yy:拷贝当前行相当于ddP
+</code></pre>
+<h3 id="4-Redo-Undo"><a href="#4-Redo-Undo" class="headerlink" title="4. Redo&#x2F;Undo"></a>4. Redo&#x2F;Undo</h3><pre><code>u：undo
+&lt;C-r&gt;:redo
+</code></pre>
+<h3 id="5-打开-保存-退出-改变文件-Buffer"><a href="#5-打开-保存-退出-改变文件-Buffer" class="headerlink" title="5. 打开&#x2F;保存&#x2F;退出&#x2F;改变文件(Buffer)"></a>5. 打开&#x2F;保存&#x2F;退出&#x2F;改变文件(Buffer)</h3><pre><code>:e &lt;path/to/file&gt; → 打开一个文件
 :w → 存盘
 :saveas &lt;path/to/file&gt; → 另存为&lt;path/to/file&gt;
-<span class="attribute">:x， ZZ 或 :wq</span> → 保存并退出 (:x 表示仅在需要时保存，ZZ不需要输入冒号并回车)
-<span class="attribute">:q! → 退出不保存 :qa!</span> 强行退出所有的正在编辑的文件，就算别的文件有更改。
-<span class="attribute">:bn 和 :bp</span> → 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。
-</code></pre><h2 id="第二阶：提高效率">第二阶：提高效率</h2>
-<h3 id="1-重复">1.重复</h3>
-<h4 id="(1)_-_：_(小数点)_可以重复上一次的命令">(1) . ： (小数点) 可以重复上一次的命令</h4>
-<h4 id="(2)_N_：_重复某个命令N次">(2) N<command> ： 重复某个命令N次</h4>
-<h4 id="(3)_示例">(3) 示例</h4>
-<pre><code>-<span class="ruby"> <span class="number">2</span>dd <span class="symbol">:</span>删除两行
-</span>-<span class="ruby"> <span class="number">3</span>p：粘贴三次
-</span>-<span class="ruby"> <span class="number">100</span>hehe[<span class="constant">ESC</span>]：写下一百个“hehe”
-</span>-<span class="ruby">.：重复上面的命令 写一百个“hehe”
-</span>-<span class="ruby"><span class="number">3</span>.：重复写三个“hehe”（不是三百个）</span>
-</code></pre><h3 id="2-快速移动">2.快速移动</h3>
-<h4 id="(1)NG：到第N行">(1)NG：到第N行</h4>
-<h4 id="(2)gg：到第一行">(2)gg：到第一行</h4>
-<h4 id="(3)G：到最后一行">(3)G：到最后一行</h4>
-<h4 id="(4)单词移动">(4)单词移动</h4>
-<pre><code>1.w：到下一个单词开头
+:x， ZZ 或 :wq → 保存并退出 (:x 表示仅在需要时保存，ZZ不需要输入冒号并回车)
+:q! → 退出不保存 :qa! 强行退出所有的正在编辑的文件，就算别的文件有更改。
+:bn 和 :bp → 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。
+</code></pre>
+<h2 id="第二阶：提高效率"><a href="#第二阶：提高效率" class="headerlink" title="第二阶：提高效率"></a>第二阶：提高效率</h2><h3 id="1-重复"><a href="#1-重复" class="headerlink" title="1.重复"></a>1.重复</h3><h4 id="1-：-小数点-可以重复上一次的命令"><a href="#1-：-小数点-可以重复上一次的命令" class="headerlink" title="(1) . ： (小数点) 可以重复上一次的命令"></a>(1) . ： (小数点) 可以重复上一次的命令</h4><h4 id="2-N-：-重复某个命令N次"><a href="#2-N-：-重复某个命令N次" class="headerlink" title="(2) N ： 重复某个命令N次"></a>(2) N<command> ： 重复某个命令N次</h4><h4 id="3-示例"><a href="#3-示例" class="headerlink" title="(3) 示例"></a>(3) 示例</h4><pre><code>- 2dd :删除两行
+- 3p：粘贴三次
+- 100hehe[ESC]：写下一百个“hehe”
+-.：重复上面的命令 写一百个“hehe”
+-3.：重复写三个“hehe”（不是三百个）
+</code></pre>
+<h3 id="2-快速移动"><a href="#2-快速移动" class="headerlink" title="2.快速移动"></a>2.快速移动</h3><h4 id="1-NG：到第N行"><a href="#1-NG：到第N行" class="headerlink" title="(1)NG：到第N行"></a>(1)NG：到第N行</h4><h4 id="2-gg：到第一行"><a href="#2-gg：到第一行" class="headerlink" title="(2)gg：到第一行"></a>(2)gg：到第一行</h4><h4 id="3-G：到最后一行"><a href="#3-G：到最后一行" class="headerlink" title="(3)G：到最后一行"></a>(3)G：到最后一行</h4><h4 id="4-单词移动"><a href="#4-单词移动" class="headerlink" title="(4)单词移动"></a>(4)单词移动</h4><pre><code>1.w：到下一个单词开头
 2.e：到下一个单词结尾
-</code></pre><p><img src="/img/vim-从零进阶总结/1.jpg" alt=""></p>
-<h4 id="(5)单词匹配">(5)单词匹配</h4>
-<pre><code><span class="number">1</span>.%：匹配括号
-<span class="number">2</span>.×与<span class="comment">#匹配上一个（下一个单词）</span>
-</code></pre><h3 id="3-组合命令">3.组合命令</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-</pre></td><td class="code"><pre>&lt;start position&gt;&lt;command&gt;&lt;<span class="keyword">end</span> position&gt;
-
-例如 <span class="number">0</span>y$ 命令意味着：
-
-<span class="number">0</span> → 先到行头
-y → 从这里开始拷贝
-$ → 拷贝到本行最后一个字符
-你可可以输入 ye，从当前位置拷贝到本单词的最后一个字符。
-
-你也可以输入 y2/foo 来拷贝<span class="number">2</span>个 “foo” 之间的字符串。
-
-还有很多时间并不一定你就一定要按y才会拷贝，下面的命令也会被拷贝：
-
-<span class="function"><span class="title">d</span> <span class="params">(删除 )</span>
-<span class="title">v</span> <span class="params">(可视化的选择)</span>
-<span class="title">gU</span> <span class="params">(变大写)</span>
-<span class="title">gu</span> <span class="params">(变小写)</span>
-等等</span>
-</pre></td></tr></table></figure>
-
-<h2 id="第三阶：杀手级功能">第三阶：杀手级功能</h2>
-<h3 id="在当前行上移动光标:_0_^_$_f_F_t_T_,_;">在当前行上移动光标: 0 ^ $ f F t T , ;</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td><td class="code"><pre><span class="number">0</span> → 到行头
-^ → 到本行的第一个非blank字符
-$ → 到行尾
-g_ → 到本行最后一个不是blank字符的位置。
-fa → 到下一个为<span class="operator">a</span>的字符处，你也可以fs到下一个为s的字符。
-t, → 到逗号前的第一个字符。逗号可以变成其它字符。
-<span class="number">3</span>fa → 在当前行查找第三个出现的<span class="operator">a</span>。
-F 和 T → 和 f 和 t 一样，只不过是相反方向。
-dt<span class="string">" → 删除所有的内容，直到遇到双引号—— "</span>。
-</pre></td></tr></table></figure>
-
-<p><img src="/img/vim-从零进阶总结/2.jpg" alt=""></p>
-<h3 id="区域选择_&lt;action&gt;a&lt;object&gt;_或_&lt;action&gt;i&lt;object&gt;">区域选择 <code>&lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;</code></h3>
-<pre><code>action可以是任何的命令，如 d (删除), y (拷贝), v (可以视模式选择)。
-<span class="class"><span class="keyword">object</span> 可能是： <span class="title">w</span> 一个单词， <span class="title">W</span> 一个以空格为分隔的单词， <span class="title">s</span> 一个句字， <span class="title">p</span> 一个段落。也可以是一个特别的字符："、 '、 )、 }、 ]。</span>
-</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="code"><pre>假设你有一个字符串 (<span class="keyword">map</span> (+) (<span class="string">"foo"</span>)).而光标键在第一个 o 的位置。
-
-vi<span class="string">" → 会选择 foo.
-va"</span> → 会选择 <span class="string">"foo"</span>.
-vi) → 会选择 <span class="string">"foo"</span>.
-va) → 会选择(<span class="string">"foo"</span>).
-v2i) → 会选择 <span class="keyword">map</span> (+) (<span class="string">"foo"</span>)
-v2a) → 会选择 (<span class="keyword">map</span> (+) (<span class="string">"foo"</span>))
-</pre></td></tr></table></figure>
-
-<p><img src="/img/vim-从零进阶总结/3.png" alt=""></p>
-<h3 id="块操作:_&lt;C-v&gt;">块操作: <code>&lt;C-v&gt;</code></h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre>^ → 到行头
-&lt;<span class="keyword">C</span>-v&gt; → 开始块操作
-&lt;<span class="keyword">C</span>-d&gt; → 向下移动 (你也可以使用hjkl来移动光标，或是使用%，或是别的)
-<span class="keyword">I</span>-- [ESC] → <span class="keyword">I</span>是插入，插入“--”，按ESC键来为每一行生效。
-</pre></td></tr></table></figure>
-
-<p><img src="/img/vim-从零进阶总结/4.gif" alt=""></p>
-<h3 id="自动提示：_&lt;C-n&gt;_和_&lt;C-p&gt;">自动提示： <code>&lt;C-n&gt; 和 &lt;C-p&gt;</code></h3>
-<p>在 Insert 模式下，你可以输入一个词的开头，然后按 <C-p>或是<C-n>，自动补齐功能就出现了……<br><img src="/img/vim-从零进阶总结/5.gif" alt=""></p>
-<h3 id="宏录制：_qa_操作序列_q,_@a,_@@">宏录制： qa 操作序列 q, @a, @@</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>qa 把你的操作记录在寄存器 a。
-于是 <span class="decorator">@a 会replay被录制的宏。</span>
-<span class="decorator">@@ 是一个快捷键用来replay最新录制的宏。</span>
-</pre></td></tr></table></figure>
-
-
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="code"><pre>示例
-
-在一个只有一行且这一行只有“<span class="number">1</span>”的文本中，键入如下命令：
-
-qaYp&lt;C-a&gt;q→
-qa 开始录制
-Yp 复制行.
-&lt;C-a&gt; 增加<span class="number">1.</span>
-q 停止录制.
-<span class="decorator">@a → 在1下面写下 2</span>
-<span class="decorator">@@ → 在2 正面写下3</span>
-现在做 <span class="number">100</span><span class="decorator">@@ 会创建新的100行，并把数据增加到 103.</span>
-</pre></td></tr></table></figure>
-
-<p><img src="/img/vim-从零进阶总结/6.gif" alt=""></p>
-<h3 id="可视化选择：_v,V,&lt;C-v&gt;">可视化选择： <code>v,V,&lt;C-v&gt;</code></h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre>前面，我们看到了 &lt;C-v&gt;的示例 （在Windows下应该是&lt;C-q&gt;），我们可以使用 v 和 V。一但被选好了，你可以做下面的事：
-
-J → 把所有的行连接起来（变成一行）
-&lt; 或 &gt; → 左右缩进
-<span class="header">= → 自动给缩进</span>
-</pre></td></tr></table></figure>
-
-<p><img src="/img/vim-从零进阶总结/7.gif" alt=""></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre>在所有被选择的行后加上点东西：
-
-<span class="tag">&lt;<span class="title">C-v</span>&gt;</span>
-选中相关的行 (可使用 j 或 <span class="tag">&lt;<span class="title">C-d</span>&gt;</span> 或是 /pattern 或是 % 等……)
-$ 到行最后
-A, 输入字符串，按 ESC。
-</pre></td></tr></table></figure>
-
-<p><img src="/img/vim-从零进阶总结/8.gif" alt=""></p>
-<h3 id="分屏:_:split_和_vsplit-">分屏: :split 和 vsplit.</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre>下面是主要的命令，你可以使用VIM的帮助 :help split.
-
-<span class="attribute">:split → 创建分屏 (:vsplit创建垂直分屏)</span>
-&lt;C-w&gt;&lt;dir&gt; : dir就是方向，可以是 hjkl 或是 ←↓↑→ 中的一个，其用来切换分屏。
-&lt;C-w&gt;_ (或 &lt;C-w&gt;|) : 最大化尺寸 (&lt;C-w&gt;| 垂直分屏)
-&lt;C-w&gt;+ (或 &lt;C-w&gt;-) : 增加尺寸
-</pre></td></tr></table></figure>
-
-<p><img src="/img/vim-从零进阶总结/9.gif" alt=""></p>
-<h2 id="Tips">Tips</h2>
-<ul>
+</code></pre>
+<img src="/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/1.jpg" class="">
+<h4 id="5-单词匹配"><a href="#5-单词匹配" class="headerlink" title="(5)单词匹配"></a>(5)单词匹配</h4><pre><code>1.%：匹配括号
+2.×与#匹配上一个（下一个单词）
+</code></pre>
+<h3 id="3-组合命令"><a href="#3-组合命令" class="headerlink" title="3.组合命令"></a>3.组合命令</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="built_in">start</span> position&gt;&lt;command&gt;&lt;<span class="keyword">end</span> position&gt;</span><br><span class="line"></span><br><span class="line">例如 <span class="number">0</span>y<span class="variable">$</span> 命令意味着：</span><br><span class="line"></span><br><span class="line"><span class="number">0</span> → 先到行头</span><br><span class="line">y → 从这里开始拷贝</span><br><span class="line"><span class="variable">$</span> → 拷贝到本行最后一个字符</span><br><span class="line">你可可以输入 ye，从当前位置拷贝到本单词的最后一个字符。</span><br><span class="line"></span><br><span class="line">你也可以输入 y2/foo 来拷贝<span class="number">2</span>个 “foo” 之间的字符串。</span><br><span class="line"></span><br><span class="line">还有很多时间并不一定你就一定要按y才会拷贝，下面的命令也会被拷贝：</span><br><span class="line"></span><br><span class="line">d (删除 )</span><br><span class="line">v (可视化的选择)</span><br><span class="line"><span class="built_in">gU</span> (变大写)</span><br><span class="line"><span class="built_in">gu</span> (变小写)</span><br><span class="line">等等</span><br></pre></td></tr></table></figure>
+<h2 id="第三阶：杀手级功能"><a href="#第三阶：杀手级功能" class="headerlink" title="第三阶：杀手级功能"></a>第三阶：杀手级功能</h2><h3 id="在当前行上移动光标-0-f-F-t-T"><a href="#在当前行上移动光标-0-f-F-t-T" class="headerlink" title="在当前行上移动光标: 0 ^ $ f F t T , ;"></a>在当前行上移动光标: 0 ^ $ f F t T , ;</h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> → 到行头</span><br><span class="line">^ → 到本行的第一个非blank字符</span><br><span class="line">$ → 到行尾</span><br><span class="line">g_ → 到本行最后一个不是blank字符的位置。</span><br><span class="line">fa → 到下一个为a的字符处，你也可以fs到下一个为s的字符。</span><br><span class="line"><span class="built_in">t</span>, → 到逗号前的第一个字符。逗号可以变成其它字符。</span><br><span class="line"><span class="number">3</span>fa → 在当前行查找第三个出现的a。</span><br><span class="line">F 和 <span class="built_in">T</span> → 和 f 和 <span class="built_in">t</span> 一样，只不过是相反方向。</span><br><span class="line">dt<span class="string">&quot; → 删除所有的内容，直到遇到双引号—— &quot;</span>。</span><br></pre></td></tr></table></figure>
+<img src="/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/2.jpg" class="">
+<h3 id="区域选择-a-或-i"><a href="#区域选择-a-或-i" class="headerlink" title="区域选择 &lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;"></a>区域选择 <code>&lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;</code></h3><pre><code>action可以是任何的命令，如 d (删除), y (拷贝), v (可以视模式选择)。
+object 可能是： w 一个单词， W 一个以空格为分隔的单词， s 一个句字， p 一个段落。也可以是一个特别的字符：&quot;、 &#39;、 )、 &#125;、 ]。
+</code></pre>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">假设你有一个字符串 (<span class="keyword">map</span> (+) (<span class="string">&quot;foo&quot;</span>)).而光标键在第一个 <span class="keyword">o</span> 的位置。</span><br><span class="line"></span><br><span class="line"><span class="keyword">vi</span><span class="comment">&quot; → 会选择 foo.</span></span><br><span class="line">va<span class="string">&quot; → 会选择 &quot;</span>foo<span class="comment">&quot;.</span></span><br><span class="line"><span class="keyword">vi</span>) → 会选择 <span class="string">&quot;foo&quot;</span>.</span><br><span class="line">va) → 会选择(<span class="string">&quot;foo&quot;</span>).</span><br><span class="line">v2i) → 会选择 <span class="keyword">map</span> (+) (<span class="string">&quot;foo&quot;</span>)</span><br><span class="line">v2a) → 会选择 (<span class="keyword">map</span> (+) (<span class="string">&quot;foo&quot;</span>))</span><br></pre></td></tr></table></figure>
+<img src="/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/3.png" class="">
+<h3 id="块操作"><a href="#块操作" class="headerlink" title="块操作: &lt;C-v&gt;"></a>块操作: <code>&lt;C-v&gt;</code></h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">^</span> → 到行头</span><br><span class="line"><span class="operator">&lt;</span><span class="built_in">C</span><span class="operator">-</span><span class="variable">v</span><span class="operator">&gt;</span> → 开始块操作</span><br><span class="line"><span class="operator">&lt;</span><span class="built_in">C</span><span class="operator">-</span><span class="variable">d</span><span class="operator">&gt;</span> → 向下移动 <span class="punctuation">(</span>你也可以使用<span class="variable">hjkl</span>来移动光标，或是使用<span class="operator">%</span>，或是别的<span class="punctuation">)</span></span><br><span class="line"><span class="built_in">I</span><span class="operator">--</span> <span class="punctuation">[</span><span class="variable">ESC</span><span class="punctuation">]</span> → <span class="built_in">I</span>是插入，插入“<span class="operator">--</span>”，按<span class="variable">ESC</span>键来为每一行生效。</span><br></pre></td></tr></table></figure>
+<img src="/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/4.gif" class="">
+<h3 id="自动提示：-和"><a href="#自动提示：-和" class="headerlink" title="自动提示： &lt;C-n&gt; 和 &lt;C-p&gt;"></a>自动提示： <code>&lt;C-n&gt; 和 &lt;C-p&gt;</code></h3><p>在 Insert 模式下，你可以输入一个词的开头，然后按 <C-p>或是<C-n>，自动补齐功能就出现了……</p>
+<img src="/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/5.gif" class="">
+<h3 id="宏录制：-qa-操作序列-q-a"><a href="#宏录制：-qa-操作序列-q-a" class="headerlink" title="宏录制： qa 操作序列 q, @a, @@"></a>宏录制： qa 操作序列 q, @a, @@</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">qa 把你的操作记录在寄存器 <span class="selector-tag">a</span>。</span><br><span class="line">于是 <span class="keyword">@a</span> 会replay被录制的宏。</span><br><span class="line">@@ 是一个快捷键用来replay最新录制的宏。</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">示例</span><br><span class="line"></span><br><span class="line">在一个只有一行且这一行只有“<span class="number">1</span>”的文本中，键入如下命令：</span><br><span class="line"></span><br><span class="line">qaYp&lt;C-<span class="selector-tag">a</span>&gt;<span class="selector-tag">q</span>→</span><br><span class="line">qa 开始录制</span><br><span class="line">Yp 复制行.</span><br><span class="line">&lt;C-<span class="selector-tag">a</span>&gt; 增加<span class="number">1</span>.</span><br><span class="line"><span class="selector-tag">q</span> 停止录制.</span><br><span class="line"><span class="keyword">@a</span> → 在<span class="number">1</span>下面写下 <span class="number">2</span></span><br><span class="line">@@ → 在<span class="number">2</span> 正面写下<span class="number">3</span></span><br><span class="line">现在做 <span class="number">100</span>@@ 会创建新的<span class="number">100</span>行，并把数据增加到 <span class="number">103</span>.</span><br></pre></td></tr></table></figure>
+<img src="/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/6.gif" class="">
+<h3 id="可视化选择：-v-V"><a href="#可视化选择：-v-V" class="headerlink" title="可视化选择： v,V,&lt;C-v&gt;"></a>可视化选择： <code>v,V,&lt;C-v&gt;</code></h3><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">前面，我们看到了 &lt;C-v&gt;的示例 （在Windows下应该是&lt;C-q&gt;），我们可以使用 v 和 V。一但被选好了，你可以做下面的事：</span><br><span class="line"></span><br><span class="line">J → 把所有的行连接起来（变成一行）</span><br><span class="line">&lt; 或 &gt; → 左右缩进</span><br><span class="line"><span class="section">= → 自动给缩进 </span></span><br></pre></td></tr></table></figure>
+<img src="/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/7.gif" class="">
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在所有被选择的行后加上点东西：</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">C-v</span>&gt;</span></span><br><span class="line">选中相关的行 (可使用 j 或 <span class="tag">&lt;<span class="name">C-d</span>&gt;</span> 或是 /pattern 或是 % 等……)</span><br><span class="line">$ 到行最后</span><br><span class="line">A, 输入字符串，按 ESC。</span><br></pre></td></tr></table></figure>
+<img src="/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/8.gif" class="">
+<h3 id="分屏-split-和-vsplit"><a href="#分屏-split-和-vsplit" class="headerlink" title="分屏: :split 和 vsplit."></a>分屏: :split 和 vsplit.</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">下面是主要的命令，你可以使用VIM的帮助 :<span class="keyword">help</span> <span class="keyword">split</span>.</span><br><span class="line"></span><br><span class="line">:<span class="keyword">split</span> → 创建分屏 (:<span class="keyword">vsplit</span>创建垂直分屏)</span><br><span class="line"><span class="symbol">&lt;C-w&gt;</span><span class="symbol">&lt;dir&gt;</span> : dir就是方向，可以是 hjkl 或是 ←↓↑→ 中的一个，其用来切换分屏。</span><br><span class="line"><span class="symbol">&lt;C-w&gt;</span>_ (或 <span class="symbol">&lt;C-w&gt;</span>|) : 最大化尺寸 (<span class="symbol">&lt;C-w&gt;</span>| 垂直分屏)</span><br><span class="line"><span class="symbol">&lt;C-w&gt;</span>+ (或 <span class="symbol">&lt;C-w&gt;</span>-) : 增加尺寸</span><br></pre></td></tr></table></figure>
+<img src="/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/9.gif" class="">
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
 <li>上面是最常用的90%的命令。</li>
 <li>其在线帮助文档中你应该要仔细阅读的是 :help usr_02.txt.</li>
 <li>学习vim就像学弹钢琴一样，一旦学会，受益无穷。</li>
 </ul>
-<p>英文原文:<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank">http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/</a><br>转载整理自:<a href="http://blog.csdn.net/niushuai666/article/details/7275406" target="_blank">http://blog.csdn.net/niushuai666/article/details/7275406</a></p>
+<p>英文原文:<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/</a><br>转载整理自:<a href="http://blog.csdn.net/niushuai666/article/details/7275406">http://blog.csdn.net/niushuai666/article/details/7275406</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/GNU Tools/">GNU Tools</a><a href="/tags/Linux/">Linux</a><a href="/tags/Ubuntu/">Ubuntu</a><a href="/tags/Vim/">Vim</a>
+  <span></span> <a href="/tags/Ubuntu/">Ubuntu</a><a href="/tags/Linux/">Linux</a><a href="/tags/GNU-Tools/">GNU Tools</a><a href="/tags/Vim/">Vim</a>
   </div>
 
 
@@ -370,7 +188,7 @@ A, 输入字符串，按 ESC。
 
 <div class="article-share" id="share">
 
-  <div data-url="http://ptbsare.org/2014/05/06/vim-从零进阶总结/" data-title="Vim 从零进阶总结 | 匆匆那年" data-tsina="null" class="share clearfix">
+  <div data-url="http://ptbsare.org/2014/05/06/vim-%E4%BB%8E%E9%9B%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/" data-title="Vim 从零进阶总结 | 匆匆那年" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -418,7 +236,7 @@ A, 输入字符串，按 ESC。
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim_安装"><span class="toc-number">1.</span> <span class="toc-text">Vim 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一阶：三种模式"><span class="toc-number">2.</span> <span class="toc-text">第一阶：三种模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二阶：简单使用"><span class="toc-number">3.</span> <span class="toc-text">第二阶：简单使用</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_简单的光标移动"><span class="toc-number">3.1.</span> <span class="toc-text">1. 简单的光标移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_各种插入编辑方式"><span class="toc-number">3.2.</span> <span class="toc-text">2. 各种插入编辑方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_拷贝/粘贴/删除"><span class="toc-number">3.3.</span> <span class="toc-text">3. 拷贝/粘贴/删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_Redo/Undo"><span class="toc-number">3.4.</span> <span class="toc-text">4. Redo/Undo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-_打开/保存/退出/改变文件(Buffer)"><span class="toc-number">3.5.</span> <span class="toc-text">5. 打开/保存/退出/改变文件(Buffer)</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#第二阶：提高效率"><span class="toc-number">4.</span> <span class="toc-text">第二阶：提高效率</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-重复"><span class="toc-number">4.1.</span> <span class="toc-text">1.重复</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#(1)_-_：_(小数点)_可以重复上一次的命令"><span class="toc-number">4.1.1.</span> <span class="toc-text">(1) . ： (小数点) 可以重复上一次的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(2)_N_：_重复某个命令N次"><span class="toc-number">4.1.2.</span> <span class="toc-text"> ： 重复某个命令N次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(3)_示例"><span class="toc-number">4.1.3.</span> <span class="toc-text">(3) 示例</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#2-快速移动"><span class="toc-number">4.2.</span> <span class="toc-text">2.快速移动</span></a></li><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#(1)NG：到第N行"><span class="toc-number">4.2.1.</span> <span class="toc-text">(1)NG：到第N行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(2)gg：到第一行"><span class="toc-number">4.2.2.</span> <span class="toc-text">(2)gg：到第一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(3)G：到最后一行"><span class="toc-number">4.2.3.</span> <span class="toc-text">(3)G：到最后一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(4)单词移动"><span class="toc-number">4.2.4.</span> <span class="toc-text">(4)单词移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#(5)单词匹配"><span class="toc-number">4.2.5.</span> <span class="toc-text">(5)单词匹配</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#3-组合命令"><span class="toc-number">4.3.</span> <span class="toc-text">3.组合命令</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#第三阶：杀手级功能"><span class="toc-number">5.</span> <span class="toc-text">第三阶：杀手级功能</span></a></li><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在当前行上移动光标:_0_^_$_f_F_t_T_,_;"><span class="toc-number">5.1.</span> <span class="toc-text">在当前行上移动光标: 0 ^ $ f F t T , ;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区域选择_&lt;action&gt;a&lt;object&gt;_或_&lt;action&gt;i&lt;object&gt;"><span class="toc-number">5.2.</span> <span class="toc-text">&lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块操作:_&lt;C-v&gt;"><span class="toc-number">5.3.</span> <span class="toc-text">&lt;C-v&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动提示：_&lt;C-n&gt;_和_&lt;C-p&gt;"><span class="toc-number">5.4.</span> <span class="toc-text">&lt;C-n&gt; 和 &lt;C-p&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#宏录制：_qa_操作序列_q,_@a,_@@"><span class="toc-number">5.5.</span> <span class="toc-text">宏录制： qa 操作序列 q, @a, @@</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可视化选择：_v,V,&lt;C-v&gt;"><span class="toc-number">5.6.</span> <span class="toc-text">v,V,&lt;C-v&gt;</code></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分屏:_:split_和_vsplit-"><span class="toc-number">5.7.</span> <span class="toc-text">分屏: :split 和 vsplit.</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">6.</span> <span class="toc-text">Tips</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim-%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">Vim 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%EF%BC%9A%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">第一阶：三种模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%EF%BC%9A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">第二阶：简单使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E7%9A%84%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8"><span class="toc-number">3.1.</span> <span class="toc-text">1. 简单的光标移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%84%E7%A7%8D%E6%8F%92%E5%85%A5%E7%BC%96%E8%BE%91%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">2. 各种插入编辑方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8B%B7%E8%B4%9D-%E7%B2%98%E8%B4%B4-%E5%88%A0%E9%99%A4"><span class="toc-number">3.3.</span> <span class="toc-text">3. 拷贝&#x2F;粘贴&#x2F;删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Redo-Undo"><span class="toc-number">3.4.</span> <span class="toc-text">4. Redo&#x2F;Undo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%89%93%E5%BC%80-%E4%BF%9D%E5%AD%98-%E9%80%80%E5%87%BA-%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6-Buffer"><span class="toc-number">3.5.</span> <span class="toc-text">5. 打开&#x2F;保存&#x2F;退出&#x2F;改变文件(Buffer)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%EF%BC%9A%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87"><span class="toc-number">4.</span> <span class="toc-text">第二阶：提高效率</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%87%8D%E5%A4%8D"><span class="toc-number">4.1.</span> <span class="toc-text">1.重复</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%EF%BC%9A-%E5%B0%8F%E6%95%B0%E7%82%B9-%E5%8F%AF%E4%BB%A5%E9%87%8D%E5%A4%8D%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">4.1.1.</span> <span class="toc-text">(1) . ： (小数点) 可以重复上一次的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-N-%EF%BC%9A-%E9%87%8D%E5%A4%8D%E6%9F%90%E4%B8%AA%E5%91%BD%E4%BB%A4N%E6%AC%A1"><span class="toc-number">4.1.2.</span> <span class="toc-text">(2) N ： 重复某个命令N次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.1.3.</span> <span class="toc-text">(3) 示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E7%A7%BB%E5%8A%A8"><span class="toc-number">4.2.</span> <span class="toc-text">2.快速移动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-NG%EF%BC%9A%E5%88%B0%E7%AC%ACN%E8%A1%8C"><span class="toc-number">4.2.1.</span> <span class="toc-text">(1)NG：到第N行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-gg%EF%BC%9A%E5%88%B0%E7%AC%AC%E4%B8%80%E8%A1%8C"><span class="toc-number">4.2.2.</span> <span class="toc-text">(2)gg：到第一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-G%EF%BC%9A%E5%88%B0%E6%9C%80%E5%90%8E%E4%B8%80%E8%A1%8C"><span class="toc-number">4.2.3.</span> <span class="toc-text">(3)G：到最后一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%8D%95%E8%AF%8D%E7%A7%BB%E5%8A%A8"><span class="toc-number">4.2.4.</span> <span class="toc-text">(4)单词移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%8D%95%E8%AF%8D%E5%8C%B9%E9%85%8D"><span class="toc-number">4.2.5.</span> <span class="toc-text">(5)单词匹配</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%84%E5%90%88%E5%91%BD%E4%BB%A4"><span class="toc-number">4.3.</span> <span class="toc-text">3.组合命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%EF%BC%9A%E6%9D%80%E6%89%8B%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="toc-number">5.</span> <span class="toc-text">第三阶：杀手级功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%BD%93%E5%89%8D%E8%A1%8C%E4%B8%8A%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87-0-f-F-t-T"><span class="toc-number">5.1.</span> <span class="toc-text">在当前行上移动光标: 0 ^ $ f F t T , ;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E9%80%89%E6%8B%A9-a-%E6%88%96-i"><span class="toc-number">5.2.</span> <span class="toc-text">区域选择 &lt;action&gt;a&lt;object&gt; 或 &lt;action&gt;i&lt;object&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%97%E6%93%8D%E4%BD%9C"><span class="toc-number">5.3.</span> <span class="toc-text">块操作: &lt;C-v&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA%EF%BC%9A-%E5%92%8C"><span class="toc-number">5.4.</span> <span class="toc-text">自动提示： &lt;C-n&gt; 和 &lt;C-p&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8F%E5%BD%95%E5%88%B6%EF%BC%9A-qa-%E6%93%8D%E4%BD%9C%E5%BA%8F%E5%88%97-q-a"><span class="toc-number">5.5.</span> <span class="toc-text">宏录制： qa 操作序列 q, @a, @@</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E9%80%89%E6%8B%A9%EF%BC%9A-v-V"><span class="toc-number">5.6.</span> <span class="toc-text">可视化选择： v,V,&lt;C-v&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B1%8F-split-%E5%92%8C-vsplit"><span class="toc-number">5.7.</span> <span class="toc-text">分屏: :split 和 vsplit.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">6.</span> <span class="toc-text">Tips</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -440,7 +258,7 @@ A, 输入字符串，按 ESC。
 		
 			<li><a href="/tags/Feeling/" title="Feeling">Feeling<sup>3</sup></a></li>
 		
-			<li><a href="/tags/GNU Tools/" title="GNU Tools">GNU Tools<sup>6</sup></a></li>
+			<li><a href="/tags/GNU-Tools/" title="GNU Tools">GNU Tools<sup>6</sup></a></li>
 		
 			<li><a href="/tags/Latex/" title="Latex">Latex<sup>2</sup></a></li>
 		
@@ -477,7 +295,7 @@ A, 输入字符串，按 ESC。
 
 
   <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -508,7 +326,7 @@ A, 输入字符串，按 ESC。
 		<a href="https://www.facebook.com/ptbsare" target="_blank" title="facebook"></a>
 		
 		
-		<a href="https://plus.google.com/100168399125398465924?rel=author" target="_blank" title="Google+"></a>
+		<a href="https://plus.google.com/100168399125398470000?rel=author" target="_blank" title="Google+"></a>
 		
 		
 		<a href="http://stackoverflow.com/users/3769631" target="_blank" title="stackoverflow"></a>
@@ -517,7 +335,7 @@ A, 输入字符串，按 ESC。
 		
 		
 	</div>
-		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2024 
 		
 		<a href="http://ptbsare.org" target="_blank" title="ptbsare">ptbsare</a>
 		

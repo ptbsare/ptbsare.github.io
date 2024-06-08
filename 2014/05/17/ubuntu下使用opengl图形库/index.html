@@ -10,22 +10,9 @@
     <meta name="author" content="ptbsare">
     
     <meta name="description" content="Ubuntu下安装OpenGL图形库
-
-安装基本编译环境
-
-1
-sudo apt-get install build-essential
-
-
-
-安装OpenGL Library
-
-1
-sudo apt-get install libgl1-mesa-dev
-
-
-
-安装OpenGL Utilities">
+安装基本编译环境1sudo apt-get install build-essential
+安装OpenGL Library1sudo apt-get install libgl1-mesa-dev
+安装OpenGL Utilities[1]OpenGL Uti">
     
     
     
@@ -39,10 +26,12 @@ sudo apt-get install libgl1-mesa-dev
     <link rel="icon" href="/img/favicon.ico">
     
     
-    <link rel="apple-touch-icon" href="/img/pacman1.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman1.jpg">
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
 </head>
 
   <body>
@@ -94,8 +83,8 @@ sudo apt-get install libgl1-mesa-dev
   <p class="article-author">By
   <a href="http://ptbsare.org/about" title="ptbsare" target="_blank">ptbsare</a>
   <p class="article-time">
-    <time datetime="2014-05-17T08:14:33.000Z" itemprop="datePublished">5月 17 2014</time>
-    更新日期:<time datetime="2014-06-24T06:39:10.000Z" itemprop="dateModified">6月 24 2014</time>
+    <time datetime="2014-05-17T00:14:33.000Z" itemprop="datePublished">2014年05月17日</time>
+    更新日期:<time datetime="2014-06-23T22:39:10.000Z" itemprop="dateModified">2014年06月24日</time>
     
   </p>
 </header>
@@ -105,59 +94,18 @@ sudo apt-get install libgl1-mesa-dev
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu下安装OpenGL图形库"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu下安装OpenGL图形库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试文件"><span class="toc-number">2.</span> <span class="toc-text">测试文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译命令"><span class="toc-number">3.</span> <span class="toc-text">编译命令</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85OpenGL%E5%9B%BE%E5%BD%A2%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu下安装OpenGL图形库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">测试文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">编译命令</span></a></li></ol>
 		</div>
 		
-		<h2 id="Ubuntu下安装OpenGL图形库">Ubuntu下安装OpenGL图形库</h2>
-<ul>
-<li>安装基本编译环境</li>
+		<h2 id="Ubuntu下安装OpenGL图形库"><a href="#Ubuntu下安装OpenGL图形库" class="headerlink" title="Ubuntu下安装OpenGL图形库"></a>Ubuntu下安装OpenGL图形库</h2><ul>
+<li>安装基本编译环境<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential</span><br></pre></td></tr></table></figure></li>
+<li>安装OpenGL Library<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libgl1-mesa-dev</span><br></pre></td></tr></table></figure></li>
+<li>安装OpenGL Utilities<sup>[1]</sup><br>OpenGL Utilities 是一组建构于OpenGL Library 之上的工具组，提供许多很方便的函式，使OpenGL 更强大且更容易使用。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libglu1-mesa-dev</span><br></pre></td></tr></table></figure></li>
+<li>安装OpenGL Utility Toolkit<sup>[2]</sup><br>OpenGL Utility Toolkit 是建立在 OpenGL Utilities 上面的工具箱，除了强化了 OpenGL Utilities 的不足之外，也增加了 OpenGL 对于视窗界面支援<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install freeglut3-dev</span><br></pre></td></tr></table></figure></li>
+<li>安装glew<sup>[3]</sup><br>glew是一个跨平台的C++库，是一个OpenGL图形接口扩展库<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libglew1.8 libglew-dev</span><br></pre></td></tr></table></figure></li>
+<li>安装glx<sup>[4]</sup><br>glx是linux下OpenGL的X Window System接口扩展库，它允许通过x调用OpenGL库<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libgl1-mesa-glx</span><br></pre></td></tr></table></figure></li>
+<li>补充有的也可能需要安装Xmu<br>Xmu即X11 miscellaneous utility library（X11实用工具库）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libxmu-dev</span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install build-essential
-</pre></td></tr></table></figure>
-
-<ul>
-<li>安装OpenGL Library</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install libgl1-mesa-dev
-</pre></td></tr></table></figure>
-
-<ul>
-<li>安装OpenGL Utilities<sup>[1]</sup><br>OpenGL Utilities 是一组建构于OpenGL Library 之上的工具组，提供许多很方便的函式，使OpenGL 更强大且更容易使用。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install libglu1-mesa-dev
-</pre></td></tr></table></figure>
-
-<ul>
-<li>安装OpenGL Utility Toolkit<sup>[2]</sup><br>OpenGL Utility Toolkit 是建立在 OpenGL Utilities 上面的工具箱，除了强化了 OpenGL Utilities 的不足之外，也增加了 OpenGL 对于视窗界面支援</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install freeglut3-dev
-</pre></td></tr></table></figure>
-
-<ul>
-<li>安装glew<sup>[3]</sup><br>glew是一个跨平台的C++库，是一个OpenGL图形接口扩展库</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install libglew1.<span class="number">8</span> libglew-dev
-</pre></td></tr></table></figure>
-
-<ul>
-<li>安装glx<sup>[4]</sup><br>glx是linux下OpenGL的X Window System接口扩展库，它允许通过x调用OpenGL库</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install libgl1-mesa-glx
-</pre></td></tr></table></figure>
-
-<ul>
-<li>补充有的也可能需要安装Xmu<br>Xmu即X11 miscellaneous utility library（X11实用工具库）</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">sudo</span> apt-get install libxmu-dev
-</pre></td></tr></table></figure>
-
 <p><strong>说明：</strong><br>OpenGL不同头文件及库的说明</p>
 <p>[1] OpenGL Utilities</p>
 <p>glu是实用库，包含有43个函数，函数名的前缀为glu。Glu 为了减轻繁重的编程工作，封装了OpenGL函数，Glu函数通过调用核心库的函数，为开发者提供相对简单的用法，实现一些较为复杂的操作。</p>
@@ -177,144 +125,30 @@ sudo apt-get install libgl1-mesa-dev
 <p> <code>&lt;GL/glext.h&gt;</code>：扩展头文件。因为微软公司对OpenGL的支持不太积极，VC系列编译器虽然有<code>&lt;GL/gl.h&gt;</code>这个头文件，但是里面只有OpenGL 1.1版本中所规定的内容，而没有OpenGL 1.2及其以后版本。对当前的计算机配置而言，几乎都支持OpenGL 1.4版本，更高的则到1.5, 2.0, 2.1，而VC无法直接使用这些功能。为了解决这一问题，就有了<code>&lt;GL/glext.h&gt;</code>头文件。这个头文件提供了高版本OpenGL所需要的各种常数声明以及函数指针声明。</p>
 <p> <code>&lt;GL/wglext.h&gt;</code>：扩展头文件。与<code>&lt;GL/glext.h&gt;</code>类似，但这个头文件中只提供适用于Windows系统的各种OpenGL扩展所使用的函数和常量，不适用于其它操作系统。</p>
 <p> <code>&quot;glee.h&quot;</code>：GLEE开源库的头文件。它的出现是因为<code>&lt;GL/glext.h&gt;</code>虽然可以使用高版本的OpenGL函数，但是使用的形式不太方便。GLEE库则让高版本的OpenGL函数与其它OpenGL函数在使用上同样方便。需要注意的是，这个头文件与<code>&lt;GL/gl.h&gt;</code>是冲突的，在包含<code>&quot;glee.h&quot;</code>之前，不应该包含<code>&lt;GL/gl.h&gt;</code>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre><span class="array">#include </span>&lt;GL/glut.h&gt;
-<span class="array">#include </span><span class="string">"glee.h"</span> <span class="comment">// 错误，因为glut.h中含有gl.h，它与glee.h冲突</span>
-                          <span class="comment">// 但是如果把两个include顺序交换，则正确</span>
-</pre></td></tr></table></figure>
-
-
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;glee.h&quot;</span> <span class="comment">// 错误，因为glut.h中含有gl.h，它与glee.h冲突</span></span></span><br><span class="line">                          <span class="comment">// 但是如果把两个include顺序交换，则正确</span></span><br></pre></td></tr></table></figure>
 <p><code>&quot;glos.h&quot;</code>：不明，虽然这个也时常见到，可能是与系统相关的各种功能，也可能只是自己编写的一个文件。</p>
-<h2 id="测试文件">测试文件</h2>
-<figure class="highlight c"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-</pre></td><td class="code"><pre><span class="preprocessor">#include &lt;GL/gl.h&gt;</span>
-<span class="preprocessor">#include &lt;GL/glu.h&gt;</span>
-<span class="preprocessor">#include &lt;GL/glut.h&gt;</span>
-<span class="keyword">void</span> init();
-<span class="keyword">void</span> display();
-<span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])
-{
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-	glutInitWindowPosition(<span class="number">0</span>, <span class="number">0</span>);
-	glutInitWindowSize(<span class="number">300</span>, <span class="number">300</span>);	
-	glutCreateWindow(<span class="string">"OpenGL 3D View"</span>);	
-	init();
-	glutDisplayFunc(display);	
-	glutMainLoop();
-	<span class="keyword">return</span> <span class="number">0</span>;
-}
-<span class="keyword">void</span> init()
-{
-	glClearColor(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);
-	glMatrixMode(GL_PROJECTION);
-	glOrtho(-<span class="number">5</span>, <span class="number">5</span>, -<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">15</span>);
-	glMatrixMode(GL_MODELVIEW);
-	gluLookAt(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>);
-}
+<h2 id="测试文件"><a href="#测试文件" class="headerlink" title="测试文件"></a>测试文件</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GL/gl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GL/glu.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">init</span><span class="params">()</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">display</span><span class="params">()</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	glutInit(&amp;argc, argv);</span><br><span class="line">	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);</span><br><span class="line">	glutInitWindowPosition(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	glutInitWindowSize(<span class="number">300</span>, <span class="number">300</span>);	</span><br><span class="line">	glutCreateWindow(<span class="string">&quot;OpenGL 3D View&quot;</span>);	</span><br><span class="line">	init();</span><br><span class="line">	glutDisplayFunc(display);	</span><br><span class="line">	glutMainLoop();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	glClearColor(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line">	glMatrixMode(GL_PROJECTION);</span><br><span class="line">	glOrtho(<span class="number">-5</span>, <span class="number">5</span>, <span class="number">-5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">15</span>);</span><br><span class="line">	glMatrixMode(GL_MODELVIEW);</span><br><span class="line">	gluLookAt(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">display</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT);		</span><br><span class="line">	glColor3f(<span class="number">1.0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	glutWireTeapot(<span class="number">3</span>);	</span><br><span class="line">	glFlush();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<span class="keyword">void</span> display()
-{
-	glClear(GL_COLOR_BUFFER_BIT);		
-	glColor3f(<span class="number">1.0</span>, <span class="number">0</span>, <span class="number">0</span>);
-	glutWireTeapot(<span class="number">3</span>);	
-	glFlush();
-}
-</pre></td></tr></table></figure>
-
-<h2 id="编译命令">编译命令</h2>
-<ul>
-<li>C</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>gcc example.c -o example.out <span class="operator">-l</span>GL <span class="operator">-l</span>GLU -lglut
-</pre></td></tr></table></figure>
-
-<ul>
-<li>C++</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>g++ <span class="operator">-l</span>GL <span class="operator">-l</span>GLU -glut <span class="operator">-l</span>GLEW example.cpp -o example
-</pre></td></tr></table></figure>
-
-<ul>
-<li>Makefile</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="code"><pre><span class="constant">INCLUDE</span> = -<span class="constant">I</span>/usr/<span class="constant">X11R6</span>/<span class="keyword">include</span>/
-<span class="constant">LIBDIR</span>  = -<span class="constant">L</span>/usr/<span class="constant">X11R6</span>/lib
-
-<span class="constant">FLAGS</span> = -<span class="constant">Wall</span>
-<span class="constant">CC</span> = g++                                  <span class="comment"># change to gcc if using C</span>
-<span class="constant">CFLAGS</span> = <span class="variable">$(</span><span class="constant">FLAGS</span>) <span class="variable">$(</span><span class="constant">INCLUDE</span>)
-<span class="constant">LIBS</span> =  -lglut -lGL -lGLU -lGLEW -lm
-
-<span class="constant">All</span><span class="symbol">:</span> your_app                             <span class="comment"># change your_app.</span>
-
-<span class="symbol">your_app:</span> your_app.o
-    <span class="variable">$(</span><span class="constant">CC</span>) <span class="variable">$(</span><span class="constant">CFLAGS</span>) -o <span class="variable">$@</span> <span class="variable">$(</span><span class="constant">LIBDIR</span>) <span class="variable">$&lt;</span> <span class="variable">$(</span><span class="constant">LIBS</span>) <span class="comment"># The initial white space is a tab</span>
-</pre></td></tr></table></figure>
-
+<h2 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h2><ul>
+<li><p>C</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc example.c -o example.out -lGL -lGLU -lglut</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -lGL -lGLU -glut -lGLEW example.cpp -o example</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Makefile</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">INCLUDE = -I/usr/X11R6/<span class="keyword">include</span>/</span><br><span class="line">LIBDIR  = -L/usr/X11R6/lib</span><br><span class="line"></span><br><span class="line">FLAGS = -Wall</span><br><span class="line">CC = g++                                  <span class="comment"># change to gcc if using C</span></span><br><span class="line">CFLAGS = <span class="variable">$(FLAGS)</span> <span class="variable">$(INCLUDE)</span></span><br><span class="line">LIBS =  -lglut -lGL -lGLU -lGLEW -lm</span><br><span class="line"></span><br><span class="line"><span class="section">All: your_app                             # change your_app.</span></span><br><span class="line"></span><br><span class="line"><span class="section">your_app: your_app.o</span></span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -o <span class="variable">$@</span> <span class="variable">$(LIBDIR)</span> <span class="variable">$&lt;</span> <span class="variable">$(LIBS)</span> <span class="comment"># The initial white space is a tab</span></span><br></pre></td></tr></table></figure>
 <p>或者</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>LDFLAGS<span class="subst">=-</span>lglut <span class="attribute">-lGL</span> <span class="attribute">-lGLU</span> <span class="attribute">-lGLEW</span> <span class="attribute">-lm</span>
-<span class="literal">all</span>: your_app
-</pre></td></tr></table></figure>
-
-<p>参考：<br>(<a href="http://wiki.ubuntu-tw.org/index.php?title=Howto_Install_OpenGL_Development_Environment" target="_blank">http://wiki.ubuntu-tw.org/index.php?title=Howto_Install_OpenGL_Development_Environment</a>)<br>(<a href="http://hi.baidu.com/niujingqian/item/58afbbcc6305c215b77a24db" target="_blank">http://hi.baidu.com/niujingqian/item/58afbbcc6305c215b77a24db</a>)<br>(<a href="http://baike.baidu.com/view/1994675.htm?fr=aladdin" target="_blank">http://baike.baidu.com/view/1994675.htm?fr=aladdin</a>)<br>(<a href="http://stackoverflow.com/questions/859501/learning-opengl-in-ubuntu" target="_blank">http://stackoverflow.com/questions/859501/learning-opengl-in-ubuntu</a>)</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LDFLAGS=-lglut -lGL -lGLU -lGLEW -lm</span><br><span class="line"><span class="section">all: your_app</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>参考：<br>(<a href="http://wiki.ubuntu-tw.org/index.php?title=Howto_Install_OpenGL_Development_Environment">http://wiki.ubuntu-tw.org/index.php?title=Howto_Install_OpenGL_Development_Environment</a>)<br>(<a href="http://hi.baidu.com/niujingqian/item/58afbbcc6305c215b77a24db">http://hi.baidu.com/niujingqian/item/58afbbcc6305c215b77a24db</a>)<br>(<a href="http://baike.baidu.com/view/1994675.htm?fr=aladdin">http://baike.baidu.com/view/1994675.htm?fr=aladdin</a>)<br>(<a href="http://stackoverflow.com/questions/859501/learning-opengl-in-ubuntu">http://stackoverflow.com/questions/859501/learning-opengl-in-ubuntu</a>)</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/GNU Tools/">GNU Tools</a><a href="/tags/Linux/">Linux</a><a href="/tags/Ubuntu/">Ubuntu</a><a href="/tags/OpenGL/">OpenGL</a>
+  <span></span> <a href="/tags/Ubuntu/">Ubuntu</a><a href="/tags/Linux/">Linux</a><a href="/tags/GNU-Tools/">GNU Tools</a><a href="/tags/OpenGL/">OpenGL</a>
   </div>
 
 
@@ -322,7 +156,7 @@ sudo apt-get install libgl1-mesa-dev
 
 <div class="article-share" id="share">
 
-  <div data-url="http://ptbsare.org/2014/05/17/ubuntu下使用opengl图形库/" data-title="Ubuntu下使用OpenGL图形库 | 匆匆那年" data-tsina="null" class="share clearfix">
+  <div data-url="http://ptbsare.org/2014/05/17/ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8opengl%E5%9B%BE%E5%BD%A2%E5%BA%93/" data-title="Ubuntu下使用OpenGL图形库 | 匆匆那年" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -378,7 +212,7 @@ sudo apt-get install libgl1-mesa-dev
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu下安装OpenGL图形库"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu下安装OpenGL图形库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试文件"><span class="toc-number">2.</span> <span class="toc-text">测试文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译命令"><span class="toc-number">3.</span> <span class="toc-text">编译命令</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85OpenGL%E5%9B%BE%E5%BD%A2%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu下安装OpenGL图形库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">测试文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">编译命令</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -400,7 +234,7 @@ sudo apt-get install libgl1-mesa-dev
 		
 			<li><a href="/tags/Feeling/" title="Feeling">Feeling<sup>3</sup></a></li>
 		
-			<li><a href="/tags/GNU Tools/" title="GNU Tools">GNU Tools<sup>6</sup></a></li>
+			<li><a href="/tags/GNU-Tools/" title="GNU Tools">GNU Tools<sup>6</sup></a></li>
 		
 			<li><a href="/tags/Latex/" title="Latex">Latex<sup>2</sup></a></li>
 		
@@ -437,7 +271,7 @@ sudo apt-get install libgl1-mesa-dev
 
 
   <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -468,7 +302,7 @@ sudo apt-get install libgl1-mesa-dev
 		<a href="https://www.facebook.com/ptbsare" target="_blank" title="facebook"></a>
 		
 		
-		<a href="https://plus.google.com/100168399125398465924?rel=author" target="_blank" title="Google+"></a>
+		<a href="https://plus.google.com/100168399125398470000?rel=author" target="_blank" title="Google+"></a>
 		
 		
 		<a href="http://stackoverflow.com/users/3769631" target="_blank" title="stackoverflow"></a>
@@ -477,7 +311,7 @@ sudo apt-get install libgl1-mesa-dev
 		
 		
 	</div>
-		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2024 
 		
 		<a href="http://ptbsare.org" target="_blank" title="ptbsare">ptbsare</a>
 		
