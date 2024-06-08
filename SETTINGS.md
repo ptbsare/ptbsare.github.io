@@ -7,4 +7,6 @@ spaceIgnore: |
    themes/*
    scaffolds/*
    node_modules/**
+   public/*
+   .deploy/*
 ```
