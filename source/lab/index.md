@@ -1,6 +1,6 @@
 ---
 title: 实验室
-comments: false
+#comments: false
 date: 2015-6-6 21:05:05
 ---
 ## [mdpress](/lab/mdpress/)
