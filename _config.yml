@@ -89,9 +89,7 @@ exclude_generator:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-#repo: git@github.com:ptbsare/ptbsare.github.io.git
-  repo: $GIT_TOKEN_REPO
-  token: $GIT_TOKEN
+  repo: git@github.com:ptbsare/ptbsare.github.io.git
 #   gitcafe: git@gitcafe.com:ptbsare/ptbsare.git,gitcafe-pages
 
 # Meta Generator
