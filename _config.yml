@@ -104,6 +104,12 @@ meta_generator: false
 #logger: false
 #logger_format:
 
+# RSS for hexo-generator-feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: false
+
 # Disqus
 disqus_shortname: ptbsare
 
