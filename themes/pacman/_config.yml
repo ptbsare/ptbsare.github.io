@@ -67,12 +67,12 @@ author:
 #  google_plus: 100168399125398465924    ## eg:116338260303228776998 for https://plus.google.com/u/0/116338260303228776998
 #  renren:   ##467369931
 #  weibo:      ## e.g. 436062867 for http://weibo.com/436062867
+#  tsina:              ## e.g. 1664838973  Your weibo ID,It will be used in share button.
 #  zhihu: ptbsare
 #  stackoverflow: 3769631   ##e.g. 3222790 for http://stackoverflow.com/users/3222790/jark
-  twitter: ptbsare    ## e.g. yangjiansky for https://twitter.com/yangjiansky
   github: ptbsare     ## e.g. A-limon for https://github.com/A-limon
+  twitter: ptbsare    ## e.g. yangjiansky for https://twitter.com/yangjiansky
   facebook: ptbsare   ## e.g. yangjian for https://favebook.com/yangjian
-  tsina:              ## e.g. 1664838973  Your weibo ID,It will be used in share button.
   douban: 52182403    ##e.g. wuchong1014 or your id for https://www.douban.com/people/wuchong1014
 
 #### Comment
