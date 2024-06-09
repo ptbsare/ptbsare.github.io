@@ -1,4 +1,5 @@
 <script src="<%- config.root %>js/jquery-2.1.0.min.js"></script>
+<script src="<%- config.root %>js/jquery.qrcode-0.12.0.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){ 
   $('.navbar').click(function(){
@@ -88,7 +89,7 @@ $(document).ready(function(){
       tsina = $this.attr('data-tsina');
   var html = [
   '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<div class="qrcode clearfix"><strong>扫二维码分享文章到微信</strong><a class="qrclose" ><br><div id="qrcode-pic" /></div>',
   '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
   '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
   '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
@@ -97,12 +98,13 @@ $(document).ready(function(){
   '<span title="Share to"></span>'
   ].join('');
   $this.append(html);
+  $('#qrcode-pic').qrcode({text: url, render: 'img', });
+  $('.qrcode').hide();
   $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
+  $('.qrcode').toggle();
+  });
+  $('.qrclose').click(function(){
+  $('.qrcode').hide();
   });
 });     
 </script>

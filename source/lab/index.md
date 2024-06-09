@@ -1,6 +1,7 @@
 ---
 title: 实验室
-date: 2015-6-6 21:05:05
+date: '2015-6-6 21:05:05'
+updated: '2015-6-6 21:05:05'
 #comments: false
 ---
 ## [mdpress](/lab/mdpress/)
