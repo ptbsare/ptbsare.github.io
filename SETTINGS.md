@@ -9,4 +9,5 @@ spaceIgnore: |
    node_modules/**
    public/*
    .deploy/*
+   .deploy_git/*
 ```
