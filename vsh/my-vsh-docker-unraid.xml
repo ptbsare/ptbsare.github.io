@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>vsh</Name>
+  <Repository>ptbsare/vsh:latest</Repository>
+  <Registry/>
+  <Network>direct</Network>
+  <MyIP>192.168.195.126</MyIP>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://hexo.io</Project>
+  <Overview>Hexo blogging docker.&#xD;
+Web markdown editor runs on default port 3000. (mobile friendly)&#xD;
+Vscode server runs on default port 9000.&#xD;
+Default workspace/Blog source repo/Markdown editor space folder: /space&#xD;
+Vscode config/Home folder/DB folder: /config</Overview>
+  <Category>HomeAutomation: Productivity: Tools:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon>https://avatars.githubusercontent.com/u/6375567?s=200&amp;amp;v=4</Icon>
+  <ExtraParams>--dns 223.5.5.5</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1717933456</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="/space" Target="/space" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/vsh/space</Config>
+  <Config Name="CODE_PLUGIN" Target="CODE_PLUGIN" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">codeyu.vscode-hexo</Config>
+  <Config Name="/config" Target="/config" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/vsh/config</Config>
+  <Config Name="GIT_USER" Target="GIT_USER" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">ptbsare</Config>
+  <Config Name="GIT_EMAIL" Target="GIT_EMAIL" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">496725701@qq.com</Config>
+</Container>

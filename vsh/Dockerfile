@@ -7,6 +7,7 @@ ENV PUID=1001
 ENV PGID=100
 ENV HOME="/config"
 ENV SB_HOSTNAME 0.0.0.0
+ENV SB_KV_DB="${HOME}/silverbullet.db"
 ENV SB_FOLDER="/space"
 ENV SB_PORT 3000
 ENV HEXO_PORT 6000
@@ -65,6 +66,7 @@ RUN SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulle
       | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
       && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
 VOLUME /space
+VOLUME ${HOME}
 EXPOSE ${SB_PORT} ${VS_PORT} ${HEXO_PORT}
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
