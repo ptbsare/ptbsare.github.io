@@ -1,0 +1,52 @@
+name: hexo
+requiredPermissions:
+  - shell
+functions:
+  uploadFile:
+    path: hexo.ts:uploadFile
+    command:
+      name: "Hexo: Upload File"
+  npmInstall:
+    path: hexo.ts:npmInstall
+    command:
+      name: "Hexo: Npm Install"
+  init:
+    path: hexo.ts:init
+    command:
+      name: "Hexo: Init"
+  newArticle:
+    path: hexo.ts:newArticle
+    command:
+      name: "Hexo: New"
+  generate:
+    path: hexo.ts:generate
+    command:
+      name: "Hexo: Generate"
+  clean:
+    path: hexo.ts:clean
+    command:
+      name: "Hexo: Clean"
+  server:
+    path: hexo.ts:server
+    command:
+      name: "Hexo: Server"
+  deploy:
+    path: hexo.ts:deploy
+    command:
+      name: "Hexo: Deploy"
+  generateDeploy:
+    path: hexo.ts:generateDeploy
+    command:
+      name: "Hexo: Generate and Deploy"
+  stopServer:
+    path: hexo.ts:stopServer
+    command:
+      name: "Hexo: Stop Server"
+  gitCommitPush:
+    path: hexo.ts:gitCommitPush
+    command:
+      name: "Hexo: Git Commit Push"
+  gitCloneDeployRepo:
+    path: hexo.ts:gitCloneDeployRepo
+    command:
+      name: "Hexo: Git Clone Deploy Repo"
