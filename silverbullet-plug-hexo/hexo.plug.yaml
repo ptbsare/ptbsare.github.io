@@ -62,3 +62,7 @@ functions:
     path: hexo.ts:gitCloneDeployRepo
     command:
       name: "Hexo: Git Clone Deploy Repo"
+  gitCloneSpace:
+    path: hexo.ts:gitCloneSpace
+    command:
+      name: "Hexo: Git Clone Space"

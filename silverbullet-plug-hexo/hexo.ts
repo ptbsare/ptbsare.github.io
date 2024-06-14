@@ -298,3 +298,36 @@ let url = await editor.prompt(`Github Deploy(site) project URL (like: https://gi
   console.log("Hexo Clone Deploy Repo Done!");
   await editor.flashNotification("Hexo Clone Deploy Repo Done!",);
 }
+export async function gitCloneSpace() {
+  let url = await editor.prompt(`Github project URL (like: https://github.com/user/project_source):`);
+  if (!url) {
+    return;
+  }
+  const token = await editor.prompt(`Github token:`);
+  if (!token) {
+    return;
+  }
+  const name = await editor.prompt(`Your name:`);
+  if (!name) {
+    return;
+  }
+  const email = await editor.prompt(`Your email:`);
+  if (!email) {
+    return;
+  }
+  const pieces = url.split("/");
+  pieces[2] = `${token}@${pieces[2]}`;
+  url = pieces.join("/") + ".git";
+  await editor.flashNotification("Now Going to Clone the Project, This May Take Some Time...",);
+  try{
+    const { code } = await shell.run("git", ["clone", url, "."]);
+    console.log("Git clone space code", code);
+  } catch {
+    await editor.flashNotification("Hexo Clone Space ERROR. See Browser Console", 'error');
+    return;
+  }
+  console.log("Hexo clone space done!");
+  await shell.run("git", ["config", "user.name", name]);
+  await shell.run("git", ["config", "user.email", email]);
+  await editor.flashNotification("Hexo Clone Space Done!",);
+}
