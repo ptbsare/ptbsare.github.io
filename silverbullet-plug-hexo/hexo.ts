@@ -67,7 +67,7 @@ export async function npmInstall() {
   await editor.flashNotification("Npm Installing...",);
   try {
     const { code } = await shell.run("npm",["install"]);
-    console.log(code);
+    console.log("Hexo npm install", code);
   } catch {
     await editor.flashNotification("Npm Install ERROR. See Browser Console", 'error');
     return;
@@ -80,7 +80,7 @@ export async function init () {
   console.log("hexo init");
   try {
     const { code } = await shell.run("hexo",["init"]);
-    console.log(code);
+    console.log("Hexo init code", code);
   } catch {
     await editor.flashNotification("Hexo Init ERROR. See Browser Console", 'error');
     return;
@@ -98,7 +98,7 @@ export async function newArticle() {
   }
   try {
     const { code } = await shell.run("hexo",["new", layout, title]);
-    console.log(code);
+    console.log("Hexo new code", code);
   } catch {
     await editor.flashNotification("Hexo New ERROR. See Browser Console", 'error');
     return;
@@ -112,7 +112,7 @@ export async function generate() {
   await editor.flashNotification("Hexo Generating...",);
   try {
     const { code } = await shell.run("hexo",["generate"]);
-    console.log(code);
+    console.log("Hexo generate code", code);
   } catch {
     await editor.flashNotification("Hexo Generate ERROR. See Browser Console", 'error');
     return;
@@ -125,7 +125,7 @@ export async function clean() {
   console.log("hexo clean");
   try {
     const { code } = await shell.run("hexo",["clean"]);
-    console.log(code);
+    console.log("Hexo clean code", code);
   } catch {
     await editor.flashNotification("Hexo Clean ERROR. See Browser Console", 'error');
     return;
@@ -139,10 +139,9 @@ export async function server() {
   await editor.flashNotification("Starting Hexo Server",);
   try {
     const { code } = await shell.run("hexo",["server", "&"]);
-    console.log(code);
+    console.log("Hexo server code", code);
   } catch {
-    await editor.flashNotification("Hexo Server ERROR. See Browser Console", 'error');
-    return;
+    // ignore
   }
   console.log("Hexo Server Done!");
   await editor.flashNotification("Hexo Server Done!",);
@@ -152,7 +151,7 @@ export async function deploy() {
   await editor.flashNotification("Hexo Deploying...",);
   try {
     const { code } = await shell.run("hexo",["deploy"]);
-    console.log(code);
+    console.log("Hexo deploy code", code);
   } catch {
     await editor.flashNotification("Hexo Deploy ERROR. See Browser Console", 'error');
     return;
@@ -161,11 +160,12 @@ export async function deploy() {
   await editor.flashNotification("Hexo Deploy Done!",);
 }
 export async function generateDeploy() {
+  let code;
   console.log("hexo generate");
   await editor.flashNotification("Hexo Generating...",);
   try {
-    const { code } = await shell.run("hexo",["generate"]);
-    console.log(code);
+    ({ code } = await shell.run("hexo",["generate"]));
+    console.log("Hexo generate code", code);
   } catch {
     await editor.flashNotification("Hexo Generate ERROR. See Browser Console", 'error');
     return;
@@ -175,8 +175,8 @@ export async function generateDeploy() {
   console.log("hexo deploy");
   await editor.flashNotification("Hexo Deploying...",);
   try {
-    const { code } = await shell.run("hexo",["deploy"]);
-    console.log(code);
+    ({ code } = await shell.run("hexo",["deploy"]));
+    console.log("Hexo deploy code", code);
   } catch {
     await editor.flashNotification("Hexo Deploy ERROR. See Browser Console", 'error');
     return;
@@ -188,7 +188,7 @@ export async function stopServer() {
   console.log("killall hexo");
   try {
     const { code } = await shell.run("killall",["hexo"]);
-    console.log(code);
+    console.log("Hexo stop server code",code);
   } catch {
     await editor.flashNotification("Hexo Stop Server ERROR. See Browser Console", 'error');
     return;
@@ -197,6 +197,7 @@ export async function stopServer() {
   await editor.flashNotification("Hexo Stop Server Done!",);
 }
 export async function gitCommit() {
+  let code;
   console.log("git add . && git commit");
   let revName = await editor.prompt(`Revision name:`);
   if (!revName) {
@@ -204,7 +205,7 @@ export async function gitCommit() {
   }
   console.log("Revision name", revName);
   try {
-    let { code } = await shell.run("git", ["add", "./*"]);
+    ({ code } = await shell.run("git", ["add", "./*"]));
     console.log("Git add code", code);
   } catch {
     await editor.flashNotification("Hexo Git Add ERROR. See Browser Console", 'error');
