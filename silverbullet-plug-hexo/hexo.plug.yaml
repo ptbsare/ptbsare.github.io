@@ -50,6 +50,10 @@ functions:
     path: hexo.ts:gitPush
     command:
       name: "Hexo: Git Push"
+  gitPull:
+    path: hexo.ts:gitPull
+    command:
+      name: "Hexo: Git Pull"
   gitCommitPush:
     path: hexo.ts:gitCommitPush
     command:
