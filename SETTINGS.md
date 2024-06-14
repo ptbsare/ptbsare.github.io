@@ -10,4 +10,5 @@ spaceIgnore: |
    public/*
    .deploy/*
    .deploy_git/*
+   silverbullet-plug-hexo/*
 ```
