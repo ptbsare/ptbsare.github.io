@@ -244,6 +244,7 @@ export async function gitPull() {
   await editor.flashNotification("Hexo Git Pull Done!",);
 }
 export async function gitCommitPush() {
+    let code;
     console.log("git add . && git commit && git push");
     let revName = await editor.prompt(`Revision name:`);
     if (!revName) {
@@ -251,7 +252,7 @@ export async function gitCommitPush() {
     }
     console.log("Revision name", revName);
     try {
-      let { code } = await shell.run("git", ["add", "./*"]);
+      ({ code } = await shell.run("git", ["add", "./*"]));
       console.log("Git add code", code);
     } catch {
       await editor.flashNotification("Hexo Git Add ERROR. See Browser Console", 'error');
