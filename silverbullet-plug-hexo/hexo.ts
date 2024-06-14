@@ -152,10 +152,10 @@ export async function deploy() {
 export async function generateDeploy() {
     console.log("hexo generate && hexo deploy");
   try {
-    const { code1 } = await shell.run("hexo",["generate"]);
-    console.log(code1);
-    const { code2 } = await shell.run("hexo",["deploy"]);
-    console.log(code2);
+    const { code } = await shell.run("hexo",["generate"]);
+    console.log(code);
+    const { code } = await shell.run("hexo",["deploy"]);
+    console.log(code);
   } catch {
     // We can ignore
   }
@@ -172,6 +172,13 @@ export async function stopServer() {
   }
   console.log("Hexo Stop Server Done!");
   await editor.flashNotification("Hexo Stop Server Done!",);
+}
+export async function gitAdd() {
+  console.log("git add . ");
+  const { code } = await shell.run("git", ["add", "./*"]);
+  console.log("Git add code", code);
+  console.log("Hexo Git Add Done!");
+  await editor.flashNotification("Hexo Git Add Done!",);
 }
 export async function gitCommit() {
   console.log("git commit");
@@ -196,6 +203,13 @@ export async function gitPush() {
   console.log("Hexo Git Push Done!");
   await editor.flashNotification("Hexo Git Push Done!",);
 }
+export async function gitPull() {
+  console.log("git pull");
+  const { code } = await shell.run("git", ["push"]);
+  console.log("Git pull code", code);
+  console.log("Hexo Git Pull Done!");
+  await editor.flashNotification("Hexo Git Pull Done!",);
+}
 export async function gitCommitPush() {
     console.log("git add . && git commit && git push");
     let revName = await editor.prompt(`Revision name:`);
@@ -204,16 +218,16 @@ export async function gitCommitPush() {
     }
     console.log("Revision name", revName);
     console.log("Snapshotting the current space to git with commit message");
-    const { code1 } = await shell.run("git", ["add", "./*"]);
-    console.log("Git add code", code1);
+    const { code } = await shell.run("git", ["add", "./*"]);
+    console.log("Git add code", code);
   try {
-    const { code2 } = await shell.run("git", ["commit", "-a", "-m", revName]);
-    console.log("Git commit code", code2);
+    const { code } = await shell.run("git", ["commit", "-a", "-m", revName]);
+    console.log("Git commit code", code);
   } catch {
     // We can ignore, this happens when there's no changes to commit
   }
-    const { code3 } = await shell.run("git",["push"]);
-    console.log("Git push code", code3);
+    const { code } = await shell.run("git",["push"]);
+    console.log("Git push code", code);
   console.log("Hexo Git Commit and Push Done!");
   await editor.flashNotification("Hexo Git Commit and Push Done!",);
 }
