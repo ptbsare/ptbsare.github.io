@@ -1,8 +1,28 @@
 #!/bin/sh
-#安装版本HEXO
+#安装特定版本HEXO
 if [ ! $HEXO_VERSION=='latest' ]; then
     npm install hexo-cli@$HEXO_VERSION -g
 fi
+#升级HEXO
+[ ! -z ${AUTO_UPGRADE_HEXO} ] && \
+echo "*** install latest hexo ***" && \
+npm install hexo-cli@latest -g
+#升级VSCODE
+[ ! -z ${AUTO_UPGRADE_VSCODE} ] && \
+echo "*** install latest code-server ***" && \
+mkdir -p /app/code-server && \
+CODE_RELEASE=$(curl -sX GET https://api.github.com/repos/coder/code-server/releases/latest \
+| awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
+&& curl -o /tmp/code-server.tar.gz -L \
+"https://github.com/coder/code-server/releases/download/v${CODE_RELEASE}/code-server-${CODE_RELEASE}-linux-amd64.tar.gz" && \
+tar xf /tmp/code-server.tar.gz -C /app/code-server --strip-components=1
+#升级SB
+[ ! -z ${AUTO_UPGRADE_SB} ] && \
+echo "*** install latest silverbullet ***" && \
+deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g
+SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest \
+	      | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
+	            && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
 #设置git用户名邮箱
 chsh -s /bin/bash
 [ ! -z ${GIT_USER} ] && git config --global user.name ${GIT_USER}

@@ -14,11 +14,14 @@ ENV HEXO_PORT 6000
 ENV VS_PORT 9000
 ENV DEFAULT_WORKSPACE="/space"
 ENV SOURCE_ROOT="/space"
-ENV HEXO_VERSION=latest
 ENV GIT_USERNAME=user
 ENV GIT_EMAIL=user@mail.com
 ENV GIT_SOURCE=''
 ENV GIT_DEPLOY=''
+ENV HEXO_VERSION=latest
+ENV AUTO_UPGRADE_LATEST=''
+ENV AUTO_UPGRADE_VSCODE=''
+ENV AUTO_UPGRADE_SB=''
 RUN \
     echo "*** install nodejs hexo and runtime dependencies ***" && \
     apt update && apt install -y \
