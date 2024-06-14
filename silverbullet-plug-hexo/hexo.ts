@@ -214,8 +214,7 @@ export async function gitCommit() {
     ({ code } = await shell.run("git", ["commit", "-a", "-m", revName]));
     console.log("Git commit code", code);
   } catch {
-    await editor.flashNotification("Hexo Git Commit ERROR. See Browser Console", 'error');
-    return;
+    // We can ignore, this happens when there's no changes to commit
   }
   console.log("Hexo Git Commit Done!");
   await editor.flashNotification("Hexo Git Commit Done!",);
@@ -262,8 +261,7 @@ export async function gitCommitPush() {
       ({ code } = await shell.run("git", ["commit", "-a", "-m", revName]));
       console.log("Git commit code", code);
     } catch {
-      await editor.flashNotification("Hexo Git Commit ERROR. See Browser Console", 'error');
-      return;
+      // We can ignore, this happens when there's no changes to commit
     }
     try {
       ({ code } = await shell.run("git",["push"]));
