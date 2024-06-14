@@ -173,7 +173,29 @@ export async function stopServer() {
   console.log("Hexo Stop Server Done!");
   await editor.flashNotification("Hexo Stop Server Done!",);
 }
-
+export async function gitCommit() {
+  console.log("git commit");
+  let revName = await editor.prompt(`Revision name:`);
+  if (!revName) {
+  revName = "Snapshot";
+  }
+  console.log("Revision name", revName);
+  try {
+  const { code } = await shell.run("git", ["commit", "-a", "-m", revName]);
+  console.log("Git commit code", code);
+  } catch {
+  // We can ignore, this happens when there's no changes to commit
+  }
+  console.log("Hexo Git Commit Done!");
+  await editor.flashNotification("Hexo Git Commit Done!",);
+}
+export async function gitPush() {
+  console.log("git push");
+  const { code } = await shell.run("git", ["push"]);
+  console.log("Git push code", code);
+  console.log("Hexo Git Push Done!");
+  await editor.flashNotification("Hexo Git Push Done!",);
+}
 export async function gitCommitPush() {
     console.log("git add . && git commit && git push");
     let revName = await editor.prompt(`Revision name:`);

@@ -42,6 +42,14 @@ functions:
     path: hexo.ts:stopServer
     command:
       name: "Hexo: Stop Server"
+  gitCommit:
+    path: hexo.ts:gitCommit
+    command:
+      name: "Hexo: Git Commit"
+  gitPush:
+    path: hexo.ts:gitPush
+    command:
+      name: "Hexo: Git Push"
   gitCommitPush:
     path: hexo.ts:gitCommitPush
     command:
