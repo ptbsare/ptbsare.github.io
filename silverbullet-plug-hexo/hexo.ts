@@ -69,7 +69,7 @@ export async function npmInstall() {
     const { code } = await shell.run("npm",["install"]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Npm Install ERROR. See Browser Console", error);
+    await editor.flashNotification("Npm Install ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Npm Install Done!");
@@ -82,7 +82,7 @@ export async function init () {
     const { code } = await shell.run("hexo",["init"]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Hexo Init ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Init ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Init Done!");
@@ -100,7 +100,7 @@ export async function newArticle() {
     const { code } = await shell.run("hexo",["new", layout, title]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Hexo New ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo New ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo New Done!");
@@ -114,7 +114,7 @@ export async function generate() {
     const { code } = await shell.run("hexo",["generate"]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Hexo Generate ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Generate ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Generate Done!");
@@ -127,7 +127,7 @@ export async function clean() {
     const { code } = await shell.run("hexo",["clean"]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Hexo Clean ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Clean ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Clean Done!");
@@ -141,7 +141,7 @@ export async function server() {
     const { code } = await shell.run("hexo",["server", "&"]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Hexo Server ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Server ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Server Done!");
@@ -154,7 +154,7 @@ export async function deploy() {
     const { code } = await shell.run("hexo",["deploy"]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Hexo Deploy ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Deploy ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Deploy Done!");
@@ -167,7 +167,7 @@ export async function generateDeploy() {
     const { code } = await shell.run("hexo",["generate"]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Hexo Generate ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Generate ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Generate Done!");
@@ -178,7 +178,7 @@ export async function generateDeploy() {
     const { code } = await shell.run("hexo",["deploy"]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Hexo Deploy ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Deploy ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Deploy Done!");
@@ -190,7 +190,7 @@ export async function stopServer() {
     const { code } = await shell.run("killall",["hexo"]);
     console.log(code);
   } catch {
-    await editor.flashNotification("Hexo Stop Server ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Stop Server ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Stop Server Done!");
@@ -207,14 +207,14 @@ export async function gitCommit() {
     let { code } = await shell.run("git", ["add", "./*"]);
     console.log("Git add code", code);
   } catch {
-    await editor.flashNotification("Hexo Git Add ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Git Add ERROR. See Browser Console", 'error');
     return;
   }
   try {
     ({ code } = await shell.run("git", ["commit", "-a", "-m", revName]));
     console.log("Git commit code", code);
   } catch {
-    await editor.flashNotification("Hexo Git Commit ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Git Commit ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Git Commit Done!");
@@ -226,7 +226,7 @@ export async function gitPush() {
     const { code } = await shell.run("git", ["push"]);
     console.log("Git push code", code);
   } catch {
-    await editor.flashNotification("Hexo Git Push ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Git Push ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Git Push Done!");
@@ -238,7 +238,7 @@ export async function gitPull() {
     const { code } = await shell.run("git", ["pull"]);
     console.log("Git pull code", code);
   } catch {
-    await editor.flashNotification("Hexo Git Pull ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Git Pull ERROR. See Browser Console", 'error');
     return;
   }
   console.log("Hexo Git Pull Done!");
@@ -255,21 +255,21 @@ export async function gitCommitPush() {
       let { code } = await shell.run("git", ["add", "./*"]);
       console.log("Git add code", code);
     } catch {
-      await editor.flashNotification("Hexo Git Add ERROR. See Browser Console", error);
+      await editor.flashNotification("Hexo Git Add ERROR. See Browser Console", 'error');
       return;
     }
     try {
       ({ code } = await shell.run("git", ["commit", "-a", "-m", revName]));
       console.log("Git commit code", code);
     } catch {
-      await editor.flashNotification("Hexo Git Commit ERROR. See Browser Console", error);
+      await editor.flashNotification("Hexo Git Commit ERROR. See Browser Console", 'error');
       return;
     }
     try {
       ({ code } = await shell.run("git",["push"]));
       console.log("Git push code", code);
     } catch {
-      await editor.flashNotification("Hexo Git Push ERROR. See Browser Console", error);
+      await editor.flashNotification("Hexo Git Push ERROR. See Browser Console", 'error');
       return;
     }
   console.log("Hexo Git Commit and Push Done!");
@@ -292,7 +292,7 @@ let url = await editor.prompt(`Github Deploy(site) project URL (like: https://gi
     const { code } = await shell.run("git", ["clone", url, ".deploy_git"]);
     console.log("Git clone deploy code", code);
   } catch {
-    await editor.flashNotification("Hexo Clone Deploy ERROR. See Browser Console", error);
+    await editor.flashNotification("Hexo Clone Deploy ERROR. See Browser Console", 'error');
     return;
   }    
   console.log("Hexo Clone Deploy Repo Done!");
