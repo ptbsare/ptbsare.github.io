@@ -6,3 +6,4 @@ public/
 .deploy/
 ._*
 Library/
+debug.log
