@@ -19,7 +19,7 @@ tar xf /tmp/code-server.tar.gz -C /app/code-server --strip-components=1
 #升级SB
 [ ! -z ${AUTO_UPGRADE_SB} ] && \
 echo "*** install latest silverbullet ***" && \
-deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g
+deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g && \
 SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest \
 	      | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
 	            && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
