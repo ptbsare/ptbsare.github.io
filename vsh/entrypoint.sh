@@ -63,6 +63,12 @@ else
 fi
 
 
+if [ -z ${ENABLE_WORKSPACE_TRUST+x} ]; then
+    DISABLE_WORKSPACE_TRUST_ARG=""
+else
+    DISABLE_WORKSPACE_TRUST_ARG="--disable-workspace-trust"
+fi
+
 chown -R $PUID:$PGID $HOME $DEFAULT_WORKSPACE
 
 gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-ceintl.vscode-language-pack-zh-hans &
@@ -73,11 +79,12 @@ fi
 
 exec gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server \
                 --bind-addr 0.0.0.0:${VS_PORT:-9000} \
-                --user-data-dir /config/data \
-                --extensions-dir /config/extensions \
+                --user-data-dir ${HOME:-/config}/data \
+                --extensions-dir ${HOME:-/config}/extensions \
                 --disable-telemetry \
                 --auth ${AUTH} \
                 ${PROXY_DOMAIN_ARG} \
+                ${DISABLE_WORKSPACE_TRUST_ARG} \
                 ${DEFAULT_WORKSPACE:-/config/}
 
 exec "$@"
