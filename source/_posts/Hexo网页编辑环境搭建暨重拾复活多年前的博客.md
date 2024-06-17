@@ -318,7 +318,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./publicpublic
+          path: ./public
   deploy:
     needs: build
     permissions:
@@ -438,7 +438,7 @@ jobs:
 ```
 &emsp;我自己构建的镜像地址是`ghcr.io/ptbsare/vsh:latest`。当然你也可以构建自己的镜像。
 ## Nginx反向代理配置
-&emsp;如果你有域名以及https的需求，需要使用Nginx的反向代理来代理Web编辑器以及Vsode的相应端口。此部分略过不写，网络上各种方案很多。
+&emsp;如果你有域名以及https的需求，需要使用Nginx的反向代理来代理Web编辑器以及Code-Server的相应端口。此部分略过不写，网络上各种方案很多。
 &emsp;如果你要在公网服务器而非内网上托管Docker容器（不推荐），建议加装必要的安全措施。
 ## 小米平板/iPad等移动设备PWA(Progressive Web App)安装
 &emsp;在平板上给予Chrome创建桌面图标的权限，使用Chrome首次打开`https://你的域名:端口`（请注意PWA貌似https是必要条件，有待验证）你会发现Code-Server和Web编辑器都是PWA可以一键安装到桌面，这样的好处是一点直接如同原生APP一样全屏进入无显示浏览器其他栏，沉浸式体验，写作体验丝滑；因为是网页APP，所以无论你身处何地，写完使用插件的CommitPush命令即可一键发布到Github自动构建更新博客，非常流畅。最后放几张小米平板的截图。
