@@ -273,7 +273,7 @@ Vscode config/Home folder/DB folder: /config</Overview>
 ```
 &emsp;这样即能做到编辑器预览文章图片以及HEXO渲染文章图片两不误。
 ### Web编辑器HEXO插件
-&emsp;Code-Server只是一个后备方案，界面太复杂了，我选择的Web编辑器是一个带有模板系统的编辑器，也可以通过插件完善它的功能，因此我自己也对应写了一个HEXO的插件实现了HEXO的各种命令以及GIT的各种命令方便REPO管理以及GITHUB同步与发布，感兴趣的可以在这里安装。
+&emsp;Code-Server只是一个后备方案，界面太复杂了，我选择的Web编辑器是一个带有模板系统的编辑器，也可以通过插件完善它的功能，因此我自己也对应写了一个HEXO的插件实现了HEXO的各种命令以及GIT的各种命令方便REPO管理以及GITHUB同步与发布，同时该插件也内置Upload File命令也实现了类似Code-Server的自动保存图片到相应文章名目录的功能，适合HEXO编写，感兴趣的可以在这里安装。
 (https://github.com/ptbsare/ptbsare.github.io/tree/main/silverbullet-plug-hexo)
 ## Github自动构建
 ### 博客网页自动构建
@@ -437,4 +437,6 @@ jobs:
 ## Nginx反向代理配置
 &emsp;如果你有域名以及https的需求，需要使用Nginx的反向代理来代理Web编辑器以及Vsode的相应端口。此部分略过不写，网络上各种方案很多。
 ## 小米平板/iPad等移动设备PWA(Progressive Web App)安装
-&emsp;在平板上给予Chrome创建桌面图标的权限，使用Chrome首次打开`https://你的域名:端口`你会发现Code-Server和Web编辑器都是PWA可以一键安装到桌面，这样的好处是一点直接如同原生APP一样全屏进入无显示浏览器其他栏，沉浸式体验，写作体验丝滑；因为是网页APP，所以无论你身处何地，写完使用插件的CommitPush命令即可一键发布到Github自动构建更新博客，非常流畅。最后放两张小米平板的截图
+&emsp;在平板上给予Chrome创建桌面图标的权限，使用Chrome首次打开`https://你的域名:端口`你会发现Code-Server和Web编辑器都是PWA可以一键安装到桌面，这样的好处是一点直接如同原生APP一样全屏进入无显示浏览器其他栏，沉浸式体验，写作体验丝滑；因为是网页APP，所以无论你身处何地，写完使用插件的CommitPush命令即可一键发布到Github自动构建更新博客，非常流畅。最后放几张小米平板的截图：
+![Screenshot_2024-06-17-22-53-13-383_com.android.chrome.jpg](Hexo网页编辑环境搭建暨重拾复活多年前的博客/Screenshot_2024-06-17-22-53-13-383_com.android.chrome.jpg)
+![Screenshot_2024-06-17-23-08-50-717_com.android.chrome.jpg](Hexo网页编辑环境搭建暨重拾复活多年前的博客/Screenshot_2024-06-17-23-08-50-717_com.android.chrome.jpg)![Screenshot_2024-06-17-23-04-38-815_com.android.chrome.jpg](Hexo网页编辑环境搭建暨重拾复活多年前的博客/Screenshot_2024-06-17-23-04-38-815_com.android.chrome.jpg)
