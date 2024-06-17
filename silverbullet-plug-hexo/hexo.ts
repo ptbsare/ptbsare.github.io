@@ -103,6 +103,7 @@ export async function newArticle() {
     await editor.flashNotification("Hexo New ERROR. See Browser Console", 'error');
     return;
   }
+  await editor.navigate("source/_posts/"+title);
   console.log("Hexo New Done!");
   await editor.flashNotification("Hexo New Done!",);
 }
