@@ -1,7 +1,7 @@
 ---
 title: 'Daughter of Deceit'
 date: '2015-06-02 02:27:00'
-updated: '2015-06-08 :21:30'
+updated: '2015-06-08 14:21:30'
 tags: 
 - Reading
 toc: false
