@@ -3,9 +3,6 @@ A list of built-in settings [[!silverbullet.md/SETTINGS|can be found here]].
 
 ```yaml
 indexPage: index
-shortcuts:
-- command: "{[Open Command Palette]}"
-  key: "Alt-x"
 spaceIgnore: |
    themes/*
    scaffolds/*
