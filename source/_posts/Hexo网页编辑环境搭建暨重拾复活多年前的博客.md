@@ -447,4 +447,3 @@ jobs:
 
 ![Screenshot_2024-06-17-23-08-50-717_com.android.chrome.jpg](Hexo网页编辑环境搭建暨重拾复活多年前的博客/Screenshot_2024-06-17-23-08-50-717_com.android.chrome.jpg)
 
-![Screenshot_2024-06-17-23-04-38-815_com.android.chrome.jpg](Hexo网页编辑环境搭建暨重拾复活多年前的博客/Screenshot_2024-06-17-23-04-38-815_com.android.chrome.jpg)
