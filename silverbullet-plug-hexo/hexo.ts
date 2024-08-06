@@ -91,11 +91,11 @@ export async function init () {
 
 export async function newArticle() {
   console.log("hexo new");
-  let layout = await editor.prompt(`New article layout(void to default layout):`);
   let title = await editor.prompt(`New article title:`);
   if (!title) {
     return;
   }
+  let layout = await editor.prompt(`New article layout(void to default layout):`);
   try {
     const { code } = await shell.run("hexo",["new", layout, title]);
     console.log("Hexo new code", code);
