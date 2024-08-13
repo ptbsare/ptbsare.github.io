@@ -4,11 +4,11 @@ A list of built-in settings [[!silverbullet.md/SETTINGS|can be found here]].
 ```yaml
 indexPage: index
 spaceIgnore: |
-   themes/*
-   scaffolds/*
-   node_modules/**
-   public/*
-   .deploy/*
-   .deploy_git/*
-   silverbullet-plug-hexo/*
+   themes
+   scaffolds
+   node_modules
+   public
+   .deploy
+   .deploy_git
+   silverbullet-plug-hexo
 ```
