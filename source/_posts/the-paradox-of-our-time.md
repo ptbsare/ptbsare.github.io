@@ -12,7 +12,7 @@ tags:
 
 ---
 
-![](/img/the-paradox-of-our-time/1.jpg)
+![](the-paradox-of-our-time/1.jpg)
 
 ---
 
