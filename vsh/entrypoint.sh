@@ -36,6 +36,7 @@ if [ ! -z $PUID ] && [ ! -z $PGID ]; then
     USERNAME=vsh
     chsh -s /bin/bash $USERNAME
     [ -f $HOME/.gitconfig ] && mkdir -p /home/$USERNAME && cp $HOME/.gitconfig /home/$USERNAME/
+    mkdir -p /home/$USERNAME && chown -R $PUID:$PGID /home/$USERNAME
     echo "Running  as $USERNAME (configured as PUID $PUID and PGID $PGID)"
 fi
 
