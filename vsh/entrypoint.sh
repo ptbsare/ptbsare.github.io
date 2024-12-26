@@ -44,7 +44,7 @@ fi
 #克隆博客源码
 [ ! "$(ls -A ${SOURCE_ROOT})" ] && [ ! -z ${GIT_SOURCE} ] && [ ! -z ${GIT_DEPLOY} ] && git clone ${GIT_SOURCE} ${SOURCE_ROOT} && git clone ${GIT_DEPLOY} ${SOURCE_ROOT}/.deploy_git && chown -R $PUID:$PGID $SOURCE_ROOT
 
-
+#启动markdown网页编辑器
 if [ -z "$DISABLE_SILVERBULLET" ]; then
   gosu $USERNAME deno run -A --unstable-kv --unstable-worker-options /silverbullet.js $args &
 fi
