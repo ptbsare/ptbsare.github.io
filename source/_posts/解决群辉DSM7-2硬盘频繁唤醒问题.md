@@ -158,7 +158,7 @@ done
 mount -t tmpfs -o nosuid,noexec,nodev,mode=0755,size=100M transientlog /var/log
 mkdir -p /var/log/nginx/ && touch /var/log/nginx/error_default.log #避免nginx启动报错找不到日志文件
 
-systemctl stop synologrotated #会频繁产生/var/lib/logrotate.status文件唤醒测盘
+systemctl stop synologrotated #会频繁产生/var/lib/logrotate.status文件唤醒磁盘
 ```
 
 ### SMB服务读写临时文件
@@ -226,7 +226,7 @@ vmtouch -dl /usr/syno/synoman/webapi/query.api
 ```
 
 ### 界面设置的计划任务执行(正常)
-无论你的计划任务本身涉及不涉及磁盘读写，它执行后都会记录执行结果到`.sqlite`（根分区）。
+无论你的计划任务本身涉及不涉及磁盘读写，它执行后都会记录执行结果到`/usr/syno/etc/sched_status.sqlite`。
 ### 界面设置的配置文件自动备份功能（正常）
 如果你设置了定期备份系统配置的话。
 ### 其他应用及docker
