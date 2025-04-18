@@ -231,7 +231,7 @@ exec "$@"
 <?xml version="1.0"?>
 <Container version="2">
   <Name>vsh</Name>
-  <Repository>ghcr.io/ptbsare/vsh:latest</Repository>
+  <Repository>ghcr.io/ptbsare/ptbsare.github.io/vsh:latest</Repository>
   <Registry/>
   <Network>direct</Network>
   <MyIP>192.168.195.126</MyIP>
