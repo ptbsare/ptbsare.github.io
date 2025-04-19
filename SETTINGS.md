@@ -10,5 +10,10 @@ spaceIgnore: |
    public
    .deploy
    .deploy_git
+   .github
+   .vscode
+   hooks
    silverbullet-plug-hexo
+   vsh
+   *.json
 ```

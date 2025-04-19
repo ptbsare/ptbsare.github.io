@@ -70,6 +70,7 @@ RUN \
 RUN SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest \
       | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
       && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
+RUN deno cache /silverbullet.js
 VOLUME /space
 VOLUME ${HOME}
 EXPOSE ${SB_PORT} ${VS_PORT} ${HEXO_PORT}
