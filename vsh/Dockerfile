@@ -20,6 +20,7 @@ ENV GIT_EMAIL=user@mail.com
 ENV GIT_SOURCE=''
 ENV GIT_DEPLOY=''
 ENV HEXO_VERSION=latest
+ENV SB_VERSION=latest
 ENV AUTO_UPGRADE_HEXO=''
 ENV AUTO_UPGRADE_VSCODE=''
 ENV AUTO_UPGRADE_SB=''
@@ -70,7 +71,6 @@ RUN \
 RUN SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest \
       | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
       && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
-RUN deno cache /silverbullet.js
 VOLUME /space
 VOLUME ${HOME}
 EXPOSE ${SB_PORT} ${VS_PORT} ${HEXO_PORT}
