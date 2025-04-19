@@ -1,10 +1,12 @@
 #!/bin/sh
 #安装特定版本HEXO
-if [ ! $HEXO_VERSION=='latest' ]; then
+if [ ! $HEXO_VERSION = 'latest' ]; then
+    echo "Installing HEXO@${HEXO_VERSION}"
     npm install hexo-cli@$HEXO_VERSION -g
 fi
-#安装特定版本HEXO
-if [ ! $SB_VERSION=='latest' ]; then
+#安装特定版本SB
+if [ ! $SB_VERSION = 'latest' ]; then
+    echo "Installing SB@${SB_VERSION}"
     curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SB_VERSION}/silverbullet.js -o /silverbullet.js
 fi
 #升级HEXO
