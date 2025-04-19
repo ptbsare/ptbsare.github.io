@@ -4,17 +4,17 @@ A list of built-in settings [[!silverbullet.md/SETTINGS|can be found here]].
 ```yaml
 indexPage: index
 spaceIgnore: |
-   themes
-   scaffolds
-   node_modules
-   public
-   .deploy
-   .deploy_git
-   .github
-   .vscode
-   hooks
-   silverbullet-plug-hexo
-   vsh
+   themes/*
+   scaffolds/*
+   node_modules/*
+   public/*
+   .deploy/*
+   .deploy_git/*
+   .github/*
+   .vscode/*
+   hooks/*
+   silverbullet-plug-hexo/*
+   vsh/*
    source/lab
    *.json
    *.db
