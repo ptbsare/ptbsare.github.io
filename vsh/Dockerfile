@@ -66,8 +66,8 @@ RUN \
 #Optional
 #ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini-amd64 /usr/bin/tini
 RUN \
-  echo "*** install silverbullet ***" && \
-  deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g
+  echo "*** install silverbullet ***"
+#RUN  deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g
 RUN SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest \
       | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
       && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
