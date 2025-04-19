@@ -75,6 +75,7 @@ ENV GIT_EMAIL=user@mail.com
 ENV GIT_SOURCE=''
 ENV GIT_DEPLOY=''
 ENV HEXO_VERSION=latest
+ENV SB_VERSION=latest
 ENV AUTO_UPGRADE_HEXO=''
 ENV AUTO_UPGRADE_VSCODE=''
 ENV AUTO_UPGRADE_SB=''
@@ -120,8 +121,8 @@ RUN \
 #Optional
 #ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini-amd64 /usr/bin/tini
 RUN \
-  echo "*** install silverbullet ***" && \
-  deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g
+  echo "*** install silverbullet ***"
+#RUN  deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g
 RUN SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest \
       | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
       && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
@@ -131,14 +132,21 @@ EXPOSE ${SB_PORT} ${VS_PORT} ${HEXO_PORT}
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
+
 ```
 
 entrypoint.sh如下：
 ```bash
 #!/bin/sh
 #安装特定版本HEXO
-if [ ! $HEXO_VERSION=='latest' ]; then
+if [ ! $HEXO_VERSION = 'latest' ]; then
+    echo "Installing HEXO@${HEXO_VERSION}"
     npm install hexo-cli@$HEXO_VERSION -g
+fi
+#安装特定版本SB
+if [ ! $SB_VERSION = 'latest' ]; then
+    echo "Installing SB@${SB_VERSION}"
+    curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SB_VERSION}/silverbullet.js -o /silverbullet.js
 fi
 #升级HEXO
 [ ! -z ${AUTO_UPGRADE_HEXO} ] && \
@@ -156,7 +164,7 @@ tar xf /tmp/code-server.tar.gz -C /app/code-server --strip-components=1
 #升级SB
 [ ! -z ${AUTO_UPGRADE_SB} ] && \
 echo "*** install latest silverbullet ***" && \
-deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g && \
+#deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g && \
 SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest \
 	      | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
 	            && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
@@ -173,6 +181,7 @@ if [ ! -z $PUID ] && [ ! -z $PGID ]; then
     USERNAME=vsh
     chsh -s /bin/bash $USERNAME
     [ -f $HOME/.gitconfig ] && mkdir -p /home/$USERNAME && cp $HOME/.gitconfig /home/$USERNAME/
+    mkdir -p /home/$USERNAME && chown -R $PUID:$PGID /home/$USERNAME
     echo "Running  as $USERNAME (configured as PUID $PUID and PGID $PGID)"
 fi
 
@@ -180,7 +189,7 @@ fi
 #克隆博客源码
 [ ! "$(ls -A ${SOURCE_ROOT})" ] && [ ! -z ${GIT_SOURCE} ] && [ ! -z ${GIT_DEPLOY} ] && git clone ${GIT_SOURCE} ${SOURCE_ROOT} && git clone ${GIT_DEPLOY} ${SOURCE_ROOT}/.deploy_git && chown -R $PUID:$PGID $SOURCE_ROOT
 
-
+#启动markdown网页编辑器
 if [ -z "$DISABLE_SILVERBULLET" ]; then
   gosu $USERNAME deno run -A --unstable-kv --unstable-worker-options /silverbullet.js $args &
 fi
@@ -225,6 +234,7 @@ exec gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server \
                 ${DEFAULT_WORKSPACE:-/config/}
 
 exec "$@"
+
 ```
 &emsp;如果你碰巧服务器使用的是UNRAID系统，那么可以直接使用下面Dockerman模板即可：`my-vsh-docker-unraid.xml`
 ```xml

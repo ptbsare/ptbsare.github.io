@@ -15,7 +15,7 @@ spaceIgnore: |
    hooks/*
    silverbullet-plug-hexo/*
    vsh/*
-   source/lab
+   source/lab/*
    *.json
    *.db
    *.sh
