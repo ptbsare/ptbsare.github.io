@@ -9,6 +9,16 @@ if [ ! $SB_VERSION = 'latest' ]; then
     echo "Installing SB@${SB_VERSION}"
     curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SB_VERSION}/silverbullet.js -o /silverbullet.js
 fi
+#安装特定版本VSCODE
+if [ ! $VSCODE_VERSION = 'latest' ]; then
+    echo "Installing VSCODE@${VSCODE_VERSION}"
+    curl -o \
+      /tmp/code-server.tar.gz -L \
+      "https://github.com/coder/code-server/releases/download/v${VSCODE_VERSION}/code-server-${VSCODE_VERSION}-linux-amd64.tar.gz" && \
+    tar xf /tmp/code-server.tar.gz -C \
+      /app/code-server --strip-components=1 && \
+    rm /tmp/code-server.tar.gz
+fi
 #升级HEXO
 [ ! -z ${AUTO_UPGRADE_HEXO} ] && \
 echo "*** install latest hexo ***" && \
