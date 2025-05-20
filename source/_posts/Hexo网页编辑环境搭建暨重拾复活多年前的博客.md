@@ -456,7 +456,7 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
 ```
-&emsp;我自己构建的镜像地址是`ghcr.io/ptbsare/vsh:latest`。当然你也可以构建自己的镜像。
+&emsp;我自己构建的镜像地址是`ghcr.io/ptbsare/ptbsare.github.io/vsh:latest`。当然你也可以构建自己的镜像。
 ## Nginx反向代理配置
 &emsp;如果你有域名以及https的需求，需要使用Nginx的反向代理来代理Web编辑器以及Code-Server的相应端口。此部分略过不写，网络上各种方案很多。
 &emsp;如果你要在公网服务器而非内网上托管Docker容器（不推荐），建议加装必要的安全措施。
