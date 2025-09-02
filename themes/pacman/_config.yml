@@ -1,8 +1,6 @@
 ##### Menu
 menu:
-  Home: /
   Archives: /archives
-	Lab: /lab
   Reading: /reading
   About: /about
 ## you can create `tags` and `categories` folders in `../source`.
