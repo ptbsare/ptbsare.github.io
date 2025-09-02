@@ -194,4 +194,4 @@ tags:
 
 &emsp;最后，再展示一下 Anx Calibre Manager 自动生成的阅读统计页面，是不是很炫酷？下面就是我个人的实时阅读统计数据：
 
-<iframe src="https://v.ptbsare.org:33888/stats/ptbsare" style="width: 100%; height: 600px; border: none;"></iframe>
+<iframe src="https://v.ptbsare.org:33888/stats/ptbsare" style="width: 100%; height: 3000px; border: none;"></iframe>
