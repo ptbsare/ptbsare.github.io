@@ -35,7 +35,7 @@ updated: '2014-6-24 21:05:05'
 ### Social Media 社交网站:
 <!--**VJianKe:**　[http://www.vjianke.com/digest/e5de3f6524f24209979051e23d109731.clip]
 **RenRen:**　 [http://www.renren.com/467369931]-->
-**Sina:**　　  [http://weibo.com/2168291303]
+**Sina:**　　  [https://weibo.com/u/2168291303]
 <!--**Qzone:**　  [http://user.qzone.qq.com/496725701]-->
 
 ### My Hobbies 爱好:
