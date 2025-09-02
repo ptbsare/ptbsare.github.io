@@ -13,7 +13,7 @@ layout: page
 
     if (event.data.frameHeight) {
       var iframe = document.getElementById('reading-stats-iframe');
-      iframe.style.height = (event.data.frameHeight) + 'px';
+      iframe.style.height = (event.data.frameHeight + 350 ) + 'px';
     }
   }, false);
 </script>
