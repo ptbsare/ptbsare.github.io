@@ -17,7 +17,7 @@ tags:
 
 &emsp;作为一个智能家居爱好者和 Home Assistant 的重度用户，我自然而然地想到了：能不能把这些 AI “超能力”都集中起来，然后接入到我的 Home Assistant 系统里呢？这样，我不仅能通过 HA 的自动化来调用这些 AI 工具，还能让我的智能家居真正拥有一个强大的“大脑”。
 
-&emsp;于是，[`mcp-proxy-server`](https://github.com/ptbsare/home-assistant-addons/tree/main/mcp-proxy-server) (https://github.com/ptbsare/home-assistant-addons/tree/main/mcp-proxy-server) 这个 Home Assistant 插件应运而生。它不仅仅是一个简单的代理，更是一个 MCP 服务器的“大管家”。
+&emsp;于是，[`mcp-proxy-server`](https://github.com/ptbsare/mcp-proxy-server) (https://github.com/ptbsare/mcp-proxy-server ) 这个 Home Assistant 插件应运而生。它不仅仅是一个简单的代理，更是一个 MCP 服务器的“大管家”。
 
 ## ✨ 主要特性
 

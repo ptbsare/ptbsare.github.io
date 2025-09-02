@@ -18,7 +18,7 @@ tags:
 
 &emsp;Home Assistant 的语音助手功能虽然越来越完善，但默认的方案大多依赖云服务。这不仅意味着我的语音指令需要在大洋彼岸绕一圈再回来，带来了恼人的延迟，更重要的是，一想到家里日常的对话可能会被送到某个服务器上，心里总觉得不太踏实。
 
-&emsp;作为一个热爱“折腾”的 DIY 玩家，解决方案当然是：本地化！我要给我的 Home Assistant 换上完全离线的“嗓门”（TTS，文本转语音）和“耳朵”（STT，语音转文本）。经过一番研究，我发现了 `sherpa-onnx` 这个宝藏项目，并把它打包成了我现在要介绍的这个 Home Assistant 插件：[`sherpa-onnx-tts-stt`](https://github.com/ptbsare/home-assistant-addons/tree/main/sherpa-onnx-tts-stt) (https://github.com/ptbsare/home-assistant-addons/tree/main/sherpa-onnx-tts-stt)。
+&emsp;作为一个热爱“折腾”的 DIY 玩家，解决方案当然是：本地化！我要给我的 Home Assistant 换上完全离线的“嗓门”（TTS，文本转语音）和“耳朵”（STT，语音转文本）。经过一番研究，我发现了 `sherpa-onnx` 这个宝藏项目，并把它打包成了我现在要介绍的这个 Home Assistant 插件：[`sherpa-onnx-tts-stt`](https://github.com/ptbsare/sherpa-onnx-tts-stt) (https://github.com/ptbsare/sherpa-onnx-tts-stt )。
 
 ## ✨ 主要特性
 
