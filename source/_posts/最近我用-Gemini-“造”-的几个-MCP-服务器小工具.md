@@ -19,7 +19,7 @@ tags:
 
 ## 德州扑克赔率计算器
 
-([`texas-pokker-odds-mcp-server`](https://github.com/ptbsare/texas-pokker-odds-mcp-server))
+([`texas-pokker-odds-mcp-server`](https://github.com/ptbsare/texas-pokker-odds-mcp-server)) (https://github.com/ptbsare/texas-pokker-odds-mcp-server)
 
 &emsp;和朋友玩德州扑克时，你是否也曾好奇过，自己手上的这把牌，在翻牌或转牌后，究竟有多大的胜算？这个小工具就是为此而生。它通过蒙特卡洛模拟，可以快速计算出多手牌在给定公共牌情况下的胜、负、平概率。
 
@@ -27,7 +27,7 @@ tags:
 
 ## 搜狗微信文章搜索
 
-([`sogou-weixin-mcp-server`](https://github.com/ptbsare/sogou-weixin-mcp-server))
+([`sogou-weixin-mcp-server`](https://github.com/ptbsare/sogou-weixin-mcp-server)) (https://github.com/ptbsare/sogou-weixin-mcp-server)
 
 &emsp;微信公众号无疑是一个巨大的信息源，但其封闭的生态也造成了信息检索的困难。为了让 AI 能够触及到这部分信息，我利用搜狗微信搜索的接口，开发了这个 MCP 服务器。
 
@@ -35,7 +35,7 @@ tags:
 
 ## 离线加密货币地址生成器
 
-([`gen-blockchain-addr-mcp-server`](https://github.com/ptbsare/gen-blockchain-addr-mcp-server))
+([`gen-blockchain-addr-mcp-server`](https://github.com/ptbsare/gen-blockchain-addr-mcp-server)) (https://github.com/ptbsare/gen-blockchain-addr-mcp-server)
 
 &emsp;在 Web3 的世界里，私钥和助记词的安全至关重要。任何在线的地址生成器都存在私钥泄露的风险。因此，我开发了这个完全离线的加密货币地址生成工具。
 
@@ -43,7 +43,7 @@ tags:
 
 ## 远程/本地命令执行器
 
-([`terminal-mcp-server`](https://github.com/ptbsare/terminal-mcp-server))
+([`terminal-mcp-server`](https://github.com/ptbsare/terminal-mcp-server)) (https://github.com/ptbsare/terminal-mcp-server)
 
 &emsp;这可以说是这次开发的工具中最强大的一个。它让 AI 具备了直接操作服务器的能力。这个 MCP 服务器可以：
 
@@ -54,7 +54,7 @@ tags:
 
 ## 邮件客户端
 
-([`email-mcp-server`](https://github.com/ptbsare/email-mcp-server))
+([`email-mcp-server`](https://github.com/ptbsare/email-mcp-server)) (https://github.com/ptbsare/email-mcp-server)
 
 &emsp;邮件至今仍然是重要的沟通工具。这个 MCP 服务器让 AI 拥有了收发邮件的能力。它通过 POP3 读取邮件，通过 SMTP 发送邮件，并且支持 TLS 加密。
 
@@ -62,7 +62,7 @@ tags:
 
 ## Overseerr 接口
 
-([`overseerr-mcp-server`](https://github.com/ptbsare/overseerr-mcp-server))
+([`overseerr-mcp-server`](https://github.com/ptbsare/overseerr-mcp-server)) (https://github.com/ptbsare/overseerr-mcp-server)
 
 &emsp;如果你和我一样，也是个 NAS 玩家，并且使用 Overseerr 来管理家庭影音库的请求，那么这个工具你一定会喜欢。它将 Overseerr 的 API 封装成了 MCP 工具。
 
