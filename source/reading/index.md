@@ -2,9 +2,6 @@
 title: Reading
 layout: page
 ---
-
-## 📊 我的实时阅读统计
-
 <iframe id="reading-stats-iframe" src="https://v.ptbsare.org:33888/stats/ptbsare" style="width: 100%; border: none;"></iframe>
 
 <script>
