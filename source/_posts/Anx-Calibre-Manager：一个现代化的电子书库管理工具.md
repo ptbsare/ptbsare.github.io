@@ -182,6 +182,17 @@ tags:
 - `push_calibre_book_to_anx`: 将 Calibre 书籍推送到 Anx 书库。
 - `send_calibre_book_to_kindle`: 将 Calibre 书籍发送到 Kindle。
 
+## 配套 Calibre 插件
+
+&emsp;除了 `Anx Calibre Manager` 这个服务端应用，我还开发了一个配套的 Calibre 客户端插件：[`anx-reader-calibre-plugin`](https://github.com/ptbsare/anx-reader-calibre-plugin)。
+
+&emsp;这个插件可以让你在 Calibre 客户端中创建一个“ANX 虚拟设备”，从而直接管理位于 NAS 或服务器上的 `ANX 阅读器` 书库。你可以利用 Calibre 强大的元数据编辑功能，来维护 `ANX 阅读器` 的数据库和文件，并通过“发送到设备”和“从设备删除”功能，方便地同步书籍。
+
+&emsp;这两个项目相辅相成，为你提供了一个完整的电子书管理生态：
+
+*   **在 PC 端**：使用 `anx-reader-calibre-plugin` 插件，在 Calibre 客户端方便地整理书籍、编辑元数据。
+*   **在移动端**：通过 `Anx Calibre Manager`，在手机、平板等设备上随时随地访问、阅读和同步这些书籍。
+
 ## 总结
 
 &emsp;Anx Calibre Manager 是我为了解决个人在电子书管理和阅读中的痛点而开发的项目。它将 Calibre 的强大功能与现代 Web 技术相结合，提供了一个美观、易用且功能丰富的解决方案。无论你是希望在手机上更方便地管理书库，还是希望在不同设备间无缝同步阅读进度，抑或是希望通过 API 与你的书库进行交互，Anx Calibre Manager 都能满足你的需求。
