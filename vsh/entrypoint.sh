@@ -4,11 +4,11 @@ if [ ! $HEXO_VERSION = 'latest' ]; then
     echo "Installing HEXO@${HEXO_VERSION}"
     npm install hexo-cli@$HEXO_VERSION -g
 fi
-#安装特定版本SB
-if [ ! $SB_VERSION = 'latest' ]; then
-    echo "Installing SB@${SB_VERSION}"
-    curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SB_VERSION}/silverbullet.js -o /silverbullet.js
-fi
+#安装特定版本SB (已注释，固定使用Dockerfile中安装的版本)
+# if [ ! $SB_VERSION = 'latest' ]; then
+#     echo "Installing SB@${SB_VERSION}"
+#     curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SB_VERSION}/silverbullet.js -o /silverbullet.js
+# fi
 #安装特定版本VSCODE
 if [ ! $VSCODE_VERSION = 'latest' ]; then
     echo "Installing VSCODE@${VSCODE_VERSION}"
@@ -32,13 +32,12 @@ CODE_RELEASE=$(curl -sX GET https://api.github.com/repos/coder/code-server/relea
 && curl -o /tmp/code-server.tar.gz -L \
 "https://github.com/coder/code-server/releases/download/v${CODE_RELEASE}/code-server-${CODE_RELEASE}-linux-amd64.tar.gz" && \
 tar xf /tmp/code-server.tar.gz -C /app/code-server --strip-components=1
-#升级SB
-[ ! -z ${AUTO_UPGRADE_SB} ] && \
-echo "*** install latest silverbullet ***" && \
-#deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g && \
-SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest \
-	      | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
-	            && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
+#升级SB (已注释，固定使用Dockerfile中安装的版本)
+# [ ! -z ${AUTO_UPGRADE_SB} ] && \
+# echo "*** install latest silverbullet ***" && \
+# SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest \
+# 	      | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||') \
+# 	            && curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
 #设置git用户名邮箱
 chsh -s /bin/bash
 [ ! -z ${GIT_USER} ] && git config --global user.name ${GIT_USER}
