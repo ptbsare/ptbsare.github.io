@@ -3,7 +3,7 @@ LABEL maintainer="ptbsare"
 WORKDIR /space
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG HEXO_BUILD_VERSION='latest'
-ARG SB_BUILD_VERSION='latest'
+ARG SB_BUILD_VERSION='0.9.4'
 ARG VSCODE_BUILD_VERSION='latest'
 ENV LANG=C.UTF-8
 ENV PUID=1001
@@ -23,7 +23,7 @@ ENV GIT_EMAIL=user@mail.com
 ENV GIT_SOURCE=''
 ENV GIT_DEPLOY=''
 ENV HEXO_VERSION='latest'
-ENV SB_VERSION='latest'
+ENV SB_VERSION='0.9.4'
 ENV VSCODE_VERSION='latest'
 ENV AUTO_UPGRADE_HEXO=''
 ENV AUTO_UPGRADE_VSCODE=''
@@ -69,7 +69,8 @@ RUN \
   echo "*** install silverbullet ***"
 #RUN  deno install -f --name silverbullet --root /usr/local  --unstable-kv --unstable-worker-options -A https://get.silverbullet.md -g
 RUN SILVERBULLET_RELEASE=$([ "$SB_BUILD_VERSION" = latest ] && curl -fsS https://api.github.com/repos/silverbulletmd/silverbullet/releases/latest | grep -Po '"tag_name": "\K[^"]+' | sed 's/^v//' || echo "$SB_BUILD_VERSION") && \
-  curl -L https://github.com/silverbulletmd/silverbullet/releases/download/${SILVERBULLET_RELEASE}/silverbullet.js -o /silverbullet.js
+  echo "Latest SilverBullet version: $SILVERBULLET_RELEASE" && \
+  curl -L https://github.com/silverbulletmd/silverbullet/releases/download/0.9.4/silverbullet.js -o /silverbullet.js
 VOLUME /space
 VOLUME ${HOME}
 EXPOSE ${SB_PORT} ${VS_PORT} ${HEXO_PORT}
