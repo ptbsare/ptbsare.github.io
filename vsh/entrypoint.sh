@@ -43,26 +43,54 @@ SILVERBULLET_RELEASE=$(curl -sX GET https://api.github.com/repos/silverbulletmd/
 chsh -s /bin/bash
 [ ! -z ${GIT_USER} ] && git config --global user.name ${GIT_USER}
 [ ! -z ${GIT_EMAIL} ] && git config --global user.email ${GIT_EMAIL}
-#设置用户
-if [ ! -z $PUID ] && [ ! -z $PGID ]; then
-    groupadd -g $PGID vsh
-    useradd -u $PUID -g $PGID vsh
-    chown -R $PUID:$PGID $SB_FOLDER
-    args="$@"
-    USERNAME=vsh
-    chsh -s /bin/bash $USERNAME
-    [ -f $HOME/.gitconfig ] && mkdir -p /home/$USERNAME && cp $HOME/.gitconfig /home/$USERNAME/
-    mkdir -p /home/$USERNAME && chown -R $PUID:$PGID /home/$USERNAME
-    echo "Running  as $USERNAME (configured as PUID $PUID and PGID $PGID)"
+
+#设置用户 - 支持USE_ROOT直接以root运行
+if [ ! -z ${USE_ROOT} ]; then
+    echo "Running as root (USE_ROOT is enabled)"
+    USERNAME=root
+    # 确保目录权限正确
+    chown -R 0:0 $SB_FOLDER 2>/dev/null
+    chown -R 0:0 $HOME 2>/dev/null
+elif [ ! -z $PUID ] && [ ! -z $PGID ]; then
+    # 跳过 PUID=0 PGID=0 的情况，因为已经是root
+    if [ "$PUID" = "0" ] && [ "$PGID" = "0" ]; then
+        echo "Running as root (PUID=0 PGID=0)"
+        USERNAME=root
+        chown -R 0:0 $SB_FOLDER
+    else
+        groupadd -g $PGID vsh 2>/dev/null || true
+        useradd -u $PUID -g $PGID vsh 2>/dev/null || true
+        chown -R $PUID:$PGID $SB_FOLDER
+        args="$@"
+        USERNAME=vsh
+        chsh -s /bin/bash $USERNAME
+        [ -f $HOME/.gitconfig ] && mkdir -p /home/$USERNAME && cp $HOME/.gitconfig /home/$USERNAME/
+        mkdir -p /home/$USERNAME && chown -R $PUID:$PGID /home/$USERNAME
+        echo "Running  as $USERNAME (configured as PUID $PUID and PGID $PGID)"
+    fi
+else
+    echo "Running as root (no PUID/PGID specified)"
+    USERNAME=root
 fi
 
 
 #克隆博客源码
 [ ! "$(ls -A ${SOURCE_ROOT})" ] && [ ! -z ${GIT_SOURCE} ] && [ ! -z ${GIT_DEPLOY} ] && git clone ${GIT_SOURCE} ${SOURCE_ROOT} && git clone ${GIT_DEPLOY} ${SOURCE_ROOT}/.deploy_git && chown -R $PUID:$PGID $SOURCE_ROOT
 
+#设置目录权限（根据运行用户）
+if [ "$USERNAME" = "root" ]; then
+    chown -R 0:0 $HOME $DEFAULT_WORKSPACE 2>/dev/null
+else
+    chown -R $PUID:$PGID $HOME $DEFAULT_WORKSPACE
+fi
+
 #启动markdown网页编辑器
 if [ -z "$DISABLE_SILVERBULLET" ]; then
-  gosu $USERNAME deno run -A --unstable-kv --unstable-worker-options /silverbullet.js $args &
+  if [ "$USERNAME" = "root" ]; then
+    deno run -A --unstable-kv --unstable-worker-options /silverbullet.js $args &
+  else
+    gosu $USERNAME deno run -A --unstable-kv --unstable-worker-options /silverbullet.js $args &
+  fi
 fi
 
 #启动vscode server
@@ -88,13 +116,22 @@ fi
 
 chown -R $PUID:$PGID $HOME $DEFAULT_WORKSPACE
 
-gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-ceintl.vscode-language-pack-zh-hans &
-
-if [ ! -z ${CODE_PLUGIN} ] ; then
-gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension  ${CODE_PLUGIN} &
+if [ "$USERNAME" = "root" ]; then
+  env HOME=$HOME /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-ceintl.vscode-language-pack-zh-hans &
+else
+  gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-ceintl.vscode-language-pack-zh-hans &
 fi
 
-exec gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server \
+if [ ! -z ${CODE_PLUGIN} ] ; then
+  if [ "$USERNAME" = "root" ]; then
+    env HOME=$HOME /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ${CODE_PLUGIN} &
+  else
+    gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ${CODE_PLUGIN} &
+  fi
+fi
+
+if [ "$USERNAME" = "root" ]; then
+  exec env HOME=$HOME /app/code-server/bin/code-server \
                 --bind-addr 0.0.0.0:${VS_PORT:-9000} \
                 --user-data-dir ${HOME:-/config}/data \
                 --extensions-dir ${HOME:-/config}/extensions \
@@ -103,5 +140,16 @@ exec gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server \
                 ${PROXY_DOMAIN_ARG} \
                 ${DISABLE_WORKSPACE_TRUST_ARG} \
                 ${DEFAULT_WORKSPACE:-/config/}
+else
+  exec gosu $USERNAME env HOME=$HOME /app/code-server/bin/code-server \
+                --bind-addr 0.0.0.0:${VS_PORT:-9000} \
+                --user-data-dir ${HOME:-/config}/data \
+                --extensions-dir ${HOME:-/config}/extensions \
+                --disable-telemetry \
+                --auth ${AUTH} \
+                ${PROXY_DOMAIN_ARG} \
+                ${DISABLE_WORKSPACE_TRUST_ARG} \
+                ${DEFAULT_WORKSPACE:-/config/}
+fi
 
 exec "$@"
